@@ -6,8 +6,8 @@ import { UserContext } from "../contexts/userContext";
 import { BgSection } from "../components/aside/BgSection";
 import { FormButton } from "../components/form/button/FormButton";
 import { RegisterForm } from "../components/form/RegisterForm";
-import { HeaderText, pageIdentifier } from "../components/header/Header";
-import { ContentContainer } from "../components/form/containers/ContentContainer.styles";
+import { HeaderText } from "../components/header/Header";
+import { ContentContainer } from "../components/form/containers/ContentContainer";
 import { MainWrapper } from "../components/common/MainWrapper.styles";
 //external funcs
 import { register } from "../actions/register";
@@ -17,12 +17,7 @@ let firstRender = true;
 import { ActionType } from "../reducers/formReducer";
 import { useNavigate } from "react-router-dom";
 import { FormContainer } from "../components/form/containers/FormContainer.styles";
-type formButtonProps = {
-	page: pageIdentifier["page"];
-	title: pageIdentifier["title"];
-	description: pageIdentifier["description"];
-	onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-};
+
 
 export const SignUp = () => {
 	//hook's calls
@@ -32,7 +27,7 @@ export const SignUp = () => {
 	const signUpHandler = () => {
 		dispatch({ type: ActionType.VALIDATE_FORM });
 	};
-	//do a custom hook for this
+	//todo: a custom hook for this
 	useEffect(() => {
 		if (firstRender !== true) {
 			if (formState.isFormValid === true) {
