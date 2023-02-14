@@ -34,57 +34,70 @@ export const formsReducer = (state: formState, action: action): formState => {
             for (const key in state) {
                 switch (key) {
                     case "firstName":
-                        state[key].value.trim() === "" &&
-                            (!/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/.test(state[key].value)
-                                ? state[key].hasError = true : state[key].hasError = false);
-                        state[key].hasError = true;
+                        state[key].value.trim() === "" ||
+                            !/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/.test(state[key].value)
+                            ? state[key].hasError = true : state[key].hasError = false;
+
                         break;
                     case "lastName":
-                        state[key].value.trim() === "" &&
-                            (!/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/.test(state[key].value)
-                                ? state[key].hasError = true : state[key].hasError = false);
+                        state[key].value.trim() === "" ||
+                            !/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/.test(state[key].value)
+                            ? state[key].hasError = true : state[key].hasError = false;
                         break;
                     case "birthDate":
-                        state[key].value.trim() === "" &&
-                            (!/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/.test(state[key].value)
-                                ? state[key].hasError = true : state[key].hasError = false);
+                        state[key].value.trim() === "" ||
+                            !/^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/.test(state[key].value)
+                            ? state[key].hasError = true : state[key].hasError = false;
                         break;
                     case "country":
-                        state[key].value.trim() === "" &&
-                            (!/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/.test(state[key].value)
-                                ? state[key].hasError = true : state[key].hasError = false);
+                        state[key].value.trim() === "" ||
+                            !/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/.test(state[key].value)
+                            ? state[key].hasError = true : state[key].hasError = false;
                         break;
                     case "city":
-                        state[key].value.trim() === "" &&
-                            (!/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/.test(state[key].value)
-                                ? state[key].hasError = true : state[key].hasError = false);
+                        state[key].value.trim() === "" ||
+                            !/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ'\s]+$/.test(state[key].value)
+                            ? state[key].hasError = true : state[key].hasError = false;
                         break;
                     case "email":
-                        state[key].value.trim() === "" &&
-                            (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(state[key].value)
-                                ? state[key].hasError = true : state[key].hasError = false);
+                        state[key].value.trim() === "" ||
+                            !/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(state[key].value)
+                            ? state[key].hasError = true : state[key].hasError = false;
                         break;
                     case "password":
-                        state[key].value.trim() === "" &&
-                            (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(state[key].value)
-                                ? state[key].hasError = true : state[key].hasError = false);
+                        state[key].value.trim() === "" ||
+                            !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/.test(state[key].value)
+                            ? state[key].hasError = true : state[key].hasError = false;
                         break;
                     case "confirmPassword":
-                        state[key].value.trim() === "" &&
-                            (state[key].value !== state.password.value
-                                ? state[key].hasError = true : state[key].hasError = false);
+                        state[key].value.trim() === "" ||
+                            state[key].value !== state.password.value
+                            ? state[key].hasError = true : state[key].hasError = false;
+                       
                         break;
                 }
             }
             // this validation checks if the form is valid or not and sets the isFormValid property
-            (state.firstName.hasError || state.lastName.hasError ||
+            if (state.firstName.hasError || state.lastName.hasError ||
                 state.birthDate.hasError || state.country.hasError ||
                 state.city.hasError || state.email.hasError ||
-                state.password.hasError || state.confirmPassword.hasError) ?
-                state.isFormValid = false : state.isFormValid = true;
-            return state;
+                state.password.hasError || state.confirmPassword.hasError) {
+                
+                return { ...state, isFormValid: false };
+            }
+            else {
+              
+                return {
+                    ...state,
+                    isFormValid: true
+                };
+            }   
         default: return state;
     }
+
+
+
+
 }
 
 

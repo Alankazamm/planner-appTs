@@ -6,3 +6,7 @@ export const InputWrapper = styled.div`
     justify-content: space-between;
     width:  24.5vw;
 `
+
+export const LoginInputWrapper = styled(InputWrapper)`
+position: relative;
+`

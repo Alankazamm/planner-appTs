@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FormContainer = styled.section`
+export const ContentContainer = styled.section`
     width: 50%;
     height: 100vh;
     background: linear-gradient(180deg, #33383D 0%, #1C1D20 100%);

@@ -1,30 +1,109 @@
+// description: this is the sign up page
+//hooks
+import { useContext, useEffect } from "react";
+import { UserContext } from "../contexts/userContext";
+//styles
 import { BgSection } from "../components/aside/BgSection";
 import { FormButton } from "../components/form/button/FormButton";
-import { FormInputs } from "../components/form/inputs/FormInputs";
+import { RegisterForm } from "../components/form/RegisterForm";
 import { HeaderText, pageIdentifier } from "../components/header/Header";
-import { FormContainer } from "../components/form/FormContainer.styles";
+import { ContentContainer } from "../components/form/containers/ContentContainer.styles";
 import { MainWrapper } from "../components/common/MainWrapper.styles";
-
+//external funcs
+import { register } from "../actions/register";
+// initial values
+let firstRender = true;
+//types
+import { ActionType } from "../reducers/formReducer";
+import { useNavigate } from "react-router-dom";
+import { FormContainer } from "../components/form/containers/FormContainer.styles";
 type formButtonProps = {
-    page: pageIdentifier['page'];
-    title: pageIdentifier['title'];
-    description: pageIdentifier['description'];
-    onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}
+	page: pageIdentifier["page"];
+	title: pageIdentifier["title"];
+	description: pageIdentifier["description"];
+	onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
 export const SignUp = () => {
+	//hook's calls
+	const { formState, dispatch } = useContext(UserContext);
+	const navigate = useNavigate();
+
 	const signUpHandler = () => {
-		console.log("sign up");
+		dispatch({ type: ActionType.VALIDATE_FORM });
 	};
+	//do a custom hook for this
+	useEffect(() => {
+		if (firstRender !== true) {
+			if (formState.isFormValid === true) {
+				console.log("Form is valid");
+				const {
+					firstName,
+					lastName,
+					birthDate,
+					country,
+					city,
+					email,
+					password,
+					confirmPassword,
+				} = formState;
+				const date = birthDate.value.split("/");
+				const newDate = `${date[2]}-${date[0]}-${date[1]}`;
+
+				localStorage.setItem(
+					"user",
+					JSON.stringify({
+						firstName: firstName.value,
+						lastName: lastName.value,
+						birthDate: newDate,
+						country: country.value,
+						city: city.value,
+						email: email.value,
+						password: password.value,
+						confirmPassword: confirmPassword.value,
+					}),
+				);
+				navigate("/login");
+			} else {
+				console.log("Form is invalid");
+			}
+		} else {
+			firstRender = false;
+		}
+	}, [formState.isFormValid]);
+
+
 	return (
-		<MainWrapper >
-			<FormContainer>
+		<MainWrapper>
+			<ContentContainer>
 				<div id="wrapper">
-					<HeaderText page="signup" title="" description=""/>
-					<FormInputs />
-					<FormButton text="Register Now" onClick={signUpHandler } />
+					<FormContainer page="signup">
+						<HeaderText page="signup" title="Welcome," description="Please, register to continue" />
+					<RegisterForm />
+					<FormButton text="Register Now" onClick={signUpHandler} />
+					</FormContainer>
+					
 				</div>
-            </FormContainer>
-            <BgSection />
+			</ContentContainer>
+			<BgSection />
 		</MainWrapper>
 	);
 };
+
+// Promise.resolve(register({
+// 	firstName: firstName.value,
+// 	lastName: lastName.value,
+// 	birthDate: newDate,
+// 	country: country.value,
+// 	city: city.value,
+// 	email: email.value,
+// 	password: password.value,
+// 	confirmPassword: confirmPassword.value,
+// }))
+// 	.then((res) => {
+// 		console.log(res);
+// 		navigate("/login");
+// 	})
+// 	.catch((err) => {
+// 		console.log(err);
+// 	});
