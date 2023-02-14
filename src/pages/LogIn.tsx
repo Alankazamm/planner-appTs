@@ -10,31 +10,42 @@ import { HeaderText } from "../components/header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";
 import { BgSection } from "../components/aside/BgSection";
 import { LoginForm } from "../components/form/LoginForm";
-import { FormButton } from "../components/form/button/FormButton";
+import { FormButton } from "../components/button/form/FormButton";
 
 import { UserContext } from "../contexts/userContext";
 //types
 import { ActionType } from "../reducers/formReducer";
+import { useEffect } from "react";
+import { Redirect } from "../components/redirects/form/Redirect";
 
 export const LogIn = () => {
-    const { formState, dispatch } = useContext(UserContext);
-    const loginHandler = () => {
-        dispatch({ type: ActionType.VALIDATE_FORM });
-    };
+	const { formState, dispatch, isLogged } = useContext(UserContext);
+	const loginHandler = () => {
+		dispatch({ type: ActionType.SEND_LOGIN });
+		console.log(formState.user);
+	};
+	useEffect(() => {
+		if (isLogged === true) {
+			console.log("Logged in");
+		} else {
+			console.log("Not logged in");
+		}
+    }, [isLogged]);
+    
 	return (
 		<MainWrapper>
 			<ContentContainer>
-                <div className="wrapper">
-                    <FormContainer page="login">
-                        <HeaderText
+				<div className="wrapper">
+					<FormContainer page="login">
+						<HeaderText
 							page="login"
 							title="Welcome,"
 							description="To continue browsing safely, log in to the network."
 						/>
-                        <LoginForm />
+						<LoginForm />
                         <FormButton text="Log in" onClick={loginHandler} />
-                    </FormContainer>
-					
+                       
+					</FormContainer>
 				</div>
 			</ContentContainer>
 			<BgSection />

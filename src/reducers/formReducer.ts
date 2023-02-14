@@ -101,12 +101,13 @@ export const formsReducer = (state: formState, action: action): formState => {
         // this case sends the login data to the server
         case 'SEND_LOGIN':
             const { email, password } = JSON.parse(localStorage.getItem('user')!);
-            
+           
             state.user!.value !== email ? state.user!.hasError = true : state.user!.hasError = false;
             state.loginPassword!.value !== password ? state.loginPassword!.hasError = true : state.loginPassword!.hasError = false;
             
             if (state.user!.hasError || state.loginPassword!.hasError) {
-                return { ...state, isLoginValid: false };
+               
+                return { ...state, isLoginValid: false};
             }
             else {
                 return {

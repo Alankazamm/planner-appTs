@@ -37,19 +37,18 @@ type reducerDestructure = [formState, Dispatch<action>];
 //context
 export const UserContext = createContext<any>({});
 export const UserContextProvider = ({ children,}: {children: React.ReactNode;}) => {
-	    
-	const [formState, dispatch]: reducerDestructure = useReducer(
-		formsReducer,
-		initialState,
-	);
+	//hooks
+	const [formState, dispatch]: reducerDestructure = useReducer(formsReducer,initialState);
 
     const [isLogged, setIsLogged] = useState<boolean>(false);
+
     useEffect(() => {
-        formState.isFormValid === true ? setIsLogged(true) : setIsLogged(false);
-    }, [formState.isFormValid]);
+        formState.isLoginValid === true ? setIsLogged(true) : setIsLogged(false);
+        console.log(isLogged)
+    }, [formState.isLoginValid]);
 
 	return (
-		<UserContext.Provider value={{ formState, dispatch}}>
+		<UserContext.Provider value={{ formState, dispatch, isLogged}}>
 			{children}
 		</UserContext.Provider>
 	);

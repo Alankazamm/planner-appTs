@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../contexts/userContext";
 //styles
 import { BgSection } from "../components/aside/BgSection";
-import { FormButton } from "../components/form/button/FormButton";
+import { FormButton } from "../components/button/form/FormButton";
 import { RegisterForm } from "../components/form/RegisterForm";
 import { HeaderText } from "../components/header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";

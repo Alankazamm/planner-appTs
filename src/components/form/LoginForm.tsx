@@ -1,6 +1,6 @@
 // description: this is a form component that will be used to log in to dashboard
 //hooks
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/userContext";
 import { Form } from "./Form.styles";
 import { Icon } from "./icon/Icon";
@@ -13,11 +13,13 @@ import { LoginInputWrapper } from "./inputs/styles/InputWrapper.styles";
 
 export const LoginForm = () => {
     //hooks
-	// const [user, setUser] = useState({ value: "", hasError: false });
-	// const [password, setPassword] = useState({ value: "", hasError: false });
-    const { formState, dispatch } = useContext(UserContext);
+    const [error, setError] = useState(false);
     const [iconIsInside, setIconIsInside] = useState({user: false, password: false});
+    const { formState, dispatch } = useContext(UserContext);
 
+    useEffect(() => {
+        formState.loginPassword.hasError || formState.user.hasError ? setError(true) : setError(false)
+    }, [formState.loginPassword.hasError, formState.user.hasError]);
     //functions
 	const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         dispatch({ type: "UPDATE_FORM", payload: { name: e.target.name, value: e.target.value } });
@@ -31,7 +33,7 @@ export const LoginForm = () => {
     };
     
 	return (
-		<Form page="login" hasError={formState.loginPassword.hasError || formState.user.hasError ? true : false}>
+		<Form page="login" hasError={error} >
 			
 			<h2>Login</h2>
 			<LoginInputWrapper>
@@ -59,7 +61,8 @@ export const LoginForm = () => {
 					hasError={formState.loginPassword.hasError}
 				/>
 				<Icon icon="passwordIcon" iconIsInside={iconIsInside.password} />
-			</LoginInputWrapper>
+            </LoginInputWrapper>
+            {error &&<div className="errorDiv"><span className="error">Wow, invalid username or password. Please, try again!</span></div> }
 		</Form>
 	);
 };

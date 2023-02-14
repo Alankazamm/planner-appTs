@@ -6,7 +6,8 @@ export const Form = styled.form<{page: string, hasError?:boolean}>`
   flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-  height: ${({page, hasError}) => page === 'login' ? (hasError? '27vh': '21vh') : '56vh'};
+  height: ${({ page, hasError }) => page === 'login' ? (hasError ? '32vh' : '21vh') : '56vh'};
+  margin-top: ${({hasError}) => hasError ? '11vh' : '0vh'};
   h2{
     font-size: 30px;
     margin-bottom: 3vh;
@@ -14,9 +15,12 @@ export const Form = styled.form<{page: string, hasError?:boolean}>`
     font-weight: 500;
   }
   .errorDiv{ 
+    height:100px;
     width:379px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-left: 45px;
+    
   }
   .error{
     color: #E9B425;
