@@ -19,10 +19,11 @@ export enum ActionType {
     UPDATE_FORM = 'UPDATE_FORM',
     VALIDATE_FORM = 'VALIDATE_FORM',
     SEND_LOGIN = 'SEND_LOGIN',
+    RESET_LOGIN = 'RESET_LOGIN',
 };
 export type action =
     { type: ActionType.UPDATE_FORM, payload: { name: keyof formState; value: string } }
-    | { type: ActionType.VALIDATE_FORM } | { type: ActionType.SEND_LOGIN };
+    | { type: ActionType.VALIDATE_FORM } | { type: ActionType.SEND_LOGIN } | { type: ActionType.RESET_LOGIN };
 
 //reducer
 export const formsReducer = (state: formState, action: action): formState => {
@@ -88,11 +89,11 @@ export const formsReducer = (state: formState, action: action): formState => {
                 state.birthDate?.hasError || state.country?.hasError ||
                 state.city?.hasError || state.email.hasError ||
                 state.password.hasError || state.confirmPassword?.hasError) {
-                
+
                 return { ...state, isFormValid: false };
             }
             else {
-              
+
                 return {
                     ...state,
                     isFormValid: true
@@ -101,13 +102,13 @@ export const formsReducer = (state: formState, action: action): formState => {
         // this case sends the login data to the server
         case 'SEND_LOGIN':
             const { email, password } = JSON.parse(localStorage.getItem('user')!);
-           
+
             state.user!.value !== email ? state.user!.hasError = true : state.user!.hasError = false;
             state.loginPassword!.value !== password ? state.loginPassword!.hasError = true : state.loginPassword!.hasError = false;
-            
+
             if (state.user!.hasError || state.loginPassword!.hasError) {
-               
-                return { ...state, isLoginValid: false};
+
+                return { ...state, isLoginValid: false };
             }
             else {
                 return {
@@ -115,14 +116,30 @@ export const formsReducer = (state: formState, action: action): formState => {
                     isLoginValid: true
                 };
             };
+        case 'RESET_LOGIN':
+            return {
+                firstName: { value: "", hasError: false },
+                lastName: { value: "", hasError: false },
+                birthDate: { value: "", hasError: false },
+                country: { value: "", hasError: false },
+                city: { value: "", hasError: false },
+                email: { value: "", hasError: false },
+                password: { value: "", hasError: false },
+                confirmPassword: { value: "", hasError: false },
+                user: { value: "", hasError: false },
+                loginPassword: { value: "", hasError: false },
+                isFormValid: false,
+                isLoginValid: false,
+            }
 
-        default: return state;
+
+                default: return state;
+            }
+
+
+
+
     }
-
-
-
-
-}
 
 
 

@@ -6,7 +6,7 @@ import { UserContext } from "../contexts/userContext";
 import { BgSection } from "../components/aside/BgSection";
 import { FormButton } from "../components/button/form/FormButton";
 import { RegisterForm } from "../components/form/RegisterForm";
-import { HeaderText } from "../components/header/Header";
+import { HeaderText } from "../components/common/header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";
 import { MainWrapper } from "../components/common/MainWrapper.styles";
 //external funcs

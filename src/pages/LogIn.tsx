@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { MainWrapper } from "../components/common/MainWrapper.styles";
 import { FormContainer } from "../components/form/containers/FormContainer.styles";
 //components
-import { HeaderText } from "../components/header/Header";
+import { HeaderText } from "../components/common/header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";
 import { BgSection } from "../components/aside/BgSection";
 import { LoginForm } from "../components/form/LoginForm";
@@ -15,22 +15,31 @@ import { FormButton } from "../components/button/form/FormButton";
 import { UserContext } from "../contexts/userContext";
 //types
 import { ActionType } from "../reducers/formReducer";
+//hooks
 import { useEffect } from "react";
-import { Redirect } from "../components/redirects/form/Redirect";
+import { useNavigate } from "react-router-dom";
 
 export const LogIn = () => {
-	const { formState, dispatch, isLogged } = useContext(UserContext);
+    //hook's calls
+    const { formState, dispatch } = useContext(UserContext);
+    const navigate = useNavigate();
+    useEffect(() => {
+		if (formState.isLoginValid === true) {
+            
+            console.log("Logged in");
+            localStorage.setItem("token", "true");
+            dispatch({ type: ActionType.RESET_LOGIN });
+            navigate("/planner");
+		} else {
+			console.log("Not logged in");
+		}
+    }, [formState.isLoginValid]);
+
 	const loginHandler = () => {
 		dispatch({ type: ActionType.SEND_LOGIN });
 		console.log(formState.user);
 	};
-	useEffect(() => {
-		if (isLogged === true) {
-			console.log("Logged in");
-		} else {
-			console.log("Not logged in");
-		}
-    }, [isLogged]);
+	
     
 	return (
 		<MainWrapper>

@@ -7,6 +7,7 @@ import {
 	Dispatch,
 	useReducer,
 } from "react";
+import { useNavigate } from "react-router-dom";
 //reducers
 import {
 	formsReducer,
@@ -36,19 +37,23 @@ type reducerDestructure = [formState, Dispatch<action>];
 
 //context
 export const UserContext = createContext<any>({});
-export const UserContextProvider = ({ children,}: {children: React.ReactNode;}) => {
+export const UserContextProvider = ({ children }: { children: React.ReactNode }) => {
+    console.log('rendered context');
 	//hooks
 	const [formState, dispatch]: reducerDestructure = useReducer(formsReducer,initialState);
-
-    const [isLogged, setIsLogged] = useState<boolean>(false);
-
+    const navigate = useNavigate();
+    const [isLogged, setIsLogged] = useState<boolean>();
     useEffect(() => {
-        formState.isLoginValid === true ? setIsLogged(true) : setIsLogged(false);
-        console.log(isLogged)
-    }, [formState.isLoginValid]);
+        localStorage.getItem('token') ? setIsLogged(true) : setIsLogged(false);
+    }, []);
+    
+    const signout = () => {
+        localStorage.removeItem('token');
+        navigate('/login');
+    }
 
 	return (
-		<UserContext.Provider value={{ formState, dispatch, isLogged}}>
+		<UserContext.Provider value={{ formState, dispatch, isLogged, signout}}>
 			{children}
 		</UserContext.Provider>
 	);

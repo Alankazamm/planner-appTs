@@ -1,8 +1,11 @@
+import { DashContainer } from "../components/dashboard/containers/DashContainer.styles"
+import DashboardHeader from "../components/dashboard/header/DashboardHeader"
+
 export const Planner = () => {
     return (
-        <div>
-            <h1>Planner</h1>
-
-        </div>
+        <DashContainer>
+            <DashboardHeader />
+        </DashContainer>
+            
     )
 }

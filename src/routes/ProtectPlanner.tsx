@@ -1,15 +1,16 @@
+//description: this file is used to protect the planner page from unlogged users
+//it redirects to login page if user is not logged in(there is no token in local storage)
+//hooks
 import { Navigate } from 'react-router-dom';
-import { useSelector } from "react-redux";
+
+//components
 import { Planner } from "../pages/Planner";
-import { AppState } from './../redux/reducerFunction';
-
-
 
 export const ProtectPlanner = () => {
-    const isLoggedIn = useSelector((store: AppState) => store.loggedIn)
+   
     return(
         <>
-            {isLoggedIn ? <Planner/>: <Navigate to="/login" />}
+            {localStorage.getItem('token') ? <Planner/>: <Navigate to="/login" />}
         </>
     )
 }

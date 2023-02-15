@@ -21,12 +21,13 @@ export const RegisterForm = () => {
     const inputHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
         dispatch({ type: ActionType.UPDATE_FORM, payload: { name: e.target.name, value: e.target.value } });
     }
+    
 
     return (
         <Form page="signup">
             <InputWrapper>
                 <Label htmlFor="firstName">first name</Label>
-                <Input type="text" name="firstName" onChange={inputHandler} value={formState.firstName.value } placeholder="Your first name" hasError={formState.firstName.hasError}/>
+                <Input type="text" name="firstName" onChange={inputHandler} value={formState.firstName.value } placeholder="Your first name"  hasError={formState.firstName.hasError}/>
             </InputWrapper>
             <InputWrapper>
                 <Label htmlFor="lastName" >last name</Label>
