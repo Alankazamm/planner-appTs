@@ -2,7 +2,7 @@
 //hooks
 import { useEffect, useState } from "react";
 //variables
-let firstRender = true;
+
 // types
 type Time = {
     month: string;
@@ -12,14 +12,15 @@ type Time = {
 };
 export const useTimer = () => {
    //state that will return the time and date
-    const [time, setTime] = useState<Time>({} as Time);
-
+	const [time, setTime] = useState<Time>({} as Time);
+	const [firstRender, setFirstRender] = useState(true);
+	
     //description: this useEffect is used to set the time and date
     //it is also used to update the time every 10 seconds
     useEffect(() => {
-       
+       console.log('useEffect');
         if (firstRender) {
-            
+			setFirstRender(false);
 			const date = new Date();
 			const day =
 				date.getDate() +
@@ -39,6 +40,7 @@ export const useTimer = () => {
 				((date.getMinutes() < 10 ? "0" : "") + date.getMinutes());
 
 			setTime({ month, day, year, hoursMin });
+			
 			
 		} else {
 			const timer = setInterval(() => {
@@ -68,7 +70,7 @@ export const useTimer = () => {
 				clearInterval(timer);
 			};
 		}
-    }, [time]);
+    }, [firstRender]);
 
     return time;
 };
