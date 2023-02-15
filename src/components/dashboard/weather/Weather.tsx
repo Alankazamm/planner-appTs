@@ -2,34 +2,19 @@
 //from the API(https://www.weatherapi.com/docs/) and displaying it on the dashboard
 
 //hooks
-import { useState, useEffect } from "react";
+
 // assets
 import errorIcon from "/src/assets/svg/weather-404.svg";
 import cloudyIcon from "/src/assets/svg/weather-200.svg";
 //styles
 import { useFetchWeather } from "../../../custom-hooks/customWeatherHook";
 import { WeatherContainer } from "./WeatherContainer";
+//types
 
-const Weather = () => {
-	// let {firstTime} = useContext(UserContext);
-	const [forecast, setForecast] = useState<any>(undefined);
-	//fetching city and country from local storage
-	let city: string | null = localStorage.getItem("user")
-		? JSON.parse(localStorage.getItem("user")!).city
-		: null;
-	let country: string | null = localStorage.getItem("user")
-		? JSON.parse(localStorage.getItem("user")!).country
-		: null;
-
-	//fetching weather data from the custom hook
-    if (city === null || country === null) {
-        city = "London";
-        country = "UK";
-    }
-	const fetchWeather = useFetchWeather(city!);
-	useEffect(() => {
-		setForecast(fetchWeather);
-	}, [fetchWeather]);
+export const Weather = () => {
+    const city = JSON.parse(localStorage.getItem("user")!).city;
+    const country = JSON.parse(localStorage.getItem("user")!).country;
+    const forecast:any = useFetchWeather(city);
 
 	let forecastOutput = (
 		<WeatherContainer>
@@ -39,8 +24,10 @@ const Weather = () => {
 				<img src={errorIcon} alt=""></img>
 			</div>
 		</WeatherContainer>
-	);
-	if (forecast) {
+    );
+    //check if forecast is of type Forecast
+
+	if (forecast?.current?.temp_c) {
 		forecastOutput = (
 			<WeatherContainer>
 				<span>
@@ -48,7 +35,7 @@ const Weather = () => {
 				</span>{" "}
 				<div>
 					<img src={cloudyIcon} alt=""></img>
-					{parseInt(forecast?.current?.temp_c)}°
+					{parseInt(forecast.current!.temp_c)}°
 				</div>{" "}
 			</WeatherContainer>
 		);

@@ -16,3 +16,7 @@ const axiosInstance = axios.create({
 });
 
 export default axiosInstance;
+
+//replace / to - in 12/12/1999
+const date = '12/12/1999';
+const newDate = date.replace(/\//g, '-');

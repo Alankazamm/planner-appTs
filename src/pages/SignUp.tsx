@@ -75,7 +75,7 @@ export const SignUp = () => {
 					<FormContainer page="signup">
 						<HeaderText page="signup" title="Welcome," description="Please, register to continue" />
 					<RegisterForm />
-					<FormButton text="Register Now" onClick={signUpHandler} />
+					<FormButton text="Register Now" page="login" redirectText="Already have an account?" onClick={signUpHandler} />
 					</FormContainer>
 					
 				</div>

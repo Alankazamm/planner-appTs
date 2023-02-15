@@ -52,7 +52,7 @@ export const LogIn = () => {
 							description="To continue browsing safely, log in to the network."
 						/>
 						<LoginForm />
-                        <FormButton text="Log in" onClick={loginHandler} />
+                        <FormButton text="Log in" page="signup" redirectText="Don't have an account?" onClick={loginHandler} />
                        
 					</FormContainer>
 				</div>
