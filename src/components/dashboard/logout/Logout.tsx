@@ -5,7 +5,7 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 //contexts
-import { UserContext } from '../../../contexts/userContext';
+import { UserContext } from '../../../contexts/UserContext';
 import { LogoutContainer } from './LogoutContainer';
 //styles
 

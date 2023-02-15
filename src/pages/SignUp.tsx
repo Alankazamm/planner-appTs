@@ -1,7 +1,7 @@
 // description: this is the sign up page
 //hooks
 import { useContext, useEffect } from "react";
-import { UserContext } from "../contexts/userContext";
+import { UserContext } from "../contexts/UserContext";
 //styles
 import { BgSection } from "../components/aside/BgSection";
 import { FormButton } from "../components/button/form/FormButton";

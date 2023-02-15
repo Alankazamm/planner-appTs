@@ -1,7 +1,7 @@
 
 import { BrowserRouter } from 'react-router-dom';
 import { GlobalStyle } from './components/common/GlobalStyles.styles';
-import { UserContextProvider } from './contexts/userContext';
+import { UserContextProvider } from './contexts/UserContext';
 import { AppRoutes } from './routes/AppRoutes';
 
 function App() {

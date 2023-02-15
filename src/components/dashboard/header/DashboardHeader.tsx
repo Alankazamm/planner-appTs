@@ -9,7 +9,7 @@ import Timer from "../timer/Timer";
 import Weather from "../weather/Weather";
 
 //styles
-import { DashHeaderContainer } from "../containers/DashHeaderContainer.styles";
+import { DashHeaderContainer } from "./DashHeaderContainer.styles";
 
 const DashboardHeader = () => {
     

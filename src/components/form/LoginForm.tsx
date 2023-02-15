@@ -1,7 +1,7 @@
 // description: this is a form component that will be used to log in to dashboard
 //hooks
 import React, { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../contexts/userContext";
+import { UserContext } from "../../contexts/UserContext";
 import { Form } from "./Form.styles";
 import { Icon } from "./icon/Icon";
 
