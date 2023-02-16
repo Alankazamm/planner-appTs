@@ -35,11 +35,12 @@ export const Tasks = () => {
     };
     return (
 		<TasksWrapper>
-			<div className="timeCard">
+			
+
+            <div className="cardsList">
+            <div className="timeCard">
 				<p>Time</p>
 			</div>
-
-			<div className="cardsList">
 				{taskHours.map((hour, index) => (
 					<div className="tasksSameHour" id={"sameHour" + index}>
 						<TasksTimeCard actualDay={actualDay} key={"timeCard" + index}>

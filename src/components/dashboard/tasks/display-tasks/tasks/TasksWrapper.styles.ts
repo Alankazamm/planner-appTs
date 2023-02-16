@@ -9,13 +9,13 @@ const TasksWrapper = styled.div`
     gap: 3px;
     position: sticky;
     margin-left: 24px;
-
+    height: 72vh;
     .timeCard{
         background: #FFFFFF;
         box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.25);
         border-radius: 10px;
         width: 85px;
-        height: 75px;
+        min-height: 75px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -27,7 +27,7 @@ const TasksWrapper = styled.div`
         justify-content: flex-start;
         align-items: flex-start;
         overflow: auto;
-        height: 700px;
+        height: 100%;
         width: 99.5%;
        
     }
