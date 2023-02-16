@@ -1,5 +1,6 @@
 
 import { ActionsContainer } from './ActionsContainer.styles';
+import ActionsInputs from './inputs/ActionsInputs';
 
 
 

@@ -4,7 +4,7 @@
 //hooks
 import { createContext, useState, useEffect } from 'react';
 //types
-type arrayOfTasks = Array<{ taskText: string, taskDay: string, taskHour: string, taskId: string }>[];
+type arrayOfTasks = taskState[];
 export type taskState = { taskText: string, taskDay: string, taskHour: string, taskId: string };
 export type setTaskState = React.Dispatch<React.SetStateAction<taskState>>;
 export type taskStateDestructured = { task: taskState, setTask: setTaskState };

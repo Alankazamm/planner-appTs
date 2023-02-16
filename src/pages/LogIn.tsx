@@ -10,7 +10,7 @@ import { HeaderText } from "../components/common/header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";
 import { BgSection } from "../components/aside/BgSection";
 import { LoginForm } from "../components/form/LoginForm";
-import { FormButton } from "../components/button/form/FormButton";
+import { FormButton } from "../components/form/buttons/FormButton";
 
 import { UserContext } from "../contexts/UserContext";
 //types
