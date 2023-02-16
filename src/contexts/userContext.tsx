@@ -18,16 +18,21 @@ import {
 
 //initial states
 const initialState: formState = {
-	firstName: { value: "", hasError: false },
-	lastName: { value: "", hasError: false },
-	birthDate: { value: "", hasError: false },
-	country: { value: "", hasError: false },
-	city: { value: "", hasError: false },
-	email: { value: "", hasError: false },
-	password: { value: "", hasError: false },
-    confirmPassword: { value: "", hasError: false },
-    user: { value: "", hasError: false },
-    loginPassword: { value: "", hasError: false },
+	firstName: { value: "", hasError: false, error: "" },
+	lastName: { value: "", hasError: false, error: "" },
+	birthDate: { value: "", hasError: false, error: "" },
+	country: { value: "", hasError: false, error: "" },
+	city: { value: "", hasError: false, error: "" },
+	email: { value: "", hasError: false, error: "" },
+	password: { value: "", hasError: false, error: "" },
+    confirmPassword: { value: "", hasError: false, error: "" },
+    user: { value: "", hasError: false, error: "" },
+	loginPassword: { value: "", hasError: false, error: "" },
+	auth: {
+		loading: false,
+		errors: [],
+		data: null,
+	},
     isFormValid: false,
     isLoginValid: false,
 };
@@ -50,7 +55,8 @@ export const UserContextProvider = ({ children }: { children: React.ReactNode })
     const signout = () => {
         localStorage.removeItem('token');
         navigate('/login');
-    }
+	}
+	
 
 	return (
 		<UserContext.Provider value={{ formState, dispatch, isLogged, signout}}>

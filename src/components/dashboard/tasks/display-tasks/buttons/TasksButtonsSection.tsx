@@ -9,11 +9,7 @@ import { TasksButton } from './TasksButton.styles'
 import { TasksButtonsContainer } from './TasksButtonsContainer.styles'
 
 //context
-
-
-//types
-import { createContextType } from '../../../../../contexts/tasksContext';
-import { TasksContext } from '../../../../../contexts/tasksContext';
+import { createContextType, TasksContext } from '../../../../../contexts/tasksContext';
 
 export const TasksButtonsSection = () => {
     const { actualDay, setDay }:createContextType = useContext(TasksContext);

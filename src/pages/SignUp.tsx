@@ -25,48 +25,37 @@ export const SignUp = () => {
 	const navigate = useNavigate();
 
 	const signUpHandler = () => {
-		dispatch({ type: ActionType.VALIDATE_FORM });
-	};
-	//todo: a custom hook for this
-	useEffect(() => {
-		if (firstRender !== true) {
-			if (formState.isFormValid === true) {
-				console.log("Form is valid");
-				const {
-					firstName,
-					lastName,
-					birthDate,
-					country,
-					city,
-					email,
-					password,
-					confirmPassword,
-				} = formState;
-				const date = birthDate.value.split("/");
-				const newDate = `${date[2]}-${date[0]}-${date[1]}`;
+		const {
+			firstName,
+			lastName,
+			birthDate,
+			country,
+			city,
+			email,
+			password,
+			confirmPassword,
+		} = formState;
+		const date = birthDate.value.split("/");
+		const newDate = `${date[2]}-${date[0]}-${date[1]}`;
 
-				localStorage.setItem(
-					"user",
-					JSON.stringify({
-						firstName: firstName.value,
-						lastName: lastName.value,
-						birthDate: newDate,
-						country: country.value,
-						city: city.value,
-						email: email.value,
-						password: password.value,
-						confirmPassword: confirmPassword.value,
-					}),
-				);
-				navigate("/login");
-			} else {
-				console.log("Form is invalid");
-			}
-		} else {
-			firstRender = false;
+		register({
+			firstName: firstName.value,
+			lastName: lastName.value,
+			birthDate:newDate,
+			country: country.value,
+			city: city.value,
+			email: email.value,
+			password: password.value,
+			confirmPassword: confirmPassword.value,
 		}
-	}, [formState.isFormValid]);
-
+		)(dispatch);
+	
+		
+	};
+	
+	useEffect(() => {
+		dispatch({ type: ActionType.VALIDATE_FORM });
+	}, [formState.auth.errors]);
 
 	return (
 		<MainWrapper>

@@ -6,6 +6,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
     hasError: boolean;
+    error: string;
     onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
     onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }
@@ -16,6 +17,7 @@ export const Input = styled.input.attrs((props: InputProps) => ({
     onChange: props.onChange,
     placeholder: props.placeholder,
     hasError: props.hasError,
+    error: props.error,
 }))`
     width: 19vw;
     height: 5.5vh;
