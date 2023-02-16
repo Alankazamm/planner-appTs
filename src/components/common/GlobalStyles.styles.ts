@@ -16,5 +16,12 @@ export const GlobalStyle = createGlobalStyle`
     :placeholder{
         font-family: 'Mulish', sans-serif;
     }
-
+    button{
+        cursor: pointer;
+        //resset button style
+        background: none;
+        border: none;
+        outline: none;
+        
+    }
 `;

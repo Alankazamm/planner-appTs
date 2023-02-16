@@ -3,7 +3,7 @@
 // hooks
 // import { useState, useEffect } from "react";
 // styles
-import { useTimer } from "../../../custom-hooks/customTimerHook";
+import { useTimer } from "../../../../custom-hooks/customTimerHook";
 import { TimerContainer } from "./TimerContainer";
 
 

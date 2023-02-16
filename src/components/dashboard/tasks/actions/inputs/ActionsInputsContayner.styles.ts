@@ -34,7 +34,7 @@ gap:3px;
     .taskTime{
         width: 112px;
         padding-left: 8px;
-        height: 41px;
+        height: 45px;
        
     }
     

@@ -3,17 +3,17 @@ import {useContext} from 'react'
 //styles
 import { ActionsContainerCommons } from '../../ActionsContainer.styles';
 //types
-import { createContextType, taskState } from '../../../../../../contexts/TasksContext';
+import { createContextType } from '../../../../../../contexts/tasksContext';
 //components
 import { ActionsButton } from '../ActionsButton';
 //context
-import { TasksContext } from 'planner-app/src/contexts/tasksContext.tsx';
+import { TasksContext } from '/src/contexts/tasksContext.tsx';
 
 
 
 export const ButtonsSection = () => {
 
-  let { task,setTask, allTasks, actualDay, updateTask }:createContextType = useContext(TasksContext);
+  const { task,setTask, allTasks, actualDay, updateTask }:createContextType = useContext(TasksContext);
 
   function clickHandler() {
     if (task.taskText.length > 0 && task.taskHour.length > 6) {

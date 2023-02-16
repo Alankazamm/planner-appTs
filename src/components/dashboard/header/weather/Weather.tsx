@@ -7,7 +7,7 @@
 import errorIcon from "/src/assets/svg/weather-404.svg";
 import cloudyIcon from "/src/assets/svg/weather-200.svg";
 //styles
-import { useFetchWeather } from "../../../custom-hooks/customWeatherHook";
+import { useFetchWeather } from "../../../../custom-hooks/customWeatherHook";
 import { WeatherContainer } from "./WeatherContainer";
 //types
 

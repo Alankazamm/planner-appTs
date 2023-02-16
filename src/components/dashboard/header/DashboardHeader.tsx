@@ -4,9 +4,9 @@
 //components
 import { useEffect } from "react";
 import { HeaderText } from "../../common/header/Header";
-import Logout from "../logout/Logout";
-import Timer from "../timer/Timer";
-import Weather from "../weather/Weather";
+import Logout from "./logout/Logout";
+import Timer from "./timer/Timer";
+import Weather from "./weather/Weather";
 
 //styles
 import { DashHeaderContainer } from "./DashHeaderContainer.styles";
