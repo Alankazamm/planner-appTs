@@ -19,7 +19,7 @@ const ErrorTooltip = styled.span`
     left: 105%;
     font-weight: 700;
     animation: ${tooltipFade} 0.8s;
-  
+    
     ::after {
       content: " ";
       position: absolute;

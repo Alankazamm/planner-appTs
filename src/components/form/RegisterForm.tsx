@@ -72,7 +72,7 @@ export const RegisterForm = () => {
                 <Label htmlFor="confirmPassword" >password</Label>
                 <Input type="password" name="confirmPassword" onChange={inputHandler} value={formState.confirmPassword.value }
                     placeholder="Comfirm your password" hasError={formState.confirmPassword.hasError||formState.password.hasError} />
-                {(formState.confirmPassword.hasError || formState.password.hasError )&& <ErrorTooltip >{formState.confirmPassword.error ? formState.confirmPassword.error : formState.password.error}</ErrorTooltip>}
+                {(formState.confirmPassword.hasError )&& <ErrorTooltip >{ formState.confirmPassword.error}</ErrorTooltip>}
             </InputWrapper>
             
         </Form>

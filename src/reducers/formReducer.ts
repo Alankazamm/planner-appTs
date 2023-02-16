@@ -101,12 +101,19 @@ export const formsReducer = (state: formState, action: action): formState => {
                         case signupErrors.passwordEmpty:
                             state.password.hasError = true;
                             state.password.error = error;
+                            state.confirmPassword!.hasError = true;
+                            state.confirmPassword!.error = error;
                             break;
                         case signupErrors.passwordLength:
                             state.password.hasError = true;
+                            state.confirmPassword!.hasError = true;
                             state.password.error = error;
+                            state.confirmPassword!.error = error; 
                             break;
                         case signupErrors.confirmNotMatch:
+                            state.password.hasError = true;
+                            state.confirmPassword!.hasError = true;
+                            state.password.error = "Passwords do not match";
                             state.confirmPassword!.hasError = true;
                             state.confirmPassword!.error = "Passwords do not match";
                             break;
