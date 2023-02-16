@@ -42,8 +42,8 @@ export const Tasks = () => {
 				<p>Time</p>
 			</div>
 				{taskHours.map((hour, index) => (
-					<div className="tasksSameHour" id={"sameHour" + index}>
-						<TasksTimeCard actualDay={actualDay} key={"timeCard" + index}>
+					<div className="tasksSameHour" id={"sameHour" + index} >
+						<TasksTimeCard actualDay={sameDayTasks.filter((task) => task.taskHour === hour).length > 1 ? 'conflict' : actualDay} key={"timeCard" + index}>
 							{hour}
 						</TasksTimeCard>
 						<div className="tasksList" id={"taskList" + index}>
@@ -53,7 +53,7 @@ export const Tasks = () => {
 									return (
 										<div className="taskCard" id={"card" + task.taskId}>
 											<TaskBorder
-												actualDay={actualDay}
+												actualDay={sameDayTasks.filter((task) => task.taskHour === hour).length > 1 ? 'conflict' : actualDay}
 												id={"border" + index}
 											></TaskBorder>
 											<div className="taskText" id={"text" + index}>
@@ -68,10 +68,15 @@ export const Tasks = () => {
 											</div>
 										</div>
 									);
-								})}
-						</div>
-					</div>
-				))}
+                                })}
+                             {sameDayTasks.filter((task) => task.taskHour === hour).length > 1
+                        && <><div className="circle"></div><div className="stroke"></div></> }
+                        </div>
+                       
+                    </div>
+                    
+                ))}
+                
 			</div>
 		</TasksWrapper>
 	);

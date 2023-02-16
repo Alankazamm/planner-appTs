@@ -16,10 +16,13 @@ export const TaskBorder = styled.div<{ actualDay: string }>`
 
         else if (props.actualDay === 'Saturday') return 'rgba(255, 206, 0, 0.7)';
 
-        else if (props.actualDay === 'Sunday') return 'rgba(255, 0, 36, 0.5)';
+    else if (props.actualDay === 'Sunday') return 'rgba(255, 0, 36, 0.5)';
+    
+    else if (props.actualDay === 'conflict') return 'rgba(0, 0, 0, 0.7)'
     }
     };
     width: 14px;
     height: 85px;
     position:absolute;
+   
 `

@@ -82,6 +82,7 @@ const TasksWrapper = styled.div`
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        position: relative;
         
     }
     .taskCard{
@@ -124,6 +125,21 @@ const TasksWrapper = styled.div`
         padding-left: 25px;
         max-width:80%;
         overflow:auto;
+    }
+    .circle{
+        position: absolute;
+        left: -23px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.7);
+    }
+    .stroke{
+        position: absolute;
+        left: -12px;
+        width: 110%;
+        height:2px;
+        background: rgba(0, 0, 0, 0.7);
     }
 `;
 

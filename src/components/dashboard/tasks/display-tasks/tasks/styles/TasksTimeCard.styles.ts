@@ -15,7 +15,9 @@ export const TasksTimeCard = styled.div<{ actualDay: string }>`
 
         else if (props.actualDay === 'Saturday') return 'rgba(255, 206, 0, 0.7)';
 
-        else if (props.actualDay === 'Sunday') return 'rgba(255, 0, 36, 0.5)';
+    else if (props.actualDay === 'Sunday') return 'rgba(255, 0, 36, 0.5)';
+    
+    else if (props.actualDay === 'conflict') return 'rgba(0, 0, 0, 0.7)'
     }
     };
    box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.25);
@@ -27,7 +29,8 @@ export const TasksTimeCard = styled.div<{ actualDay: string }>`
    justify-content: center;
    margin-right:18px;
    margin-bottom: 14px;
-   color: #000000;
+   
    font-weight: 600;
+   color: ${props => props.actualDay === 'conflict' ? 'rgba(255, 255, 255, 1)' : 'rgba(0,0,0,1) '};
 
 `
