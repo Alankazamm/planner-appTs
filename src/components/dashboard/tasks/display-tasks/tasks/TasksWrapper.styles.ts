@@ -9,7 +9,8 @@ const TasksWrapper = styled.div`
     gap: 3px;
     position: sticky;
     margin-left: 24px;
-    height: 72vh;
+    height: 73vh;
+ 
     .timeCard{
         background: #FFFFFF;
         box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.25);
@@ -29,7 +30,29 @@ const TasksWrapper = styled.div`
         overflow: auto;
         height: 100%;
         width: 99.5%;
+        ::-webkit-scrollbar{
+            width: 16px;
+            background: white;
+            border-radius: 16px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
        
+        ::-webkit-scrollbar-track-piece {
+            display: block;
+            height: 16px;
+            max-width: 16px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(220, 223, 227, 1);
+            border: 4px solid rgba(255, 255, 255, 1);
+            border-radius: 30px;
+        }
+        
+        ::-webkit-scrollbar-corner {
+            display: none;
+        }
     }
     .tasksSameHour{ 
         display: flex;
@@ -68,6 +91,7 @@ const TasksWrapper = styled.div`
         box-shadow: 0px 2px 5.5px rgba(0, 0, 0, 0.02);
         margin-right: 16px;
         border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 1);
         display: flex;
         flex-direction: row;
         align-items: center;
