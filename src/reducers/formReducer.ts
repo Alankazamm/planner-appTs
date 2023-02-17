@@ -2,51 +2,78 @@
 //types
 export type formItem = { value: string; hasError: boolean, error?: string };
 export enum signupErrors {
+    
+    //sign-up && sign-in
+    passwordEmpty = "\"password\" is not allowed to be empty",
+    emailEmpty = "\"email\" is not allowed to be empty",
+    emailInvalid = "\"email\" must be a valid email",
+    //sign-up
     emailExists = 'User with required email already exists. Please sign in!',
     firstNameEmpty = "\"firstName\" is not allowed to be empty",
     lastNameEmpty = "\"lastName\" is not allowed to be empty",
     birthDateInvalid = "\"birthDate\" must be a valid date",
     cityEmpty = "\"city\" is not allowed to be empty",
     countryEmpty = "\"country\" is not allowed to be empty",
-    emailEmpty = "\"email\" is not allowed to be empty",
-    emailInvalid = "\"email\" must be a valid email",
-    passwordEmpty = "\"password\" is not allowed to be empty",
     passwordLength = "\"password\" length must be at least 6 characters long",
     confirmNotMatch = "\"confirmPassword\" must be [ref:password]",
+    //sign-in
+    emailNotExists = "This user doesn't exist. Please sign up first!",
+    incorrectPassword = "Invalid data.",
 
 }
+export type userLogged = {
+    firstName: string,
+    id: string,
+    city: string,
+    country: string,
+}
 export type formState = {
-    firstName?: formItem,
-    lastName?: formItem,
-    birthDate?: formItem,
-    country?: formItem,
-    city?: formItem,
+    firstName: formItem,
+    lastName: formItem,
+    birthDate: formItem,
+    country: formItem,
+    city: formItem,
     email: formItem,
     password: formItem,
     confirmPassword?: formItem,
     loginPassword?: formItem,
-    user?: formItem,
+    user: formItem,
     isFormValid?: boolean,
-    auth?: {
+    auth: {
         loading: boolean,
         errors?:signupErrors[],
         data: any,
     },
+    loginAuth: {
+        loading: boolean,
+        errors?: signupErrors[],
+        data: any,
+    }
+    loggedUser?: userLogged,
     isLoginValid?: boolean,
 };
 export enum ActionType {
     UPDATE_FORM = 'UPDATE_FORM',
     VALIDATE_FORM = 'VALIDATE_FORM',
-    SEND_LOGIN = 'SEND_LOGIN',
-    RESET_LOGIN = 'RESET_LOGIN',
+    LOG_USER = 'LOG_USER',
+    RESET_FORMSTATE = 'RESET_FORMSTATE',
     REGISTER_LOADING = 'REGISTER_LOADING',
     REGISTER_SUCCESS = 'REGISTER_SUCCESS',
     REGISTER_FAIL = 'REGISTER_FAIL',
+    LOGIN_LOADING = 'LOGIN_LOADING',
+    LOGIN_SUCCESS = 'LOGIN_SUCCESS',
+    LOGIN_FAIL = 'LOGIN_FAIL',
+    VALIDATE_LOGIN = 'VALIDATE_LOGIN',
 };
 export type action =
     { type: ActionType.UPDATE_FORM, payload: { name: keyof formState; value: string } }
-    | { type: ActionType.VALIDATE_FORM } | { type: ActionType.SEND_LOGIN } | { type: ActionType.RESET_LOGIN }
-    | { type: ActionType.REGISTER_LOADING }| { type: ActionType.REGISTER_SUCCESS, payload: any } | { type: ActionType.REGISTER_FAIL, payload: signupErrors[] };
+    | { type: ActionType.VALIDATE_FORM }
+    | { type: ActionType.LOG_USER, payload: userLogged}
+    | { type: ActionType.RESET_FORMSTATE }
+    | { type: ActionType.REGISTER_LOADING } | { type: ActionType.REGISTER_SUCCESS, payload: any }
+    | { type: ActionType.REGISTER_FAIL, payload: signupErrors[] } | { type: ActionType.LOGIN_LOADING }
+    | { type: ActionType.LOGIN_SUCCESS, payload: any } | { type: ActionType.LOGIN_FAIL, payload: signupErrors[] }
+    | { type: ActionType.VALIDATE_LOGIN };
 
 //reducer
 export const formsReducer = (state: formState, action: action): formState => {
@@ -68,7 +95,8 @@ export const formsReducer = (state: formState, action: action): formState => {
                 ...state,
                 [name as keyof formState]: { ...state[name] as formItem, value, hasError: false, error: undefined },
             }
-        // this validation treats the errors and for each enum value it checks if the error is present in the array of errors then sets the hasError proprerty of each input to true
+        // this validation treats the errors and for each enum value, it checks if the error
+        // is present in the array of errors then sets the hasError proprerty of each input to true
         case ActionType.VALIDATE_FORM:
             const errors:signupErrors[] | undefined = state.auth!.errors;
             if (errors) {
@@ -128,7 +156,8 @@ export const formsReducer = (state: formState, action: action): formState => {
                     }
                 });
             }
-            return { ...state };                            
+            return { ...state };         
+        //this case is called when clicking the button to login and is fetching the data from the server
         case ActionType.REGISTER_LOADING:
             return {
                 ...state,
@@ -137,9 +166,10 @@ export const formsReducer = (state: formState, action: action): formState => {
                     loading: true,
                 }
             };
+        //this case is called when the register is successful and reset the form from SignUp
         case ActionType.REGISTER_SUCCESS:
             return {
-                //set the hasError property of each input to false
+               
                 ...state,
                 firstName: { value: "", hasError: false },
                 lastName: { value: "", hasError: false },
@@ -159,6 +189,7 @@ export const formsReducer = (state: formState, action: action): formState => {
                     errors: undefined,
                 }
             };
+        //this case is called when the register is unsuccessful and set the errors in the auth state
         case ActionType.REGISTER_FAIL:
             return {
                 ...state,
@@ -168,25 +199,88 @@ export const formsReducer = (state: formState, action: action): formState => {
                     errors: action.payload,
                 }
             };
-        
-        // this case sends the login data to the server
-        case ActionType.SEND_LOGIN:
-            const { email, password } = JSON.parse(localStorage.getItem('user')!);
-
-            state.user!.value !== email ? state.user!.hasError = true : state.user!.hasError = false;
-            state.loginPassword!.value !== password ? state.loginPassword!.hasError = true : state.loginPassword!.hasError = false;
-
-            if (state.user!.hasError || state.loginPassword!.hasError) {
-
-                return { ...state, isLoginValid: false };
-            }
-            else {
-                return {
-                    ...state,
-                    isLoginValid: true
-                };
+        //this case is called when the login button is clicked and is fetching the data
+        case ActionType.LOGIN_LOADING:
+            return {
+                ...state,
+                loginAuth: {
+                    ...state.loginAuth!,
+                    loading: true,
+                }
             };
-        case ActionType.RESET_LOGIN:
+        //this case is called when the login is successful,
+        // it resets the form from LogIn and the loginAuth state
+        case ActionType.LOGIN_SUCCESS:
+            return {
+                ...state,
+                loginPassword: { value: "", hasError: false },
+                user: { value: "", hasError: false },
+                loginAuth: {
+                    ...state.loginAuth!,
+                    loading: false,
+                    data: action.payload,
+                    errors: undefined,
+                }
+            };
+        //this case is called when the login is unsuccessful and set the errors in the loginAuth state
+        case ActionType.LOGIN_FAIL:
+            return {
+                ...state,
+                loginAuth: {
+                    ...state.loginAuth!,
+                    loading: false,
+                    errors: action.payload,
+                }
+            };
+        // this validation treats the errors and for each enum value it checks if the error 
+        //is present in the array of errors then sets the hasError proprerty of each input to true
+        case ActionType.VALIDATE_LOGIN:
+            const loginErrors: signupErrors[] | undefined = state.loginAuth!.errors;
+            if (loginErrors) {
+                loginErrors.forEach((error) => {
+                    switch (error) {
+                        case signupErrors.emailEmpty:
+                            state.user!.hasError = true;
+                            state.user!.error = error;
+                            break;
+                        case signupErrors.emailInvalid:
+                            state.user!.hasError = true;
+                            state.user!.error = error;
+                            break;
+                        case signupErrors.passwordLength:
+                            state.loginPassword!.hasError = true;
+                            state.loginPassword!.error = error;
+                        case signupErrors.passwordEmpty:
+                            state.loginPassword!.hasError = true;
+                            state.loginPassword!.error = error;
+                            break;
+                        case signupErrors.incorrectPassword:
+                            state.loginPassword!.hasError = true;
+                            state.loginPassword!.error = "Incorrect password";
+                            break;
+                        case signupErrors.emailNotExists:
+                            state.user!.hasError = true;
+                            state.user!.error = "Email does not exist";
+                            break;
+                    }
+                });
+            }
+            return { ...state };
+       
+        // this case sets the logged user in the state
+        case ActionType.LOG_USER:
+            return {
+                ...state,
+                loggedUser: {
+                    firstName: action.payload.firstName,
+                    id: action.payload.id,
+                    city: action.payload.city,
+                    country: action.payload.country,
+                    
+                }
+            };
+        // this case resets the form state
+        case ActionType.RESET_FORMSTATE:
             return {
                 firstName: { value: "", hasError: false },
                 lastName: { value: "", hasError: false },
@@ -198,17 +292,27 @@ export const formsReducer = (state: formState, action: action): formState => {
                 confirmPassword: { value: "", hasError: false },
                 user: { value: "", hasError: false },
                 loginPassword: { value: "", hasError: false },
+                auth: {
+                    loading: false,
+                    data: undefined,
+                    errors: undefined,
+                },
+                loginAuth: {
+                    loading: false,
+                    data: undefined,
+                    errors: undefined,
+                },
+                loggedUser: {
+                    firstName: "",
+                    id: "",
+                    city: "",
+                    country: "",
+                },
                 isFormValid: false,
                 isLoginValid: false,
-            }
-
-
+            };
                 default: return state;
-            }
-
-
-
-
+        }
     }
 
 

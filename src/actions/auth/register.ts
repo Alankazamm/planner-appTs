@@ -1,7 +1,12 @@
-import { AxiosResponse } from "axios";
-import axiosInstance from "../helpers/axios";
-import { ActionType, formState } from "../reducers/formReducer";
+//description: this file is used to register a new user, it uses the axios instance to send the data to the server
+// and then it dispatches the data to the reducer
+
+import axiosInstance from "../../helpers/axios";
+import { ActionType } from "../../reducers/formReducer";
+
 let response: any;
+
+//types
 interface registerData {
     firstName: string;
     lastName: string;
@@ -12,6 +17,7 @@ interface registerData {
     password: string;
     confirmPassword: string;
 }
+
 export const register = ({
     firstName,
     lastName,
@@ -52,6 +58,4 @@ export const register = ({
         dispatch({ type: ActionType.REGISTER_FAIL, payload: arrErrors });
     })
     return response
-   
-
 }

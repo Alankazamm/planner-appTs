@@ -10,4 +10,5 @@ export const InputWrapper = styled.div`
 
 export const LoginInputWrapper = styled(InputWrapper)`
 position: relative;
+
 `

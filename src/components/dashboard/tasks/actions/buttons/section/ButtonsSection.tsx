@@ -3,7 +3,7 @@ import {useContext} from 'react'
 //styles
 import { ActionsContainerCommons } from '../../ActionsContainer.styles';
 //types
-import { createContextType } from '../../../../../../contexts/tasksContext';
+import { createContextType } from '../../../../../../contexts/TasksContext';
 //components
 import { ActionsButton } from '../ActionsButton';
 //context

@@ -18,26 +18,28 @@ import { ActionType } from "../reducers/formReducer";
 //hooks
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { login } from "../actions/auth/login";
 
 export const LogIn = () => {
     //hook's calls
     const { formState, dispatch } = useContext(UserContext);
-    const navigate = useNavigate();
+	const navigate = useNavigate();
+	
     useEffect(() => {
-		if (formState.isLoginValid === true) {
-            
-            console.log("Logged in");
-            localStorage.setItem("token", "true");
-            dispatch({ type: ActionType.RESET_LOGIN });
-            navigate("/planner");
-		} else {
-			console.log("Not logged in");
-		}
-    }, [formState.isLoginValid]);
+		dispatch({ type: ActionType.VALIDATE_LOGIN });
+    }, [formState.loginAuth.errors]);
 
+	useEffect(() => {//&& !firstRender
+		if (formState.loginAuth.data ) {
+			console.log(formState.loginAuth.data);
+		}
+	}, [formState.loginAuth.data]);
 	const loginHandler = () => {
-		dispatch({ type: ActionType.SEND_LOGIN });
-		console.log(formState.user);
+		const email = formState.user.value;
+		const password = formState.loginPassword.value;
+		login({ email, password })(dispatch);
+		
+		console.log(formState.loginAuth);
 	};
 	
     
@@ -52,7 +54,7 @@ export const LogIn = () => {
 							description="To continue browsing safely, log in to the network."
 						/>
 						<LoginForm />
-                        <FormButton text="Log in" page="signup" redirectText="Don't have an account?" onClick={loginHandler} />
+                        <FormButton text="Log in" page="signup" redirectText="Don't have an account?" isLoading={formState.loginAuth.loading} onClick={loginHandler} />
                        
 					</FormContainer>
 				</div>

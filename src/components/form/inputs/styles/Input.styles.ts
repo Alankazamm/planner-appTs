@@ -6,7 +6,6 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
     placeholder: string;
     hasError: boolean;
-    error: string;
     onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
     onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
 }

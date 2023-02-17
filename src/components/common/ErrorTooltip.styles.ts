@@ -6,7 +6,7 @@ const tooltipFade = keyframes`
  100% { display: block; opacity: 1; }
 `
 
-const ErrorTooltip = styled.span`
+const ErrorTooltip = styled.span<{page?:string}>`
 
     width: max-content;
     padding: 6px 10px;
@@ -16,7 +16,8 @@ const ErrorTooltip = styled.span`
     border-radius: 6px;
     position: absolute;
     z-index: 1;
-    left: 105%;
+    left:${props => props.page === 'login' ? '90%' : ' 105%'};
+    top:${props => props.page === 'login' ? '30%' : ' 105%'};
     font-weight: 700;
     animation: ${tooltipFade} 0.8s;
     

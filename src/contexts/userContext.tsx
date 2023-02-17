@@ -13,7 +13,6 @@ import {
 	formsReducer,
 	formState,
 	action,
-	ActionType,
 } from "../reducers/formReducer";
 
 //initial states
@@ -33,6 +32,17 @@ const initialState: formState = {
 		errors: [],
 		data: null,
 	},
+	loginAuth:{
+		loading: false,
+		errors: [],
+		data: null,
+	},
+	loggedUser:{
+        firstName: '',
+        id: '',
+        city: '',
+        country: '',
+    },
     isFormValid: false,
     isLoginValid: false,
 };

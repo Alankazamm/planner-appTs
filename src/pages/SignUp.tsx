@@ -10,7 +10,7 @@ import { HeaderText } from "../components/common/header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";
 import { MainWrapper } from "../components/common/MainWrapper.styles";
 //external funcs
-import { register } from "../actions/register";
+import { register } from "../actions/auth/register";
 // initial values
 let firstRender = true;
 //types
@@ -70,7 +70,7 @@ export const SignUp = () => {
 					<FormContainer page="signup">
 						<HeaderText page="signup" title="Welcome," description="Please, register to continue" />
 					<RegisterForm />
-					<FormButton text="Register Now" page="login" redirectText="Already have an account?" onClick={signUpHandler} />
+					<FormButton text="Register Now" page="login" redirectText="Already have an account?" isLoading={formState.auth.loading} onClick={signUpHandler} />
 					</FormContainer>
 					
 				</div>
