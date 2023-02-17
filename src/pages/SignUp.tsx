@@ -39,7 +39,7 @@ export const SignUp = () => {
 		} = formState;
 		const date = birthDate.value.split("/");
 		const newDate = `${date[2]}-${date[0]}-${date[1]}`;
-
+		//when clicked and treated the data, send it to sing-up api request
 		register({
 			firstName: firstName.value,
 			lastName: lastName.value,
@@ -50,13 +50,15 @@ export const SignUp = () => {
 			password: password.value,
 			confirmPassword: confirmPassword.value,
 		}
-		)(dispatch);	
+		)(dispatch);
 	};
 	
+	//if api return errors set the errors to the inputs
 	useEffect(() => {
 		dispatch({ type: ActionType.VALIDATE_FORM });
 	}, [formState.auth.errors]);
 
+	//else if api return data, redirect to login page
 	useEffect(() => { 
 		if (formState.auth.data && !firstRender) {
 			navigate("/login");

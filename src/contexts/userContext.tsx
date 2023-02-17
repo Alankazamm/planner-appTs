@@ -53,16 +53,17 @@ export const UserContextProvider = ({ children }: { children: React.ReactNode })
 	console.log('formstate',formState);
     const navigate = useNavigate();
 	const [isLogged, setIsLogged] = useState<boolean>();
-	console.log('isLogged',isLogged);
+
+	//check if the form is valid then set the logged state to true
+	//logged = true redirects to planner page in login page by useEffect
 	useEffect(() => {
 		if (formState.isLoginValid === true) {
-			localStorage.setItem("token", formState.loginAuth.data.token);
 			setIsLogged(true);
 		} 
     }, [formState.isLoginValid]);
     
 	const signout = () => {
-		console.log('signout');
+
 		localStorage.removeItem('token');
 		dispatch({ type: ActionType.RESET_FORMSTATE });
         navigate('/login');

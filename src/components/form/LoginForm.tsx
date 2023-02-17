@@ -19,6 +19,7 @@ export const LoginForm = () => {
     const [iconIsInside, setIconIsInside] = useState({user: false, password: false});
     const { formState, dispatch } = useContext(UserContext);
 
+    //set the error for the states that manages icons colors and error tooltips
     useEffect(() => {
         setErrorUser(formState.user.hasError);
     }, [formState.user.hasError]);
@@ -26,6 +27,7 @@ export const LoginForm = () => {
         setErrorPassword(formState.loginPassword.hasError);
     }, [formState.loginPassword.hasError]);
 
+    //manages the icons inside or not, and remove the error state from the formstate(to remove error markups)
 	const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         dispatch({ type: "UPDATE_FORM", payload: { name: e.target.name, value: e.target.value } });
         
@@ -39,7 +41,7 @@ export const LoginForm = () => {
     };
   
 
-	return (// hasError={error} 
+	return (
 		<Form page="login" hasError={formState.user.hasError || formState.loginPassword.hasError}>
 			
 			<h2>Login</h2>

@@ -49,7 +49,6 @@ export type formState = {
         errors?: signupErrors[],
         data: any,
     }
-  
     isLoginValid?: boolean,
 };
 export enum ActionType {

@@ -19,6 +19,7 @@ import ErrorTooltip from '../common/ErrorTooltip.styles';
 export const RegisterForm = () => {
     
     const { formState, dispatch } = useContext(UserContext);
+    //send the input value to the reducer on change
     const inputHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
         dispatch({ type: ActionType.UPDATE_FORM, payload: { name: e.target.name, value: e.target.value } });
     }
