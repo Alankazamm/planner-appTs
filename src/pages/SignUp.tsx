@@ -56,6 +56,12 @@ export const SignUp = () => {
 	useEffect(() => {
 		dispatch({ type: ActionType.VALIDATE_FORM });
 	}, [formState.auth.errors]);
+	useEffect(() => { 
+		if (formState.auth.data && !firstRender) {
+			navigate("/login");
+		}
+		firstRender = false;
+	}, [formState.auth.data]);
 
 	return (
 		<MainWrapper>
