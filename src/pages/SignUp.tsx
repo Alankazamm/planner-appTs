@@ -2,6 +2,7 @@
 //hooks
 import { useContext, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { useNavigate } from "react-router-dom";
 //styles
 import { BgSection } from "../components/aside/BgSection";
 import { FormButton } from "../components/form/buttons/FormButton";
@@ -9,21 +10,22 @@ import { RegisterForm } from "../components/form/RegisterForm";
 import { HeaderText } from "../components/common/header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";
 import { MainWrapper } from "../components/common/MainWrapper.styles";
+import { FormContainer } from "../components/form/containers/FormContainer.styles";
 //external funcs
 import { register } from "../actions/auth/register";
 // initial values
 let firstRender = true;
 //types
 import { ActionType } from "../reducers/formReducer";
-import { useNavigate } from "react-router-dom";
-import { FormContainer } from "../components/form/containers/FormContainer.styles";
-
 
 export const SignUp = () => {
 	//hook's calls
 	const { formState, dispatch } = useContext(UserContext);
 	const navigate = useNavigate();
-
+	//avoid access to protected pages
+	useEffect(() => {
+		sessionStorage.removeItem("token");
+	}, []);
 	const signUpHandler = () => {
 		const {
 			firstName,
@@ -48,14 +50,13 @@ export const SignUp = () => {
 			password: password.value,
 			confirmPassword: confirmPassword.value,
 		}
-		)(dispatch);
-	
-		
+		)(dispatch);	
 	};
 	
 	useEffect(() => {
 		dispatch({ type: ActionType.VALIDATE_FORM });
 	}, [formState.auth.errors]);
+
 	useEffect(() => { 
 		if (formState.auth.data && !firstRender) {
 			navigate("/login");
@@ -79,21 +80,3 @@ export const SignUp = () => {
 		</MainWrapper>
 	);
 };
-
-// Promise.resolve(register({
-// 	firstName: firstName.value,
-// 	lastName: lastName.value,
-// 	birthDate: newDate,
-// 	country: country.value,
-// 	city: city.value,
-// 	email: email.value,
-// 	password: password.value,
-// 	confirmPassword: confirmPassword.value,
-// }))
-// 	.then((res) => {
-// 		console.log(res);
-// 		navigate("/login");
-// 	})
-// 	.catch((err) => {
-// 		console.log(err);
-// 	});

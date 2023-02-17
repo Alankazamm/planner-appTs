@@ -275,8 +275,7 @@ export const formsReducer = (state: formState, action: action): formState => {
                     firstName: action.payload.firstName,
                     id: action.payload.id,
                     city: action.payload.city,
-                    country: action.payload.country,
-                    
+                    country: action.payload.country, 
                 }
             };
         // this case resets the form state

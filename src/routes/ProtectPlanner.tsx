@@ -10,7 +10,7 @@ export const ProtectPlanner = () => {
    
     return(
         <>
-            {localStorage.getItem('token') ? <Planner/>: <Navigate to="/login" />}
+            {sessionStorage.getItem('token') ? <Planner/>: <Navigate to="/login" />}
         </>
     )
 }

@@ -16,8 +16,8 @@ const ErrorTooltip = styled.span<{page?:string}>`
     border-radius: 6px;
     position: absolute;
     z-index: 1;
-    left:${props => props.page === 'login' ? '90%' : ' 105%'};
-    top::${props => props.page === 'login' ? '90%' : ''};
+    left:${props => props.page === 'login' ? '90%' : '105%'};
+    top:${props => props.page === 'login' ? '20%' : ''};
     font-weight: 700;
     animation: ${tooltipFade} 0.8s;
     

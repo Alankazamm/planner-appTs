@@ -1,7 +1,8 @@
 // description: login page
 //hooks
 import { useContext } from "react";
-
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 //styles
 import { MainWrapper } from "../components/common/MainWrapper.styles";
 import { FormContainer } from "../components/form/containers/FormContainer.styles";
@@ -11,38 +12,56 @@ import { ContentContainer } from "../components/form/containers/ContentContainer
 import { BgSection } from "../components/aside/BgSection";
 import { LoginForm } from "../components/form/LoginForm";
 import { FormButton } from "../components/form/buttons/FormButton";
-
+//contexts
 import { UserContext } from "../contexts/UserContext";
 //types
 import { ActionType } from "../reducers/formReducer";
-//hooks
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+//external funcs
 import { login } from "../actions/auth/login";
 
-export const LogIn = () => {
-    //hook's calls
-    const { formState, dispatch } = useContext(UserContext);
-	const navigate = useNavigate();
-	
-    useEffect(() => {
-		dispatch({ type: ActionType.VALIDATE_LOGIN });
-    }, [formState.loginAuth.errors]);
+sessionStorage.removeItem("token");
 
-	useEffect(() => {//&& !firstRender
-		if (formState.loginAuth.data ) {
-			console.log(formState.loginAuth.data);
+export const LogIn = () => {
+	//hook's calls
+	const { formState, dispatch, isLogged } = useContext(UserContext);
+	
+	const navigate = useNavigate();
+
+	
+	useEffect(() => {
+		dispatch({ type: ActionType.VALIDATE_LOGIN });
+	}, [formState.loginAuth.errors]);
+
+	useEffect(() => {
+		if (formState.loginAuth.data && formState.loginAuth.data.token ) {
+			
+			dispatch({
+				type: ActionType.LOG_USER,
+				payload: {
+					firstName: formState.loginAuth.data.user.firstName,
+					city: formState.loginAuth.data.user.city,
+					country: formState.loginAuth.data.user.country,
+					id: formState.loginAuth.data.user._id,
+				},
+			});	
+			sessionStorage.setItem("token", formState.loginAuth.data.token);
+		
 		}
+		
 	}, [formState.loginAuth.data]);
+	useEffect(() => {
+		if(isLogged){
+				navigate("/planner");
+		}
+	}, [isLogged]);
+
 	const loginHandler = () => {
 		const email = formState.user.value;
 		const password = formState.loginPassword.value;
 		login({ email, password })(dispatch);
-		
-		console.log(formState.loginAuth);
+		//return from api: data:{token:string, user:{birthDate, city, country, email, firstName, lastName, password,createdAt, _id} },
 	};
-	
-    
+
 	return (
 		<MainWrapper>
 			<ContentContainer>
@@ -54,8 +73,13 @@ export const LogIn = () => {
 							description="To continue browsing safely, log in to the network."
 						/>
 						<LoginForm />
-                        <FormButton text="Log in" page="signup" redirectText="Don't have an account?" isLoading={formState.loginAuth.loading} onClick={loginHandler} />
-                       
+						<FormButton
+							text="Log in"
+							page="signup"
+							redirectText="Don't have an account?"
+							isLoading={formState.loginAuth.loading}
+							onClick={loginHandler}
+						/>
 					</FormContainer>
 				</div>
 			</ContentContainer>

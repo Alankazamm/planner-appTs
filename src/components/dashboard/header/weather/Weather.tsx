@@ -9,11 +9,15 @@ import cloudyIcon from "/src/assets/svg/weather-200.svg";
 //styles
 import { useFetchWeather } from "../../../../custom-hooks/customWeatherHook";
 import { WeatherContainer } from "./WeatherContainer";
+import { useContext } from 'react';
+import { UserContext } from "../../../../contexts/UserContext";
 //types
 
 export const Weather = () => {
-    const city = JSON.parse(localStorage.getItem("user")!).city;
-    const country = JSON.parse(localStorage.getItem("user")!).country;
+	const { formState } = useContext(UserContext);
+	console.log("forms",formState);
+    const city = 'Lisbon'
+    const country = 'Portugal'
     const forecast:any = useFetchWeather(city);
 
 	let forecastOutput = (

@@ -21,6 +21,7 @@ export const login = ({
     }).then((res) => {
         console.log(res)
         dispatch({ type: ActionType.LOGIN_SUCCESS, payload: res.data });
+        sessionStorage.setItem('token', res.data.token);
     }).catch((err) => {
         let arrErrors = [];
         console.log(err.response.data)

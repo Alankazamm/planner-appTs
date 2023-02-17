@@ -13,6 +13,7 @@ import {
 	formsReducer,
 	formState,
 	action,
+	ActionType,
 } from "../reducers/formReducer";
 
 //initial states
@@ -53,17 +54,19 @@ type reducerDestructure = [formState, Dispatch<action>];
 //context
 export const UserContext = createContext<any>({});
 export const UserContextProvider = ({ children }: { children: React.ReactNode }) => {
-    console.log('rendered context');
 	//hooks
-	const [formState, dispatch]: reducerDestructure = useReducer(formsReducer,initialState);
+	const [formState, dispatch]: reducerDestructure = useReducer(formsReducer, initialState);
+	console.log('formstate',formState);
     const navigate = useNavigate();
-    const [isLogged, setIsLogged] = useState<boolean>();
+	const [isLogged, setIsLogged] = useState<boolean>();
+	console.log('isLogged',isLogged);
     useEffect(() => {
-        localStorage.getItem('token') ? setIsLogged(true) : setIsLogged(false);
-    }, []);
+        sessionStorage.getItem('token') ? setIsLogged(true) : setIsLogged(false);
+    }, [formState.loginAuth.data]);
     
     const signout = () => {
-        localStorage.removeItem('token');
+		sessionStorage.removeItem('token');
+		dispatch({ type: ActionType.RESET_FORMSTATE });
         navigate('/login');
 	}
 	
