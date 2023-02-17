@@ -24,7 +24,7 @@ export const SignUp = () => {
 	const navigate = useNavigate();
 	//avoid access to protected pages
 	useEffect(() => {
-		sessionStorage.removeItem("token");
+		localStorage.removeItem("token");
 	}, []);
 	const signUpHandler = () => {
 		const {

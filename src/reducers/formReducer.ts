@@ -49,7 +49,7 @@ export type formState = {
         errors?: signupErrors[],
         data: any,
     }
-    loggedUser?: userLogged,
+  
     isLoginValid?: boolean,
 };
 export enum ActionType {
@@ -271,12 +271,7 @@ export const formsReducer = (state: formState, action: action): formState => {
         case ActionType.LOG_USER:
             return {
                 ...state,
-                loggedUser: {
-                    firstName: action.payload.firstName,
-                    id: action.payload.id,
-                    city: action.payload.city,
-                    country: action.payload.country, 
-                }
+                isLoginValid: true,
             };
         // this case resets the form state
         case ActionType.RESET_FORMSTATE:
@@ -300,12 +295,6 @@ export const formsReducer = (state: formState, action: action): formState => {
                     loading: false,
                     data: undefined,
                     errors: undefined,
-                },
-                loggedUser: {
-                    firstName: "",
-                    id: "",
-                    city: "",
-                    country: "",
                 },
                 isFormValid: false,
                 isLoginValid: false,

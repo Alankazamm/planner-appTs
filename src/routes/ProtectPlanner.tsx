@@ -7,10 +7,10 @@ import { Navigate } from 'react-router-dom';
 import { Planner } from "../pages/Planner";
 
 export const ProtectPlanner = () => {
-   
+  
     return(
         <>
-            {sessionStorage.getItem('token') ? <Planner/>: <Navigate to="/login" />}
+            {localStorage.getItem('token') ? <Planner/> : <Navigate to="/login" />}
         </>
     )
 }

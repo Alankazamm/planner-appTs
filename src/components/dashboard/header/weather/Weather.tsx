@@ -14,8 +14,8 @@ import { UserContext } from "../../../../contexts/UserContext";
 //types
 
 export const Weather = () => {
-	const { formState } = useContext(UserContext);
-	console.log("forms",formState);
+
+	console.log("forms",sessionStorage.getItem("token"));
     const city = 'Lisbon'
     const country = 'Portugal'
     const forecast:any = useFetchWeather(city);

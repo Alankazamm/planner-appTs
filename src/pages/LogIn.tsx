@@ -24,7 +24,6 @@ sessionStorage.removeItem("token");
 export const LogIn = () => {
 	//hook's calls
 	const { formState, dispatch, isLogged } = useContext(UserContext);
-	
 	const navigate = useNavigate();
 
 	
@@ -33,22 +32,15 @@ export const LogIn = () => {
 	}, [formState.loginAuth.errors]);
 
 	useEffect(() => {
-		if (formState.loginAuth.data && formState.loginAuth.data.token ) {
-			
-			dispatch({
-				type: ActionType.LOG_USER,
-				payload: {
-					firstName: formState.loginAuth.data.user.firstName,
-					city: formState.loginAuth.data.user.city,
-					country: formState.loginAuth.data.user.country,
-					id: formState.loginAuth.data.user._id,
-				},
-			});	
-			sessionStorage.setItem("token", formState.loginAuth.data.token);
-		
+		if (formState.loginAuth.data) {
+			localStorage.setItem("token", formState.loginAuth.data.token);
+			dispatch({type: ActionType.LOG_USER});	
+		} else {
+			localStorage.removeItem("token");
 		}
 		
 	}, [formState.loginAuth.data]);
+
 	useEffect(() => {
 		if(isLogged){
 				navigate("/planner");

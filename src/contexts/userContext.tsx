@@ -38,12 +38,6 @@ const initialState: formState = {
 		errors: [],
 		data: null,
 	},
-	loggedUser:{
-        firstName: '',
-        id: '',
-        city: '',
-        country: '',
-    },
     isFormValid: false,
     isLoginValid: false,
 };
@@ -60,12 +54,16 @@ export const UserContextProvider = ({ children }: { children: React.ReactNode })
     const navigate = useNavigate();
 	const [isLogged, setIsLogged] = useState<boolean>();
 	console.log('isLogged',isLogged);
-    useEffect(() => {
-        sessionStorage.getItem('token') ? setIsLogged(true) : setIsLogged(false);
-    }, [formState.loginAuth.data]);
+	useEffect(() => {
+		if (formState.isLoginValid === true) {
+			localStorage.setItem("token", formState.loginAuth.data.token);
+			setIsLogged(true);
+		} 
+    }, [formState.isLoginValid]);
     
-    const signout = () => {
-		sessionStorage.removeItem('token');
+	const signout = () => {
+		console.log('signout');
+		localStorage.removeItem('token');
 		dispatch({ type: ActionType.RESET_FORMSTATE });
         navigate('/login');
 	}
