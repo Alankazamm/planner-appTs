@@ -16,7 +16,7 @@ export const Input = styled.input.attrs((props: InputProps) => ({
     onChange: props.onChange,
     placeholder: props.placeholder,
     hasError: props.hasError,
-    error: props.error,
+    
 }))`
     width: 19vw;
     height: 5.5vh;
