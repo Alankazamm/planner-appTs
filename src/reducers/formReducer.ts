@@ -56,6 +56,14 @@ export const formsReducer = (state: formState, action: action): formState => {
         case ActionType.UPDATE_FORM:
             const name = action.payload.name
             const value = action.payload.value
+            if( name === 'confirmPassword' ){
+                if (value !== state.password.value) {
+                    return {
+                        ...state,
+                        [name as keyof formState]: { ...state[name] as formItem, value, hasError: true, error: "Passwords do not match" },
+                    }
+                }
+            }
             return {
                 ...state,
                 [name as keyof formState]: { ...state[name] as formItem, value, hasError: false, error: undefined },
