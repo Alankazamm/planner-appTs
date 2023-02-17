@@ -19,13 +19,12 @@ import { ActionType } from "../reducers/formReducer";
 //external funcs
 import { login } from "../actions/auth/login";
 
-sessionStorage.removeItem("token");
 
 export const LogIn = () => {
 	//hook's calls
 	const { formState, dispatch, isLogged } = useContext(UserContext);
 	const navigate = useNavigate();
-
+	localStorage.removeItem("token");
 	
 	useEffect(() => {
 		dispatch({ type: ActionType.VALIDATE_LOGIN });
@@ -34,18 +33,16 @@ export const LogIn = () => {
 	useEffect(() => {
 		if (formState.loginAuth.data) {
 			localStorage.setItem("token", formState.loginAuth.data.token);
-			dispatch({type: ActionType.LOG_USER});	
+			localStorage.setItem("loggedUser", JSON.stringify(formState.loginAuth.data.user));
+			navigate("/planner");
 		} else {
 			localStorage.removeItem("token");
+			localStorage.removeItem("loggedUser");
 		}
 		
 	}, [formState.loginAuth.data]);
 
-	useEffect(() => {
-		if(isLogged){
-				navigate("/planner");
-		}
-	}, [isLogged]);
+
 
 	const loginHandler = () => {
 		const email = formState.user.value;

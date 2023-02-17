@@ -271,10 +271,12 @@ export const formsReducer = (state: formState, action: action): formState => {
             return {
                 ...state,
                 isLoginValid: true,
+                
             };
         // this case resets the form state
         case ActionType.RESET_FORMSTATE:
             return {
+                ...state,
                 firstName: { value: "", hasError: false },
                 lastName: { value: "", hasError: false },
                 birthDate: { value: "", hasError: false },
@@ -296,7 +298,7 @@ export const formsReducer = (state: formState, action: action): formState => {
                     errors: undefined,
                 },
                 isFormValid: false,
-                isLoginValid: false,
+               
             };
                 default: return state;
         }

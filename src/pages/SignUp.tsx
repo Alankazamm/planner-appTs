@@ -25,6 +25,7 @@ export const SignUp = () => {
 	//avoid access to protected pages
 	useEffect(() => {
 		localStorage.removeItem("token");
+		localStorage.removeItem("loggedUser");
 	}, []);
 	const signUpHandler = () => {
 		const {

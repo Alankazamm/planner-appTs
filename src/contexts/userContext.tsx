@@ -52,26 +52,19 @@ export const UserContextProvider = ({ children }: { children: React.ReactNode })
 	const [formState, dispatch]: reducerDestructure = useReducer(formsReducer, initialState);
 	console.log('formstate',formState);
     const navigate = useNavigate();
-	const [isLogged, setIsLogged] = useState<boolean>();
 
-	//check if the form is valid then set the logged state to true
-	//logged = true redirects to planner page in login page by useEffect
-	useEffect(() => {
-		if (formState.isLoginValid === true) {
-			setIsLogged(true);
-		} 
-    }, [formState.isLoginValid]);
-    
+	//functions
 	const signout = () => {
 
 		localStorage.removeItem('token');
+		localStorage.removeItem("loggedUser");
 		dispatch({ type: ActionType.RESET_FORMSTATE });
         navigate('/login');
 	}
 	
 
 	return (
-		<UserContext.Provider value={{ formState, dispatch, isLogged, signout}}>
+		<UserContext.Provider value={{ formState, dispatch, signout, }}>
 			{children}
 		</UserContext.Provider>
 	);
