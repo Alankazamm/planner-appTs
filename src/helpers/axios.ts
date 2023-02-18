@@ -7,14 +7,14 @@ let headers = {
     'Authorization': `Bearer 1234567`
 }
 
-if (localStorage.token) {
-    headers.Authorization = `Bearer 1234567`
+if (localStorage.getItem('token')) {
+    headers.Authorization = `Bearer ${localStorage.getItem('token')}`
 }
 const axiosInstance = axios.create({
     baseURL: BaseUrl,
     headers,
 });
-
+ console.log(axiosInstance);
 export default axiosInstance;
 
 //replace / to - in 12/12/1999

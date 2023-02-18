@@ -17,7 +17,8 @@ console.log("tasksContext");
     const [task, setTask] = useState({ taskText: '', taskDay: 'Monday', taskHour: '', taskId: '1' });
     const [allTasks, setAllTasks] = useState<arrayOfTasks>([]);
     const [actualDay, setDay] = useState('Monday');
-    console.log(allTasks + "allTasks");
+    console.log(task , "task");
+    console.log(allTasks ,"allTasks");
 
     useEffect(() => {
         const tasks = JSON.parse(localStorage.getItem('tasks')!);
