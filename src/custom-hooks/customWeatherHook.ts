@@ -20,7 +20,7 @@ const [forecast, setForecast] = useState<Forecast|unknown>();
                });
            } catch (error ) {
              setForecast(error);
-             console.log('There was an error', error);
+             console.log('There was an error ft', error);
          }
          setFirstTime(false);
      } else {

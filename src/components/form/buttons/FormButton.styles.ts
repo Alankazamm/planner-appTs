@@ -1,12 +1,6 @@
-import styled, { keyframes } from 'styled-components';
-const rotate = keyframes`
-    0%{
-        transform: rotate(0deg);
-    }
-    100%{
-        transform: rotate(360deg);
-    }
-`
+import styled from 'styled-components';
+import { rotate } from './../../common/animations/rotate.styles';
+
 export const StyledFormBtn = styled.div`
     width: 100%;
     display: flex;

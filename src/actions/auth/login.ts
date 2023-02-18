@@ -19,21 +19,19 @@ export const login = ({
         password,
         
     }).then((res) => {
-        console.log(res)
         dispatch({ type: ActionType.LOGIN_SUCCESS, payload: res.data });
         localStorage.setItem('token', res.data.token);
         
     }).catch((err) => {
         let arrErrors = [];
-        console.log(err.response.data)
         if (err.response.data.hasOwnProperty('errors')){
             for (let key in err.response.data.errors) {
                 arrErrors.push(err.response.data.errors[key]);
             }
-            console.log(arrErrors);
+
         } else {
             arrErrors.push(err.response.data);
-            console.log(arrErrors);
+
         }
         dispatch({ type: ActionType.LOGIN_FAIL, payload: arrErrors });
     })
