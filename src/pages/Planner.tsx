@@ -1,14 +1,19 @@
+//styles
 import { DashContainer } from "../components/dashboard/DashContainer.styles"
+//components
 import DashboardHeader from "../components/dashboard/header/DashboardHeader"
-import { TasksDisplayer } from "../components/dashboard/tasks/display-tasks/TasksDisplayer"
 import { TasksSection } from "../components/dashboard/tasks/TasksSection"
-import { useContext } from 'react';
-import { UserContext } from "../contexts/UserContext";
-import { ActionType } from "../reducers/formReducer";
+
+
 
 export const Planner = () => {
-    const { dispatch } = useContext(UserContext);
-    dispatch({ type: ActionType.RESET_FORMSTATE });
+    // window.addEventListener("popstate", () => {
+    //     localStorage.removeItem('canEnter');
+    //     localStorage.removeItem('token');
+    //   });
+
+   
+
     return (
         <DashContainer>
             <DashboardHeader />

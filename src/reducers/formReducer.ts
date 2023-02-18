@@ -270,7 +270,11 @@ export const formsReducer = (state: formState, action: action): formState => {
         case ActionType.LOG_USER:
             return {
                 ...state,
-                isLoginValid: true,
+                loginAuth: {
+                    loading: false,
+                    data: undefined,
+                    errors: undefined,
+                },
                 
             };
         // this case resets the form state

@@ -1,6 +1,6 @@
 // description: login page
 //hooks
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 //styles
@@ -19,35 +19,44 @@ import { ActionType } from "../reducers/formReducer";
 //external funcs
 import { login } from "../actions/auth/login";
 
-
+let firstRender = true;
 export const LogIn = () => {
 	//hook's calls
-	const { formState, dispatch, isLogged } = useContext(UserContext);
+	const { formState, dispatch } = useContext(UserContext);
 	const navigate = useNavigate();
-	localStorage.removeItem("token");
 	
 	useEffect(() => {
-		dispatch({ type: ActionType.VALIDATE_LOGIN });
+		if (firstRender) {
+			
+			firstRender = false;
+			dispatch({ type: ActionType.LOG_USER });
+			localStorage.removeItem("token");
+		}
+	}, []);
+
+
+	useEffect(() => {
+		if (formState.loginAuth.errors) {
+			dispatch({ type: ActionType.VALIDATE_LOGIN });
+		}
 	}, [formState.loginAuth.errors]);
+
 
 	useEffect(() => {
 		if (formState.loginAuth.data) {
 			localStorage.setItem("token", formState.loginAuth.data.token);
 			localStorage.setItem("loggedUser", JSON.stringify(formState.loginAuth.data.user));
 			navigate("/planner");
-		} else {
-			localStorage.removeItem("token");
-			localStorage.removeItem("loggedUser");
 		}
-		
 	}, [formState.loginAuth.data]);
-
-
-
+		
 	const loginHandler = () => {
+
 		const email = formState.user.value;
 		const password = formState.loginPassword.value;
 		login({ email, password })(dispatch);
+		
+	
 		//return from api: data:{token:string, user:{birthDate, city, country, email, firstName, lastName, password,createdAt, _id} },
 	};
 

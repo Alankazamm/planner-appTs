@@ -7,11 +7,11 @@ import { useContext, useEffect } from "react";
 //styles
 import { TaskBorder } from "./styles/TaskBorder.styles";
 import { TasksTimeCard } from "./styles/TasksTimeCard.styles";
-
+import TasksWrapper from "./TasksWrapper.styles";
 
 //context
-import { createContextType, TasksContext } from "../../../../../contexts/tasksContext";
-import TasksWrapper from "./TasksWrapper.styles";
+import { createContextType } from "../../../../../contexts/TasksContext";
+import { TasksContext } from '/src/contexts/tasksContext.tsx';
 
 export const Tasks = () => {
    
@@ -42,27 +42,27 @@ export const Tasks = () => {
 				<p>Time</p>
 			</div>
 				{taskHours.map((hour, index) => (
-					<div className="tasksSameHour" key={"sameHour" + index} >
+					<div className="tasksSameHour" id={"sameHour" + index} >
 						<TasksTimeCard actualDay={sameDayTasks.filter((task) => task.taskHour === hour).length > 1 ? 'conflict' : actualDay} key={"timeCard" + index}>
 							{hour}
 						</TasksTimeCard>
-						<div className="tasksList" key={"taskList" + index}>
+						<div className="tasksList" id={"taskList" + index}>
 							{sameDayTasks
 								.filter((task) => task.taskHour === hour)
 								.map((task) => {
 									return (
-										<div className="taskCard" key={"card" + task.taskId}>
+										<div className="taskCard" id={"card" + task.taskId}>
 											<TaskBorder
 												actualDay={sameDayTasks.filter((task) => task.taskHour === hour).length > 1 ? 'conflict' : actualDay}
-												key={"border" + index}
+												id={"border" + index}
 											></TaskBorder>
-											<div className="taskText" key={"text" + index}>
+											<div className="taskText" id={"text" + index}>
 												{task.taskText}
 											</div>
 											<div
 												className="deleteButton"
 												onClick={taskDeleteHandler}
-												key={task.taskId}
+												id={task.taskId}
 											>
 												Delete
 											</div>
