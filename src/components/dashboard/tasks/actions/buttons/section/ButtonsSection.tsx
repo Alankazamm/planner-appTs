@@ -22,28 +22,60 @@ type events = {
   _id: string
   userId: string
 }
-enum eventErrors {
-
+enum eventStatus {
+  "Access denied" = 401,
+  "Event not found" = 404,
+  "Internal server error" = 501,
+  "Event created" = 201,
+  "OK" = 200,
 }
+type createEvent = {
+  status?: eventStatus,
+  data?: events,
+}
+
 type getEvents = {
-  events?: {
-  }
+  status?: eventStatus,
+  data?: {
+    events: events[]
+ }
 }
 
 export const ButtonsSection = () => {
-  const [createEventResponse, setCreateEventResponse] = useState();
-  const [getEventsResponse, setGetEventsResponse] = useState<any>();
+  const [createEventResponse, setCreateEventResponse] = useState<createEvent>({});
+  const [getEventsResponse, setGetEventsResponse] = useState<getEvents>({});
   const { task,setTask, allTasks, actualDay, updateTask }:createContextType = useContext(TasksContext);
 
   useEffect(() => {
-    console.log(createEventResponse)
+    if (createEventResponse.hasOwnProperty('status')) {
+      console.log(createEventResponse)
+      if (createEventResponse.status === eventStatus["Event created"]) {
+        console.log(createEventResponse.data)
+      }
+    }
   }, [createEventResponse])
 
   useEffect(() => {
-    // if(getEventsResponse!.hasOwnProperty('events')){
+    if (getEventsResponse.hasOwnProperty('status')) {
       console.log(getEventsResponse)
+      if (getEventsResponse.status === eventStatus["OK"]) {
+        console.log(getEventsResponse.data!.events)
+        updateTask(getEventsResponse!.data!.events!.map((event) => {
+          return {
+            taskText: event.description,
+            taskDay: event.dayOfWeek,
+            taskHour: event.createdAt.substring(11, 16).replace(':', 'h').concat('m'),
+            taskId: event._id
+          }
+        }));
+      }
+    }
+  }, [getEventsResponse]);
+
+    
+    // updateTask([...allTasks, {...task, taskText: createEventResponse.data?.description!, taskDay: createEventResponse.data?.dayOfWeek!, taskHour: createEventResponse.data?.createdAt!, taskId: createEventResponse.data?._id!}
     // }
-  }, [getEventsResponse])
+
 
   function clickHandler() {
     if (task.taskText.length > 0 && task.taskHour.length > 6) {
@@ -52,8 +84,8 @@ export const ButtonsSection = () => {
      
       getEvents({})(setGetEventsResponse);
 
-      setTask({ ...task, taskId: Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1) });
-      updateTask([...allTasks, task]);
+      
+     
     }
   }
   const deleteHandler = () => {
