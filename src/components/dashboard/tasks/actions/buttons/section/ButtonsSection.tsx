@@ -52,7 +52,7 @@ export const ButtonsSection = () => {
   }, [getEventsResponse]);
 
   function clickHandler() {
-    if (task.taskText.length > 0 && task.taskHour.length > 6) {
+    if (task.taskText.length > 0) {
       createEvents({ description: task!.taskText, dayOfWeek: task!.taskDay })(setCreateEventResponse)
       getEvents({dayOfWeek:actualDay})(setGetEventsResponse);
     }
