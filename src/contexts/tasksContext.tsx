@@ -3,9 +3,10 @@
 
 //hooks
 import { createContext, useState, useEffect } from 'react';
+import { useGetAllEvents } from '../custom-hooks/customGetEventsHook';
 
 //types
-type arrayOfTasks = taskState[];
+export type arrayOfTasks = taskState[];
 export type taskState = { taskText: string, taskDay: string, taskHour: string, taskId: string };
 export type setTaskState = React.Dispatch<React.SetStateAction<taskState>>;
 export type taskStateDestructured = { task: taskState, setTask: setTaskState };
@@ -20,15 +21,13 @@ console.log("tasksContext");
     console.log(task , "task");
     console.log(allTasks ,"allTasks");
 
+    const getEventsState:arrayOfTasks = useGetAllEvents();
     useEffect(() => {
-        const tasks = JSON.parse(localStorage.getItem('tasks')!);
-        if (tasks !== null) {
-            setAllTasks(tasks);
-        }else{
-            setAllTasks([]);
+        if (getEventsState.length > 0) {
+            setAllTasks(getEventsState);
         }
-    }, []);
-
+    }, [getEventsState]);
+        
     const updateTask = (taskArray:arrayOfTasks) => {
 
         setAllTasks(taskArray);
