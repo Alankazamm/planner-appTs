@@ -31,6 +31,7 @@ export const LogIn = () => {
 			firstRender = false;
 			dispatch({ type: ActionType.LOG_USER });
 			localStorage.removeItem("token");
+			localStorage.removeItem("loggedUser");
 		}
 	}, []);
 
