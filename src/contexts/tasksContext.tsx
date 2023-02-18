@@ -87,7 +87,7 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 	}, [getEventsResponse]);
 
 	useEffect(() => {
-		getEvents({})(setGetEventsResponse);
+		getEvents({dayOfWeek:actualDay})(setGetEventsResponse);
 	}, [actualDay]);
 
 	const updateTask = (taskArray: arrayOfTasks) => {

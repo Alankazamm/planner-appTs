@@ -10,7 +10,7 @@ import { ActionsButton } from '../ActionsButton';
 
 import { createEvents } from './../../../../../../actions/events/createEvent';
 import { getEvents } from './../../../../../../actions/events/getEvents';
-import { TasksContext,createContextType, events, eventStatus } from '/src/contexts/tasksContext.tsx';
+import { TasksContext,createContextType, events, eventStatus, taskState } from '/src/contexts/tasksContext.tsx';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -39,7 +39,7 @@ export const ButtonsSection = () => {
       console.log(getEventsResponse)
       if (getEventsResponse.status === eventStatus["OK"]) {
         console.log(getEventsResponse.data!.events)
-        updateTask(getEventsResponse!.data!.events!.map((event) => {
+        updateTask(getEventsResponse!.data!.events!.map((event:events) => {
           return {
             taskText: event.description,
             taskDay: event.dayOfWeek,
@@ -54,11 +54,11 @@ export const ButtonsSection = () => {
   function clickHandler() {
     if (task.taskText.length > 0 && task.taskHour.length > 6) {
       createEvents({ description: task!.taskText, dayOfWeek: task!.taskDay })(setCreateEventResponse)
-      getEvents({})(setGetEventsResponse);
+      getEvents({dayOfWeek:actualDay})(setGetEventsResponse);
     }
   }
   const deleteHandler = () => {
-    const newArray = allTasks.filter(tasks =>  tasks.taskDay !== actualDay);
+    const newArray = allTasks.filter((tasks:taskState) =>  tasks.taskDay !== actualDay);
     updateTask(newArray); 
   }
 
