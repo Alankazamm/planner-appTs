@@ -12,7 +12,7 @@ import { Form } from "./Form.styles";
 
 //external functions
 import { ActionType } from "../../reducers/formReducer";
-import ErrorTooltip from '../common/ErrorTooltip.styles';
+import ErrorTooltip from '../common/error-handling/ErrorTooltip.styles';
 
 
 

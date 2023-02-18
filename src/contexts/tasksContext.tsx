@@ -24,7 +24,9 @@ export type createContextType = {
 	setDay: React.Dispatch<React.SetStateAction<string>>;
 	updateTask: (taskArray: arrayOfTasks) => void;
 	getEventsResponse: getEventsType;
-	setGetEventsResponse: React.Dispatch<React.SetStateAction<getEventsType>>;
+    setGetEventsResponse: React.Dispatch<React.SetStateAction<getEventsType>>;
+    displayErrorModal: boolean,
+    setDisplayErrorModal: React.Dispatch<React.SetStateAction<boolean>>;
 };
 export type events = {
 	createdAt: string;
@@ -61,6 +63,7 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 	const [allTasks, setAllTasks] = useState<arrayOfTasks>([]);
 	const [actualDay, setDay] = useState("monday");
 	const [getEventsResponse, setGetEventsResponse] = useState<getEventsType>({});
+    const [displayErrorModal, setDisplayErrorModal] = useState(false);
 	console.log(task, "task");
 	console.log(allTasks, "allTasks");
 
@@ -82,7 +85,10 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 						};
 					}),
 				);
-			}
+            }
+            else {
+                setDisplayErrorModal(true);
+            }
 		}
 	}, [getEventsResponse]);
 
@@ -107,7 +113,9 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 				setDay,
 				updateTask,
 				getEventsResponse,
-				setGetEventsResponse,
+                setGetEventsResponse,
+                displayErrorModal,
+                setDisplayErrorModal,
 			}}
 		>
 			{children}
