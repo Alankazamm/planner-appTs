@@ -25,9 +25,9 @@ export const Tasks = () => {
     taskHours = taskHours.sort((a, b) => a.localeCompare(b));
 	console.log(taskHours);
     useEffect(() => {
-	
+	console.log(allTasks);
 
-    }, [actualDay, allTasks]);
+    }, [actualDay, allTasks, updateTask]);
 
     const taskDeleteHandler = (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const target = e.target as HTMLButtonElement;

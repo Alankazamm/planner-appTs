@@ -16,11 +16,12 @@ const [forecast, setForecast] = useState<Forecast|unknown>();
              fetch(`http://api.weatherapi.com/v1/current.json?key=96292cdb0bbf468f931192735231102&q=${city}&lang=en`)
                .then((response) => response.status === 200 ? response.json() : console.log(response))
                .then(data => {
+               
                  setForecast(data);
                });
            } catch (error ) {
              setForecast(error);
-             console.log('There was an error ft', error);
+            
          }
          setFirstTime(false);
      } else {
@@ -34,7 +35,7 @@ const [forecast, setForecast] = useState<Forecast|unknown>();
                });
            } catch (error) {
              setForecast(error);
-             console.log('There was an error', error);
+            
              }
              //time 15 minutes
          }, 900000);

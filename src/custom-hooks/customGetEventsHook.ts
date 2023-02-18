@@ -52,6 +52,6 @@ export const useGetAllEvents = () => {
           }
         }
       }, [getEventsResponse]);
-
+      console.log(events)
      return events;
 }

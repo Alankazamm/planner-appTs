@@ -14,7 +14,7 @@ const axiosInstance = axios.create({
     baseURL: BaseUrl,
     headers,
 });
- console.log(axiosInstance);
+ console.log(localStorage.getItem('token'));
 export default axiosInstance;
 
 //replace / to - in 12/12/1999
