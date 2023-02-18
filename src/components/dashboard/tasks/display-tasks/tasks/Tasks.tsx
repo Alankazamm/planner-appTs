@@ -23,10 +23,11 @@ export const Tasks = () => {
         (hour, index) => taskHours.indexOf(hour) === index,
     );
     taskHours = taskHours.sort((a, b) => a.localeCompare(b));
-
+	console.log(taskHours);
     useEffect(() => {
-        
-    }, [actualDay]);
+	
+
+    }, [actualDay, allTasks]);
 
     const taskDeleteHandler = (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const target = e.target as HTMLButtonElement;

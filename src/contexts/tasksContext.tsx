@@ -14,9 +14,9 @@ export const TasksContext = createContext({} as createContextType);
 
 export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 console.log("tasksContext");
-    const [task, setTask] = useState({ taskText: '', taskDay: 'Monday', taskHour: '', taskId: '1' });
+    const [task, setTask] = useState({ taskText: '', taskDay: 'monday', taskHour: '', taskId: '1' });
     const [allTasks, setAllTasks] = useState<arrayOfTasks>([]);
-    const [actualDay, setDay] = useState('Monday');
+    const [actualDay, setDay] = useState('monday');
     console.log(task , "task");
     console.log(allTasks ,"allTasks");
 
