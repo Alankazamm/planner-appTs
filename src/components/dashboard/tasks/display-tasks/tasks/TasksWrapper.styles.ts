@@ -93,6 +93,7 @@ const TasksWrapper = styled.div`
         margin-right: 16px;
         border-radius: 15px;
         border: 1px solid rgba(255, 255, 255, 1);
+        border-left: none;
         display: flex;
         flex-direction: row;
         align-items: center;

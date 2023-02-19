@@ -77,6 +77,25 @@ export const TasksErrorModal = (props: props) => {
                 </div>
             </ErrorModal>
         )
+    } else if (displayErrorModal === eventStatus["Invalid data"]) {
+        return (
+            <ErrorModal>
+                <div className="errorModalContent">
+                    <div className="errorModalTitle">
+                        <h2>Invalid data</h2>
+                    </div>
+                    <div className="errorModalText">
+                        <p>
+                            We are sorry for the inconvenience, but the data you are trying to
+                            submit is invalid.
+                        </p>
+                    </div>
+                    <div className="errorModalButtons">
+                        <button className="closeButton" onClick={closeModal}>Ok</button>
+                    </div>
+                </div>
+            </ErrorModal>
+        )
     }
     else {
         return null;

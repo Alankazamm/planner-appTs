@@ -11,22 +11,39 @@ export const getEvents = (event: { description?: string, dayOfWeek?: string }) =
         axiosInstance.get(`/events?dayOfWeek=${event.dayOfWeek}`, { data: event }).then((res) => {
             console.log(res);
             setGetEventsResponse(res);
-            setFetchingLoading(false);
+            
+                
+                setFetchingLoading(false);
+                //8 secs in milliseconds is
+           
+          
         }).catch((err) => {
             setGetEventsResponse(err.response.data);
             setDisplayErrorModal(err.response.data.status);
-            setFetchingLoading(false);
+          
+                
+                setFetchingLoading(false);
+                //set 10 seconds to show the loading
+            
         })
     }
     else {
         axiosInstance.get(`/events`, { data: event }).then((res) => {
             console.log(res);
             setGetEventsResponse(res);
-            setFetchingLoading(false);
+            setTimeout(() => {
+                
+                setFetchingLoading(false);
+                //set 10 seconds to show the loading
+            }, 1000);
         }).catch((err) => {
             setGetEventsResponse(err.response.data);
             setDisplayErrorModal(err.response.data.status);
-            setFetchingLoading(false);
+            setTimeout(() => {
+                
+                setFetchingLoading(false);
+                //set 10 seconds to show the loading
+            }, 1000);
         })
     }
 }

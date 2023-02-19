@@ -41,9 +41,10 @@ export type events = {
 export enum eventStatus {
 	"Access denied" = 401,
 	"Event not found" = 404,
-	"Internal server error" = 501,
+	"Internal server error" = 500|501,
 	"Event created" = 201,
 	"OK" = 200,
+	"Invalid data" = 400,
 }
 export type getEventsType = {
     status?: eventStatus;
@@ -89,7 +90,9 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 						};
 					}),
 				);
-            }
+            }else {
+				setDisplayErrorModal(getEventsResponse.status);
+			}
 		}
 	}, [getEventsResponse]);
 
@@ -100,8 +103,6 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 
 	const updateTask = (taskArray: arrayOfTasks) => {
 		setAllTasks(taskArray);
-		localStorage.setItem("tasks", JSON.stringify(taskArray));
-		console.log(allTasks);
     };
     const updateErrorModal = (status: eventStatus) => {
         setDisplayErrorModal(status);

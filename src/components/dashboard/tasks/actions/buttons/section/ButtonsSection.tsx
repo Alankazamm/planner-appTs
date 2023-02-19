@@ -22,6 +22,7 @@ import { useEffect } from "react";
 import Spinner from "../../../../../common/loading/Spinner.styles";
 import  spinner  from '/src/assets/svg/spinner-uol.svg';
 import { TasksErrorModal } from "../../../../../common/error-handling/modal/TasksErrorModal";
+import { deleteEvents } from "../../../../../../actions/delete-events/deleteEvents";
 
 
 type createEvent = {
@@ -55,7 +56,23 @@ export const ButtonsSection = () => {
       }
 		}
 	}, [createEventResponse]);
-
+  //update the state of page after deleting an event
+  useEffect(() => {
+    if (getEventsResponse.hasOwnProperty("status")) {
+      if (getEventsResponse.status === eventStatus["OK"]) {
+        updateTask(
+          getEventsResponse!.data!.events!.map((event: events) => {
+            return {
+              taskText: event.description,
+              taskDay: event.dayOfWeek,
+              taskHour: event.createdAt,
+              taskId: event._id,
+            };
+          }),
+        );
+      }
+    }
+  }, [getEventsResponse]);
 	useEffect(() => {
 		if (getEventsResponse.hasOwnProperty("status")) {
 			console.log(getEventsResponse);
@@ -91,10 +108,8 @@ export const ButtonsSection = () => {
   }
   console.log(displayErrorModal)
 	const deleteHandler = () => {
-		const newArray = allTasks.filter(
-			(tasks: taskState) => tasks.taskDay !== actualDay,
-		);
-		updateTask(newArray);
+		deleteEvents({ dayOfWeek: actualDay })({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal, setCreateIsLoading});
+    getEvents({ dayOfWeek: actualDay })({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal});
 	};
 
   const componentsOutput = createIsLoading ?

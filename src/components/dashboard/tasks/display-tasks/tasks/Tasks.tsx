@@ -17,14 +17,18 @@ import  spinner  from '/src/assets/svg/spinner-uol.svg';
 import LoadingModal from "../../../../common/loading/LoadingModal";
 import { useState } from 'react';
 import { TaskWarnigModal } from "../../../../common/error-handling/modal/TaskWarnigModal";
+import { deleteEvents } from "../../../../../actions/delete-events/deleteEvents";
+import { getEvents } from "../../../../../actions/events/getEvents";
+import { TasksErrorModal } from "../../../../common/error-handling/modal/TasksErrorModal";
+import { ConfirmDeleteModal } from "../../../../common/confirmation/ConfirmDeleteModal";
 
 export const Tasks = () => {
    
-	const { allTasks, actualDay, updateTask, setDisplayErrorModal, fetchingLoading }:
+	const { allTasks, actualDay, setDisplayErrorModal, fetchingLoading, setGetEventsResponse, setFetchingLoading, displayErrorModal }:
 		createContextType = useContext(TasksContext);
 	
 	const [showModal, setShowModal] = useState(false);
-		
+	const [confirmDelete, setConfirmDelete] = useState({show: false, id: ''});
 	useEffect(() => {
 		if (allTasks.length > 14) {
 			setShowModal(true);
@@ -38,20 +42,24 @@ export const Tasks = () => {
     );
     taskHours = taskHours.sort((a, b) => a.localeCompare(b));
 	console.log(taskHours);
-    // useEffect(() => {
-	// console.log(allTasks);
 
-    // }, [actualDay, allTasks, updateTask]);
+    const taskDeleteHandler = (value:string) => {
+		console.log(value);
+		deleteEvents({ id: value})({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal});
+		getEvents({ dayOfWeek: actualDay })({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal});
+	};
+
+	//update page after delete
+	useEffect(() => {
+		setFetchingLoading(true);
+		getEvents({ dayOfWeek: actualDay })({ setGetEventsResponse, setFetchingLoading, setDisplayErrorModal });
+	}, [confirmDelete]);
 	
 
-    const taskDeleteHandler = (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-        const target = e.target as HTMLButtonElement;
-        let newArray = allTasks.filter((task) => task.taskId !== target.id );
-        updateTask(newArray);
-    };
     return (
 		<TasksWrapper>
-			
+			{confirmDelete.show && <ConfirmDeleteModal actionFunction={taskDeleteHandler} value={confirmDelete.id} showModal={setConfirmDelete} />}
+			{displayErrorModal && <TasksErrorModal displayErrorModal={displayErrorModal} setDisplayErrorModal={setDisplayErrorModal} />}
 			{showModal && <TaskWarnigModal toggleModal={setShowModal} />}
             <div className="cardsList">
             <div className="timeCard">
@@ -78,7 +86,7 @@ export const Tasks = () => {
 											</div>
 											<div
 												className="deleteButton"
-												onClick={taskDeleteHandler}
+												onClick={() => setConfirmDelete({show: true, id: task.taskId})}
 												id={task.taskId}
 											>
 												Delete
