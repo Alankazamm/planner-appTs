@@ -1,6 +1,7 @@
 import React from 'react'
 import { eventStatus } from '../../../../contexts/tasksContext'
-import ErrorModal from './ErrorModal.styles';
+import { ErrorModal } from './Modal.styles';
+
 
 type props = {
     displayErrorModal: eventStatus|undefined,

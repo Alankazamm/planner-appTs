@@ -15,12 +15,21 @@ import { TasksContext } from '/src/contexts/tasksContext.tsx';
 import Spinner from "../../../../common/loading/Spinner.styles";
 import  spinner  from '/src/assets/svg/spinner-uol.svg';
 import LoadingModal from "../../../../common/loading/LoadingModal";
+import { useState } from 'react';
+import { TaskWarnigModal } from "../../../../common/error-handling/modal/TaskWarnigModal";
 
 export const Tasks = () => {
    
 	const { allTasks, actualDay, updateTask, setDisplayErrorModal, fetchingLoading }:
 		createContextType = useContext(TasksContext);
+	
+	const [showModal, setShowModal] = useState(false);
 		
+	useEffect(() => {
+		if (allTasks.length > 14) {
+			setShowModal(true);
+		}
+	}, [allTasks]);
 	
     let sameDayTasks = allTasks.filter((task) => task.taskDay === actualDay);
     let taskHours = sameDayTasks.map((task) => task.taskHour);
@@ -33,6 +42,7 @@ export const Tasks = () => {
 	// console.log(allTasks);
 
     // }, [actualDay, allTasks, updateTask]);
+	
 
     const taskDeleteHandler = (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const target = e.target as HTMLButtonElement;
@@ -42,7 +52,7 @@ export const Tasks = () => {
     return (
 		<TasksWrapper>
 			
-
+			{showModal && <TaskWarnigModal toggleModal={setShowModal} />}
             <div className="cardsList">
             <div className="timeCard">
 				<p>Time</p>
