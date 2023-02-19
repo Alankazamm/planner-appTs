@@ -19,13 +19,13 @@ import { useEffect } from 'react';
 export const TasksSection = () => {
   const { displayErrorModal, setDisplayErrorModal } = useContext(TasksContext);
   console.log(displayErrorModal);
-  
-  useEffect(() => {
-    console.log(displayErrorModal);
-  }, [setDisplayErrorModal, displayErrorModal]);
+
+  // useEffect(() => {
+  //   console.log(displayErrorModal);
+  // }, [setDisplayErrorModal, displayErrorModal]);
   return (
     <TasksProvider>
-      {displayErrorModal && <TasksErrorModal displayErrorModal={displayErrorModal} setDisplayErrorModal={setDisplayErrorModal} />}
+      {/* {displayErrorModal && <TasksErrorModal displayErrorModal={displayErrorModal} setDisplayErrorModal={setDisplayErrorModal} />} */}
           <TasksContainer>
               <ActionsSection />
               <TasksDisplayer />

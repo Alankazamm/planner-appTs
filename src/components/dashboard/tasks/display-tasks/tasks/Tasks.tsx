@@ -12,10 +12,15 @@ import TasksWrapper from "./TasksWrapper.styles";
 //context
 import { createContextType } from "../../../../../contexts/TasksContext";
 import { TasksContext } from '/src/contexts/tasksContext.tsx';
+import Spinner from "../../../../common/loading/Spinner.styles";
+import  spinner  from '/src/assets/svg/spinner-uol.svg';
+import LoadingModal from "../../../../common/loading/LoadingModal";
 
 export const Tasks = () => {
    
-	const { allTasks, actualDay, updateTask }: createContextType = useContext(TasksContext);
+	const { allTasks, actualDay, updateTask, setDisplayErrorModal, fetchingLoading }:
+		createContextType = useContext(TasksContext);
+		
 	
     let sameDayTasks = allTasks.filter((task) => task.taskDay === actualDay);
     let taskHours = sameDayTasks.map((task) => task.taskHour);
@@ -24,10 +29,10 @@ export const Tasks = () => {
     );
     taskHours = taskHours.sort((a, b) => a.localeCompare(b));
 	console.log(taskHours);
-    useEffect(() => {
-	console.log(allTasks);
+    // useEffect(() => {
+	// console.log(allTasks);
 
-    }, [actualDay, allTasks, updateTask]);
+    // }, [actualDay, allTasks, updateTask]);
 
     const taskDeleteHandler = (e:React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const target = e.target as HTMLButtonElement;
@@ -41,7 +46,8 @@ export const Tasks = () => {
             <div className="cardsList">
             <div className="timeCard">
 				<p>Time</p>
-			</div>
+				</div>
+				{fetchingLoading && <LoadingModal ><img src={spinner}></img></LoadingModal>}
 				{taskHours.map((hour, index) => (
 					<div className="tasksSameHour" id={"sameHour" + index} >
 						<TasksTimeCard actualDay={sameDayTasks.filter((task) => task.taskHour === hour).length > 1 ? 'conflict' : actualDay} key={"timeCard" + index}>

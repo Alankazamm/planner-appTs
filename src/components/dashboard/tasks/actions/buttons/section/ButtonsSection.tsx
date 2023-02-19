@@ -40,7 +40,8 @@ export const ButtonsSection = () => {
 		getEventsResponse,
     setGetEventsResponse,
     displayErrorModal,
-		setDisplayErrorModal,
+    setDisplayErrorModal,
+    setFetchingLoading,
 	}: createContextType = useContext(TasksContext);
 
   const [createIsLoading, setCreateIsLoading] = useState(false);
@@ -48,12 +49,10 @@ export const ButtonsSection = () => {
 	useEffect(() => {
 		if (createEventResponse.hasOwnProperty("status")) {
 			console.log(createEventResponse);
-			if (createEventResponse.status === eventStatus["Event created"]) {
-				getEvents({ dayOfWeek: actualDay })(setGetEventsResponse);
-				console.log(createEventResponse.data);
-			} else {
-				setDisplayErrorModal(createEventResponse.status);
-			}
+      if (createEventResponse.status === eventStatus["Event created"]) {
+        getEvents({ dayOfWeek: actualDay })({ setGetEventsResponse, setFetchingLoading, setDisplayErrorModal });
+        console.log(createEventResponse.data);
+      }
 		}
 	}, [createEventResponse]);
 
@@ -87,7 +86,7 @@ export const ButtonsSection = () => {
 				{setCreateEventResponse, setCreateIsLoading, setDisplayErrorModal}
       );
      
-			getEvents({ dayOfWeek: actualDay })(setGetEventsResponse);
+      getEvents({ dayOfWeek: actualDay })({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal});
 		}
   }
   console.log(displayErrorModal)

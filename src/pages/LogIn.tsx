@@ -28,7 +28,6 @@ export const LogIn = () => {
 	
 	useEffect(() => {
 		if (firstRender) {
-			
 			firstRender = false;
 			dispatch({ type: ActionType.LOG_USER });
 			localStorage.removeItem("token");

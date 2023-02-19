@@ -26,7 +26,9 @@ export type createContextType = {
 	getEventsResponse: getEventsType;
     setGetEventsResponse: React.Dispatch<React.SetStateAction<getEventsType>>;
     displayErrorModal: eventStatus|undefined,
-    setDisplayErrorModal: React.Dispatch<React.SetStateAction<eventStatus|undefined>>;
+    setDisplayErrorModal: React.Dispatch<React.SetStateAction<eventStatus | undefined>>;
+    fetchingLoading: boolean,
+    setFetchingLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 export type events = {
 	createdAt: string;
@@ -63,7 +65,8 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 	});
 	const [allTasks, setAllTasks] = useState<arrayOfTasks>([]);
 	const [actualDay, setDay] = useState("monday");
-	const [getEventsResponse, setGetEventsResponse] = useState<getEventsType>({});
+    const [getEventsResponse, setGetEventsResponse] = useState<getEventsType>({});
+    const [fetchingLoading, setFetchingLoading] = useState<boolean>(false);
     const [displayErrorModal, setDisplayErrorModal] = useState<eventStatus>();
 	console.log(task, "task");
 	console.log(allTasks, "allTasks");
@@ -87,14 +90,11 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 					}),
 				);
             }
-            else {
-                updateErrorModal(getEventsResponse.status!);
-            }
 		}
 	}, [getEventsResponse]);
 
 	useEffect(() => {
-        getEvents({ dayOfWeek: actualDay })(setGetEventsResponse);
+        getEvents({ dayOfWeek: actualDay })({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal});
         getEventsResponse.status? updateErrorModal(getEventsResponse.status): null;
 	}, [actualDay]);
 
@@ -121,6 +121,8 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
                 setGetEventsResponse,
                 displayErrorModal,
                 setDisplayErrorModal,
+                fetchingLoading,
+                setFetchingLoading
 			}}
 		>
 			{children}
