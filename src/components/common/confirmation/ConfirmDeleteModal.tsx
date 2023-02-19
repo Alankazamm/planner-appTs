@@ -2,20 +2,22 @@
 import { ConfirmModal } from './../error-handling/modal/Modal.styles';
 import warningIcon from '/src/assets/svg/icon-warning.svg';
 
-export const ConfirmDeleteModal = ({actionFunction, value, showModal}:{actionFunction:any, value:string, showModal:any}) => {
+export const ConfirmDeleteModal = ({actionFunction, value, showModal}:{actionFunction:any, value:{show:boolean, id?:string, dayOfWeek?:string}, showModal:any}) => {
   const actionHandler = () => {
-    actionFunction(value);
-    showModal({show: false, id: ''});
+   value.id ? actionFunction(value.id) : actionFunction(value.dayOfWeek);
+    value.id ? showModal({show: false, id: ''}) :  showModal({show: false, dayOfWeek: ''});
+
   }
   const cancelHandler = () => {
-    showModal({show: false, id: ''});
+    value.id ? showModal({show: false, id: ''}) :  showModal({show: false, dayOfWeek: ''});
   }
   return (
     <ConfirmModal>
       <div className="confirmModalContent">
         <div className="confirmModalTitle">
           <img src={warningIcon} alt="warning icon" />
-          <h2>Are you sure you want to delete this task?</h2>
+          {value.id && <h2>Are you sure you want to delete this task?</h2>}
+          {value.dayOfWeek && <h3>Are you sure you want to delete all tasks for {value.dayOfWeek}?</h3>}
         </div>
         <div className="confirmModalText">
           <p>

@@ -23,6 +23,7 @@ import Spinner from "../../../../../common/loading/Spinner.styles";
 import  spinner  from '/src/assets/svg/spinner-uol.svg';
 import { TasksErrorModal } from "../../../../../common/error-handling/modal/TasksErrorModal";
 import { deleteEvents } from "../../../../../../actions/delete-events/deleteEvents";
+import { ConfirmDeleteModal } from "../../../../../common/confirmation/ConfirmDeleteModal";
 
 
 type createEvent = {
@@ -32,7 +33,7 @@ type createEvent = {
 
 export const ButtonsSection = () => {
 	const [createEventResponse, setCreateEventResponse] = useState<createEvent>({});
-
+  const [confirmDelete, setConfirmDelete] = useState({show: false, dayOfWeek: ''});
 	const {
 		task,
 		allTasks,
@@ -107,9 +108,9 @@ export const ButtonsSection = () => {
 		}
   }
   console.log(displayErrorModal)
-	const deleteHandler = () => {
-		deleteEvents({ dayOfWeek: actualDay })({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal, setCreateIsLoading});
-    getEvents({ dayOfWeek: actualDay })({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal});
+	const deleteHandler = (dayOfWeek:string) => {
+		deleteEvents({ dayOfWeek })({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal, setCreateIsLoading});
+    getEvents({ dayOfWeek })({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal});
 	};
 
   const componentsOutput = createIsLoading ?
@@ -121,7 +122,7 @@ export const ButtonsSection = () => {
         text={"Add to calendar"}
       />
       <ActionsButton
-        onClick={deleteHandler}
+        onClick={() => setConfirmDelete({show: true, dayOfWeek: actualDay})}
         icon={"minusIcon"}
         text={"Delete All"}
       />
@@ -130,6 +131,7 @@ export const ButtonsSection = () => {
 
 	return (
     <ActionsContainerCommons>
+      {confirmDelete.show && <ConfirmDeleteModal actionFunction={deleteHandler} value={confirmDelete} showModal={setConfirmDelete}/> }
       {displayErrorModal && <TasksErrorModal displayErrorModal={displayErrorModal} setDisplayErrorModal={setDisplayErrorModal} />}
       {componentsOutput}
 		</ActionsContainerCommons>

@@ -58,7 +58,7 @@ export const Tasks = () => {
 
     return (
 		<TasksWrapper>
-			{confirmDelete.show && <ConfirmDeleteModal actionFunction={taskDeleteHandler} value={confirmDelete.id} showModal={setConfirmDelete} />}
+			{confirmDelete.show && <ConfirmDeleteModal actionFunction={taskDeleteHandler} value={confirmDelete} showModal={setConfirmDelete} />}
 			{displayErrorModal && <TasksErrorModal displayErrorModal={displayErrorModal} setDisplayErrorModal={setDisplayErrorModal} />}
 			{showModal && <TaskWarnigModal toggleModal={setShowModal} />}
             <div className="cardsList">
