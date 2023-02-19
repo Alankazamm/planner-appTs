@@ -7,10 +7,11 @@ export const deleteEvents = (event: { id?: string, dayOfWeek?: string }) =>
     if (event.id) {
         axiosInstance.delete(`/events/${event.id}`, { data: event }).then((res) => {
             setFetchingLoading(true);
+            setGetEventsResponse(res.data);
             setTimeout(() => {
                 
                 setFetchingLoading(false);
-            }, 1000);
+            }, 3000);
            
         }).catch((err) => {
             console.log(err.response.data);
@@ -23,6 +24,8 @@ export const deleteEvents = (event: { id?: string, dayOfWeek?: string }) =>
         
         axiosInstance.delete(`/events?dayOfWeek=${event.dayOfWeek}`, { data: event }).then((res) => {
             setCreateIsLoading(true);
+            setGetEventsResponse(res.data);
+
             setTimeout(() => {
                 setCreateIsLoading(false)
                 setFetchingLoading(false);

@@ -1,14 +1,18 @@
-import axiosInstance from "../../helpers/axios";
+
+import axios from 'axios';
+const BaseUrl = import.meta.env.VITE_REACT_API_URL;
 
 
 export const getEvents = (event: { description?: string, dayOfWeek?: string }) =>
     ({ setGetEventsResponse, setFetchingLoading, setDisplayErrorModal }:
         { setGetEventsResponse: any, setFetchingLoading: any, setDisplayErrorModal:any }) => {
         console.log(event);
-        
+       
+        console.log('token', localStorage.getItem('token'));
+
     setFetchingLoading(true);
     if (event.dayOfWeek) {
-        axiosInstance.get(`/events?dayOfWeek=${event.dayOfWeek}`, { data: event }).then((res) => {
+        axios.get(`${BaseUrl}/events?dayOfWeek=${event.dayOfWeek}`,{headers:{Authorization: `Bearer ${localStorage.getItem('token')}`}}, { data: event }).then((res) => {
             console.log(res);
             setGetEventsResponse(res);
             
@@ -28,7 +32,7 @@ export const getEvents = (event: { description?: string, dayOfWeek?: string }) =
         })
     }
     else {
-        axiosInstance.get(`/events`, { data: event }).then((res) => {
+        newAxiosInstance.get(`/events`, { data: event }).then((res) => {
             console.log(res);
             setGetEventsResponse(res);
             setTimeout(() => {
