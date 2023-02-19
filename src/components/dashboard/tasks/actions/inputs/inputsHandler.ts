@@ -1,6 +1,7 @@
 //hooks
 import { useContext } from 'react'
-import { createContextType, TasksContext } from '../../../../../contexts/TasksContext';
+import { createContextType, TasksContext } from '../../../../../contexts/tasksContext';
+
 
 
 export type eventTarget = React.ChangeEvent<HTMLInputElement>

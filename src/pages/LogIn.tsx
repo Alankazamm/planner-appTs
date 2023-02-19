@@ -13,7 +13,8 @@ import { BgSection } from "../components/aside/BgSection";
 import { LoginForm } from "../components/form/LoginForm";
 import { FormButton } from "../components/form/buttons/FormButton";
 //contexts
-import { UserContext } from "../contexts/UserContext";
+import { UserContext } from './../contexts/userContext';
+
 //types
 import { ActionType } from "../reducers/formReducer";
 //external funcs
