@@ -25,8 +25,8 @@ export type createContextType = {
 	updateTask: (taskArray: arrayOfTasks) => void;
 	getEventsResponse: getEventsType;
     setGetEventsResponse: React.Dispatch<React.SetStateAction<getEventsType>>;
-    displayErrorModal: boolean,
-    setDisplayErrorModal: React.Dispatch<React.SetStateAction<boolean>>;
+    displayErrorModal: eventStatus|undefined,
+    setDisplayErrorModal: React.Dispatch<React.SetStateAction<eventStatus|undefined>>;
 };
 export type events = {
 	createdAt: string;
@@ -44,7 +44,8 @@ export enum eventStatus {
 	"OK" = 200,
 }
 export type getEventsType = {
-	status?: eventStatus;
+    status?: eventStatus;
+    message?: string;
 	data?: {
 		events: events[];
 	};
@@ -63,15 +64,15 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 	const [allTasks, setAllTasks] = useState<arrayOfTasks>([]);
 	const [actualDay, setDay] = useState("monday");
 	const [getEventsResponse, setGetEventsResponse] = useState<getEventsType>({});
-    const [displayErrorModal, setDisplayErrorModal] = useState(false);
+    const [displayErrorModal, setDisplayErrorModal] = useState<eventStatus>();
 	console.log(task, "task");
 	console.log(allTasks, "allTasks");
-
+    console.log(displayErrorModal);
 	useEffect(() => {
 		if (getEventsResponse.hasOwnProperty("status")) {
 			console.log(getEventsResponse);
 			if (getEventsResponse.status === eventStatus["OK"]) {
-				console.log(getEventsResponse.data!.events);
+				
 				updateTask(
 					getEventsResponse!.data!.events!.map((event) => {
 						return {
@@ -87,20 +88,24 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 				);
             }
             else {
-                setDisplayErrorModal(true);
+                updateErrorModal(getEventsResponse.status!);
             }
 		}
 	}, [getEventsResponse]);
 
 	useEffect(() => {
-		getEvents({dayOfWeek:actualDay})(setGetEventsResponse);
+        getEvents({ dayOfWeek: actualDay })(setGetEventsResponse);
+        getEventsResponse.status? updateErrorModal(getEventsResponse.status): null;
 	}, [actualDay]);
 
 	const updateTask = (taskArray: arrayOfTasks) => {
 		setAllTasks(taskArray);
 		localStorage.setItem("tasks", JSON.stringify(taskArray));
 		console.log(allTasks);
-	};
+    };
+    const updateErrorModal = (status: eventStatus) => {
+        setDisplayErrorModal(status);
+    }
 
 	return (
 		<TasksContext.Provider

@@ -2,7 +2,7 @@
 //hooks
 import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/UserContext";
-import ErrorTooltip from "../common/error-handling/ErrorTooltip.styles";
+import ErrorTooltip from "../common/error-handling/tooltip/ErrorTooltip.styles";
 import { Form } from "./Form.styles";
 import { Icon } from "./icon/Icon";
 

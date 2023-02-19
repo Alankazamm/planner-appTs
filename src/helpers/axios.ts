@@ -10,6 +10,10 @@ let headers = {
 if (localStorage.getItem('token')) {
     headers.Authorization = `Bearer ${localStorage.getItem('token')}`
 }
+export const updateToken = (token: string) => {
+    headers.Authorization = `Bearer ${token}`
+    console.log(headers.Authorization);
+}
 const axiosInstance = axios.create({
     baseURL: BaseUrl,
     headers,

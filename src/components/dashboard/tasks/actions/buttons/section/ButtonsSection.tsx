@@ -21,6 +21,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Spinner from "../../../../../common/loading/Spinner.styles";
 import  spinner  from '/src/assets/svg/spinner-uol.svg';
+import { TasksErrorModal } from "../../../../../common/error-handling/modal/TasksErrorModal";
 
 
 type createEvent = {
@@ -37,7 +38,8 @@ export const ButtonsSection = () => {
 		actualDay,
 		updateTask,
 		getEventsResponse,
-		setGetEventsResponse,
+    setGetEventsResponse,
+    displayErrorModal,
 		setDisplayErrorModal,
 	}: createContextType = useContext(TasksContext);
 
@@ -50,7 +52,7 @@ export const ButtonsSection = () => {
 				getEvents({ dayOfWeek: actualDay })(setGetEventsResponse);
 				console.log(createEventResponse.data);
 			} else {
-				setDisplayErrorModal(true);
+				setDisplayErrorModal(createEventResponse.status);
 			}
 		}
 	}, [createEventResponse]);
@@ -73,18 +75,22 @@ export const ButtonsSection = () => {
 						};
 					}),
 				);
-			}
+      } else {
+        setDisplayErrorModal(getEventsResponse.status);
+      }
 		}
 	}, [getEventsResponse]);
 
 	function clickHandler() {
 		if (task.taskText.length > 0) {
 			createEvents({ description: task!.taskText, dayOfWeek: task!.taskDay })(
-				{setCreateEventResponse, setCreateIsLoading}
-			);
+				{setCreateEventResponse, setCreateIsLoading, setDisplayErrorModal}
+      );
+     
 			getEvents({ dayOfWeek: actualDay })(setGetEventsResponse);
 		}
-	}
+  }
+  console.log(displayErrorModal)
 	const deleteHandler = () => {
 		const newArray = allTasks.filter(
 			(tasks: taskState) => tasks.taskDay !== actualDay,
@@ -92,23 +98,25 @@ export const ButtonsSection = () => {
 		updateTask(newArray);
 	};
 
-  const componentsOutput = createIsLoading ? (
-    <Spinner> <img src={spinner}></img></Spinner>
-  ) : (<><ActionsButton
-    onClick={clickHandler}
-    icon={"plusIcon"}
-    text={"Add to calendar"}
-  />
-  <ActionsButton
-    onClick={deleteHandler}
-    icon={"minusIcon"}
-    text={"Delete All"}
-  /></>);
+  const componentsOutput = createIsLoading ?
+  (<Spinner> <img src={spinner}></img></Spinner>)
+    :(<>
+      <ActionsButton
+        onClick={clickHandler}
+        icon={"plusIcon"}
+        text={"Add to calendar"}
+      />
+      <ActionsButton
+        onClick={deleteHandler}
+        icon={"minusIcon"}
+        text={"Delete All"}
+      />
+    </>);
       
 
 	return (
     <ActionsContainerCommons>
-      
+      {displayErrorModal && <TasksErrorModal displayErrorModal={displayErrorModal} setDisplayErrorModal={setDisplayErrorModal} />}
       {componentsOutput}
 		</ActionsContainerCommons>
 	);

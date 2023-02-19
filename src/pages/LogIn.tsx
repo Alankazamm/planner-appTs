@@ -18,6 +18,7 @@ import { UserContext } from "../contexts/UserContext";
 import { ActionType } from "../reducers/formReducer";
 //external funcs
 import { login } from "../actions/auth/login";
+import { updateToken } from "../helpers/axios";
 
 let firstRender = true;
 export const LogIn = () => {
@@ -47,6 +48,7 @@ export const LogIn = () => {
 		if (formState.loginAuth.data) {
 			localStorage.setItem("token", formState.loginAuth.data.token);
 			localStorage.setItem("loggedUser", JSON.stringify(formState.loginAuth.data.user));
+			updateToken(formState.loginAuth.data.token);
 			navigate("/planner");
 		}
 	}, [formState.loginAuth.data]);
