@@ -1,7 +1,6 @@
 // description: this is the sign up page
 //hooks
 import { useContext, useEffect } from "react";
-import { UserContext } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 //styles
 import { BgSection } from "../components/aside/BgSection";
@@ -13,6 +12,9 @@ import { MainWrapper } from "../components/common/MainWrapper.styles";
 import { FormContainer } from "../components/form/containers/FormContainer.styles";
 //external funcs
 import { register } from "../actions/auth/register";
+//contexts
+import { UserContext } from './../contexts/userContext';
+
 // initial values
 let firstRender = true;
 //types

@@ -1,7 +1,6 @@
 //description: This is the form for the register page. 
 //It is used to collect user data and send it to the server.
 //hooks
-import { UserContext } from '../../contexts/UserContext';
 import { useContext } from "react";
 
 //Styles
@@ -13,6 +12,8 @@ import { Form } from "./Form.styles";
 //external functions
 import { ActionType } from "../../reducers/formReducer";
 import ErrorTooltip from '../common/error-handling/tooltip/ErrorTooltip.styles';
+//contexts
+import { UserContext } from './../../contexts/userContext';
 
 
 

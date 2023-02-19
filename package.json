@@ -1,12 +1,14 @@
 {
   "name": "planner-app",
-  "private": true,
+  "private": "true",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "env-cmd -f ./.env  vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.2",
