@@ -8,8 +8,8 @@ const LoadingModal = styled.div`
     right: 10px;
     width: 200vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    box-shadow: 0 0 110px 0 rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 110px 0 rgba(0, 0, 0, 0.1);
     z-index: 100;
     
     img{
