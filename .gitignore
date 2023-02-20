@@ -22,7 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
+src/.env
 # Secrets
 .env
 planner-app/.env
