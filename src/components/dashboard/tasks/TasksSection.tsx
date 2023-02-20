@@ -3,18 +3,14 @@
 
 //components
 import { ActionsSection } from "./actions/ActionsSection"
-
+import { TasksDisplayer } from "./display-tasks/TasksDisplayer"
 //styles
 import { TasksContainer } from "./TasksContainer.styles"
-
 //context
-
-import { TasksDisplayer } from "./display-tasks/TasksDisplayer"
-import { TasksProvider } from "../../../contexts/tasksContext"
-
+import {  TasksProvider } from "../../../contexts/tasksContext"
 
 export const TasksSection = () => {
-  return (
+   return (
     <TasksProvider>
           <TasksContainer>
               <ActionsSection />

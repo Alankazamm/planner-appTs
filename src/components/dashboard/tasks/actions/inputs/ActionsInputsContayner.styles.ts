@@ -22,7 +22,8 @@ gap:3px;
     .taskText{
         width: 374px;
         padding-left:15px;
-        height: 41px;
+        padding-right: 15px;
+        height: 45px;
        
     }
     .taskWeekDay{

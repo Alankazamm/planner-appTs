@@ -7,10 +7,11 @@ import { Navigate } from 'react-router-dom';
 import { Planner } from "../pages/Planner";
 
 export const ProtectPlanner = () => {
-   
+    //navigate to login page if there is no token in local storage
+    
     return(
         <>
-            {localStorage.getItem('token') ? <Planner/>: <Navigate to="/login" />}
+            {localStorage.getItem('token') ? <Planner/> : <Navigate to="/login" />}
         </>
     )
 }

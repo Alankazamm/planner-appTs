@@ -9,23 +9,19 @@ import { TasksButton } from './TasksButton.styles'
 import { TasksButtonsContainer } from './TasksButtonsContainer.styles'
 
 //context
-
-
-//types
-import { createContextType } from '../../../../../contexts/tasksContext';
-import { TasksContext } from '../../../../../contexts/tasksContext';
+import { createContextType, TasksContext } from '../../../../../contexts/tasksContext';
 
 export const TasksButtonsSection = () => {
     const { actualDay, setDay }:createContextType = useContext(TasksContext);
   return (
     <TasksButtonsContainer>
-            <TasksButton id="Monday" actualDay={actualDay} onClick={e => setDay("Monday")}><span>Monday</span></TasksButton>
-            <TasksButton id="Tuesday" actualDay={actualDay} onClick={e =>setDay("Tuesday")}><span>Tuesday</span></TasksButton>
-            <TasksButton id="Wednesday" actualDay={actualDay} onClick={e =>setDay("Wednesday")}><span>Wednesday</span></TasksButton>
-            <TasksButton id="Thursday" actualDay={actualDay} onClick={e =>setDay("Thursday")}><span>Thursday</span></TasksButton>
-            <TasksButton id="Friday" actualDay={actualDay} onClick={e =>setDay("Friday")}><span>Friday</span></TasksButton>
-            <TasksButton id="Saturday" actualDay={actualDay} onClick={e =>setDay("Saturday")}><span>Saturday</span></TasksButton>
-            <TasksButton id="Sunday" actualDay={actualDay} onClick={e => setDay("Sunday")}><span>Sunday</span></TasksButton>
+            <TasksButton id="monday" actualDay={actualDay} onClick={e => setDay("monday")}><span>Monday</span></TasksButton>
+            <TasksButton id="tuesday" actualDay={actualDay} onClick={e =>setDay("tuesday")}><span>Tuesday</span></TasksButton>
+            <TasksButton id="wednesday" actualDay={actualDay} onClick={e =>setDay("wednesday")}><span>Wednesday</span></TasksButton>
+            <TasksButton id="thursday" actualDay={actualDay} onClick={e =>setDay("thursday")}><span>Thursday</span></TasksButton>
+            <TasksButton id="friday" actualDay={actualDay} onClick={e =>setDay("friday")}><span>Friday</span></TasksButton>
+            <TasksButton id="saturday" actualDay={actualDay} onClick={e =>setDay("saturday")}><span>Saturday</span></TasksButton>
+            <TasksButton id="sunday" actualDay={actualDay} onClick={e => setDay("sunday")}><span>Sunday</span></TasksButton>
     </TasksButtonsContainer>
   )
 }

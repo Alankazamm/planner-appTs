@@ -5,8 +5,10 @@ export const InputWrapper = styled.div`
     align-items: center;
     justify-content: space-between;
     width:  24.5vw;
+    position: relative;
 `
 
 export const LoginInputWrapper = styled(InputWrapper)`
 position: relative;
+
 `

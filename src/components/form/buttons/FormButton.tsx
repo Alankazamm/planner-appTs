@@ -1,19 +1,27 @@
-import { Redirect } from "../../redirects/form/Redirect";
-import { StyledFormBtn } from "./FormButton.styles";
+//description: this burron is used in login and register forms
 
+//components
+import { Redirect } from "../../redirects/form/Redirect";
+//styles
+import { StyledFormBtn } from "./FormButton.styles";
+//assets
+import spinner from '/src/assets/svg/spinner-uol.svg'
+//types
 type formButtonProps = {
     text: string;
     page: string;
     redirectText: string;
     onClick: React.MouseEventHandler<HTMLButtonElement>;
+    isLoading: boolean;
 }
+
 export const FormButton  = (props:formButtonProps) => {
-  
+
     return (
-        <div style={{width: "100%"}} >
-            <StyledFormBtn onClick={props.onClick}>{props.text}</StyledFormBtn>
+        <StyledFormBtn>
+            {props.isLoading? <img src={spinner}></img>: <button onClick={props.onClick} >{props.text}</button>}
             <Redirect page={props.page} text={props.redirectText} />
-        </div>
+        </StyledFormBtn>
         
     )
 }

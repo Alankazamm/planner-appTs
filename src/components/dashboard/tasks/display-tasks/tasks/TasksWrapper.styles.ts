@@ -9,13 +9,14 @@ const TasksWrapper = styled.div`
     gap: 3px;
     position: sticky;
     margin-left: 24px;
-
+    height: 73vh;
+ 
     .timeCard{
         background: #FFFFFF;
         box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.25);
         border-radius: 10px;
         width: 85px;
-        height: 75px;
+        min-height: 75px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -27,9 +28,31 @@ const TasksWrapper = styled.div`
         justify-content: flex-start;
         align-items: flex-start;
         overflow: auto;
-        height: 700px;
+        height: 100%;
         width: 99.5%;
+        ::-webkit-scrollbar{
+            width: 16px;
+            background: white;
+            border-radius: 16px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
        
+        ::-webkit-scrollbar-track-piece {
+            display: block;
+            height: 16px;
+            max-width: 16px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(220, 223, 227, 1);
+            border: 4px solid rgba(255, 255, 255, 1);
+            border-radius: 30px;
+        }
+        
+        ::-webkit-scrollbar-corner {
+            display: none;
+        }
     }
     .tasksSameHour{ 
         display: flex;
@@ -59,6 +82,7 @@ const TasksWrapper = styled.div`
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        position: relative;
         
     }
     .taskCard{
@@ -68,6 +92,8 @@ const TasksWrapper = styled.div`
         box-shadow: 0px 2px 5.5px rgba(0, 0, 0, 0.02);
         margin-right: 16px;
         border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 1);
+        border-left: none;
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -100,6 +126,21 @@ const TasksWrapper = styled.div`
         padding-left: 25px;
         max-width:80%;
         overflow:auto;
+    }
+    .circle{
+        position: absolute;
+        left: -23px;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: rgba(0, 0, 0, 0.7);
+    }
+    .stroke{
+        position: absolute;
+        left: -12px;
+        width: 110%;
+        height:2px;
+        background: rgba(0, 0, 0, 0.7);
     }
 `;
 

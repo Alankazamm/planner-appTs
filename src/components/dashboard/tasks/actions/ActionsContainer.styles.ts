@@ -5,7 +5,7 @@ export const ActionsContainerCommons = styled.div`
     justify-content: space-between;    
 `
 export const ActionsContainer = styled(ActionsContainerCommons)`
-    padding-top: 165px;
+    padding-top: 35px;
     padding-left: 24px;
     padding-right: 23px;
 `

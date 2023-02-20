@@ -18,7 +18,6 @@ export const useTimer = () => {
     //description: this useEffect is used to set the time and date
     //it is also used to update the time every 10 seconds
     useEffect(() => {
-       console.log('useEffect');
         if (firstRender) {
 			setFirstRender(false);
 			const date = new Date();
