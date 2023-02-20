@@ -1,18 +1,16 @@
 
-import { axiosInstance, updateToken } from './../../helpers/axios';
+import axios from 'axios';
+import { BaseUrl } from './../../helpers/axios';
 
 
 export const getEvents = (event: { description?: string, dayOfWeek?: string }) =>
     ({ setGetEventsResponse, setFetchingLoading, setDisplayErrorModal }:
         { setGetEventsResponse: any, setFetchingLoading: any, setDisplayErrorModal: any }) => {
-        console.log(event);
-        updateToken(localStorage.getItem('token')!);
-        console.log('token', localStorage.getItem('token'));
+       
 
         setFetchingLoading(true);
         if (event.dayOfWeek) {
-            axiosInstance.get(`/events?dayOfWeek=${event.dayOfWeek}`, { data: event }).then((res) => {
-                console.log(res);
+            axios.get(`${BaseUrl}/events?dayOfWeek=${event.dayOfWeek}`,{ headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, data: event }).then((res) => {
                 setGetEventsResponse(res);
 
 setTimeout(() => {
@@ -32,8 +30,7 @@ setTimeout(() => {
             })
         }
         else {
-            axiosInstance.get(`/events`, { data: event }).then((res) => {
-                console.log(res);
+            axios.get(`/events`,{ headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, data: event }).then((res) => {
                 setGetEventsResponse(res);
                 setTimeout(() => {
 

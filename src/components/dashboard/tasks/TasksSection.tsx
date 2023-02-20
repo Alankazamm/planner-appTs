@@ -3,29 +3,15 @@
 
 //components
 import { ActionsSection } from "./actions/ActionsSection"
-
+import { TasksDisplayer } from "./display-tasks/TasksDisplayer"
 //styles
 import { TasksContainer } from "./TasksContainer.styles"
-
 //context
-
-import { TasksDisplayer } from "./display-tasks/TasksDisplayer"
-import { TasksContext, TasksProvider } from "../../../contexts/tasksContext"
-import { useContext } from 'react';
-import { TasksErrorModal } from "../../common/error-handling/modal/TasksErrorModal";
-import { useEffect } from 'react';
-
+import {  TasksProvider } from "../../../contexts/tasksContext"
 
 export const TasksSection = () => {
-  const { displayErrorModal, setDisplayErrorModal } = useContext(TasksContext);
-  console.log(displayErrorModal);
-
-  // useEffect(() => {
-  //   console.log(displayErrorModal);
-  // }, [setDisplayErrorModal, displayErrorModal]);
-  return (
+   return (
     <TasksProvider>
-      {/* {displayErrorModal && <TasksErrorModal displayErrorModal={displayErrorModal} setDisplayErrorModal={setDisplayErrorModal} />} */}
           <TasksContainer>
               <ActionsSection />
               <TasksDisplayer />

@@ -30,8 +30,6 @@ import { deleteEvents } from "../../../../../../actions/delete-events/deleteEven
 import {axiosInstance} from "../../../../../../helpers/axios";
 
 export const ButtonsSection = () => {
-	
-	const token = localStorage.getItem('token');
 
 	const [createIsLoading, setCreateIsLoading] = useState(false);
 	const [createEventResponse, setCreateEventResponse] = useState<createEvent>({});
@@ -52,14 +50,12 @@ export const ButtonsSection = () => {
 	//rerenders on createEventResponse change
 	useEffect(() => {
 		if (createEventResponse.hasOwnProperty("status")) {
-			console.log(createEventResponse);
 			if (createEventResponse.status === eventStatus["Event created"]) {
 				getEvents({ dayOfWeek: actualDay })({
 					setGetEventsResponse,
 					setFetchingLoading,
 					setDisplayErrorModal,
 				});
-				console.log(createEventResponse.data);
 			}
 		}
 	}, [createEventResponse]);
@@ -67,7 +63,6 @@ export const ButtonsSection = () => {
 	//rerenders on deleteEventsResponse change
 	useEffect(() => {
 		if (deleteEventsResponse.hasOwnProperty("status")) {
-			console.log(deleteEventsResponse);
 			if (deleteEventsResponse.status === eventStatus["OK"]) {
 				
 				getEvents({ dayOfWeek: actualDay })({
@@ -102,9 +97,7 @@ export const ButtonsSection = () => {
 	//rerenders on getEventsResponse change because of delete or create
 	useEffect(() => {
 		if (getEventsResponse.hasOwnProperty("status")) {
-			console.log(getEventsResponse);
 			if (getEventsResponse.status === eventStatus["OK"]) {
-				console.log(getEventsResponse.data!.events);
 				updateTask(
 					getEventsResponse!.data!.events!.map((event: events) => {
 						return {

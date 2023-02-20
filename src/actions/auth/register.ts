@@ -41,19 +41,15 @@ export const register = ({
         password,
         confirmPassword,
     }).then((res) => {
-        console.log(res)
         dispatch({ type: ActionType.REGISTER_SUCCESS, payload: res.data });
     }).catch((err) => {
         let arrErrors = [];
-        console.log(err.response.data)
         if (err.response.data.hasOwnProperty('errors')){
             for (let key in err.response.data.errors) {
                 arrErrors.push(err.response.data.errors[key]);
             }
-            console.log(arrErrors);
         } else {
             arrErrors.push(err.response.data);
-            console.log(arrErrors);
         }
         dispatch({ type: ActionType.REGISTER_FAIL, payload: arrErrors });
     })

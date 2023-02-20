@@ -27,10 +27,12 @@ export type createContextType = {
 	setGetEventsResponse: React.Dispatch<React.SetStateAction<getEventsType>>;
 	deleteEventsResponse: any;
 	setDeleteEventsResponse: React.Dispatch<React.SetStateAction<any>>;
-    displayErrorModal: eventStatus|undefined,
-    setDisplayErrorModal: React.Dispatch<React.SetStateAction<eventStatus | undefined>>;
-    fetchingLoading: boolean,
-    setFetchingLoading: React.Dispatch<React.SetStateAction<boolean>>;
+	displayErrorModal: eventStatus | undefined;
+	setDisplayErrorModal: React.Dispatch<
+		React.SetStateAction<eventStatus | undefined>
+	>;
+	fetchingLoading: boolean;
+	setFetchingLoading: React.Dispatch<React.SetStateAction<boolean>>;
 };
 export type events = {
 	createdAt: string;
@@ -43,23 +45,23 @@ export type events = {
 export enum eventStatus {
 	"Access denied" = 401,
 	"Event not found" = 404,
-	"Internal server error" = 500|501,
+	"Internal server error" = 500 | 501,
 	"Event created" = 201,
 	"OK" = 200,
 	"Invalid data" = 400,
 }
 export type getEventsType = {
-    status?: eventStatus;
-    message?: string;
+	status?: eventStatus;
+	message?: string;
 	data?: {
 		events: events[];
 	};
 };
 
-export const TasksContext = createContext({} as createContextType);
+let firstRender = true;
 
+export const TasksContext = createContext({} as createContextType);
 export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
-	console.log("tasksContext");
 	const [task, setTask] = useState({
 		taskText: "",
 		taskDay: "monday",
@@ -70,17 +72,12 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 	const [actualDay, setDay] = useState("monday");
 	const [getEventsResponse, setGetEventsResponse] = useState<getEventsType>({});
 	const [deleteEventsResponse, setDeleteEventsResponse] = useState<any>({});
-    const [fetchingLoading, setFetchingLoading] = useState<boolean>(false);
-    const [displayErrorModal, setDisplayErrorModal] = useState<eventStatus>();
-	console.log(task, "task");
-	console.log(allTasks, "allTasks");
-	console.log(displayErrorModal);
-	
+	const [fetchingLoading, setFetchingLoading] = useState<boolean>(false);
+	const [displayErrorModal, setDisplayErrorModal] = useState<eventStatus>();
+
 	useEffect(() => {
 		if (getEventsResponse.hasOwnProperty("status")) {
-			console.log(getEventsResponse);
 			if (getEventsResponse.status === eventStatus["OK"]) {
-				
 				updateTask(
 					getEventsResponse!.data!.events!.map((event) => {
 						return {
@@ -94,24 +91,33 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 						};
 					}),
 				);
-            }else {
+			} else {
 				setDisplayErrorModal(getEventsResponse.status);
 			}
 		}
 	}, [getEventsResponse]);
 
-
 	useEffect(() => {
-        getEvents({ dayOfWeek: actualDay })({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal});
-        getEventsResponse.status? updateErrorModal(getEventsResponse.status): null;
+		if (firstRender) {
+			firstRender = false;
+			return;
+		}
+		getEvents({ dayOfWeek: actualDay })({
+			setGetEventsResponse,
+			setFetchingLoading,
+			setDisplayErrorModal,
+		});
+		getEventsResponse.status
+			? updateErrorModal(getEventsResponse.status)
+			: null;
 	}, [actualDay]);
 
 	const updateTask = (taskArray: arrayOfTasks) => {
 		setAllTasks(taskArray);
-    };
-    const updateErrorModal = (status: eventStatus) => {
-        setDisplayErrorModal(status);
-    }
+	};
+	const updateErrorModal = (status: eventStatus) => {
+		setDisplayErrorModal(status);
+	};
 
 	return (
 		<TasksContext.Provider
@@ -124,10 +130,10 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 				setDay,
 				updateTask,
 				getEventsResponse,
-                setGetEventsResponse,
-                displayErrorModal,
-                setDisplayErrorModal,
-                fetchingLoading,
+				setGetEventsResponse,
+				displayErrorModal,
+				setDisplayErrorModal,
+				fetchingLoading,
 				setFetchingLoading,
 				setDeleteEventsResponse,
 				deleteEventsResponse,

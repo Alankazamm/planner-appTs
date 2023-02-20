@@ -10,6 +10,7 @@ export const deleteEvents = (event: { id?: string, dayOfWeek?: string }) =>
             setFetchingLoading(true);
             axios.delete(`${BaseUrl}/events/${event.id}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, data: event }).then((res) => {
                 setFetchingLoading(false);
+                setDeleteEventsResponse(res);
             }).catch((err) => {
                 console.log(err.response.data);
                 setFetchingLoading(false);
@@ -19,9 +20,9 @@ export const deleteEvents = (event: { id?: string, dayOfWeek?: string }) =>
         }
         else {
             setCreateIsLoading(true);
-            console.log(event);
             axios.delete(`${BaseUrl}/events?dayOfWeek=${event.dayOfWeek}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, data: event }).then((res) => {
                 // setGetEventsResponse(res.data);
+                
                 console.log('a', res);
                 setCreateIsLoading(false);
                 setDeleteEventsResponse(res);

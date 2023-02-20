@@ -51,7 +51,6 @@ export const UserContextProvider = ({ children }: { children: React.ReactNode })
 	
 	//hooks
 	const [formState, dispatch]: reducerDestructure = useReducer(formsReducer, initialState);
-	console.log('formstate',formState);
     const navigate = useNavigate();
 
 	//functions

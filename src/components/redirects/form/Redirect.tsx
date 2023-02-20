@@ -5,7 +5,7 @@ import {RedirectWrapper} from './RedirectWrapper'
 export const Redirect = ({page, text}:{page:string, text:string}) => {
   
   return (
-    <RedirectWrapper >
+    <RedirectWrapper  >
       <p>{text}  <a href={`/${page}`}>{page}</a></p>
     </RedirectWrapper>
   )

@@ -23,7 +23,7 @@ import { createContextType, TasksContext } from "../../../../../contexts/tasksCo
 
 export const Tasks = () => {
    
-	const { allTasks, actualDay, setDisplayErrorModal, fetchingLoading, setGetEventsResponse, setFetchingLoading, displayErrorModal }:
+	const { allTasks, actualDay, setDisplayErrorModal, fetchingLoading, setGetEventsResponse, setFetchingLoading, displayErrorModal,setDeleteEventsResponse }:
 		createContextType = useContext(TasksContext);
 	
 	const [showModal, setShowModal] = useState(false);
@@ -40,11 +40,9 @@ export const Tasks = () => {
         (hour, index) => taskHours.indexOf(hour) === index,
     );
     taskHours = taskHours.sort((a, b) => a.localeCompare(b));
-	console.log(taskHours);
 
     const taskDeleteHandler = (value:string) => {
-		console.log(value);
-		deleteEvents({ id: value})({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal});
+		deleteEvents({ id: value})({setDeleteEventsResponse, setFetchingLoading, setDisplayErrorModal});
 		getEvents({ dayOfWeek: actualDay })({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal});
 	};
 

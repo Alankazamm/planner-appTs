@@ -16,7 +16,6 @@ import Spinner from './../../../common/loading/Spinner.styles';
 const Weather = () => {
 
 	const user = JSON.parse(localStorage.getItem('loggedUser') || '{}')
-	console.log(localStorage.getItem('loggedUser'))
 	const city: string | undefined = user.city;
     const country: string | undefined = user.country;
     const forecast:any = useFetchWeather(city?city:'');
