@@ -2,7 +2,6 @@ import axios from 'axios';
 
 
 export const BaseUrl = import.meta.env.VITE_REACT_API_URL;
-console.log(BaseUrl);
 let headers = {
     'Authorization': `Bearer 1234567`
 }
@@ -18,8 +17,3 @@ export const axiosInstance = axios.create({
     baseURL: BaseUrl,
     headers,
 });
- console.log(localStorage.getItem('token'));
-
-//replace / to - in 12/12/1999
-// const date = '12/12/1999';
-// const newDate = date.replace(/\//g, '-');

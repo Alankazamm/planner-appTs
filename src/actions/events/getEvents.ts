@@ -15,19 +15,20 @@ export const getEvents = (event: { description?: string, dayOfWeek?: string }) =
                 console.log(res);
                 setGetEventsResponse(res);
 
-
+setTimeout(() => {
                 setFetchingLoading(false);
                 //8 secs in milliseconds is
+            }, 1000);
 
 
             }).catch((err) => {
                 setGetEventsResponse(err.response.data);
                 setDisplayErrorModal(err.response.data.status);
 
-
+setTimeout(() => {
                 setFetchingLoading(false);
                 //set 10 seconds to show the loading
-
+            }, 1111);
             })
         }
         else {
@@ -38,7 +39,7 @@ export const getEvents = (event: { description?: string, dayOfWeek?: string }) =
 
                     setFetchingLoading(false);
                     //set 10 seconds to show the loading
-                }, 1000);
+                }, 11000);
             }).catch((err) => {
                 setGetEventsResponse(err.response.data);
                 setDisplayErrorModal(err.response.data.status);

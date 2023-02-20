@@ -1,55 +1,43 @@
 import { useContext } from "react";
 //description: this section contains the buttons to add and delete tasks
+//hooks
+import { useState, useEffect } from "react";
 //styles
 import { ActionsContainerCommons } from "../../ActionsContainer.styles";
-//types
-
-//components
-import { ActionsButton } from "../ActionsButton";
-//context
-
-import { getEvents } from "./../../../../../../actions/events/getEvents";
-// import {
-// 	TasksContext,
-// 	createContextType,
-// 	events,
-// 	eventStatus,
-// 	taskState,
-// } from "/src/contexts/tasksContext.tsx";
-import { useState } from "react";
-import { useEffect } from "react";
 import Spinner from "../../../../../common/loading/Spinner.styles";
+//assets
 import spinner from "/src/assets/svg/spinner-uol.svg";
-import { TasksErrorModal } from "../../../../../common/error-handling/modal/TasksErrorModal";
-import { deleteEvents } from "../../../../../../actions/delete-events/deleteEvents";
-import { ConfirmDeleteModal } from "../../../../../common/confirmation/ConfirmDeleteModal";
-import {
-	TasksContext,
-	createContextType,
-	events,
-	taskState,
-	eventStatus,
-} from "../../../../../../contexts/tasksContext";
-import {axiosInstance} from "../../../../../../helpers/axios";
-
-
-
+//types
 type createEvent = {
 	status?: eventStatus;
 	data?: events;
 };
+//components
+import { ActionsButton } from "../ActionsButton";
+import { TasksErrorModal } from "../../../../../common/error-handling/modal/TasksErrorModal";
+import { ConfirmDeleteModal } from "../../../../../common/confirmation/ConfirmDeleteModal";
+//context
+import {
+	TasksContext,
+	createContextType,
+	events,
+	eventStatus,
+} from "../../../../../../contexts/tasksContext";
+
+//api functions
+import { getEvents } from "./../../../../../../actions/events/getEvents";
+import { deleteEvents } from "../../../../../../actions/delete-events/deleteEvents";
+import {axiosInstance} from "../../../../../../helpers/axios";
 
 export const ButtonsSection = () => {
-	const [createEventResponse, setCreateEventResponse] = useState<createEvent>(
-		{},
-	);
-	const [confirmDelete, setConfirmDelete] = useState({
-		show: false,
-		dayOfWeek: "",
-	});
+	
+	const token = localStorage.getItem('token');
+
+	const [createIsLoading, setCreateIsLoading] = useState(false);
+	const [createEventResponse, setCreateEventResponse] = useState<createEvent>({});
+	const [confirmDelete, setConfirmDelete] = useState({show: false,dayOfWeek: ""});	
 	const {
 		task,
-		allTasks,
 		actualDay,
 		updateTask,
 		getEventsResponse,
@@ -61,8 +49,7 @@ export const ButtonsSection = () => {
 		deleteEventsResponse
 	}: createContextType = useContext(TasksContext);
 
-	const [createIsLoading, setCreateIsLoading] = useState(false);
-	const token = localStorage.getItem('token');
+	//rerenders on createEventResponse change
 	useEffect(() => {
 		if (createEventResponse.hasOwnProperty("status")) {
 			console.log(createEventResponse);
@@ -77,6 +64,7 @@ export const ButtonsSection = () => {
 		}
 	}, [createEventResponse]);
 
+	//rerenders on deleteEventsResponse change
 	useEffect(() => {
 		if (deleteEventsResponse.hasOwnProperty("status")) {
 			console.log(deleteEventsResponse);
@@ -94,7 +82,7 @@ export const ButtonsSection = () => {
 		}
 	}, [deleteEventsResponse]);
 	
-	//update the state of page after deleting an event
+	//rerenders on getEventsResponse change
 	useEffect(() => {
 		if (getEventsResponse.hasOwnProperty("status")) {
 			if (getEventsResponse.status === eventStatus["OK"]) {
@@ -111,6 +99,7 @@ export const ButtonsSection = () => {
 			}
 		}
 	}, [getEventsResponse]);
+	//rerenders on getEventsResponse change because of delete or create
 	useEffect(() => {
 		if (getEventsResponse.hasOwnProperty("status")) {
 			console.log(getEventsResponse);
@@ -134,16 +123,10 @@ export const ButtonsSection = () => {
 			}
 		}
 	}, [getEventsResponse]);
-
-	
-	
-	
+	//request API to create events
 	const createEvents = ({description, dayOfWeek}: { description: string, dayOfWeek: string }) => {
-		
 		setCreateIsLoading(true);
-		
 		axiosInstance.post(`/events`, { description, dayOfWeek }).then((response) => {
-			console.log(response);
 			setCreateEventResponse(response);
 			setCreateIsLoading(false);
 		}).catch(error => {
@@ -153,14 +136,11 @@ export const ButtonsSection = () => {
 		setCreateEventResponse(error.response.data);
 
 	})
-	console.log(token);
 }
-
+	//handles the click on the add button
 	function clickHandler() {
 		if (task.taskText.length > 0) {
-			
 			 createEvents({ description: task!.taskText, dayOfWeek: task!.taskDay })
-
 			getEvents({ dayOfWeek: actualDay })({
 				setGetEventsResponse,
 				setFetchingLoading,
@@ -168,7 +148,7 @@ export const ButtonsSection = () => {
 			});
 		}
 	}
-	console.log(displayErrorModal);
+	//handles the click on the delete button
 	const deleteHandler = (dayOfWeek: string) => {
 		deleteEvents({ dayOfWeek })({
 			setDeleteEventsResponse,
