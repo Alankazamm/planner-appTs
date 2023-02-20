@@ -1,43 +1,49 @@
-import axiosInstance from "../../helpers/axios";
+import axios from "axios";
+import { BaseUrl } from './../../helpers/axios';
+
 
 
 export const deleteEvents = (event: { id?: string, dayOfWeek?: string }) => 
-({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal, setCreateIsLoading}:{setGetEventsResponse:any,setFetchingLoading:any, setDisplayErrorModal:any, setCreateIsLoading?:any}) =>{
+({setDeleteEventsResponse, setFetchingLoading, setDisplayErrorModal, setCreateIsLoading}:{setDeleteEventsResponse:any,setFetchingLoading:any, setDisplayErrorModal:any, setCreateIsLoading?:any}) =>{
     
     if (event.id) {
-        axiosInstance.delete(`/events/${event.id}`, { data: event }).then((res) => {
-            setFetchingLoading(true);
-            setGetEventsResponse(res.data);
+        setFetchingLoading(true);
+
+        axios.delete(`${BaseUrl}/events/${event.id}`,{headers:{ Authorization: `Bearer ${localStorage.getItem('token')}` },  data: event }).then((res) => {
+            // setGetEventsResponse(res.data);
             setTimeout(() => {
                 
                 setFetchingLoading(false);
-            }, 3000);
+            }, 1000);
            
         }).catch((err) => {
             console.log(err.response.data);
             setFetchingLoading(false);
             setDisplayErrorModal(err.response.data.status);
-            setGetEventsResponse(err.response.data);
+            setDeleteEventsResponse(err.response.data);
         })
     }
     else {
-        
-        axiosInstance.delete(`/events?dayOfWeek=${event.dayOfWeek}`, { data: event }).then((res) => {
-            setCreateIsLoading(true);
-            setGetEventsResponse(res.data);
-
+        setCreateIsLoading(true);
+console.log(event);
+        axios.delete(`${BaseUrl}/events?dayOfWeek=${event.dayOfWeek}`,{headers:{ Authorization: `Bearer ${localStorage.getItem('token')}` },  data: event }).then((res) => {
+            // setGetEventsResponse(res.data);
+        console.log('a',res);
             setTimeout(() => {
-                setCreateIsLoading(false)
+                setCreateIsLoading(false);
+                setDeleteEventsResponse(res);
+
                 setFetchingLoading(false);
             }, 1000);
         }).catch((err) => {
+            
             setFetchingLoading(false);
             setDisplayErrorModal(err.response.data.status);
-            setGetEventsResponse(err.response.data);
+            setDeleteEventsResponse(err.response.data);
         })
     }
             
-    // axiosInstance.post('/events', event).then((res) => {
+    // axios.post('/events', event).then((res) => {
     //     setFetchingLoading(false);
     //     
     // }).catch((err) => {

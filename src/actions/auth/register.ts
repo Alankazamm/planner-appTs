@@ -1,7 +1,7 @@
 //description: this file is used to register a new user, it uses the axios instance to send the data to the server
 // and then it dispatches the data to the reducer
 
-import axiosInstance from "../../helpers/axios";
+import {axiosInstance} from "../../helpers/axios";
 import { ActionType } from "../../reducers/formReducer";
 
 let response: any;

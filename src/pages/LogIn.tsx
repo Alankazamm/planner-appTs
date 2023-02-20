@@ -48,7 +48,7 @@ export const LogIn = () => {
 		if (formState.loginAuth.data) {
 			localStorage.setItem("token", formState.loginAuth.data.token);
 			localStorage.setItem("loggedUser", JSON.stringify(formState.loginAuth.data.user));
-		
+			updateToken(formState.loginAuth.data.token)
 			navigate("/planner");
 		}
 	}, [formState.loginAuth.data]);

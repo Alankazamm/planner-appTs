@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 
-const BaseUrl = import.meta.env.VITE_REACT_API_URL;
+export const BaseUrl = import.meta.env.VITE_REACT_API_URL;
+console.log(BaseUrl);
 let headers = {
     'Authorization': `Bearer 1234567`
 }
@@ -13,13 +14,11 @@ export const updateToken = (token: string) => {
     headers.Authorization = `Bearer ${token}`
     console.log(headers.Authorization);
 }
-let axiosInstance = axios.create({
+export const axiosInstance = axios.create({
     baseURL: BaseUrl,
     headers,
 });
-console.log(axiosInstance);
  console.log(localStorage.getItem('token'));
-export default axiosInstance;
 
 //replace / to - in 12/12/1999
 // const date = '12/12/1999';

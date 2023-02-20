@@ -1,5 +1,5 @@
 //description: this file is used to login the user
-import axiosInstance from "../../helpers/axios";
+import {axiosInstance} from "../../helpers/axios";
 import { ActionType } from "../../reducers/formReducer";
 import { updateToken } from './../../helpers/axios';
 let response: any;

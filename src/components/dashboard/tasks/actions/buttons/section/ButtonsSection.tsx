@@ -8,7 +8,6 @@ import { ActionsContainerCommons } from "../../ActionsContainer.styles";
 import { ActionsButton } from "../ActionsButton";
 //context
 
-import { createEvents } from "./../../../../../../actions/events/createEvent";
 import { getEvents } from "./../../../../../../actions/events/getEvents";
 // import {
 // 	TasksContext,
@@ -31,6 +30,9 @@ import {
 	taskState,
 	eventStatus,
 } from "../../../../../../contexts/tasksContext";
+import {axiosInstance} from "../../../../../../helpers/axios";
+
+
 
 type createEvent = {
 	status?: eventStatus;
@@ -55,10 +57,12 @@ export const ButtonsSection = () => {
 		displayErrorModal,
 		setDisplayErrorModal,
 		setFetchingLoading,
+		setDeleteEventsResponse,
+		deleteEventsResponse
 	}: createContextType = useContext(TasksContext);
 
 	const [createIsLoading, setCreateIsLoading] = useState(false);
-
+	const token = localStorage.getItem('token');
 	useEffect(() => {
 		if (createEventResponse.hasOwnProperty("status")) {
 			console.log(createEventResponse);
@@ -72,6 +76,24 @@ export const ButtonsSection = () => {
 			}
 		}
 	}, [createEventResponse]);
+
+	useEffect(() => {
+		if (deleteEventsResponse.hasOwnProperty("status")) {
+			console.log(deleteEventsResponse);
+			if (deleteEventsResponse.status === eventStatus["OK"]) {
+				
+				getEvents({ dayOfWeek: actualDay })({
+					setGetEventsResponse,
+					setFetchingLoading,
+					setDisplayErrorModal,
+				});
+			} else {
+				setDisplayErrorModal(deleteEventsResponse.status);
+	
+			}
+		}
+	}, [deleteEventsResponse]);
+	
 	//update the state of page after deleting an event
 	useEffect(() => {
 		if (getEventsResponse.hasOwnProperty("status")) {
@@ -113,13 +135,31 @@ export const ButtonsSection = () => {
 		}
 	}, [getEventsResponse]);
 
+	
+	
+	
+	const createEvents = ({description, dayOfWeek}: { description: string, dayOfWeek: string }) => {
+		
+		setCreateIsLoading(true);
+		
+		axiosInstance.post(`/events`, { description, dayOfWeek }).then((response) => {
+			console.log(response);
+			setCreateEventResponse(response);
+			setCreateIsLoading(false);
+		}).catch(error => {
+		console.log(error);
+		setCreateIsLoading(false);
+		setDisplayErrorModal(error.response.data.status);
+		setCreateEventResponse(error.response.data);
+
+	})
+	console.log(token);
+}
+
 	function clickHandler() {
 		if (task.taskText.length > 0) {
-			createEvents({ description: task!.taskText, dayOfWeek: task!.taskDay })({
-				setCreateEventResponse,
-				setCreateIsLoading,
-				setDisplayErrorModal,
-			});
+			
+			 createEvents({ description: task!.taskText, dayOfWeek: task!.taskDay })
 
 			getEvents({ dayOfWeek: actualDay })({
 				setGetEventsResponse,
@@ -131,7 +171,7 @@ export const ButtonsSection = () => {
 	console.log(displayErrorModal);
 	const deleteHandler = (dayOfWeek: string) => {
 		deleteEvents({ dayOfWeek })({
-			setGetEventsResponse,
+			setDeleteEventsResponse,
 			setFetchingLoading,
 			setDisplayErrorModal,
 			setCreateIsLoading,

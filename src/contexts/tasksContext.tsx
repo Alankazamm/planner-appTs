@@ -24,7 +24,9 @@ export type createContextType = {
 	setDay: React.Dispatch<React.SetStateAction<string>>;
 	updateTask: (taskArray: arrayOfTasks) => void;
 	getEventsResponse: getEventsType;
-    setGetEventsResponse: React.Dispatch<React.SetStateAction<getEventsType>>;
+	setGetEventsResponse: React.Dispatch<React.SetStateAction<getEventsType>>;
+	deleteEventsResponse: any;
+	setDeleteEventsResponse: React.Dispatch<React.SetStateAction<any>>;
     displayErrorModal: eventStatus|undefined,
     setDisplayErrorModal: React.Dispatch<React.SetStateAction<eventStatus | undefined>>;
     fetchingLoading: boolean,
@@ -66,12 +68,14 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 	});
 	const [allTasks, setAllTasks] = useState<arrayOfTasks>([]);
 	const [actualDay, setDay] = useState("monday");
-    const [getEventsResponse, setGetEventsResponse] = useState<getEventsType>({});
+	const [getEventsResponse, setGetEventsResponse] = useState<getEventsType>({});
+	const [deleteEventsResponse, setDeleteEventsResponse] = useState<any>({});
     const [fetchingLoading, setFetchingLoading] = useState<boolean>(false);
     const [displayErrorModal, setDisplayErrorModal] = useState<eventStatus>();
 	console.log(task, "task");
 	console.log(allTasks, "allTasks");
-    console.log(displayErrorModal);
+	console.log(displayErrorModal);
+	
 	useEffect(() => {
 		if (getEventsResponse.hasOwnProperty("status")) {
 			console.log(getEventsResponse);
@@ -95,6 +99,7 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 			}
 		}
 	}, [getEventsResponse]);
+
 
 	useEffect(() => {
         getEvents({ dayOfWeek: actualDay })({setGetEventsResponse, setFetchingLoading, setDisplayErrorModal});
@@ -123,7 +128,9 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
                 displayErrorModal,
                 setDisplayErrorModal,
                 fetchingLoading,
-                setFetchingLoading
+				setFetchingLoading,
+				setDeleteEventsResponse,
+				deleteEventsResponse,
 			}}
 		>
 			{children}
