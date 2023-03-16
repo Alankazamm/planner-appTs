@@ -1,4 +1,3 @@
-import React from 'react'
 import { eventStatus } from '../../../../contexts/tasksContext'
 import { ErrorModal } from './Modal.styles';
 

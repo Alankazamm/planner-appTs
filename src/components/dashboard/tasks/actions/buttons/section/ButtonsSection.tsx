@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { ActionsContainerCommons } from "../../ActionsContainer.styles";
 import Spinner from "../../../../../common/loading/Spinner.styles";
 //assets
-import spinner from "/src/assets/svg/spinner-uol.svg";
+const spinner = require("/src/assets/svg/spinner-uol.svg");
 //types
 type createEvent = {
 	status?: eventStatus;
@@ -27,7 +27,8 @@ import {
 //api functions
 import { getEvents } from "./../../../../../../actions/events/getEvents";
 import { deleteEvents } from "../../../../../../actions/delete-events/deleteEvents";
-import {axiosInstance} from "../../../../../../helpers/axios";
+import {axiosInstance, BaseUrl} from "../../../../../../helpers/axios";
+import axios from "axios";
 
 export const ButtonsSection = () => {
 
@@ -116,10 +117,21 @@ export const ButtonsSection = () => {
 			}
 		}
 	}, [getEventsResponse]);
+	const axiosNewInstance = axios.create(
+		{
+			baseURL: BaseUrl,
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${localStorage.getItem("token")}`,
+			},
+		}
+	);
+	
+		
 	//request API to create events
 	const createEvents = ({description, dayOfWeek}: { description: string, dayOfWeek: string }) => {
 		setCreateIsLoading(true);
-		axiosInstance.post(`/events`, { description, dayOfWeek }).then((response) => {
+		axiosNewInstance.post(`/events`, { description, dayOfWeek }).then((response) => {
 			setCreateEventResponse(response);
 			setCreateIsLoading(false);
 		}).catch(error => {

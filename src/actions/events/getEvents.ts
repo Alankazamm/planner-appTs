@@ -31,6 +31,7 @@ setTimeout(() => {
         }
         else {
             axios.get(`/events`,{ headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }, data: event }).then((res) => {
+                
                 setGetEventsResponse(res);
                 setTimeout(() => {
 

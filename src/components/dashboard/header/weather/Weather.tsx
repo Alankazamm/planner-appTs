@@ -5,9 +5,9 @@
 import { useFetchWeather } from "../../../../custom-hooks/customWeatherHook";
 
 // assets
-import errorIcon from "/src/assets/svg/weather-404.svg";
-import cloudyIcon from "/src/assets/svg/weather-200.svg";
-import  spinner  from '/src/assets/svg/spinner-uol.svg';
+const cloudyIcon = require("/src/assets/svg/icon-cloudy.svg");
+const spinner = require("/src/assets/svg/spinner.svg");
+const errorIcon = require("/src/assets/svg/icon-error.svg");
 //styles
 import { WeatherContainer } from "./WeatherContainer";
 import Spinner from './../../../common/loading/Spinner.styles';

@@ -2,7 +2,7 @@
 //it also contains the functions to update the tasks and the day
 
 //hooks
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react"
 import { getEvents } from "../actions/events/getEvents";
 
 //types

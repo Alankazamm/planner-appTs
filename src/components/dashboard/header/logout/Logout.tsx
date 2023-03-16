@@ -10,8 +10,10 @@ import { LogoutContainer } from "./LogoutContainer";
 //styles
 
 //assets
-import logoIcon from "/src/assets/svg/icon-logo.svg";
-import logoutIcon from "/src/assets/svg/btn-logout.svg";
+// import logoIcon from "/src/assets/svg/icon-logo.svg";
+// import logoutIcon from "/src/assets/svg/btn-logout.svg";
+const logoIcon = require('/src/assets/svg/icon-logo.svg')
+const logoutIcon = require('/src/assets/svg/btn-logout.svg')
 import { UserContext } from "./../../../../contexts/userContext";
 
 const Logout = () => {

@@ -14,7 +14,6 @@ import { FormContainer } from "../components/form/containers/FormContainer.style
 import { register } from "../actions/auth/register";
 //contexts
 import { UserContext } from './../contexts/userContext';
-
 // initial values
 let firstRender = true;
 //types
@@ -54,6 +53,24 @@ export const SignUp = () => {
 			confirmPassword: confirmPassword.value,
 		}
 		)(dispatch);
+		// Auth.signUp({
+		// 	username: email.value,
+		// 	password: password.value,
+		// 	attributes: {
+		// 		email: email.value,
+		// 		"custom:firstName": firstName.value,
+		// 		"custom:lastName": lastName.value,
+		// 		"custom:birthDate": newDate,
+		// 		"custom:country": country.value,
+		// 		"custom:city": city.value,
+		// 	},
+		// }).then((data) => {
+		// 	console.log(data);
+		// 	navigate("/login");
+		// }
+		// ).catch((err) => {
+		// 	console.log(err);
+		// });
 	};
 	
 	//if api return errors set the errors to the inputs
@@ -62,12 +79,30 @@ export const SignUp = () => {
 	}, [formState.auth.errors]);
 
 	//else if api return data, redirect to login page
-	useEffect(() => { 
-		if (formState.auth.data && !firstRender) {
-			navigate("/login");
-		}
-		firstRender = false;
-	}, [formState.auth.data]);
+	// useEffect(() => { 
+	// 	if (formState.auth.data && !firstRender) {
+	// 		// navigate("/login");
+	// 		Auth.signUp({
+	// 			username: formState.email.value,
+	// 			password: formState.password.value,
+	// 			attributes: {
+	// 				email: formState.email.value,
+	// 				"custom:firstName": formState.firstName.value,
+	// 				"custom:lastName": formState.lastName.value,
+	// 				"custom:birthDate": formState.birthDate.value,
+	// 				"custom:country": formState.country.value,
+	// 				"custom:city": formState.city.value,
+	// 			},
+	// 		}).then((data) => {
+	// 			console.log(data);
+	// 			navigate("/login");
+	// 		}).catch((err) => {
+	// 			console.log(formState.email.value);
+	// 			console.log(err);
+	// 		});
+	// 	}
+	// 	firstRender = false;
+	// }, [formState.auth.data]);
 
 	return (
 		<MainWrapper>

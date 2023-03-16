@@ -1,6 +1,6 @@
 
 import { ConfirmModal } from './../error-handling/modal/Modal.styles';
-import warningIcon from '/src/assets/svg/icon-warning.svg';
+const warningIcon = require('./../../../assets/icons/warning.svg');
 
 export const ConfirmDeleteModal = ({actionFunction, value, showModal}:{actionFunction:any, value:{show:boolean, id?:string, dayOfWeek?:string}, showModal:any}) => {
   const actionHandler = () => {

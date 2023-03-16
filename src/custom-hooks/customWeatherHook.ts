@@ -5,6 +5,7 @@ export interface Forecast {
   }
 };
 
+
 export const useFetchWeather = (city: string): any => {
   //hooks
   const [forecast, setForecast] = useState<Forecast | unknown>();
@@ -28,7 +29,7 @@ export const useFetchWeather = (city: string): any => {
       const weatherUpdate = setInterval(() => {
 
         try {
-          fetch(`http://api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_REACT_WEATHER_API_URL}&q=${city}&lang=en`)
+          fetch(`http://api.weatherapi.com/v1/current.json?key=3274f2378a4045fc97835913232201&q=${city}&lang=en` )
             .then((response) => response.status === 200 ? response.json() : console.log(response.status))
             .then(data => {
               setForecast(data);

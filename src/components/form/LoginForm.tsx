@@ -1,6 +1,6 @@
 // description: this is a form component that will be used to log in to dashboard
 //hooks
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ErrorTooltip from "../common/error-handling/tooltip/ErrorTooltip.styles";
 import { Form } from "./Form.styles";
 import { Icon } from "./icon/Icon";

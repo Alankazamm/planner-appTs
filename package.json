@@ -4,16 +4,22 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "env-cmd -f ./.env  vite",
+    "dev": "env-cmd -f src/.env  vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "predeploy" : "npm run build",
-    "deploy" : "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "@aws-amplify/cli": "^4.21.4",
+    "@aws-amplify/ui-react": "^4.4.0",
     "@reduxjs/toolkit": "^1.9.2",
+    "@types/aws-lambda": "^8.10.111",
     "@types/react-redux": "^7.1.25",
     "@types/styled-components": "^5.1.26",
+    "amplify": "^0.0.11",
+    "amplify-cli": "^1.0.0",
+    "aws-amplify": "^5.0.19",
     "dotenv": "^16.0.3",
     "env-cmd": "^10.1.0",
     "react": "^18.2.0",

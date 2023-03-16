@@ -1,9 +1,9 @@
 import axios from 'axios';
 
 
-export const BaseUrl = import.meta.env.VITE_REACT_API_URL;
+export const BaseUrl = "https://latam-challenge-2.deta.dev/api/v1/";
 let headers = {
-    'Authorization': `Bearer 1234567`
+    'Authorization': `Bearer ${localStorage.getItem('token')}`
 }
 
 if (localStorage.getItem('token')) {
@@ -13,6 +13,8 @@ export const updateToken = (token: string) => {
     headers.Authorization = `Bearer ${token}`
     console.log(headers.Authorization);
 }
+
+
 export const axiosInstance = axios.create({
     baseURL: BaseUrl,
     headers,

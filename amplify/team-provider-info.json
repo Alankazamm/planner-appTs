@@ -1,0 +1,39 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-plannerproject-dev-22454-authRole",
+      "UnauthRoleArn": "arn:aws:iam::729418750644:role/amplify-plannerproject-dev-22454-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::729418750644:role/amplify-plannerproject-dev-22454-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-plannerproject-dev-22454-deployment",
+      "UnauthRoleName": "amplify-plannerproject-dev-22454-unauthRole",
+      "StackName": "amplify-plannerproject-dev-22454",
+      "StackId": "arn:aws:cloudformation:us-east-1:729418750644:stack/amplify-plannerproject-dev-22454/8f9a5510-c228-11ed-86b0-0a11f26dba7f",
+      "AmplifyAppId": "d2eow2lpx6490l",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-plannerproject-dev-22454-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+    },
+    "categories": {
+      "function": {
+        "plannereventsfunction": {
+          "deploymentBucketName": "amplify-plannerproject-dev-22454-deployment",
+          "s3Key": "amplify-builds/plannereventsfunction-43494b69733757514b4f-build.zip"
+        },
+        "plannerprojectfunction": {
+          "deploymentBucketName": "amplify-plannerproject-dev-22454-deployment",
+          "s3Key": "amplify-builds/plannerprojectfunction-4e2f69675773526c6c42-build.zip"
+        }
+      },
+      "auth": {
+        "plannerproject": {},
+        "userPoolGroups": {}
+      },
+      "storage": {
+        "plannereventsdb": {},
+        "plannerprojectdb": {}
+      },
+      "api": {
+        "plannerprojectapi": {}
+      }
+    }
+  }
+}

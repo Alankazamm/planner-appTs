@@ -1,5 +1,5 @@
 //styles
-import { ActionsInputsContainer } from "./ActionsInputsContayner.styles";
+import { ActionsInputsContainer } from "./ActionsInputsContainer.styles";
 import { useContext } from "react";
 import {
 	TasksContext,

@@ -1,6 +1,5 @@
-import React from "react";
-import plusIcon from "/src/assets/svg/btn-plus.svg";
-import minusIcon from "/src/assets/svg/btn-minus.svg";
+const plusIcon = require("/src/assets/svg/btn-plus.svg");
+const minusIcon = require("/src/assets/svg/btn-minus.svg");
 import { StyledActionButton } from "./StyledActionButton.styles";
 
 export const ActionsButton = ({

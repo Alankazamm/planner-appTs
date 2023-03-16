@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { ActionsContainerCommons } from './../ActionsContainer.styles';
-
-export const ActionsInputsContainer = styled(ActionsContainerCommons)`
+import { ActionsContainerCommons } from '../ActionsContainer.styles';
+export const ActionsInputsContainer = styled(ActionsContainerCommons) `
 gap:3px;
     &*:placeholder{
         font-size: 14px;
@@ -39,4 +38,4 @@ gap:3px;
        
     }
     
-`
+`;
