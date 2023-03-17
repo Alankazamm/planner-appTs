@@ -29,6 +29,7 @@ const initialState = {
     },
     isFormValid: false,
     isLoginValid: false,
+    unknownError: false,
 };
 //context
 export const UserContext = createContext({});

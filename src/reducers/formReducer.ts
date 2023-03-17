@@ -4,20 +4,22 @@ export type formItem = { value: string; hasError: boolean, error?: string };
 export enum signupErrors {
     
     //sign-up && sign-in
-    passwordEmpty = "\"password\" is not allowed to be empty",
-    emailEmpty = "\"email\" is not allowed to be empty",
-    emailInvalid = "\"email\" must be a valid email",
+    unknownError = "Unknown error",
+    passwordEmpty = "Password is required",
+    emailEmpty = "Email is required",
+    emailInvalid = "Email is not valid",
     //sign-up
-    emailExists = 'User with required email already exists. Please sign in!',
+    emailExists = 'UsernameExistsException: An account with the given email already exists.',
     firstNameEmpty = "First name is required",
     firstNameLength = "First name must be at least 2 characters",
     lastNameEmpty = "Last name is required",
     lastNameLength = "Last name must be at least 1 characters",
-    birthDateInvalid = "\"birthDate\" must be a valid date",
-    cityEmpty = "\"city\" is not allowed to be empty",
-    countryEmpty = "\"country\" is not allowed to be empty",
-    passwordLength = "\"password\" length must be at least 6 characters long",
-    confirmNotMatch = "\"confirmPassword\" must be [ref:password]",
+    birthDateEmpty = "Birth date is required",
+    cityEmpty = "City is required",
+    countryEmpty = "Country is required",
+    passwordLength = "Password must be at least 8 characters",
+    confirmPasswordEmpty = "Confirm password is required",
+    confirmNotMatch = "Passwords do not match",
     //sign-in
     emailNotExists = "This user doesn't exist. Please sign up first!",
     incorrectPassword = "Invalid data.",
@@ -52,6 +54,7 @@ export type formState = {
         data: any,
     }
     isLoginValid?: boolean,
+    unknownError?: boolean,
 };
 export enum ActionType {
     UPDATE_FORM = 'UPDATE_FORM',
@@ -104,6 +107,9 @@ export const formsReducer = (state: formState, action: action): formState => {
             if (errors) {
                 errors.forEach((error) => {
                     switch (error) {
+                        case signupErrors.unknownError:
+                            state.unknownError = true;
+                            break;
                         case signupErrors.emailExists:
                             state.email.hasError = true;
                             state.email.error = error;
@@ -112,11 +118,19 @@ export const formsReducer = (state: formState, action: action): formState => {
                             state.firstName!.hasError = true;
                             state.firstName!.error = error;
                             break;
+                        case signupErrors.firstNameLength:
+                            state.firstName!.hasError = true;
+                            state.firstName!.error = error;
+                            break;
                         case signupErrors.lastNameEmpty:
                             state.lastName!.hasError = true;
                             state.lastName!.error = error;
                             break;
-                        case signupErrors.birthDateInvalid:
+                        case signupErrors.lastNameLength:
+                            state.lastName!.hasError = true;
+                            state.lastName!.error = error;
+                            break;
+                        case signupErrors.birthDateEmpty:
                             state.birthDate!.hasError = true;
                             state.birthDate!.error = error;
                             break;
@@ -147,6 +161,13 @@ export const formsReducer = (state: formState, action: action): formState => {
                             state.confirmPassword!.hasError = true;
                             state.password.error = error;
                             state.confirmPassword!.error = error; 
+                            break;
+                        case signupErrors.confirmNotMatch:
+                            state.password.hasError = true;
+                            state.confirmPassword!.hasError = true;
+                            state.password.error = "Passwords do not match";
+                            state.confirmPassword!.hasError = true;
+                            state.confirmPassword!.error = "Passwords do not match";
                             break;
                         case signupErrors.confirmNotMatch:
                             state.password.hasError = true;

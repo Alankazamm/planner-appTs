@@ -39,7 +39,8 @@ const initialState: formState = {
 		data: null,
 	},
     isFormValid: false,
-    isLoginValid: false,
+	isLoginValid: false,
+	unknownError: false,
 };
 
 //types

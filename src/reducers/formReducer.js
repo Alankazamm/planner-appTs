@@ -1,20 +1,22 @@
 export var signupErrors;
 (function (signupErrors) {
     //sign-up && sign-in
-    signupErrors["passwordEmpty"] = "\"password\" is not allowed to be empty";
-    signupErrors["emailEmpty"] = "\"email\" is not allowed to be empty";
-    signupErrors["emailInvalid"] = "\"email\" must be a valid email";
+    signupErrors["unknownError"] = "Unknown error";
+    signupErrors["passwordEmpty"] = "Password is required";
+    signupErrors["emailEmpty"] = "Email is required";
+    signupErrors["emailInvalid"] = "Email is not valid";
     //sign-up
-    signupErrors["emailExists"] = "User with required email already exists. Please sign in!";
+    signupErrors["emailExists"] = "UsernameExistsException: An account with the given email already exists.";
     signupErrors["firstNameEmpty"] = "First name is required";
     signupErrors["firstNameLength"] = "First name must be at least 2 characters";
     signupErrors["lastNameEmpty"] = "Last name is required";
     signupErrors["lastNameLength"] = "Last name must be at least 1 characters";
-    signupErrors["birthDateInvalid"] = "\"birthDate\" must be a valid date";
-    signupErrors["cityEmpty"] = "\"city\" is not allowed to be empty";
-    signupErrors["countryEmpty"] = "\"country\" is not allowed to be empty";
-    signupErrors["passwordLength"] = "\"password\" length must be at least 6 characters long";
-    signupErrors["confirmNotMatch"] = "\"confirmPassword\" must be [ref:password]";
+    signupErrors["birthDateEmpty"] = "Birth date is required";
+    signupErrors["cityEmpty"] = "City is required";
+    signupErrors["countryEmpty"] = "Country is required";
+    signupErrors["passwordLength"] = "Password must be at least 8 characters";
+    signupErrors["confirmPasswordEmpty"] = "Confirm password is required";
+    signupErrors["confirmNotMatch"] = "Passwords do not match";
     //sign-in
     signupErrors["emailNotExists"] = "This user doesn't exist. Please sign up first!";
     signupErrors["incorrectPassword"] = "Invalid data.";
@@ -61,6 +63,9 @@ export const formsReducer = (state, action) => {
             if (errors) {
                 errors.forEach((error) => {
                     switch (error) {
+                        case signupErrors.unknownError:
+                            state.unknownError = true;
+                            break;
                         case signupErrors.emailExists:
                             state.email.hasError = true;
                             state.email.error = error;
@@ -69,11 +74,19 @@ export const formsReducer = (state, action) => {
                             state.firstName.hasError = true;
                             state.firstName.error = error;
                             break;
+                        case signupErrors.firstNameLength:
+                            state.firstName.hasError = true;
+                            state.firstName.error = error;
+                            break;
                         case signupErrors.lastNameEmpty:
                             state.lastName.hasError = true;
                             state.lastName.error = error;
                             break;
-                        case signupErrors.birthDateInvalid:
+                        case signupErrors.lastNameLength:
+                            state.lastName.hasError = true;
+                            state.lastName.error = error;
+                            break;
+                        case signupErrors.birthDateEmpty:
                             state.birthDate.hasError = true;
                             state.birthDate.error = error;
                             break;
@@ -104,6 +117,13 @@ export const formsReducer = (state, action) => {
                             state.confirmPassword.hasError = true;
                             state.password.error = error;
                             state.confirmPassword.error = error;
+                            break;
+                        case signupErrors.confirmNotMatch:
+                            state.password.hasError = true;
+                            state.confirmPassword.hasError = true;
+                            state.password.error = "Passwords do not match";
+                            state.confirmPassword.hasError = true;
+                            state.confirmPassword.error = "Passwords do not match";
                             break;
                         case signupErrors.confirmNotMatch:
                             state.password.hasError = true;

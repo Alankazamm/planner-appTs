@@ -37,6 +37,8 @@ export const register = ({ firstName, lastName, birthDate, country, city, email,
     }
     //if there are no errors, send the data to the server
     try {
+        //remove all non numeric characters from the birthDate
+        birthDate = birthDate.replace(/\D/g, "");
         Auth.signUp({
             username: email,
             password: password,
@@ -49,17 +51,17 @@ export const register = ({ firstName, lastName, birthDate, country, city, email,
             }
         })
             .then((data) => {
+            console.log(data);
             dispatch({ type: ActionType.REGISTER_SUCCESS, payload: data });
         }).catch((err) => {
-            console.log(err + "error");
             let arrErrors = [];
-            if (err.response.data.hasOwnProperty('errors')) {
-                for (let key in err.response.data.errors) {
-                    arrErrors.push(err.response.data.errors[key]);
-                }
+            console.log(err + '');
+            //check if err contains "UsernameExistsException: An account with the given email already exists."
+            if (err.toString().includes("UsernameExistsException: An account with the given email already exists.")) {
+                arrErrors.push("UsernameExistsException: An account with the given email already exists.");
             }
             else {
-                arrErrors.push(err.data);
+                arrErrors.push('Unknown error');
             }
             dispatch({ type: ActionType.REGISTER_FAIL, payload: arrErrors });
         });
