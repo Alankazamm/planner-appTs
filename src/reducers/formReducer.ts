@@ -9,8 +9,10 @@ export enum signupErrors {
     emailInvalid = "\"email\" must be a valid email",
     //sign-up
     emailExists = 'User with required email already exists. Please sign in!',
-    firstNameEmpty = "\"firstName\" is not allowed to be empty",
-    lastNameEmpty = "\"lastName\" is not allowed to be empty",
+    firstNameEmpty = "First name is required",
+    firstNameLength = "First name must be at least 2 characters",
+    lastNameEmpty = "Last name is required",
+    lastNameLength = "Last name must be at least 1 characters",
     birthDateInvalid = "\"birthDate\" must be a valid date",
     cityEmpty = "\"city\" is not allowed to be empty",
     countryEmpty = "\"country\" is not allowed to be empty",
@@ -82,6 +84,7 @@ export const formsReducer = (state: formState, action: action): formState => {
         case ActionType.UPDATE_FORM:
             const name = action.payload.name
             const value = action.payload.value
+            // this validation checks if the name of the input is confirmPassword and if it is, it checks if the value of the input is equal to the value of the password input
             if( name === 'confirmPassword' ){
                 if (value !== state.password.value) {
                     return {

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-const background = require('/src/assets/images/bgImg.png');
+import background from '/src/assets/images/bgImg.png';
 export const BgWrapper = styled.div `
     width: 50%;
     height: 100vh;

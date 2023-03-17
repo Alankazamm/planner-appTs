@@ -4,9 +4,9 @@ import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-run
 //hooks
 import { useFetchWeather } from "../../../../custom-hooks/customWeatherHook";
 // assets
-const cloudyIcon = require("/src/assets/svg/icon-cloudy.svg");
-const spinner = require("/src/assets/svg/spinner.svg");
-const errorIcon = require("/src/assets/svg/icon-error.svg");
+import cloudyIcon from "/src/assets/svg/weather-200.svg";
+import spinner from "/src/assets/svg/spinner-uol.svg";
+import errorIcon from "/src/assets/svg/weather-404.svg";
 //styles
 import { WeatherContainer } from "./WeatherContainer";
 import Spinner from './../../../common/loading/Spinner.styles';

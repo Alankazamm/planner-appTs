@@ -6,8 +6,10 @@ export var signupErrors;
     signupErrors["emailInvalid"] = "\"email\" must be a valid email";
     //sign-up
     signupErrors["emailExists"] = "User with required email already exists. Please sign in!";
-    signupErrors["firstNameEmpty"] = "\"firstName\" is not allowed to be empty";
-    signupErrors["lastNameEmpty"] = "\"lastName\" is not allowed to be empty";
+    signupErrors["firstNameEmpty"] = "First name is required";
+    signupErrors["firstNameLength"] = "First name must be at least 2 characters";
+    signupErrors["lastNameEmpty"] = "Last name is required";
+    signupErrors["lastNameLength"] = "Last name must be at least 1 characters";
     signupErrors["birthDateInvalid"] = "\"birthDate\" must be a valid date";
     signupErrors["cityEmpty"] = "\"city\" is not allowed to be empty";
     signupErrors["countryEmpty"] = "\"country\" is not allowed to be empty";
@@ -39,6 +41,7 @@ export const formsReducer = (state, action) => {
         case ActionType.UPDATE_FORM:
             const name = action.payload.name;
             const value = action.payload.value;
+            // this validation checks if the name of the input is confirmPassword and if it is, it checks if the value of the input is equal to the value of the password input
             if (name === 'confirmPassword') {
                 if (value !== state.password.value) {
                     return {

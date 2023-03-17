@@ -8,7 +8,7 @@ import { TaskBorder } from "./styles/TaskBorder.styles";
 import { TasksTimeCard } from "./styles/TasksTimeCard.styles";
 import TasksWrapper from "./TasksWrapper.styles";
 //context
-const spinner = require("/src/assets/svg/spinner-uol.svg");
+import spinner from "/src/assets/svg/spinner-uol.svg";
 import LoadingModal from "../../../../common/loading/LoadingModal";
 import { useState } from 'react';
 import { TaskWarnigModal } from "../../../../common/error-handling/modal/TaskWarnigModal";

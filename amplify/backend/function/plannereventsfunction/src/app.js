@@ -7,7 +7,6 @@ See the License for the specific language governing permissions and limitations 
 */
 
 /* Amplify Params - DO NOT EDIT
-	AUTH_PLANNERPROJECT_USERPOOLID
 	ENV
 	REGION
 	STORAGE_PLANNEREVENTSDB_ARN

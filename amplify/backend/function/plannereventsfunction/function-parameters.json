@@ -7,14 +7,6 @@
         "update",
         "delete"
       ]
-    },
-    "auth": {
-      "plannerproject": [
-        "create",
-        "read",
-        "update",
-        "delete"
-      ]
     }
   },
   "lambdaLayers": []

@@ -42,7 +42,7 @@ export const RegisterForm = () => {
             </InputWrapper>
             <InputWrapper>
                 <Label htmlFor="birthDate" >birth date</Label>
-                <Input type="text" name="birthDate" onChange={inputHandler} value={formState.birthDate.value }
+                <Input type="date" name="birthDate" onChange={inputHandler} value={formState.birthDate.value }
                     placeholder="MM/DD/YYYY" hasError={formState.birthDate.hasError} />
                 {formState.birthDate.hasError && <ErrorTooltip >{formState.birthDate.error}</ErrorTooltip>}
             </InputWrapper>

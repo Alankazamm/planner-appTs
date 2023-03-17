@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { ConfirmModal } from './../error-handling/modal/Modal.styles';
-const warningIcon = require('./../../../assets/icons/warning.svg');
+import warningIcon from '/src/assets/svg/icon-warning.svg';
 export const ConfirmDeleteModal = ({ actionFunction, value, showModal }) => {
     const actionHandler = () => {
         value.id ? actionFunction(value.id) : actionFunction(value.dayOfWeek);

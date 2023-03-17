@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-const globe = require('../../assets/globe.svg');
+import globe from '/src/assets/svg/globo.svg';
 export const DashContainer = styled.div `
     position: relative;
     background: rgba(255, 255, 255, 0.95);

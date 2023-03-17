@@ -39,8 +39,11 @@ export const SignUp = () => {
 			password,
 			confirmPassword,
 		} = formState;
-		const date = birthDate.value.split("/");
-		const newDate = `${date[2]}-${date[0]}-${date[1]}`;
+		//format date from YYYY-MM-DD to DD/MM/YYYY
+		const newDate = birthDate.value
+			.split("-")
+			.reverse()
+			.join("/");
 		//when clicked and treated the data, send it to sing-up api request
 		register({
 			firstName: firstName.value,

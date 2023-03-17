@@ -5,7 +5,7 @@ import { Redirect } from "../../redirects/form/Redirect";
 //styles
 import { StyledFormBtn } from "./FormButton.styles";
 //assets
-const spinner = require('/src/assets/svg/spinner-uol.svg') 
+import spinner from '/src/assets/svg/spinner-uol.svg'
 //types
 type formButtonProps = {
     text: string;

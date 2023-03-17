@@ -16,7 +16,7 @@
       "function": {
         "plannereventsfunction": {
           "deploymentBucketName": "amplify-plannerproject-dev-22454-deployment",
-          "s3Key": "amplify-builds/plannereventsfunction-43494b69733757514b4f-build.zip"
+          "s3Key": "amplify-builds/plannereventsfunction-4c61517972304742414c-build.zip"
         },
         "plannerprojectfunction": {
           "deploymentBucketName": "amplify-plannerproject-dev-22454-deployment",
@@ -24,15 +24,11 @@
         }
       },
       "auth": {
-        "plannerproject": {},
-        "userPoolGroups": {}
+        "plannerprojecte2fc34e8": {}
       },
       "storage": {
         "plannereventsdb": {},
         "plannerprojectdb": {}
-      },
-      "api": {
-        "plannerprojectapi": {}
       }
     }
   }

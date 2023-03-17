@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 import { ActionsContainerCommons } from "../../ActionsContainer.styles";
 import Spinner from "../../../../../common/loading/Spinner.styles";
 //assets
-const spinner = require("/src/assets/svg/spinner-uol.svg");
+import spinner from "/src/assets/svg/spinner-uol.svg";
 //components
 import { ActionsButton } from "../ActionsButton";
 import { TasksErrorModal } from "../../../../../common/error-handling/modal/TasksErrorModal";
