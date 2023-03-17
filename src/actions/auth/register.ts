@@ -3,7 +3,9 @@
 
 import { ActionType } from "../../reducers/formReducer";
 import { Auth } from "aws-amplify";
-
+import { Amplify, API } from "aws-amplify";
+import awsmobile from "../../aws-exports";
+Amplify.configure(awsmobile);
 let response: any;
 
 
@@ -40,6 +42,12 @@ export const register = ({
     lastName.trim().length < 1 ? arrErrors.push("Last name must be at least 1 characters") : null;
     //birthDate errors check
     birthDate === "" || birthDate === undefined || birthDate === null ? arrErrors.push("Birth date is required") : null;
+    //check if birthdate is before actual date
+    const birthDateDate = new Date(birthDate);
+    const today = new Date();
+    if (birthDateDate > today) {
+        arrErrors.push("Birth date must be before today");
+    }
     //country errors check
     country === "" || country === undefined || country === null ? arrErrors.push("Country is required") : null;
     //city errors check
@@ -77,7 +85,42 @@ export const register = ({
             }
         })
             .then((data) => {
-                console.log(data);
+               //send data to  dynamoDB
+                try {
+                    API.post("plannerprojectapi", "/users", {
+                        body: {
+                            id: data.userSub,
+                            firstName: firstName,
+                            lastName: lastName,
+                            birthDate: birthDate,
+                            country: country,
+                            city: city,
+                            email: email,
+                            password: password,
+                        }
+                    }).then((response) => {
+                        console.log(response);
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+                //get data from dynamoDB
+                try {
+                    
+                    API.get("plannerprojectapi", `/users/${data.userSub}`, {}).then((response) => {
+                        console.log(response);
+                    });
+                } catch (error) {
+                    console.log(error);
+                }
+
+            //     API.get("plannerprojectapi", "/users/eed8066f-3ee1-4f15-9b2c-0542017e46a0", {}).then((response) => {
+            //       console.log(response);
+            //     });
+            //   } catch (error) {
+            //     console.log(error);
+            //   }
+
                 dispatch({ type: ActionType.REGISTER_SUCCESS, payload: data });
             }).catch((err) => {
                 
@@ -85,7 +128,7 @@ export const register = ({
                 console.log(err + '');
                 //check if err contains "UsernameExistsException: An account with the given email already exists."
                 if (err.toString().includes("UsernameExistsException: An account with the given email already exists.")) {
-                arrErrors.push("UsernameExistsException: An account with the given email already exists.");
+                arrErrors.push("An account with the given email already exists.");
                 }
                 else {
                     arrErrors.push('Unknown error');

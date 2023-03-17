@@ -9,6 +9,24 @@ export const Form = styled.form<{page: string, hasError?:boolean}>`
   height: ${({ page }) => page === 'login' ?'32vh'  : '56vh'};
   margin-top: '11vh';
   gap: 1vh;
+  //change position of date input webkit icon
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    width: 30px;
+    height: 30px;
+    margin: auto 0;
+   border-radius: 50%;
+    background-color: #E0E0E0;
+    font-size: 20px;
+    cursor: pointer;
+  }
+ 
+  
+
+  
   h2{
     font-size: 30px;
     margin-bottom: 3vh;

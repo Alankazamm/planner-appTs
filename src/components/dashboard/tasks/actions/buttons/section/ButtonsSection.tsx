@@ -14,7 +14,7 @@ type createEvent = {
 };
 //components
 import { ActionsButton } from "../ActionsButton";
-import { TasksErrorModal } from "../../../../../common/error-handling/modal/TasksErrorModal";
+import { TasksErrorModal } from "../../../../../common/error-handling/modals/TasksErrorModal";
 import { ConfirmDeleteModal } from "../../../../../common/confirmation/ConfirmDeleteModal";
 //context
 import {

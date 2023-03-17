@@ -18,6 +18,7 @@ import { UserContext } from './../contexts/userContext';
 let firstRender = true;
 //types
 import { ActionType } from "../reducers/formReducer";
+import { SignErrorModal } from './../components/common/error-handling/modals/SignErrorModal';
 
 export const SignUp = () => {
 	//hook's calls
@@ -28,6 +29,9 @@ export const SignUp = () => {
 		localStorage.removeItem("token");
 		localStorage.removeItem("loggedUser");
 	}, []);
+	const toggleModalFunction = () => {
+		dispatch({ type: ActionType.TOGGLE_UNKNOWN_ERROR, payload: false })
+	}
 	const signUpHandler = () => {
 		const {
 			firstName,
@@ -119,6 +123,7 @@ export const SignUp = () => {
 					
 				</div>
 			</ContentContainer>
+			{formState.unknownError && <SignErrorModal toggleModal={toggleModalFunction} />}
 			<BgSection />
 		</MainWrapper>
 	);

@@ -9,12 +9,13 @@ export enum signupErrors {
     emailEmpty = "Email is required",
     emailInvalid = "Email is not valid",
     //sign-up
-    emailExists = 'UsernameExistsException: An account with the given email already exists.',
+    emailExists = 'An account with the given email already exists.',
     firstNameEmpty = "First name is required",
     firstNameLength = "First name must be at least 2 characters",
     lastNameEmpty = "Last name is required",
     lastNameLength = "Last name must be at least 1 characters",
     birthDateEmpty = "Birth date is required",
+    birthDateInvalid = "Birth date must be before today",
     cityEmpty = "City is required",
     countryEmpty = "Country is required",
     passwordLength = "Password must be at least 8 characters",
@@ -68,6 +69,7 @@ export enum ActionType {
     LOGIN_SUCCESS = 'LOGIN_SUCCESS',
     LOGIN_FAIL = 'LOGIN_FAIL',
     VALIDATE_LOGIN = 'VALIDATE_LOGIN',
+    TOGGLE_UNKNOWN_ERROR = 'TOGGLE_UNKNOWN_ERROR',
 };
 export type action =
     { type: ActionType.UPDATE_FORM, payload: { name: keyof formState; value: string } }
@@ -77,7 +79,8 @@ export type action =
     | { type: ActionType.REGISTER_LOADING } | { type: ActionType.REGISTER_SUCCESS, payload: any }
     | { type: ActionType.REGISTER_FAIL, payload: signupErrors[] } | { type: ActionType.LOGIN_LOADING }
     | { type: ActionType.LOGIN_SUCCESS, payload: any } | { type: ActionType.LOGIN_FAIL, payload: signupErrors[] }
-    | { type: ActionType.VALIDATE_LOGIN };
+    | { type: ActionType.VALIDATE_LOGIN }
+    | { type: ActionType.TOGGLE_UNKNOWN_ERROR, payload: boolean};
 
 //reducer
 export const formsReducer = (state: formState, action: action): formState => {
@@ -108,6 +111,7 @@ export const formsReducer = (state: formState, action: action): formState => {
                 errors.forEach((error) => {
                     switch (error) {
                         case signupErrors.unknownError:
+                            console.log(error);
                             state.unknownError = true;
                             break;
                         case signupErrors.emailExists:
@@ -131,6 +135,10 @@ export const formsReducer = (state: formState, action: action): formState => {
                             state.lastName!.error = error;
                             break;
                         case signupErrors.birthDateEmpty:
+                            state.birthDate!.hasError = true;
+                            state.birthDate!.error = error;
+                            break;
+                        case signupErrors.birthDateInvalid:
                             state.birthDate!.hasError = true;
                             state.birthDate!.error = error;
                             break;
@@ -328,8 +336,16 @@ export const formsReducer = (state: formState, action: action): formState => {
                 isFormValid: false,
                
             };
+        //case for toggle unknown error's modal
+        case ActionType.TOGGLE_UNKNOWN_ERROR:
+            return {
+                ...state,
+                unknownError: action.payload,
+            };
+        
                 default: return state;
         }
+    
     }
 
 

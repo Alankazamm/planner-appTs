@@ -19,6 +19,7 @@ import { UserContext } from './../contexts/userContext';
 let firstRender = true;
 //types
 import { ActionType } from "../reducers/formReducer";
+import { SignErrorModal } from './../components/common/error-handling/modals/SignErrorModal';
 export const SignUp = () => {
     //hook's calls
     const { formState, dispatch } = useContext(UserContext);
@@ -28,6 +29,9 @@ export const SignUp = () => {
         localStorage.removeItem("token");
         localStorage.removeItem("loggedUser");
     }, []);
+    const toggleModalFunction = () => {
+        dispatch({ type: ActionType.TOGGLE_UNKNOWN_ERROR, payload: false });
+    };
     const signUpHandler = () => {
         const { firstName, lastName, birthDate, country, city, email, password, confirmPassword, } = formState;
         //format date from YYYY-MM-DD to DD/MM/YYYY
@@ -94,5 +98,5 @@ export const SignUp = () => {
     // 	}
     // 	firstRender = false;
     // }, [formState.auth.data]);
-    return (_jsxs(MainWrapper, { children: [_jsx(ContentContainer, { children: _jsx("div", { id: "wrapper", children: _jsxs(FormContainer, { page: "signup", children: [_jsx(HeaderText, { page: "signup", title: "Welcome,", description: "Please, register to continue" }), _jsx(RegisterForm, {}), _jsx(FormButton, { text: "Register Now", page: "login", redirectText: "Already have an account?", isLoading: formState.auth.loading, onClick: signUpHandler })] }) }) }), _jsx(BgSection, {})] }));
+    return (_jsxs(MainWrapper, { children: [_jsx(ContentContainer, { children: _jsx("div", { id: "wrapper", children: _jsxs(FormContainer, { page: "signup", children: [_jsx(HeaderText, { page: "signup", title: "Welcome,", description: "Please, register to continue" }), _jsx(RegisterForm, {}), _jsx(FormButton, { text: "Register Now", page: "login", redirectText: "Already have an account?", isLoading: formState.auth.loading, onClick: signUpHandler })] }) }) }), formState.unknownError && _jsx(SignErrorModal, { toggleModal: toggleModalFunction }), _jsx(BgSection, {})] }));
 };
