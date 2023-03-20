@@ -142,6 +142,45 @@ app.get(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
   });
 });
 
+//get all events by filter: userId(required), dayOfWeek, description, date
+app.get(path + '/filter', function (req, res) {
+  const params = {};
+  if (userIdPresent && req.apiGateway) {
+    params[partitionKeyName] = req.apiGateway.event.requestContext.identity.cognitoIdentityId || UNAUTH;
+  } else {
+    params[partitionKeyName] = req.params[partitionKeyName];
+    try {
+      params[partitionKeyName] = convertUrlType(req.params[partitionKeyName], partitionKeyType);
+    } catch (err) {
+      res.statusCode = 500;
+      res.json({ error: 'Wrong column type ' + err });
+    }
+  }
+  if (hasSortKey) {
+    try {
+      params[sortKeyName] = convertUrlType(req.params[sortKeyName], sortKeyType);
+    } catch (err) {
+      res.statusCode = 500;
+      res.json({ error: 'Wrong column type ' + err });
+    }
+  }
+
+  let queryParams = {
+    TableName: tableName,
+    KeyConditions: params
+  }
+
+  dynamodb.scan(queryParams, (err, data) => {
+    if (err) {
+      res.statusCode = 500;
+      res.json({ error: 'Could not load items: ' + err });
+    } else {
+      res.json(data.Items);
+    }
+  });
+});
+//how to query this:
+//https://localhost:3000/events/filter?userId=us-east-1:1c1c1c1c-1c1c-1c1c-1c1c-1c1c1c1c1c1c&dayOfWeek=1&description=description&date=2019-01-01
 
 /************************************
 * HTTP put method for insert object *

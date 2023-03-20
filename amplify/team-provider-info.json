@@ -16,7 +16,7 @@
       "function": {
         "plannereventsfunction": {
           "deploymentBucketName": "amplify-plannerproject-dev-22454-deployment",
-          "s3Key": "amplify-builds/plannereventsfunction-4c61517972304742414c-build.zip"
+          "s3Key": "amplify-builds/plannereventsfunction-534b6e624d517851586c-build.zip"
         },
         "plannerprojectfunction": {
           "deploymentBucketName": "amplify-plannerproject-dev-22454-deployment",
@@ -29,6 +29,9 @@
       "storage": {
         "plannereventsdb": {},
         "plannerprojectdb": {}
+      },
+      "api": {
+        "plannerprojectapi": {}
       }
     }
   }
