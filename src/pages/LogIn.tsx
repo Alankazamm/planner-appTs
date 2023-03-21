@@ -24,6 +24,8 @@ import { login } from "../actions/auth/login";
 
 let firstRender = true;
 export const LogIn = () => {
+
+	
 	//hook's calls
 	const { formState, dispatch } = useContext(UserContext);
 	const navigate = useNavigate();
@@ -67,7 +69,7 @@ export const LogIn = () => {
 	return (
 		<MainWrapper>
 			<ContentContainer>
-				{/* <div className="wrapper">
+				<div className="wrapper">
 					<FormContainer page="login">
 						<HeaderText
 							page="login"
@@ -83,7 +85,7 @@ export const LogIn = () => {
 							onClick={loginHandler}
 						/>
 					</FormContainer>
-				</div> */}
+				</div>
 				{/* <Authenticator>
 					<FormContainer page="login">
 						<HeaderText page="login" title="Welcome," description="To continue browsing safely, log in to the network." />

@@ -6,8 +6,13 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 //styles
 import { MainWrapper } from "../components/common/MainWrapper.styles";
+import { FormContainer } from "../components/form/containers/FormContainer.styles";
+//components
+import { HeaderText } from "../components/common/header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";
 import { BgSection } from "../components/aside/BgSection";
+import { LoginForm } from "../components/form/LoginForm";
+import { FormButton } from "../components/form/buttons/FormButton";
 //contexts
 import { UserContext } from './../contexts/userContext';
 //types
@@ -47,5 +52,5 @@ export const LogIn = () => {
         login({ email, password })(dispatch);
         //return from api: data:{token:string, user:{birthDate, city, country, email, firstName, lastName, password,createdAt, _id} },
     };
-    return (_jsxs(MainWrapper, { children: [_jsx(ContentContainer, {}), _jsx(BgSection, {})] }));
+    return (_jsxs(MainWrapper, { children: [_jsx(ContentContainer, { children: _jsx("div", { className: "wrapper", children: _jsxs(FormContainer, { page: "login", children: [_jsx(HeaderText, { page: "login", title: "Welcome,", description: "To continue browsing safely, log in to the network." }), _jsx(LoginForm, {}), _jsx(FormButton, { text: "Log in", page: "signup", redirectText: "Don't have an account?", isLoading: formState.loginAuth.loading, onClick: loginHandler })] }) }) }), _jsx(BgSection, {})] }));
 };

@@ -1,6 +1,6 @@
 // description: this is the sign up page
 //hooks
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 //styles
 import { BgSection } from "../components/aside/BgSection";
@@ -14,15 +14,19 @@ import { FormContainer } from "../components/form/containers/FormContainer.style
 import { register } from "../actions/auth/register";
 //contexts
 import { UserContext } from './../contexts/userContext';
-// initial values
-let firstRender = true;
 //types
 import { ActionType } from "../reducers/formReducer";
+//modals
 import { SignErrorModal } from './../components/common/error-handling/modals/SignErrorModal';
+import { ConfirmEmailModal } from './../components/common/confirmation/ConfirmEmailModal';
+
+
 
 export const SignUp = () => {
 	//hook's calls
 	const { formState, dispatch } = useContext(UserContext);
+	const [confirmEmail, setConfirmEmail] = useState<boolean>(false);
+	const toggleConfirmEmail = () => setConfirmEmail(!confirmEmail);
 	const navigate = useNavigate();
 	//avoid access to protected pages
 	useEffect(() => {
@@ -61,6 +65,10 @@ export const SignUp = () => {
 		}
 		)(dispatch);
 		
+		//if request is siccessful display the confirmation email modal
+		if(formState.unknownError === false){
+			setConfirmEmail(true);
+		}
 	};
 	
 	useEffect(() => {
@@ -81,6 +89,7 @@ export const SignUp = () => {
 				</div>
 			</ContentContainer>
 			{formState.unknownError && <SignErrorModal toggleModal={toggleModalFunction} />}
+			{confirmEmail && <ConfirmEmailModal email={formState.email.value} toggleConfirm={toggleConfirmEmail} />}
 			<BgSection />
 		</MainWrapper>
 	);

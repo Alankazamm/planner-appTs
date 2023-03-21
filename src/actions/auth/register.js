@@ -4,6 +4,7 @@ import { ActionType } from "../../reducers/formReducer";
 import { Auth } from "aws-amplify";
 import { Amplify, API } from "aws-amplify";
 import awsmobile from "../../aws-exports";
+import { errorsHandler } from './../../helpers/errorsHandler';
 Amplify.configure(awsmobile);
 let response;
 export const register = ({ firstName, lastName, birthDate, country, city, email, password, confirmPassword, }) => (dispatch) => {
@@ -89,30 +90,19 @@ export const register = ({ firstName, lastName, birthDate, country, city, email,
             catch (error) {
                 console.log(error);
             }
-            //     API.get("plannerprojectapi", "/users/eed8066f-3ee1-4f15-9b2c-0542017e46a0", {}).then((response) => {
-            //       console.log(response);
-            //     });
-            //   } catch (error) {
-            //     console.log(error);
-            //   }
+            //dispatch data to reducer
             dispatch({ type: ActionType.REGISTER_SUCCESS, payload: data });
         }).catch((err) => {
             let arrErrors = [];
-            console.log(err + '');
-            //check if err contains "UsernameExistsException: An account with the given email already exists."
-            if (err.toString().includes("UsernameExistsException: An account with the given email already exists.")) {
-                arrErrors.push("An account with the given email already exists.");
-            }
-            else {
-                arrErrors.push('Unknown error');
-            }
+            const error = errorsHandler(err);
+            arrErrors.push(error);
             dispatch({ type: ActionType.REGISTER_FAIL, payload: arrErrors });
         });
     }
     catch (err) {
-        console.log(err + "error");
         let arrErrors = [];
-        arrErrors.push(err);
+        const error = errorsHandler(err);
+        arrErrors.push(error);
         dispatch({ type: ActionType.REGISTER_FAIL, payload: arrErrors });
     }
 };

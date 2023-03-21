@@ -5,7 +5,7 @@ export const BgSection = () => {
     let navigate = useNavigate();
     return (
         <BgWrapper>
-            <a href="https://compass.uol/en/home/" target="_blank"><img src={logo} /> </a> 
+            <a href="https://compass.uol/en/home/"  target="_blank"><img alt="logo" src={logo} /> </a> 
         </BgWrapper>
     )
 }

@@ -22,9 +22,12 @@ export enum signupErrors {
     confirmPasswordEmpty = "Confirm password is required",
     confirmNotMatch = "Passwords do not match",
     //sign-in
-    emailNotExists = "This user doesn't exist. Please sign up first!",
-    incorrectPassword = "Invalid data.",
-
+    userNotExists = "User does not exist, please sign up first",
+    incorrectPassword = "Incorrect username or password.",
+    passwordAttempts = "Password attempts exceeded",
+    signinPasswordEmpty = "Password cannot be empty",
+    signinUserEmpty = "Username cannot be empty",
+    unconfirmedUser = "User is not confirmed",
 }
 export type userLogged = {
     firstName: string,
@@ -184,6 +187,8 @@ export const formsReducer = (state: formState, action: action): formState => {
                             state.confirmPassword!.hasError = true;
                             state.confirmPassword!.error = "Passwords do not match";
                             break;
+                        default:
+                            break;
                     }
                 });
             }
@@ -255,6 +260,7 @@ export const formsReducer = (state: formState, action: action): formState => {
             };
         //this case is called when the login is unsuccessful and set the errors in the loginAuth state
         case ActionType.LOGIN_FAIL:
+            console.log(action.payload);
             return {
                 ...state,
                 loginAuth: {
@@ -289,9 +295,31 @@ export const formsReducer = (state: formState, action: action): formState => {
                             state.loginPassword!.hasError = true;
                             state.loginPassword!.error = "Incorrect password";
                             break;
-                        case signupErrors.emailNotExists:
+                        case signupErrors.userNotExists:
                             state.user!.hasError = true;
-                            state.user!.error = "Email does not exist";
+                            state.user!.error = "User does not exist";
+                            break;
+                        case signupErrors.passwordAttempts:
+                            state.loginPassword!.hasError = true;
+                            state.loginPassword!.error = "Password attempts exceeded, please try again later";
+                            break;
+                        case signupErrors.unconfirmedUser:
+                            state.user!.hasError = true;
+                            state.user!.error = "User is not confirmed, please check your email";
+                            break;
+                        case signupErrors.signinPasswordEmpty:
+                            state.loginPassword!.hasError = true;
+                            state.loginPassword!.error = "Password cannot be empty";
+                            break;
+                        case signupErrors.incorrectPassword:
+                            state.loginPassword!.hasError = true;
+                            state.loginPassword!.error = "Incorrect username or password";
+                            break;
+                        case signupErrors.signinUserEmpty:
+                            state.user!.hasError = true;
+                            state.user!.error = "Username cannot be empty";
+                            break;
+                        default:
                             break;
                     }
                 });
