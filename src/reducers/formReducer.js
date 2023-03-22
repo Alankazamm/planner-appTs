@@ -20,7 +20,8 @@ export var signupErrors;
     signupErrors["confirmNotMatch"] = "Passwords do not match";
     //sign-in
     signupErrors["userNotExists"] = "User does not exist, please sign up first";
-    signupErrors["incorrectPassword"] = "Incorrect username or password.";
+    signupErrors["incorrectPassword"] = "Incorrect password.";
+    signupErrors["incorrectUserOrPassword"] = "Incorrect username or password.";
     signupErrors["passwordAttempts"] = "Password attempts exceeded";
     signupErrors["signinPasswordEmpty"] = "Password cannot be empty";
     signupErrors["signinUserEmpty"] = "Username cannot be empty";
@@ -75,7 +76,7 @@ export const formsReducer = (state, action) => {
                             break;
                         case signupErrors.emailExists:
                             state.email.hasError = true;
-                            state.email.error = error;
+                            state.email.error = error + " Please sign in";
                             break;
                         case signupErrors.firstNameEmpty:
                             state.firstName.hasError = true;
@@ -266,9 +267,11 @@ export const formsReducer = (state, action) => {
                             state.loginPassword.hasError = true;
                             state.loginPassword.error = "Password cannot be empty";
                             break;
-                        case signupErrors.incorrectPassword:
+                        case signupErrors.incorrectUserOrPassword:
                             state.loginPassword.hasError = true;
                             state.loginPassword.error = "Incorrect username or password";
+                            state.user.hasError = true;
+                            state.user.error = "Incorrect username or password";
                             break;
                         case signupErrors.signinUserEmpty:
                             state.user.hasError = true;

@@ -65,15 +65,18 @@ export const SignUp = () => {
 		}
 		)(dispatch);
 		
-		//if request is siccessful display the confirmation email modal
-		if(formState.unknownError === false){
-			setConfirmEmail(true);
-		}
+		console.log(formState);
 	};
 	
 	useEffect(() => {
 		dispatch({ type: ActionType.VALIDATE_FORM });
+		
 	}, [formState.auth.errors]);
+	useEffect(() => {
+		if (formState.auth.data) {
+			setConfirmEmail(true);
+		}
+	}, [formState.auth.data]);
 
 	
 	return (

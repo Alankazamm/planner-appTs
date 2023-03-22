@@ -1,36 +1,55 @@
 import { Auth } from 'aws-amplify';
-import { ConfirmModal } from './../error-handling/modals/Modal.styles';
+import { ConfirmEmailModal as Modal } from '../modals/Modal.styles';
 import { useState } from 'react';
+import { Amplify, API } from "aws-amplify";
+import awsmobile from "../../../aws-exports";
+import { useNavigate } from 'react-router-dom';
+
+Amplify.configure(awsmobile);
 export const ConfirmEmailModal = ({ email, toggleConfirm }: { email: string, toggleConfirm: () => void }) => {
+    const navigate = useNavigate();
     const [code, setCode] = useState<string>('');
+    const [modalTitle, setModalTitle] = useState<string>('Confirm your email');
     const handleConfirm = async () => {
         try {
             await Auth.confirmSignUp(email, code);
-            console.log('success');
+            setModalTitle('Email confirmed');
         } catch (error) {
-            console.log('error confirming sign up', error);
+            if (error.code === 'CodeMismatchException') {
+                setModalTitle('Incorrect code');
+            } else if (error.code === 'ExpiredCodeException') {
+                setModalTitle('Code expired, please request a new one');
+            }
+            else if (error.code === 'LimitExceededException') {
+                setModalTitle('Too many attempts, please request a new code');
+            }
+            else if (error.toString().includes('Confirmation code cannot be empty')) {
+                setModalTitle('Please enter a code');
+            }
         }
+            
     }
     return (
-        <ConfirmModal>
-            <div className="confirmModalContent">
-                <div className="confirmModalTitle">
-                    <h5 className="confirmModalText">Confirm your email</h5>
+        <Modal>
+            <div className="confirmEmailModalContent">
+                <div className="confirmEmailModalTitle">
+                    {modalTitle}
                 </div>
-                <div className="confirmModalText">
-                    <p>
-                        We have sent you an email to confirm your account. Please check your inbox.
-                    </p>
-                    <p> Code: </p>
-                    <input placeholder="code" type="text" onChange={(e) => setCode(e.target.value)} />
+                <div className="confirmEmailModalText">
+                    <p>We have sent you a confirmation code to your email address. Please enter it below to confirm your email address.</p>
                 </div>
-                <div className="confirmModalText">
-                    <button onClick={handleConfirm} type="button" className="btn btn-primary">Confirm</button>
-                    <button type="button" className="btn btn-secondary" onClick={toggleConfirm}>Cancel</button>
+             
+                    <input className="confirmEmailModalInput" type="text" placeholder="Confirmation code" value={code} onChange={(e) => setCode(e.target.value)} />
+               
+                <div className="confirmEmailModalButtons">
+                    <button className="confirmEmailButton" onClick={handleConfirm}>Confirm</button>
+                    <button className="closeButton" onClick={toggleConfirm}>Cancel</button>
+                    {modalTitle === 'Email confirmed' && <button className="closeButton" onClick={() => { toggleConfirm(); navigate('/login'); }}>Close</button>}
                 </div>
-                
             </div>
-        </ConfirmModal>
+
+
+        </Modal>
     )
 
 }

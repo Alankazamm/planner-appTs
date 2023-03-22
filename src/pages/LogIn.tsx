@@ -19,16 +19,32 @@ import { UserContext } from './../contexts/userContext';
 import { ActionType } from "../reducers/formReducer";
 //external funcs
 import { login } from "../actions/auth/login";
+import { ConfirmEmailModal } from "../components/common/confirmation/ConfirmEmailModal";
 // import { updateToken } from "../helpers/axios";
 
 
 let firstRender = true;
 export const LogIn = () => {
 
+	const toggleConfirmEmail = () => {
+		setConfirmEmailModal(!confirmEmailModal);
+	};
+		
+	const loginHandler = () => {
+
+		const email = formState.user.value;
+		const password = formState.loginPassword.value;
+		login({ email, password })(dispatch);
+		
+	
+		//return from api: data:{token:string, user:{birthDate, city, country, email, firstName, lastName, password,createdAt, _id} },
+	};
+
 	
 	//hook's calls
 	const { formState, dispatch } = useContext(UserContext);
 	const navigate = useNavigate();
+	const [confirmEmailModal, setConfirmEmailModal] = useState<boolean>(false);
 	
 	useEffect(() => {
 		if (firstRender) {
@@ -45,7 +61,16 @@ export const LogIn = () => {
 			dispatch({ type: ActionType.VALIDATE_LOGIN });
 		}
 	}, [formState.loginAuth.errors]);
-
+	useEffect(() => {
+		if (formState.user.error) {
+			//check if the error is because the user is not confirmed
+			console.log(formState.user.error);
+			if (formState.user.error.includes("User is not confirmed")) {
+				console.log("user is not confirmed");
+				toggleConfirmEmail();
+			}
+		}
+	}, [formState.user.error]);
 
 	// useEffect(() => {
 	// 	if (formState.loginAuth.data) {
@@ -55,17 +80,8 @@ export const LogIn = () => {
 	// 		navigate("/planner");
 	// 	}
 	// }, [formState.loginAuth.data]);
-		
-	const loginHandler = () => {
 
-		const email = formState.user.value;
-		const password = formState.loginPassword.value;
-		login({ email, password })(dispatch);
-		
 	
-		//return from api: data:{token:string, user:{birthDate, city, country, email, firstName, lastName, password,createdAt, _id} },
-	};
-
 	return (
 		<MainWrapper>
 			<ContentContainer>
@@ -84,6 +100,8 @@ export const LogIn = () => {
 							isLoading={formState.loginAuth.loading}
 							onClick={loginHandler}
 						/>
+					
+						{confirmEmailModal && <ConfirmEmailModal toggleConfirm={toggleConfirmEmail} email={formState.user.value} />}
 					</FormContainer>
 				</div>
 				{/* <Authenticator>

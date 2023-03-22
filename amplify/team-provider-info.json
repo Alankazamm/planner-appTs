@@ -11,28 +11,6 @@
       "StackId": "arn:aws:cloudformation:us-east-1:729418750644:stack/amplify-plannerproject-dev-22454/8f9a5510-c228-11ed-86b0-0a11f26dba7f",
       "AmplifyAppId": "d2eow2lpx6490l",
       "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-plannerproject-dev-22454-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
-    },
-    "categories": {
-      "function": {
-        "plannereventsfunction": {
-          "deploymentBucketName": "amplify-plannerproject-dev-22454-deployment",
-          "s3Key": "amplify-builds/plannereventsfunction-534b6e624d517851586c-build.zip"
-        },
-        "plannerprojectfunction": {
-          "deploymentBucketName": "amplify-plannerproject-dev-22454-deployment",
-          "s3Key": "amplify-builds/plannerprojectfunction-4e2f69675773526c6c42-build.zip"
-        }
-      },
-      "auth": {
-        "plannerprojecte2fc34e8": {}
-      },
-      "storage": {
-        "plannereventsdb": {},
-        "plannerprojectdb": {}
-      },
-      "api": {
-        "plannerprojectapi": {}
-      }
     }
   }
 }

@@ -1,17 +1,34 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { Auth } from 'aws-amplify';
-import { ConfirmModal } from './../error-handling/modals/Modal.styles';
+import { ConfirmEmailModal as Modal } from '../modals/Modal.styles';
 import { useState } from 'react';
+import { Amplify } from "aws-amplify";
+import awsmobile from "../../../aws-exports";
+import { useNavigate } from 'react-router-dom';
+Amplify.configure(awsmobile);
 export const ConfirmEmailModal = ({ email, toggleConfirm }) => {
+    const navigate = useNavigate();
     const [code, setCode] = useState('');
+    const [modalTitle, setModalTitle] = useState('Confirm your email');
     const handleConfirm = async () => {
         try {
             await Auth.confirmSignUp(email, code);
-            console.log('success');
+            setModalTitle('Email confirmed');
         }
         catch (error) {
-            console.log('error confirming sign up', error);
+            if (error.code === 'CodeMismatchException') {
+                setModalTitle('Incorrect code');
+            }
+            else if (error.code === 'ExpiredCodeException') {
+                setModalTitle('Code expired, please request a new one');
+            }
+            else if (error.code === 'LimitExceededException') {
+                setModalTitle('Too many attempts, please request a new code');
+            }
+            else if (error.toString().includes('Confirmation code cannot be empty')) {
+                setModalTitle('Please enter a code');
+            }
         }
     };
-    return (_jsx(ConfirmModal, { children: _jsxs("div", { className: "confirmModalContent", children: [_jsx("div", { className: "confirmModalTitle", children: _jsx("h5", { className: "confirmModalText", children: "Confirm your email" }) }), _jsxs("div", { className: "confirmModalText", children: [_jsx("p", { children: "We have sent you an email to confirm your account. Please check your inbox." }), _jsx("p", { children: " Code: " }), _jsx("input", { placeholder: "code", type: "text", onChange: (e) => setCode(e.target.value) })] }), _jsxs("div", { className: "confirmModalText", children: [_jsx("button", { onClick: handleConfirm, type: "button", className: "btn btn-primary", children: "Confirm" }), _jsx("button", { type: "button", className: "btn btn-secondary", onClick: toggleConfirm, children: "Cancel" })] })] }) }));
+    return (_jsx(Modal, { children: _jsxs("div", { className: "confirmEmailModalContent", children: [_jsx("div", { className: "confirmEmailModalTitle", children: modalTitle }), _jsx("div", { className: "confirmEmailModalText", children: _jsx("p", { children: "We have sent you a confirmation code to your email address. Please enter it below to confirm your email address." }) }), _jsx("input", { className: "confirmEmailModalInput", type: "text", placeholder: "Confirmation code", value: code, onChange: (e) => setCode(e.target.value) }), _jsxs("div", { className: "confirmEmailModalButtons", children: [_jsx("button", { className: "confirmEmailButton", onClick: handleConfirm, children: "Confirm" }), _jsx("button", { className: "closeButton", onClick: toggleConfirm, children: "Cancel" }), modalTitle === 'Email confirmed' && _jsx("button", { className: "closeButton", onClick: () => { toggleConfirm(); navigate('/login'); }, children: "Close" })] })] }) }));
 };

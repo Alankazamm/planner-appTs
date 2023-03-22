@@ -62,25 +62,24 @@ export const register = ({ firstName, lastName, birthDate, country, city, email,
         })
             .then((data) => {
             //send data to  dynamoDB
-            try {
-                API.post("plannerprojectapi", "/users", {
-                    body: {
-                        id: data.userSub,
-                        firstName: firstName,
-                        lastName: lastName,
-                        birthDate: birthDate,
-                        country: country,
-                        city: city,
-                        email: email,
-                        password: password,
-                    }
-                }).then((response) => {
-                    console.log(response);
-                });
-            }
-            catch (error) {
-                console.log(error);
-            }
+            // try {
+            //     API.post("plannerprojectapi", "/users", {
+            //         body: {
+            //             id: data.userSub,
+            //             firstName: firstName,
+            //             lastName: lastName,
+            //             birthDate: birthDate,
+            //             country: country,
+            //             city: city,
+            //             email: email,
+            //             password: password,
+            //         }
+            //     }).then((response) => {
+            //         console.log(response);
+            //     });
+            // } catch (error) {
+            //     console.log(error);
+            // }
             //get data from dynamoDB
             try {
                 API.get("plannerprojectapi", `/users/${data.userSub}`, {}).then((response) => {

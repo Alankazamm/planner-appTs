@@ -23,7 +23,8 @@ export enum signupErrors {
     confirmNotMatch = "Passwords do not match",
     //sign-in
     userNotExists = "User does not exist, please sign up first",
-    incorrectPassword = "Incorrect username or password.",
+    incorrectPassword = "Incorrect password.",
+    incorrectUserOrPassword = "Incorrect username or password.",
     passwordAttempts = "Password attempts exceeded",
     signinPasswordEmpty = "Password cannot be empty",
     signinUserEmpty = "Username cannot be empty",
@@ -118,8 +119,9 @@ export const formsReducer = (state: formState, action: action): formState => {
                             state.unknownError = true;
                             break;
                         case signupErrors.emailExists:
+                            
                             state.email.hasError = true;
-                            state.email.error = error;
+                            state.email.error = error + " Please sign in";
                             break;
                         case signupErrors.firstNameEmpty:
                             state.firstName!.hasError = true;
@@ -311,9 +313,11 @@ export const formsReducer = (state: formState, action: action): formState => {
                             state.loginPassword!.hasError = true;
                             state.loginPassword!.error = "Password cannot be empty";
                             break;
-                        case signupErrors.incorrectPassword:
+                        case signupErrors.incorrectUserOrPassword:
                             state.loginPassword!.hasError = true;
                             state.loginPassword!.error = "Incorrect username or password";
+                            state.user!.hasError = true;
+                            state.user!.error = "Incorrect username or password";
                             break;
                         case signupErrors.signinUserEmpty:
                             state.user!.hasError = true;

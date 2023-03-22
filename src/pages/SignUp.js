@@ -52,13 +52,15 @@ export const SignUp = () => {
             password: password.value,
             confirmPassword: confirmPassword.value,
         })(dispatch);
-        //if request is siccessful display the confirmation email modal
-        if (formState.unknownError === false) {
-            setConfirmEmail(true);
-        }
+        console.log(formState);
     };
     useEffect(() => {
         dispatch({ type: ActionType.VALIDATE_FORM });
     }, [formState.auth.errors]);
+    useEffect(() => {
+        if (formState.auth.data) {
+            setConfirmEmail(true);
+        }
+    }, [formState.auth.data]);
     return (_jsxs(MainWrapper, { children: [_jsx(ContentContainer, { children: _jsx("div", { id: "wrapper", children: _jsxs(FormContainer, { page: "signup", children: [_jsx(HeaderText, { page: "signup", title: "Welcome,", description: "Please, register to continue" }), _jsx(RegisterForm, {}), _jsx(FormButton, { text: "Register Now", page: "login", redirectText: "Already have an account?", isLoading: formState.auth.loading, onClick: signUpHandler })] }) }) }), formState.unknownError && _jsx(SignErrorModal, { toggleModal: toggleModalFunction }), confirmEmail && _jsx(ConfirmEmailModal, { email: formState.email.value, toggleConfirm: toggleConfirmEmail }), _jsx(BgSection, {})] }));
 };
