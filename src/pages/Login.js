@@ -59,13 +59,12 @@ export const LogIn = () => {
             }
         }
     }, [formState.user.error]);
-    // useEffect(() => {
-    // 	if (formState.loginAuth.data) {
-    // 		localStorage.setItem("token", formState.loginAuth.data.token);
-    // 		localStorage.setItem("loggedUser", JSON.stringify(formState.loginAuth.data.user));
-    // 		updateToken(formState.loginAuth.data.token)
-    // 		navigate("/planner");
-    // 	}
-    // }, [formState.loginAuth.data]);
+    useEffect(() => {
+        if (formState.loginAuth.data) {
+            localStorage.setItem("token", formState.loginAuth.data.token);
+            localStorage.setItem("loggedUser", formState.loginAuth.data);
+            console.log(formState.loginAuth.data);
+        }
+    }, [formState.loginAuth.data]);
     return (_jsxs(MainWrapper, { children: [_jsx(ContentContainer, { children: _jsx("div", { className: "wrapper", children: _jsxs(FormContainer, { page: "login", children: [_jsx(HeaderText, { page: "login", title: "Welcome,", description: "To continue browsing safely, log in to the network." }), _jsx(LoginForm, {}), _jsx(FormButton, { text: "Log in", page: "signup", redirectText: "Don't have an account?", isLoading: formState.loginAuth.loading, onClick: loginHandler }), confirmEmailModal && _jsx(ConfirmEmailModal, { toggleConfirm: toggleConfirmEmail, email: formState.user.value })] }) }) }), _jsx(BgSection, {})] }));
 };

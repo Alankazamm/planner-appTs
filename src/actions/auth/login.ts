@@ -1,7 +1,9 @@
 //description: this file is used to login the user
 import { Auth } from 'aws-amplify';
 import { ActionType } from "../../reducers/formReducer";
-// import { updateToken } from './../../helpers/axios';
+import { Amplify, API } from "aws-amplify";
+import awsmobile from "../../aws-exports";
+Amplify.configure(awsmobile);
 import { errorsHandler } from './../../helpers/errorsHandler';
 //types
 interface loginData {
@@ -18,12 +20,35 @@ export const login = ({
         Auth.signIn(email, password).then((user) => {
             console.log(user);
             dispatch({ type: ActionType.LOGIN_SUCCESS, payload: user });
+            localStorage.setItem('token', user.signInUserSession.accessToken.jwtToken);
+            localStorage.setItem('user', JSON.stringify(user.attributes));
+            //get user sub
+            const userSub = user.signInUserSession.accessToken.payload.sub;
+            console.log(userSub);
+            console.log(user.signInUserSession.accessToken.jwtToken);
+            try {
+                //get all events by user sub
+                API.get('plannerprojectapi', `/events/filter/${userSub}`, {
+                    headers: {
+                        Authorization: user.signInUserSession.accessToken.jwtToken
+                    }
+                }).then((res) => {
+                    console.log(res);
+                }).catch((err) => {
+                    console.log(err);
+                })
+
+            } catch (err) {
+                console.log(err);
+
+            }
         }).catch((err) => {
             console.log(err);
             let arrErrors = [];
             const error = errorsHandler(err)
             arrErrors.push(error);
             dispatch({ type: ActionType.LOGIN_FAIL, payload: arrErrors });
+
 
         })
     } catch (err) {
@@ -33,33 +58,6 @@ export const login = ({
         dispatch({ type: ActionType.LOGIN_FAIL, payload: arrErrors });
     }
 
-
-
-    // axiosInstance.post('/users/sign-in', {
-
-    //     email,
-    //     password,
-
-    // }).then((res) => {
-    //     localStorage.setItem('token', res.data.token);
-    //     updateToken(res.data.token);
-    //     dispatch({ type: ActionType.LOGIN_SUCCESS, payload: res.data });
-
-
-    // }).catch((err) => {
-    //     let arrErrors = [];
-    //     if (err.response.data.hasOwnProperty('errors')){
-    //         for (let key in err.response.data.errors) {
-    //             arrErrors.push(err.response.data.errors[key]);
-    //         }
-
-    //     } else {
-    //         arrErrors.push(err.response.data);
-
-    //     }
-    //     dispatch({ type: ActionType.LOGIN_FAIL, payload: arrErrors });
-    // })
-    // return response
 
 
 }

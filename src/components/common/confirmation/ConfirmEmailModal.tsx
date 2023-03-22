@@ -1,7 +1,7 @@
 import { Auth } from 'aws-amplify';
 import { ConfirmEmailModal as Modal } from '../modals/Modal.styles';
 import { useState } from 'react';
-import { Amplify, API } from "aws-amplify";
+import { Amplify } from "aws-amplify";
 import awsmobile from "../../../aws-exports";
 import { useNavigate } from 'react-router-dom';
 
@@ -14,7 +14,7 @@ export const ConfirmEmailModal = ({ email, toggleConfirm }: { email: string, tog
         try {
             await Auth.confirmSignUp(email, code);
             setModalTitle('Email confirmed');
-        } catch (error) {
+        } catch (error:any) {
             if (error.code === 'CodeMismatchException') {
                 setModalTitle('Incorrect code');
             } else if (error.code === 'ExpiredCodeException') {

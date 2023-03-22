@@ -19,7 +19,7 @@ export const FormButton  = (props:formButtonProps) => {
 
     return (
         <StyledFormBtn>
-            {props.isLoading? <img src={spinner}></img>: <button onClick={props.onClick} >{props.text}</button>}
+            {props.isLoading? <img alt="loading spinner" src={spinner}></img>: <button onClick={props.onClick} >{props.text}</button>}
             <Redirect page={props.page} text={props.redirectText} />
         </StyledFormBtn>
         

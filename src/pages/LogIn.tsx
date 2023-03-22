@@ -72,14 +72,13 @@ export const LogIn = () => {
 		}
 	}, [formState.user.error]);
 
-	// useEffect(() => {
-	// 	if (formState.loginAuth.data) {
-	// 		localStorage.setItem("token", formState.loginAuth.data.token);
-	// 		localStorage.setItem("loggedUser", JSON.stringify(formState.loginAuth.data.user));
-	// 		updateToken(formState.loginAuth.data.token)
-	// 		navigate("/planner");
-	// 	}
-	// }, [formState.loginAuth.data]);
+	useEffect(() => {
+		if (formState.loginAuth.data) {
+			localStorage.setItem("token", formState.loginAuth.data.token);
+			localStorage.setItem("loggedUser", formState.loginAuth.data);
+			console.log(formState.loginAuth.data);
+		}
+	}, [formState.loginAuth.data]);
 
 	
 	return (

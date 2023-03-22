@@ -1,0 +1,26 @@
+{
+  "resourceName": "plannereventsdb",
+  "tableName": "eventsTavle",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "sortKey": {
+    "fieldName": "userId",
+    "fieldType": "string"
+  },
+  "gsi": [
+    {
+      "name": "userId",
+      "partitionKey": {
+        "fieldName": "userId",
+        "fieldType": "string"
+      },
+      "sortKey": {
+        "fieldName": "date",
+        "fieldType": "string"
+      }
+    }
+  ],
+  "triggerFunctions": []
+}
