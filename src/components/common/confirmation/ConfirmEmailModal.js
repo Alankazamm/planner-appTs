@@ -6,7 +6,7 @@ import { Amplify } from "aws-amplify";
 import awsmobile from "../../../aws-exports";
 import { useNavigate } from 'react-router-dom';
 Amplify.configure(awsmobile);
-export const ConfirmEmailModal = ({ email, toggleConfirm }) => {
+export const ConfirmEmailModal = ({ email, toggleModal }) => {
     const navigate = useNavigate();
     const [code, setCode] = useState('');
     const [modalTitle, setModalTitle] = useState('Confirm your email');
@@ -30,5 +30,5 @@ export const ConfirmEmailModal = ({ email, toggleConfirm }) => {
             }
         }
     };
-    return (_jsx(Modal, { children: _jsxs("div", { className: "confirmEmailModalContent", children: [_jsx("div", { className: "confirmEmailModalTitle", children: modalTitle }), _jsx("div", { className: "confirmEmailModalText", children: _jsx("p", { children: "We have sent you a confirmation code to your email address. Please enter it below to confirm your email address." }) }), _jsx("input", { className: "confirmEmailModalInput", type: "text", placeholder: "Confirmation code", value: code, onChange: (e) => setCode(e.target.value) }), _jsxs("div", { className: "confirmEmailModalButtons", children: [_jsx("button", { className: "confirmEmailButton", onClick: handleConfirm, children: "Confirm" }), _jsx("button", { className: "closeButton", onClick: toggleConfirm, children: "Cancel" }), modalTitle === 'Email confirmed' && _jsx("button", { className: "closeButton", onClick: () => { toggleConfirm(); navigate('/login'); }, children: "Close" })] })] }) }));
+    return (_jsx(Modal, { children: _jsxs("div", { className: "confirmEmailModalContent", children: [_jsx("div", { className: "confirmEmailModalTitle", children: modalTitle }), _jsx("div", { className: "confirmEmailModalText", children: _jsx("p", { children: "We have sent you a confirmation code to your email address. Please enter it below to confirm your email address." }) }), _jsx("input", { className: "confirmEmailModalInput", type: "text", placeholder: "Confirmation code", value: code, onChange: (e) => setCode(e.target.value) }), _jsxs("div", { className: "confirmEmailModalButtons", children: [_jsx("button", { className: "confirmEmailButton", onClick: handleConfirm, children: "Confirm" }), _jsx("button", { className: "closeButton", onClick: toggleModal, children: "Cancel" }), modalTitle === 'Email confirmed' && _jsx("button", { className: "closeButton", onClick: () => { toggleModal(); navigate('/login'); }, children: "Close" })] })] }) }));
 };

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { rotate } from './../../common/animations/rotate.styles';
 export const Modal = styled.div `
     position: fixed;
     z-index: 500;
@@ -282,5 +283,195 @@ export const ConfirmEmailModal = styled(Modal) `
     .closeButton:hover{
         background-color: #FF8000;
         color: white;
+    }
+`;
+export const ForgotPasswordModal = styled(Modal) `
+    .forgotPasswordModalContent{
+        background-color: white;
+        width: 46vw;
+        height: 36vh;
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .forgotPasswordModalTitle{ 
+        background-color: #FF8000;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 25px 25px 0 0;
+        width: 100%;
+        font-size: 1.5rem;
+    }
+    .forgotPasswordModalText{
+        padding: 1rem;
+        text-align: center;
+        line-height: 1.5rem;
+        font-size: 1.3rem;
+        width: 80%;
+    }
+    .forgotPasswordModalInput{
+        width: 80%;
+        height: 5vh;
+        border-radius: 5px;
+        border: 1px solid #FF8000;
+        padding: 0.5rem;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    .forgotPasswordModalInput:focus{
+        outline: none;
+        border: 1px solid #FF8000;
+    }
+    .forgotPasswordModalButtons{
+        display: flex;
+        justify-content:flex-end;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    button{
+        width: 10vw;
+        height: 5vh;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
+    button:hover{
+        background-color: #00BA88;
+        color: white;
+    }
+    img{
+        animation: ${rotate} 1s linear infinite;
+    }
+    .forgotPasswordButton{
+        //greeny color
+        background-color: #43f738;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .forgotPasswordButton:hover{
+        background-color: white;
+        border: 1px solid #43f738;
+        color: #43f738;
+    }
+    .closeButton{
+        background-color: #FFCE00;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .closeButton:hover{
+        background-color: #FF8000;
+        color: white;
+    }
+    .forgotPasswordModalError{
+        color: red;
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .forgotPasswordModalSuccess{
+        color: green;
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    
+`;
+export const ResetPasswordModal = styled(Modal) `
+    .resetPasswordModalContent{
+        background-color: white;
+        width: 46vw;
+        height: 48vh;
+        border-radius: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .resetPasswordModalTitle{
+        background-color: #FF8000;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+        border-radius: 25px 25px 0 0;
+        width: 100%;
+        font-size: 1.5rem;
+    }
+    .resetPasswordModalText{
+        padding: 1rem;
+        text-align: center;
+        line-height: 1.5rem;
+        font-size: 1.3rem;
+        width: 80%;
+    }
+    .resetPasswordModalInput{
+        width: 80%;
+        height: 5vh;
+        border-radius: 5px;
+        border: 1px solid #FF8000;
+        padding: 0.5rem;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    .resetPasswordModalInput:focus{
+        outline: none;
+        border: 1px solid #FF8000;
+    }
+    .resetPasswordModalButtons{
+        display: flex;
+        justify-content:flex-end;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    button{
+        width: 10vw;
+        height: 8vh;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1.6rem;
+        font-weight: 600;
+    }
+    button:hover{
+        background-color: #00BA88;
+        color: white;
+    }
+    img{
+        animation: ${rotate} 1s linear infinite;
+    }
+    .resetPasswordButton{
+
+        background-color: #43f738;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .resetPasswordButton:hover{
+        background-color: white;
+        border: 1px solid #43f738;
+        color: #43f738;
+    }
+    
+    .resetPasswordModalError{
+        color: red;
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+    .resetPasswordModalSuccess{
+        color: green;
+        font-size: 1.3rem;
+        text-align: center;
+        margin-bottom: 1rem;
     }
 `;

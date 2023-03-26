@@ -21,11 +21,10 @@ import { ActionType } from "../reducers/formReducer";
 import { login } from "../actions/auth/login";
 import { ConfirmEmailModal } from "../components/common/confirmation/ConfirmEmailModal";
 // import { updateToken } from "../helpers/axios";
+import { ForgotPasswordModal } from './../components/common/modals/ForgotPasswordModal';
+import { ResetPasswordModal } from "../components/common/modals/ResetPasswordModal";
 let firstRender = true;
 export const LogIn = () => {
-    const toggleConfirmEmail = () => {
-        setConfirmEmailModal(!confirmEmailModal);
-    };
     const loginHandler = () => {
         const email = formState.user.value;
         const password = formState.loginPassword.value;
@@ -35,13 +34,30 @@ export const LogIn = () => {
     //hook's calls
     const { formState, dispatch } = useContext(UserContext);
     const navigate = useNavigate();
-    const [confirmEmailModal, setConfirmEmailModal] = useState(false);
+    const [showModal, setShowModal] = useState({
+        confirmModal: false,
+        forgotPasswordModal: {
+            show: false,
+            sended: false,
+        },
+    });
+    const toggleConfirmEmail = () => {
+        setShowModal({ ...showModal, confirmModal: !showModal.confirmModal });
+    };
+    const toggleForgotPassword = (sended) => {
+        setShowModal({ ...showModal, forgotPasswordModal: { show: !showModal.forgotPasswordModal.show, sended } });
+    };
+    const forgotLinkHandler = () => {
+        toggleForgotPassword(false);
+    };
+    const toggleResetModal = () => {
+        //it will close the reset modal with forgotPasswordModal.sended
+        setShowModal({ ...showModal, forgotPasswordModal: { show: false, sended: false } });
+    };
     useEffect(() => {
         if (firstRender) {
             firstRender = false;
             dispatch({ type: ActionType.LOG_USER });
-            localStorage.removeItem("token");
-            localStorage.removeItem("loggedUser");
         }
     }, []);
     useEffect(() => {
@@ -59,12 +75,24 @@ export const LogIn = () => {
             }
         }
     }, [formState.user.error]);
-    useEffect(() => {
-        if (formState.loginAuth.data) {
-            localStorage.setItem("token", formState.loginAuth.data.token);
-            localStorage.setItem("loggedUser", formState.loginAuth.data);
-            console.log(formState.loginAuth.data);
-        }
-    }, [formState.loginAuth.data]);
-    return (_jsxs(MainWrapper, { children: [_jsx(ContentContainer, { children: _jsx("div", { className: "wrapper", children: _jsxs(FormContainer, { page: "login", children: [_jsx(HeaderText, { page: "login", title: "Welcome,", description: "To continue browsing safely, log in to the network." }), _jsx(LoginForm, {}), _jsx(FormButton, { text: "Log in", page: "signup", redirectText: "Don't have an account?", isLoading: formState.loginAuth.loading, onClick: loginHandler }), confirmEmailModal && _jsx(ConfirmEmailModal, { toggleConfirm: toggleConfirmEmail, email: formState.user.value })] }) }) }), _jsx(BgSection, {})] }));
+    // useEffect(() => {
+    // 	if (formState.loginAuth.data) {
+    // 		localStorage.setItem("token", formState.loginAuth.data.token);
+    // 		localStorage.setItem("loggedUser", formState.loginAuth.data);
+    // 		console.log(formState.loginAuth.data);
+    // 	}
+    // }, [formState.loginAuth.data]);
+    return (_jsxs(MainWrapper, { children: [_jsx(ContentContainer, { children: _jsx("div", { className: "wrapper", children: _jsxs(FormContainer, { page: "login", children: [_jsx(HeaderText, { page: "login", title: "Welcome,", description: "To continue browsing safely, log in to the network." }), _jsx(LoginForm, {}), _jsx(FormButton, { text: "Log in", page: "signup", redirectText: "Don't have an account?", isLoading: formState.loginAuth.loading, onClick: loginHandler }), _jsxs("span", { style: {
+                                    textAlign: "center",
+                                    width: "100%",
+                                    display: "flex",
+                                    justifyContent: "center",
+                                    alignItems: "center",
+                                    color: "rgb(255, 255, 255)",
+                                }, children: [" Forgot password? ", _jsx("span", { style: {
+                                            textDecoration: "underline",
+                                            color: "#ff0000",
+                                            cursor: "pointer",
+                                            marginLeft: "5px",
+                                        }, onClick: forgotLinkHandler, children: "Click here" })] }), showModal.forgotPasswordModal.sended && _jsx(ResetPasswordModal, { toggleModal: toggleResetModal }), showModal.forgotPasswordModal.show && _jsx(ForgotPasswordModal, { toggleModal: toggleForgotPassword }), showModal.confirmModal && _jsx(ConfirmEmailModal, { toggleModal: toggleConfirmEmail, email: formState.user.value })] }) }) }), _jsx(BgSection, {})] }));
 };

@@ -29,7 +29,7 @@ export const SignUp = () => {
     //avoid access to protected pages
     useEffect(() => {
         localStorage.removeItem("token");
-        localStorage.removeItem("loggedUser");
+        localStorage.removeItem("user");
     }, []);
     const toggleModalFunction = () => {
         dispatch({ type: ActionType.TOGGLE_UNKNOWN_ERROR, payload: false });
@@ -62,5 +62,5 @@ export const SignUp = () => {
             setConfirmEmail(true);
         }
     }, [formState.auth.data]);
-    return (_jsxs(MainWrapper, { children: [_jsx(ContentContainer, { children: _jsx("div", { id: "wrapper", children: _jsxs(FormContainer, { page: "signup", children: [_jsx(HeaderText, { page: "signup", title: "Welcome,", description: "Please, register to continue" }), _jsx(RegisterForm, {}), _jsx(FormButton, { text: "Register Now", page: "login", redirectText: "Already have an account?", isLoading: formState.auth.loading, onClick: signUpHandler })] }) }) }), formState.unknownError && _jsx(SignErrorModal, { toggleModal: toggleModalFunction }), confirmEmail && _jsx(ConfirmEmailModal, { email: formState.email.value, toggleConfirm: toggleConfirmEmail }), _jsx(BgSection, {})] }));
+    return (_jsxs(MainWrapper, { children: [_jsx(ContentContainer, { children: _jsx("div", { id: "wrapper", children: _jsxs(FormContainer, { page: "signup", children: [_jsx(HeaderText, { page: "signup", title: "Welcome,", description: "Please, register to continue" }), _jsx(RegisterForm, {}), _jsx(FormButton, { text: "Register Now", page: "login", redirectText: "Already have an account?", isLoading: formState.auth.loading, onClick: signUpHandler })] }) }) }), formState.unknownError && _jsx(SignErrorModal, { toggleModal: toggleModalFunction }), confirmEmail && _jsx(ConfirmEmailModal, { email: formState.email.value, toggleModal: toggleConfirmEmail }), _jsx(BgSection, {})] }));
 };

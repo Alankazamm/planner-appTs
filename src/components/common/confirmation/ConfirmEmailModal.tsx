@@ -6,7 +6,7 @@ import awsmobile from "../../../aws-exports";
 import { useNavigate } from 'react-router-dom';
 
 Amplify.configure(awsmobile);
-export const ConfirmEmailModal = ({ email, toggleConfirm }: { email: string, toggleConfirm: () => void }) => {
+export const ConfirmEmailModal = ({ email, toggleModal }: { email: string, toggleModal: () => void }) => {
     const navigate = useNavigate();
     const [code, setCode] = useState<string>('');
     const [modalTitle, setModalTitle] = useState<string>('Confirm your email');
@@ -43,8 +43,8 @@ export const ConfirmEmailModal = ({ email, toggleConfirm }: { email: string, tog
                
                 <div className="confirmEmailModalButtons">
                     <button className="confirmEmailButton" onClick={handleConfirm}>Confirm</button>
-                    <button className="closeButton" onClick={toggleConfirm}>Cancel</button>
-                    {modalTitle === 'Email confirmed' && <button className="closeButton" onClick={() => { toggleConfirm(); navigate('/login'); }}>Close</button>}
+                    <button className="closeButton" onClick={toggleModal}>Cancel</button>
+                    {modalTitle === 'Email confirmed' && <button className="closeButton" onClick={() => { toggleModal(); navigate('/login'); }}>Close</button>}
                 </div>
             </div>
 

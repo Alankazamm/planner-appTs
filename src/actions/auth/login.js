@@ -11,6 +11,9 @@ export const login = ({ email, password, }) => (dispatch) => {
         Auth.signIn(email, password).then((user) => {
             console.log(user);
             dispatch({ type: ActionType.LOGIN_SUCCESS, payload: user });
+            //set session
+            const session = user.signInUserSession;
+            console.log(session, "session");
             localStorage.setItem('token', user.signInUserSession.accessToken.jwtToken);
             localStorage.setItem('user', JSON.stringify(user.attributes));
             //get user sub

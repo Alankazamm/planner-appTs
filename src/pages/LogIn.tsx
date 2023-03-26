@@ -21,14 +21,15 @@ import { ActionType } from "../reducers/formReducer";
 import { login } from "../actions/auth/login";
 import { ConfirmEmailModal } from "../components/common/confirmation/ConfirmEmailModal";
 // import { updateToken } from "../helpers/axios";
+import { ForgotPasswordModal } from './../components/common/modals/ForgotPasswordModal';
+import { ResetPasswordModal } from "../components/common/modals/ResetPasswordModal";
+
 
 
 let firstRender = true;
 export const LogIn = () => {
 
-	const toggleConfirmEmail = () => {
-		setConfirmEmailModal(!confirmEmailModal);
-	};
+	
 		
 	const loginHandler = () => {
 
@@ -44,14 +45,37 @@ export const LogIn = () => {
 	//hook's calls
 	const { formState, dispatch } = useContext(UserContext);
 	const navigate = useNavigate();
-	const [confirmEmailModal, setConfirmEmailModal] = useState<boolean>(false);
+	const [showModal, setShowModal] = useState<{
+		confirmModal: boolean;
+		forgotPasswordModal: {
+			show: boolean;
+			sended: boolean;
+		};
+	}>({
+		confirmModal: false,
+		forgotPasswordModal: {
+			show: false,
+			sended: false,
+		},
+	});
+	const toggleConfirmEmail = () => {
+		setShowModal({ ...showModal, confirmModal: !showModal.confirmModal });
+	};
+	const toggleForgotPassword = (sended:boolean) => {
+		setShowModal({ ...showModal, forgotPasswordModal: { show: !showModal.forgotPasswordModal.show, sended } });
+	};
+	const forgotLinkHandler = () => {
+		toggleForgotPassword(false);
+	};
+	const toggleResetModal = () => {
+		//it will close the reset modal with forgotPasswordModal.sended
+		setShowModal({ ...showModal, forgotPasswordModal: { show: false, sended: false } });
+	};
 	
 	useEffect(() => {
 		if (firstRender) {
 			firstRender = false;
 			dispatch({ type: ActionType.LOG_USER });
-			localStorage.removeItem("token");
-			localStorage.removeItem("loggedUser");
 		}
 	}, []);
 
@@ -72,13 +96,13 @@ export const LogIn = () => {
 		}
 	}, [formState.user.error]);
 
-	useEffect(() => {
-		if (formState.loginAuth.data) {
-			localStorage.setItem("token", formState.loginAuth.data.token);
-			localStorage.setItem("loggedUser", formState.loginAuth.data);
-			console.log(formState.loginAuth.data);
-		}
-	}, [formState.loginAuth.data]);
+	// useEffect(() => {
+	// 	if (formState.loginAuth.data) {
+	// 		localStorage.setItem("token", formState.loginAuth.data.token);
+	// 		localStorage.setItem("loggedUser", formState.loginAuth.data);
+	// 		console.log(formState.loginAuth.data);
+	// 	}
+	// }, [formState.loginAuth.data]);
 
 	
 	return (
@@ -99,8 +123,27 @@ export const LogIn = () => {
 							isLoading={formState.loginAuth.loading}
 							onClick={loginHandler}
 						/>
-					
-						{confirmEmailModal && <ConfirmEmailModal toggleConfirm={toggleConfirmEmail} email={formState.user.value} />}
+						<span
+							style={{
+								textAlign: "center",
+								width: "100%",
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center",
+								color:"rgb(255, 255, 255)",
+								
+							}}
+						> Forgot password? <span
+							style={{
+								textDecoration: "underline",
+									color: "#ff0000",
+									cursor: "pointer",
+									marginLeft: "5px",
+							}}
+								onClick={forgotLinkHandler}>Click here</span></span>
+						{showModal.forgotPasswordModal.sended && <ResetPasswordModal toggleModal={toggleResetModal} />}
+						{showModal.forgotPasswordModal.show && <ForgotPasswordModal toggleModal={toggleForgotPassword} ></ForgotPasswordModal>}
+						{showModal.confirmModal && <ConfirmEmailModal toggleModal={toggleConfirmEmail} email={formState.user.value} />}
 					</FormContainer>
 				</div>
 				{/* <Authenticator>

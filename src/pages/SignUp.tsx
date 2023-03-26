@@ -31,7 +31,7 @@ export const SignUp = () => {
 	//avoid access to protected pages
 	useEffect(() => {
 		localStorage.removeItem("token");
-		localStorage.removeItem("loggedUser");
+		localStorage.removeItem("user");
 	}, []);
 	const toggleModalFunction = () => {
 		dispatch({ type: ActionType.TOGGLE_UNKNOWN_ERROR, payload: false })
@@ -92,7 +92,7 @@ export const SignUp = () => {
 				</div>
 			</ContentContainer>
 			{formState.unknownError && <SignErrorModal toggleModal={toggleModalFunction} />}
-			{confirmEmail && <ConfirmEmailModal email={formState.email.value} toggleConfirm={toggleConfirmEmail} />}
+			{confirmEmail && <ConfirmEmailModal email={formState.email.value} toggleModal={toggleConfirmEmail} />}
 			<BgSection />
 		</MainWrapper>
 	);
