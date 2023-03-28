@@ -16,7 +16,6 @@ const Logout = () => {
     const navigate = useNavigate();
     const logoutHandler = () => {
         signout();
-        navigate("/login");
     };
     return (_jsxs(LogoutContainer, { children: [_jsx("a", { href: "https://compass.uol/en/home/", children: _jsx("img", { src: logoIcon, alt: "" }) }), _jsxs("div", { children: [_jsx("img", { src: logoutIcon, alt: "" }), _jsx("span", { onClick: logoutHandler, children: "Logout" })] })] }));
 };

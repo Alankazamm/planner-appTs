@@ -25,12 +25,6 @@ import { ForgotPasswordModal } from './../components/common/modals/ForgotPasswor
 import { ResetPasswordModal } from "../components/common/modals/ResetPasswordModal";
 let firstRender = true;
 export const LogIn = () => {
-    const loginHandler = () => {
-        const email = formState.user.value;
-        const password = formState.loginPassword.value;
-        login({ email, password })(dispatch);
-        //return from api: data:{token:string, user:{birthDate, city, country, email, firstName, lastName, password,createdAt, _id} },
-    };
     //hook's calls
     const { formState, dispatch } = useContext(UserContext);
     const navigate = useNavigate();
@@ -41,6 +35,12 @@ export const LogIn = () => {
             sended: false,
         },
     });
+    //functions
+    const loginHandler = () => {
+        const email = formState.user.value;
+        const password = formState.loginPassword.value;
+        login({ email, password })(dispatch);
+    };
     const toggleConfirmEmail = () => {
         setShowModal({ ...showModal, confirmModal: !showModal.confirmModal });
     };
@@ -54,6 +54,7 @@ export const LogIn = () => {
         //it will close the reset modal with forgotPasswordModal.sended
         setShowModal({ ...showModal, forgotPasswordModal: { show: false, sended: false } });
     };
+    //useEffect's
     useEffect(() => {
         if (firstRender) {
             firstRender = false;
@@ -75,13 +76,6 @@ export const LogIn = () => {
             }
         }
     }, [formState.user.error]);
-    // useEffect(() => {
-    // 	if (formState.loginAuth.data) {
-    // 		localStorage.setItem("token", formState.loginAuth.data.token);
-    // 		localStorage.setItem("loggedUser", formState.loginAuth.data);
-    // 		console.log(formState.loginAuth.data);
-    // 	}
-    // }, [formState.loginAuth.data]);
     return (_jsxs(MainWrapper, { children: [_jsx(ContentContainer, { children: _jsx("div", { className: "wrapper", children: _jsxs(FormContainer, { page: "login", children: [_jsx(HeaderText, { page: "login", title: "Welcome,", description: "To continue browsing safely, log in to the network." }), _jsx(LoginForm, {}), _jsx(FormButton, { text: "Log in", page: "signup", redirectText: "Don't have an account?", isLoading: formState.loginAuth.loading, onClick: loginHandler }), _jsxs("span", { style: {
                                     textAlign: "center",
                                     width: "100%",

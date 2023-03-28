@@ -11,11 +11,11 @@ import errorIcon from "/src/assets/svg/weather-404.svg";
 import { WeatherContainer } from "./WeatherContainer";
 import Spinner from './../../../common/loading/Spinner.styles';
 const Weather = () => {
-    const user = JSON.parse(localStorage.getItem('loggedUser') || '{}');
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
     const city = user.city;
     const country = user.country;
     const forecast = useFetchWeather(city ? city : '');
-    let forecastOutput = (_jsx(WeatherContainer, { children: _jsxs(Spinner, { children: [" ", _jsx("img", { src: spinner })] }) }));
+    let forecastOutput = (_jsx(WeatherContainer, { children: _jsxs(Spinner, { children: [" ", _jsx("img", { alt: "loading", src: spinner })] }) }));
     // (
     // 	<WeatherContainer>
     // 		

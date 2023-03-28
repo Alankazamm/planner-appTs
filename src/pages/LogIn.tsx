@@ -28,19 +28,6 @@ import { ResetPasswordModal } from "../components/common/modals/ResetPasswordMod
 
 let firstRender = true;
 export const LogIn = () => {
-
-	
-		
-	const loginHandler = () => {
-
-		const email = formState.user.value;
-		const password = formState.loginPassword.value;
-		login({ email, password })(dispatch);
-		
-	
-		//return from api: data:{token:string, user:{birthDate, city, country, email, firstName, lastName, password,createdAt, _id} },
-	};
-
 	
 	//hook's calls
 	const { formState, dispatch } = useContext(UserContext);
@@ -58,20 +45,31 @@ export const LogIn = () => {
 			sended: false,
 		},
 	});
+	//functions
+	const loginHandler = () => {
+		const email = formState.user.value;
+		const password = formState.loginPassword.value;
+		login({ email, password })(dispatch);
+	};
+
 	const toggleConfirmEmail = () => {
 		setShowModal({ ...showModal, confirmModal: !showModal.confirmModal });
 	};
+
 	const toggleForgotPassword = (sended:boolean) => {
 		setShowModal({ ...showModal, forgotPasswordModal: { show: !showModal.forgotPasswordModal.show, sended } });
 	};
+
 	const forgotLinkHandler = () => {
 		toggleForgotPassword(false);
 	};
+
 	const toggleResetModal = () => {
 		//it will close the reset modal with forgotPasswordModal.sended
 		setShowModal({ ...showModal, forgotPasswordModal: { show: false, sended: false } });
 	};
 	
+	//useEffect's
 	useEffect(() => {
 		if (firstRender) {
 			firstRender = false;
@@ -79,12 +77,12 @@ export const LogIn = () => {
 		}
 	}, []);
 
-
 	useEffect(() => {
 		if (formState.loginAuth.errors) {
 			dispatch({ type: ActionType.VALIDATE_LOGIN });
 		}
 	}, [formState.loginAuth.errors]);
+
 	useEffect(() => {
 		if (formState.user.error) {
 			//check if the error is because the user is not confirmed
@@ -96,15 +94,6 @@ export const LogIn = () => {
 		}
 	}, [formState.user.error]);
 
-	// useEffect(() => {
-	// 	if (formState.loginAuth.data) {
-	// 		localStorage.setItem("token", formState.loginAuth.data.token);
-	// 		localStorage.setItem("loggedUser", formState.loginAuth.data);
-	// 		console.log(formState.loginAuth.data);
-	// 	}
-	// }, [formState.loginAuth.data]);
-
-	
 	return (
 		<MainWrapper>
 			<ContentContainer>
@@ -146,14 +135,6 @@ export const LogIn = () => {
 						{showModal.confirmModal && <ConfirmEmailModal toggleModal={toggleConfirmEmail} email={formState.user.value} />}
 					</FormContainer>
 				</div>
-				{/* <Authenticator>
-					<FormContainer page="login">
-						<HeaderText page="login" title="Welcome," description="To continue browsing safely, log in to the network." />
-						<LoginForm />
-						<FormButton text="Log in" page="signup" redirectText="Don't have an account?" isLoading={formState.loginAuth.loading} onClick={loginHandler} />
-					</FormContainer>
-
-				</Authenticator> */}
 			</ContentContainer>
 			<BgSection />
 		</MainWrapper>

@@ -55,10 +55,12 @@ export const UserContextProvider = ({ children }: { children: React.ReactNode })
     const navigate = useNavigate();
 
 	//functions
+	//when the user signs out, the form state is reset and the user is redirected to the login page
+	//the user is also removed from the local storage
 	const signout = () => {
 
 		localStorage.removeItem('token');
-		localStorage.removeItem("loggedUser");
+		localStorage.removeItem("user");
 		dispatch({ type: ActionType.RESET_FORMSTATE });
         navigate('/login');
 	}

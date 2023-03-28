@@ -15,14 +15,14 @@ import Spinner from './../../../common/loading/Spinner.styles';
 
 const Weather = () => {
 
-	const user = JSON.parse(localStorage.getItem('loggedUser') || '{}')
+	const user = JSON.parse(localStorage.getItem('user') || '{}')
 	const city: string | undefined = user.city;
     const country: string | undefined = user.country;
     const forecast:any = useFetchWeather(city?city:'');
 	
 	let forecastOutput = (
 		<WeatherContainer>
-			<Spinner> <img src={spinner}></img></Spinner>
+			<Spinner> <img alt="loading" src={spinner}></img></Spinner>
 		</WeatherContainer>
 	);
 	// (

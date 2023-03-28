@@ -18,26 +18,25 @@ export const login = ({
     dispatch({ type: ActionType.LOGIN_LOADING });
     try {
         Auth.signIn(email, password).then((user) => {
-            console.log(user);
             dispatch({ type: ActionType.LOGIN_SUCCESS, payload: user });
-            //set session
-
-            const session = user.signInUserSession;
-            console.log(session, "session");
             localStorage.setItem('token', user.signInUserSession.accessToken.jwtToken);
-            localStorage.setItem('user', JSON.stringify(user.attributes));
-            //get user sub
-            const userSub = user.signInUserSession.accessToken.payload.sub;
-            console.log(userSub);
-            console.log(user.signInUserSession.accessToken.jwtToken);
+            localStorage.setItem('user', JSON.stringify({
+                email: user.attributes.email,
+                sub: user.attributes.sub,
+                name: user.attributes['custom:firtName'],
+                country: user.attributes['custom:country'],
+                city: user.attributes['custom:city'],
+
+            }));
+            console.log(JSON.parse(localStorage.getItem('user')!));
             try {
                 //get all events by user sub
-                API.get('plannerprojectapi', `/events/filter/${userSub}`, {
+                API.get('plannerprojectapi', `/events/filter/${
+                    JSON.parse(localStorage.getItem('user')!).sub
+                }`, {
                     headers: {
-                        Authorization: user.signInUserSession.accessToken.jwtToken
+                        Authorization: localStorage.getItem('token')
                     }
-                    
-                    
                 }).then((res) => {
                     console.log(res);
                 }).catch((err) => {
