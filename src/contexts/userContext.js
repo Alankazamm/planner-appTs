@@ -1,7 +1,7 @@
 import { jsx as _jsx } from "react/jsx-runtime";
 // This is the context that will be used to store the user data and the form data
 //hooks
-import { createContext, useReducer, } from "react";
+import { createContext, useState, useReducer, } from "react";
 import { useNavigate } from "react-router-dom";
 //reducers
 import { formsReducer, ActionType, } from "../reducers/formReducer";
@@ -35,6 +35,7 @@ const initialState = {
 export const UserContext = createContext({});
 export const UserContextProvider = ({ children }) => {
     //hooks
+    const [displayRenewAccessTokenModal, setDisplayRenewAccessTokenModal] = useState(false);
     const [formState, dispatch] = useReducer(formsReducer, initialState);
     const navigate = useNavigate();
     //functions
@@ -43,8 +44,13 @@ export const UserContextProvider = ({ children }) => {
     const signout = () => {
         localStorage.removeItem('token');
         localStorage.removeItem("user");
+        localStorage.removeItem("sessionToken");
+        localStorage.removeItem("sessionRefreshToken");
+        localStorage.removeItem("sessionAccessToken");
+        localStorage.removeItem("sessionExpires");
         dispatch({ type: ActionType.RESET_FORMSTATE });
         navigate('/login');
     };
-    return (_jsx(UserContext.Provider, { value: { formState, dispatch, signout, }, children: children }));
+    return (_jsx(UserContext.Provider, { value: { formState, dispatch, signout, displayRenewAccessTokenModal,
+            setDisplayRenewAccessTokenModal }, children: children }));
 };

@@ -51,6 +51,7 @@ export const UserContext = createContext<any>({});
 export const UserContextProvider = ({ children }: { children: React.ReactNode }) => {
 	
 	//hooks
+	const [displayRenewAccessTokenModal, setDisplayRenewAccessTokenModal] = useState<boolean>(false);
 	const [formState, dispatch]: reducerDestructure = useReducer(formsReducer, initialState);
     const navigate = useNavigate();
 
@@ -61,13 +62,20 @@ export const UserContextProvider = ({ children }: { children: React.ReactNode })
 
 		localStorage.removeItem('token');
 		localStorage.removeItem("user");
+		localStorage.removeItem("sessionToken");
+		localStorage.removeItem("sessionRefreshToken");
+		localStorage.removeItem("sessionAccessToken");
+		localStorage.removeItem("sessionExpires");
+		
+
 		dispatch({ type: ActionType.RESET_FORMSTATE });
         navigate('/login');
 	}
 	
 
 	return (
-		<UserContext.Provider value={{ formState, dispatch, signout, }}>
+		<UserContext.Provider value={{ formState, dispatch, signout, displayRenewAccessTokenModal,
+			setDisplayRenewAccessTokenModal }}>
 			{children}
 		</UserContext.Provider>
 	);

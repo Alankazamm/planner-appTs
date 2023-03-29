@@ -73,6 +73,8 @@ export const LogIn = () => {
 	useEffect(() => {
 		if (firstRender) {
 			firstRender = false;
+			localStorage.removeItem("token");
+			localStorage.removeItem("user");
 			dispatch({ type: ActionType.LOG_USER });
 		}
 	}, []);

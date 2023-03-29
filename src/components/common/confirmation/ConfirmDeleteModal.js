@@ -1,5 +1,5 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-import { ConfirmModal } from '../error-handling/modals/Modal.styles';
+import { ConfirmModal } from '../modals/Modal.styles';
 import warningIcon from '/src/assets/svg/icon-warning.svg';
 export const ConfirmDeleteModal = ({ actionFunction, value, showModal }) => {
     const actionHandler = () => {

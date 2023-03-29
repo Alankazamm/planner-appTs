@@ -11,10 +11,10 @@ import TasksWrapper from "./TasksWrapper.styles";
 import spinner from "/src/assets/svg/spinner-uol.svg";
 import LoadingModal from "../../../../common/loading/LoadingModal";
 import { useState } from 'react';
-import { TaskWarnigModal } from "../../../../common/error-handling/modals/TaskWarnigModal";
+import { TaskWarnigModal } from "../../../../common/modals/TaskWarnigModal";
 import { deleteEvents } from "../../../../../actions/delete-events/deleteEvents";
 import { getEvents } from "../../../../../actions/events/getEvents";
-import { TasksErrorModal } from "../../../../common/error-handling/modals/TasksErrorModal";
+import { TasksErrorModal } from "../../../../common/modals/TasksErrorModal";
 import { ConfirmDeleteModal } from "../../../../common/confirmation/ConfirmDeleteModal";
 import { TasksContext } from "../../../../../contexts/tasksContext";
 export const Tasks = () => {

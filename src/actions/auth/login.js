@@ -18,23 +18,18 @@ export const login = ({ email, password, }) => (dispatch) => {
                 country: user.attributes['custom:country'],
                 city: user.attributes['custom:city'],
             }));
-            console.log(JSON.parse(localStorage.getItem('user')));
-            // try {
-            //     //get all events by user sub , model: /filter/:userId/:dayOfWeek/:date/:description'
-            //     API.get('plannerprojectapi', `/events/filter/${
-            //         JSON.parse(localStorage.getItem('user')!).sub
-            //     }/null/22-03-2023/null`, {
-            //         headers: {
-            //             Authorization: localStorage.getItem('token')
-            //         }
-            //     }).then((res) => {
-            //         console.log(res);
-            //     }).catch((err) => {
-            //         console.log(err);
-            //     })
-            // } catch (err) {
-            //     console.log(err);
-            // }
+            try {
+                Auth.currentSession().then((session) => {
+                    localStorage.setItem("sessionToken", session.getIdToken().getJwtToken());
+                    localStorage.setItem("sessionRefreshToken", session.getRefreshToken().getToken());
+                    localStorage.setItem("sessionAccessToken", session.getAccessToken().getJwtToken());
+                    localStorage.setItem("sessionExpires", session.getIdToken().getExpiration().toString());
+                });
+            }
+            catch (error) {
+                console.log(error); //criar modal aqui para usuario renovar o token
+            }
+            console.log(localStorage.getItem("sessionToken"));
         }).catch((err) => {
             console.log(err);
             let arrErrors = [];

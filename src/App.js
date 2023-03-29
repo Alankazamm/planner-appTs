@@ -4,23 +4,11 @@ import { GlobalStyle } from "./components/common/GlobalStyles.styles";
 import { UserContextProvider } from "./contexts/userContext";
 import { AppRoutes } from "./routes/AppRoutes";
 import { useEffect } from "react";
-import { Amplify, Auth } from "aws-amplify";
+import { Amplify } from "aws-amplify";
 import awsmobile from "./aws-exports";
 Amplify.configure(awsmobile);
 function App() {
     useEffect(() => {
-        try {
-            Auth.currentSession().then((session) => {
-                localStorage.setItem("sessionToken", session.getIdToken().getJwtToken());
-                localStorage.setItem("sessionRefreshToken", session.getRefreshToken().getToken());
-                localStorage.setItem("sessionAccessToken", session.getAccessToken().getJwtToken());
-                localStorage.setItem("sessionExpires", session.getIdToken().getExpiration().toString());
-            });
-        }
-        catch (error) {
-            console.log(error); //criar modal aqui para usuario renovar o token
-        }
-        console.log(localStorage.getItem("sessionToken"));
     }, []);
     return (_jsxs(BrowserRouter, { children: [_jsx(GlobalStyle, {}), _jsx(UserContextProvider, { children: _jsx(AppRoutes, {}) })] }));
 }

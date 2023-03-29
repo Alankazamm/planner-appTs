@@ -9,7 +9,7 @@ import Spinner from "../../../../../common/loading/Spinner.styles";
 import spinner from "/src/assets/svg/spinner-uol.svg";
 //components
 import { ActionsButton } from "../ActionsButton";
-import { TasksErrorModal } from "../../../../../common/error-handling/modals/TasksErrorModal";
+import { TasksErrorModal } from "../../../../../common/modals/TasksErrorModal";
 import { ConfirmDeleteModal } from "../../../../../common/confirmation/ConfirmDeleteModal";
 //context
 import {

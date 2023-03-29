@@ -34,6 +34,7 @@ export type createContextType = {
 	>;
 	fetchingLoading: boolean;
 	setFetchingLoading: React.Dispatch<React.SetStateAction<boolean>>;
+	
 };
 export type events = {
 	dateTime: string;
@@ -67,6 +68,7 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 	const [deleteEventsResponse, setDeleteEventsResponse] = useState<any>({});
 	const [fetchingLoading, setFetchingLoading] = useState<boolean>(false);
 	const [displayErrorModal, setDisplayErrorModal] = useState<ErrorMessages>();
+	
 	//trasform the hour to the format that the input type time needs, from 11:11:00 to 11h 11m and remove the last 3 characters
 
 	useEffect(() => {
@@ -132,6 +134,7 @@ export const TasksProvider = ({ children }: { children: React.ReactNode }) => {
 				setFetchingLoading,
 				setDeleteEventsResponse,
 				deleteEventsResponse,
+				
 			}}
 		>
 			{children}
