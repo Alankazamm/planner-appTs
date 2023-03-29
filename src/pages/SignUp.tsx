@@ -17,7 +17,7 @@ import { UserContext } from './../contexts/userContext';
 //types
 import { ActionType } from "../reducers/formReducer";
 //modals
-import { SignErrorModal } from './../components/common/error-handling/modals/SignErrorModal';
+import { SignErrorModal } from './../components/common/modals/SignErrorModal';
 import { ConfirmEmailModal } from './../components/common/confirmation/ConfirmEmailModal';
 
 
