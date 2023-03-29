@@ -1,7 +1,7 @@
 //description: this file is used to login the user
 import { Auth } from 'aws-amplify';
 import { ActionType } from "../../reducers/formReducer";
-import { Amplify, API } from "aws-amplify";
+import { Amplify } from "aws-amplify";
 import awsmobile from "../../aws-exports";
 Amplify.configure(awsmobile);
 import { errorsHandler } from './../../helpers/errorsHandler';
@@ -19,21 +19,22 @@ export const login = ({ email, password, }) => (dispatch) => {
                 city: user.attributes['custom:city'],
             }));
             console.log(JSON.parse(localStorage.getItem('user')));
-            try {
-                //get all events by user sub
-                API.get('plannerprojectapi', `/events/filter/${JSON.parse(localStorage.getItem('user')).sub}`, {
-                    headers: {
-                        Authorization: localStorage.getItem('token')
-                    }
-                }).then((res) => {
-                    console.log(res);
-                }).catch((err) => {
-                    console.log(err);
-                });
-            }
-            catch (err) {
-                console.log(err);
-            }
+            // try {
+            //     //get all events by user sub , model: /filter/:userId/:dayOfWeek/:date/:description'
+            //     API.get('plannerprojectapi', `/events/filter/${
+            //         JSON.parse(localStorage.getItem('user')!).sub
+            //     }/null/22-03-2023/null`, {
+            //         headers: {
+            //             Authorization: localStorage.getItem('token')
+            //         }
+            //     }).then((res) => {
+            //         console.log(res);
+            //     }).catch((err) => {
+            //         console.log(err);
+            //     })
+            // } catch (err) {
+            //     console.log(err);
+            // }
         }).catch((err) => {
             console.log(err);
             let arrErrors = [];

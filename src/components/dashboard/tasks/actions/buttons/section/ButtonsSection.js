@@ -13,104 +13,94 @@ import { ActionsButton } from "../ActionsButton";
 import { TasksErrorModal } from "../../../../../common/error-handling/modals/TasksErrorModal";
 import { ConfirmDeleteModal } from "../../../../../common/confirmation/ConfirmDeleteModal";
 //context
-import { TasksContext, eventStatus, } from "../../../../../../contexts/tasksContext";
+import { TasksContext, transformHour, } from "../../../../../../contexts/tasksContext";
 //api functions
 import { getEvents } from "./../../../../../../actions/events/getEvents";
 import { deleteEvents } from "../../../../../../actions/delete-events/deleteEvents";
-import { BaseUrl } from "../../../../../../helpers/axios";
-import axios from "axios";
+import { createEvents } from "../../../../../../actions/events/postEvents";
 export const ButtonsSection = () => {
     const [createIsLoading, setCreateIsLoading] = useState(false);
     const [createEventResponse, setCreateEventResponse] = useState({});
-    const [confirmDelete, setConfirmDelete] = useState({ show: false, dayOfWeek: "" });
-    const { task, actualDay, updateTask, getEventsResponse, setGetEventsResponse, displayErrorModal, setDisplayErrorModal, setFetchingLoading, setDeleteEventsResponse, deleteEventsResponse } = useContext(TasksContext);
+    const [confirmDelete, setConfirmDelete] = useState({
+        show: false,
+        dayOfWeek: "",
+    });
+    const { task, actualDay, updateTask, getEventsResponse, setGetEventsResponse, displayErrorModal, setDisplayErrorModal, setFetchingLoading, setDeleteEventsResponse, deleteEventsResponse, } = useContext(TasksContext);
     //rerenders on createEventResponse change
     useEffect(() => {
-        if (createEventResponse.hasOwnProperty("status")) {
-            if (createEventResponse.status === eventStatus["Event created"]) {
-                getEvents({ dayOfWeek: actualDay })({
-                    setGetEventsResponse,
-                    setFetchingLoading,
-                    setDisplayErrorModal,
-                });
-            }
+        getEvents({ dayOfWeek: actualDay })({
+            setGetEventsResponse,
+            setFetchingLoading,
+            setDisplayErrorModal,
+        });
+        if (!Array.isArray(getEventsResponse)) {
+            setDisplayErrorModal(getEventsResponse);
         }
     }, [createEventResponse]);
     //rerenders on deleteEventsResponse change
     useEffect(() => {
-        if (deleteEventsResponse.hasOwnProperty("status")) {
-            if (deleteEventsResponse.status === eventStatus["OK"]) {
-                getEvents({ dayOfWeek: actualDay })({
-                    setGetEventsResponse,
-                    setFetchingLoading,
-                    setDisplayErrorModal,
-                });
-            }
-            else {
-                setDisplayErrorModal(deleteEventsResponse.status);
-            }
+        getEvents({ dayOfWeek: actualDay })({
+            setGetEventsResponse,
+            setFetchingLoading,
+            setDisplayErrorModal,
+        });
+        if (!Array.isArray(getEventsResponse)) {
+            setDisplayErrorModal(getEventsResponse);
         }
     }, [deleteEventsResponse]);
     //rerenders on getEventsResponse change
     useEffect(() => {
-        if (getEventsResponse.hasOwnProperty("status")) {
-            if (getEventsResponse.status === eventStatus["OK"]) {
-                updateTask(getEventsResponse.data.events.map((event) => {
-                    return {
-                        taskText: event.description,
-                        taskDay: event.dayOfWeek,
-                        taskHour: event.createdAt,
-                        taskId: event._id,
-                    };
-                }));
-            }
+        if (Array.isArray(getEventsResponse)) {
+            updateTask(getEventsResponse.map((event) => {
+                console.log(transformHour(event.taskHour));
+                return {
+                    taskText: event.description,
+                    taskDay: event.dayOfWeek,
+                    taskHour: transformHour(event.taskHour),
+                    taskId: event.id,
+                };
+            }));
+        }
+        else {
+            setDisplayErrorModal(getEventsResponse);
         }
     }, [getEventsResponse]);
     //rerenders on getEventsResponse change because of delete or create
     useEffect(() => {
-        if (getEventsResponse.hasOwnProperty("status")) {
-            if (getEventsResponse.status === eventStatus["OK"]) {
-                updateTask(getEventsResponse.data.events.map((event) => {
-                    return {
-                        taskText: event.description,
-                        taskDay: event.dayOfWeek,
-                        taskHour: event.createdAt
-                            .substring(11, 16)
-                            .replace(":", "h")
-                            .concat("m"),
-                        taskId: event._id,
-                    };
-                }));
-            }
-            else {
-                setDisplayErrorModal(getEventsResponse.status);
-            }
+        if (Array.isArray(getEventsResponse)) {
+            updateTask(getEventsResponse.map((event) => {
+                console.log(transformHour(event.taskHour));
+                return {
+                    taskText: event.description,
+                    taskDay: event.dayOfWeek,
+                    taskHour: transformHour(event.taskHour),
+                    taskId: event.id,
+                };
+            }));
+        }
+        else {
+            setDisplayErrorModal(getEventsResponse);
         }
     }, [getEventsResponse]);
-    const axiosNewInstance = axios.create({
-        baseURL: BaseUrl,
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-    });
-    //request API to create events
-    const createEvents = ({ description, dayOfWeek }) => {
-        setCreateIsLoading(true);
-        axiosNewInstance.post(`/events`, { description, dayOfWeek }).then((response) => {
-            setCreateEventResponse(response);
-            setCreateIsLoading(false);
-        }).catch(error => {
-            console.log(error);
-            setCreateIsLoading(false);
-            setDisplayErrorModal(error.response.data.status);
-            setCreateEventResponse(error.response.data);
-        });
-    };
     //handles the click on the add button
     function clickHandler() {
-        if (task.taskText.length > 0) {
-            createEvents({ description: task.taskText, dayOfWeek: task.taskDay });
+        if (task.taskText.length > 0 &&
+            task.taskDay.length > 0 &&
+            task.taskHour.length > 0) {
+            //convert the hour from HHh MMm to HH:MM:00
+            const hour = task.taskHour.replace("h", ":").replace("m", ":00");
+            //remove the white spaces from the hour currentryl is getting 11: 11:00
+            const hourWithoutSpaces = hour.replace(/\s/g, "");
+            console.log(hourWithoutSpaces);
+            createEvents({
+                description: task.taskText,
+                dayOfWeek: task.taskDay,
+                taskHour: hourWithoutSpaces,
+            })({
+                setCreateEventResponse,
+                setCreateIsLoading,
+                setDisplayErrorModal,
+            });
             getEvents({ dayOfWeek: actualDay })({
                 setGetEventsResponse,
                 setFetchingLoading,
@@ -132,6 +122,6 @@ export const ButtonsSection = () => {
             setDisplayErrorModal,
         });
     };
-    const componentsOutput = createIsLoading ? (_jsxs(Spinner, { children: [" ", _jsx("img", { src: spinner })] })) : (_jsxs(_Fragment, { children: [_jsx(ActionsButton, { onClick: clickHandler, icon: "plusIcon", text: "Add to calendar" }), _jsx(ActionsButton, { onClick: () => setConfirmDelete({ show: true, dayOfWeek: actualDay }), icon: "minusIcon", text: "Delete All" })] }));
+    const componentsOutput = createIsLoading ? (_jsxs(Spinner, { children: [" ", _jsx("img", { alt: "loading", src: spinner })] })) : (_jsxs(_Fragment, { children: [_jsx(ActionsButton, { onClick: clickHandler, icon: "plusIcon", text: "Add to calendar" }), _jsx(ActionsButton, { onClick: () => setConfirmDelete({ show: true, dayOfWeek: actualDay }), icon: "minusIcon", text: "Delete All" })] }));
     return (_jsxs(ActionsContainerCommons, { children: [confirmDelete.show && (_jsx(ConfirmDeleteModal, { actionFunction: deleteHandler, value: confirmDelete, showModal: setConfirmDelete })), displayErrorModal && (_jsx(TasksErrorModal, { displayErrorModal: displayErrorModal, setDisplayErrorModal: setDisplayErrorModal })), componentsOutput] }));
 };

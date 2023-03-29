@@ -84,25 +84,25 @@ const ActionsInputs = () => {
 				onChange={inputsHandler}
 				value={task.taskDay}
 			>
-				<option className="taskWeekDayOpt" value="Monday">
+				<option className="taskWeekDayOpt" value="monday">
 					Monday
 				</option>
-				<option className="taskWeekDayOpt" value="Tuesday">
+				<option className="taskWeekDayOpt" value="tuesday">
 					Tuesday
 				</option>
-				<option className="taskWeekDayOpt" value="Wednesday">
+				<option className="taskWeekDayOpt" value="wednesday">
 					Wednesday
 				</option>
-				<option className="taskWeekDayOpt" value="Thursday">
+				<option className="taskWeekDayOpt" value="thursday">
 					Thursday
 				</option>
-				<option className="taskWeekDayOpt" value="Friday">
+				<option className="taskWeekDayOpt" value="friday">
 					Friday
 				</option>
-				<option className="taskWeekDayOpt" value="Saturday">
+				<option className="taskWeekDayOpt" value="saturday">
 					Saturday
 				</option>
-				<option className="taskWeekDayOpt" value="Sunday">
+				<option className="taskWeekDayOpt" value="sunday">
 					Sunday
 				</option>
 			</select>

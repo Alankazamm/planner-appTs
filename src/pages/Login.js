@@ -67,6 +67,11 @@ export const LogIn = () => {
         }
     }, [formState.loginAuth.errors]);
     useEffect(() => {
+        if (formState.loginAuth.data) {
+            navigate("/planner");
+        }
+    }, [formState.loginAuth.data]);
+    useEffect(() => {
         if (formState.user.error) {
             //check if the error is because the user is not confirmed
             console.log(formState.user.error);

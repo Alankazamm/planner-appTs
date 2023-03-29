@@ -3,7 +3,6 @@
 
 //hooks
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 //contexts
 
 import { LogoutContainer } from "./LogoutContainer";
@@ -17,7 +16,6 @@ import { UserContext } from "./../../../../contexts/userContext";
 
 const Logout = () => {
 	const { signout } = useContext(UserContext);
-	const navigate = useNavigate();
 	const logoutHandler = () => {
 		signout();
 	};

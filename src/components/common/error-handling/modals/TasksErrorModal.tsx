@@ -1,10 +1,11 @@
-import { eventStatus } from '../../../../contexts/tasksContext'
+
 import { ErrorModal } from './Modal.styles';
+import { ErrorMessages } from './../../../../actions/types';
 
 
 type props = {
-    displayErrorModal: eventStatus|undefined,
-    setDisplayErrorModal: React.Dispatch<React.SetStateAction<eventStatus|undefined>>,
+    displayErrorModal: ErrorMessages|undefined,
+    setDisplayErrorModal: React.Dispatch<React.SetStateAction<ErrorMessages|undefined>>,
 }
 export const TasksErrorModal = (props: props) => {
     const { displayErrorModal, setDisplayErrorModal } = props;
@@ -15,7 +16,7 @@ export const TasksErrorModal = (props: props) => {
         window.location.href = "/login";
     }
 
-    if (displayErrorModal === eventStatus["Access denied"]) {
+    if (displayErrorModal === ErrorMessages.ACCESS_DENIED || displayErrorModal === ErrorMessages.ACCESS_DENIEDII) {
         return (
             <ErrorModal>
                 <div className="errorModalContent">
@@ -37,7 +38,7 @@ export const TasksErrorModal = (props: props) => {
             </ErrorModal>
         )
     }
-    else if (displayErrorModal === eventStatus["Internal server error"]) {
+    else if (displayErrorModal === ErrorMessages.INTERNAL_SERVER_ERROR) {
         return (
             <ErrorModal>
                 <div className="errorModalContent">
@@ -57,7 +58,7 @@ export const TasksErrorModal = (props: props) => {
             </ErrorModal>
             )
     }
-    else if (displayErrorModal === eventStatus["Event not found"]) {
+    else if (displayErrorModal === ErrorMessages.NOT_FOUND) {
         return (
             <ErrorModal>
                 <div className="errorModalContent">
@@ -66,8 +67,7 @@ export const TasksErrorModal = (props: props) => {
                     </div>
                     <div className="errorModalText">
                         <p>
-                            We are sorry for the inconvenience, but the event you are looking for
-                            does not exist.
+                            We are sorry for the inconvenience, but we could not find the event in our database.
                         </p>
                     </div>
                     <div className="errorModalButtons">
@@ -76,7 +76,27 @@ export const TasksErrorModal = (props: props) => {
                 </div>
             </ErrorModal>
         )
-    } else if (displayErrorModal === eventStatus["Invalid data"]) {
+    }
+    else if (displayErrorModal === ErrorMessages.NOT_FOUND_WEEK) {
+        return (
+            <ErrorModal>
+                <div className="errorModalContent">
+                    <div className="errorModalTitle">
+                        <h2>Event not found in week</h2>
+                    </div>
+                    <div className="errorModalText">
+                        <p>
+                            We are sorry for the inconvenience, but we haven't found any events for the selected week in our database to delete.
+                        </p>
+                    </div>
+                    <div className="errorModalButtons">
+                        <button className="closeButton" onClick={closeModal}>Ok</button>
+                    </div>
+                </div>
+            </ErrorModal>
+        )
+    }
+    else if (displayErrorModal === ErrorMessages.BAD_REQUEST) {
         return (
             <ErrorModal>
                 <div className="errorModalContent">

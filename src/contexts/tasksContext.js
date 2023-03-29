@@ -4,16 +4,13 @@ import { jsx as _jsx } from "react/jsx-runtime";
 //hooks
 import { createContext, useState, useEffect } from "react";
 import { getEvents } from "../actions/events/getEvents";
-export var eventStatus;
-(function (eventStatus) {
-    eventStatus[eventStatus["Access denied"] = 401] = "Access denied";
-    eventStatus[eventStatus["Event not found"] = 404] = "Event not found";
-    eventStatus[eventStatus["Internal server error"] = 501] = "Internal server error";
-    eventStatus[eventStatus["Event created"] = 201] = "Event created";
-    eventStatus[eventStatus["OK"] = 200] = "OK";
-    eventStatus[eventStatus["Invalid data"] = 400] = "Invalid data";
-})(eventStatus || (eventStatus = {}));
+// export type getEventsType = GetResponse;
 let firstRender = true;
+export const transformHour = (hour) => {
+    const newHour = hour.slice(0, -3);
+    const hourArray = newHour.split(":");
+    return `${hourArray[0]}h ${hourArray[1]}m`;
+};
 export const TasksContext = createContext({});
 export const TasksProvider = ({ children }) => {
     const [task, setTask] = useState({
@@ -24,28 +21,25 @@ export const TasksProvider = ({ children }) => {
     });
     const [allTasks, setAllTasks] = useState([]);
     const [actualDay, setDay] = useState("monday");
-    const [getEventsResponse, setGetEventsResponse] = useState({});
+    const [getEventsResponse, setGetEventsResponse] = useState([]);
     const [deleteEventsResponse, setDeleteEventsResponse] = useState({});
     const [fetchingLoading, setFetchingLoading] = useState(false);
     const [displayErrorModal, setDisplayErrorModal] = useState();
+    //trasform the hour to the format that the input type time needs, from 11:11:00 to 11h 11m and remove the last 3 characters
     useEffect(() => {
-        if (getEventsResponse.hasOwnProperty("status")) {
-            if (getEventsResponse.status === eventStatus["OK"]) {
-                updateTask(getEventsResponse.data.events.map((event) => {
-                    return {
-                        taskText: event.description,
-                        taskDay: event.dayOfWeek,
-                        taskHour: event.createdAt
-                            .substring(11, 16)
-                            .replace(":", "h")
-                            .concat("m"),
-                        taskId: event._id,
-                    };
-                }));
-            }
-            else {
-                setDisplayErrorModal(getEventsResponse.status);
-            }
+        if (Array.isArray(getEventsResponse)) {
+            updateTask(getEventsResponse.map((event) => {
+                console.log(transformHour(event.taskHour));
+                return {
+                    taskText: event.description,
+                    taskDay: event.dayOfWeek,
+                    taskHour: transformHour(event.taskHour),
+                    taskId: event.id,
+                };
+            }));
+        }
+        else {
+            updateErrorModal(getEventsResponse);
         }
     }, [getEventsResponse]);
     useEffect(() => {
@@ -58,9 +52,12 @@ export const TasksProvider = ({ children }) => {
             setFetchingLoading,
             setDisplayErrorModal,
         });
-        getEventsResponse.status
-            ? updateErrorModal(getEventsResponse.status)
+        //check if the response is an ErrorMessages enum
+        !Array.isArray(getEventsResponse)
+            ? updateErrorModal(getEventsResponse)
             : null;
+        // ? updateErrorModal(getEventsResponse.status)
+        // : null;
     }, [actualDay]);
     const updateTask = (taskArray) => {
         setAllTasks(taskArray);

@@ -3,7 +3,6 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 //when clicked, its removes the user token from the local storage and redirects the user to the login page
 //hooks
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 //contexts
 import { LogoutContainer } from "./LogoutContainer";
 //styles
@@ -13,7 +12,6 @@ import logoutIcon from "/src/assets/svg/btn-logout.svg";
 import { UserContext } from "./../../../../contexts/userContext";
 const Logout = () => {
     const { signout } = useContext(UserContext);
-    const navigate = useNavigate();
     const logoutHandler = () => {
         signout();
     };

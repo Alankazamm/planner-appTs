@@ -61,10 +61,10 @@ export const Tasks = () => {
             <div className="timeCard">
 				<p>Time</p>
 				</div>
-				{fetchingLoading && <LoadingModal ><img src={spinner}></img></LoadingModal>}
+				{fetchingLoading && <LoadingModal ><img alt="loading" src={spinner}></img></LoadingModal>}
 				{taskHours.map((hour, index) => (
-					<div className="tasksSameHour" id={"sameHour" + index} >
-						<TasksTimeCard actualDay={sameDayTasks.filter((task) => task.taskHour === hour).length > 1 ? 'conflict' : actualDay} key={"timeCard" + index}>
+					<div className="tasksSameHour" id={Math.random().toString()} key={"tasksSameHour" + index}>
+						<TasksTimeCard id={"card" + index} actualDay={sameDayTasks.filter((task) => task.taskHour === hour).length > 1 ? 'conflict' : actualDay} key={"timeCard" + index}>
 							{hour}
 						</TasksTimeCard>
 						<div className="tasksList" id={"taskList" + index}>
