@@ -43,7 +43,6 @@ export const ConfirmEmailModal = ({ email, toggleModal }: { email: string, toggl
                
                 <div className="confirmEmailModalButtons">
                     <button className="confirmEmailButton" onClick={handleConfirm}>Confirm</button>
-                    <button className="closeButton" onClick={toggleModal}>Cancel</button>
                     {modalTitle === 'Email confirmed' && <button className="closeButton" onClick={() => { toggleModal(); navigate('/login'); }}>Close</button>}
                 </div>
             </div>
