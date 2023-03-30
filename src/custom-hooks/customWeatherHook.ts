@@ -14,7 +14,7 @@ export const useFetchWeather = (city: string): any => {
   useEffect(() => {
     if (firstTime === true) {
       try {
-        fetch(`http://api.weatherapi.com/v1/current.json?key=96292cdb0bbf468f931192735231102&q=${city}&lang=en`)
+        fetch(`https://api.weatherapi.com/v1/current.json?key=96292cdb0bbf468f931192735231102&q=${city}&lang=en`)
           .then((response) => response.status === 200 ? response.json() : console.log(response))
           .then(data => {
 
@@ -29,7 +29,7 @@ export const useFetchWeather = (city: string): any => {
       const weatherUpdate = setInterval(() => {
 
         try {
-          fetch(`http://api.weatherapi.com/v1/current.json?key=3274f2378a4045fc97835913232201&q=${city}&lang=en` )
+          fetch(`https://api.weatherapi.com/v1/current.json?key=3274f2378a4045fc97835913232201&q=${city}&lang=en` )
             .then((response) => response.status === 200 ? response.json() : console.log(response.status))
             .then(data => {
               setForecast(data);
