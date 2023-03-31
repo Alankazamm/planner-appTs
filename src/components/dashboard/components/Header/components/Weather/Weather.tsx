@@ -1,19 +1,21 @@
 // description: This component is responsible for fetching the weather data
 //from the API(https://www.weatherapi.com/docs/) and displaying it on the dashboard
 
+import React from "react";
 //hooks
-import { useFetchWeather } from "../../../../custom-hooks/customWeatherHook";
-
+import { useFetchWeather } from '../../../../../../custom-hooks/customWeatherHook';
 // assets
 import cloudyIcon from "/src/assets/svg/weather-200.svg"
 import spinner   from "/src/assets/svg/spinner-uol.svg"
 import errorIcon  from "/src/assets/svg/weather-404.svg"
 //styles
-import { WeatherContainer } from "./WeatherContainer";
-import Spinner from './../../../common/loading/Spinner.styles';
+import { WeatherContainer } from "./styles";
+import Spinner from "../../../../../common/loading/Spinner.styles";
 
 
-const Weather = () => {
+
+
+export const Weather = () => {
 
 	const user = JSON.parse(localStorage.getItem('user') || '{}')
 	const city: string | undefined = user.city;
@@ -25,13 +27,7 @@ const Weather = () => {
 			<Spinner> <img alt="loading" src={spinner}></img></Spinner>
 		</WeatherContainer>
 	);
-	// (
-	// 	<WeatherContainer>
-	// 		
-	// 	</WeatherContainer>
-    // );
-    //check if forecast is of type Forecast
-
+	
 	if (forecast?.current?.temp_c) {
 		forecastOutput = (
 			<WeatherContainer>
@@ -59,4 +55,3 @@ const Weather = () => {
 	return <>{forecastOutput}</>;
 };
 
-export default Weather;

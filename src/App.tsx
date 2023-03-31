@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
-import { GlobalStyle } from "./components/common/GlobalStyles.styles";
+import { GlobalStyle } from "./components/styles/globalStyles.styles";
 import { UserContext, UserContextProvider } from "./contexts/userContext";
 
 import { AppRoutes } from "./routes/AppRoutes";

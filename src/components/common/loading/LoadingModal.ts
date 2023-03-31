@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { rotate } from '../animations/rotate.styles';
+import { rotate } from '../../styles/animationRotate.styles';
 
 const LoadingModal = styled.div`
   position: absolute;

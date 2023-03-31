@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { rotate } from './../../common/animations/rotate.styles';
+import { rotate } from '../../styles/animationRotate.styles';
 
 export const StyledFormBtn = styled.div`
     width: 100%;

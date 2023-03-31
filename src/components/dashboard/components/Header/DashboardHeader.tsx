@@ -2,16 +2,14 @@
 //it contains the header text, timer, weather and the logout button
 
 //components
-import { useEffect } from "react";
-import { HeaderText } from "../../common/header/Header";
-import Logout from "./logout/Logout";
-import Timer from "./timer/Timer";
-import Weather from "./weather/Weather";
-
+import { Timer } from './components/Timer';
+import { Weather } from './components/Weather';
+import { Logout } from './components/Logout';
 //styles
-import { DashHeaderContainer } from "./DashHeaderContainer.styles";
+import { HeaderText } from "../../../common/header/Header";
+import { DashHeaderContainer } from "./styles";
 
-const DashboardHeader = () => {
+export const DashboardHeader = () => {
     
 	return (
 		<DashHeaderContainer>
@@ -27,4 +25,3 @@ const DashboardHeader = () => {
 	);
 };
 
-export default DashboardHeader;

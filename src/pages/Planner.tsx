@@ -1,9 +1,9 @@
 //styles
 import { useContext, useEffect } from "react";
 import { RenewTokenModal } from "../components/common/modals/RenewTokenModal";
-import { DashContainer } from "../components/Dashboard/DashContainer.styles"
+import { DashContainer } from "../components/Dashboard/styles"
 //components
-import DashboardHeader from "../components/dashboard/header/DashboardHeader"
+import { DashboardHeader } from "../components/Dashboard/components/Header/DashboardHeader"
 import { TasksSection } from "../components/dashboard/tasks/TasksSection"
 import { UserContext } from './../contexts/userContext';
 

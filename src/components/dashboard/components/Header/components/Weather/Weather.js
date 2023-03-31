@@ -1,27 +1,19 @@
 import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
-// description: This component is responsible for fetching the weather data
-//from the API(https://www.weatherapi.com/docs/) and displaying it on the dashboard
 //hooks
-import { useFetchWeather } from "../../../../custom-hooks/customWeatherHook";
+import { useFetchWeather } from '../../../../../../custom-hooks/customWeatherHook';
 // assets
 import cloudyIcon from "/src/assets/svg/weather-200.svg";
 import spinner from "/src/assets/svg/spinner-uol.svg";
 import errorIcon from "/src/assets/svg/weather-404.svg";
 //styles
-import { WeatherContainer } from "./WeatherContainer";
-import Spinner from './../../../common/loading/Spinner.styles';
-const Weather = () => {
+import { WeatherContainer } from "./styles";
+import Spinner from "../../../../../common/loading/Spinner.styles";
+export const Weather = () => {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const city = user.city;
     const country = user.country;
     const forecast = useFetchWeather(city ? city : '');
     let forecastOutput = (_jsx(WeatherContainer, { children: _jsxs(Spinner, { children: [" ", _jsx("img", { alt: "loading", src: spinner })] }) }));
-    // (
-    // 	<WeatherContainer>
-    // 		
-    // 	</WeatherContainer>
-    // );
-    //check if forecast is of type Forecast
     if (forecast?.current?.temp_c) {
         forecastOutput = (_jsxs(WeatherContainer, { children: [_jsxs("span", { children: [city, " - ", country, " "] }), " ", _jsxs("div", { children: [_jsx("img", { src: cloudyIcon, alt: "" }), parseInt(forecast.current.temp_c), "\u00B0"] }), " "] }));
     }
@@ -30,4 +22,3 @@ const Weather = () => {
     }
     return _jsx(_Fragment, { children: forecastOutput });
 };
-export default Weather;

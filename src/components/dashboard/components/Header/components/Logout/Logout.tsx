@@ -4,17 +4,15 @@
 //hooks
 import { useContext } from "react";
 //contexts
-
-import { LogoutContainer } from "./LogoutContainer";
+import { UserContext } from "../../../../../../contexts/userContext";
 //styles
-
+import { LogoutContainer } from "./styles";
 //assets
 import logoIcon from "/src/assets/svg/icon-logo.svg";
 import logoutIcon from "/src/assets/svg/btn-logout.svg";
+import React from "react";
 
-import { UserContext } from "./../../../../contexts/userContext";
-
-const Logout = () => {
+export const Logout = () => {
 	const { signout } = useContext(UserContext);
 	const logoutHandler = () => {
 		signout();
@@ -32,4 +30,4 @@ const Logout = () => {
 	);
 };
 
-export default Logout;
+

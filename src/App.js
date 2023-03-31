@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { BrowserRouter } from "react-router-dom";
-import { GlobalStyle } from "./components/common/GlobalStyles.styles";
+import { GlobalStyle } from "./components/styles/globalStyles.styles";
 import { UserContextProvider } from "./contexts/userContext";
 import { AppRoutes } from "./routes/AppRoutes";
 import { useEffect } from "react";
