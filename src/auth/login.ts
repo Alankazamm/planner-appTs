@@ -4,8 +4,8 @@ import { ActionType } from "../reducers/formReducer";
 import { Amplify, API } from "aws-amplify";
 import awsmobile from "../aws-exports";
 Amplify.configure(awsmobile);
-import { errorsHandler } from '../helpers/errorsHandler';
 import { loginData } from './types';
+import { errorsHandler } from '../api/utils/errorsHandler';
 //types
 
 export const login = ({

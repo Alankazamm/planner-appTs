@@ -4,7 +4,7 @@ import { ActionType } from "../reducers/formReducer";
 import { Amplify } from "aws-amplify";
 import awsmobile from "../aws-exports";
 Amplify.configure(awsmobile);
-import { errorsHandler } from '../helpers/errorsHandler';
+import { errorsHandler } from '../api/utils/errorsHandler';
 //types
 export const login = ({ email, password, }) => (dispatch) => {
     dispatch({ type: ActionType.LOGIN_LOADING });
