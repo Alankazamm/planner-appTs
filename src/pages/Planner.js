@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 import { RenewTokenModal } from "../components/common/modals/RenewTokenModal";
 import { DashContainer } from "../components/Dashboard/styles";
 //components
-import { DashboardHeader } from "../components/Dashboard/components/Header/DashboardHeader";
+import { Header } from "../components/Dashboard/components/Header";
 import { TasksSection } from "../components/dashboard/tasks/TasksSection";
 import { UserContext } from './../contexts/userContext';
 export const Planner = () => {
@@ -19,5 +19,5 @@ export const Planner = () => {
             clearTimeout(timer);
         };
     }, [setDisplayRenewAccessTokenModal, displayRenewAccessTokenModal]);
-    return (_jsxs(DashContainer, { children: [displayRenewAccessTokenModal === true && _jsx(RenewTokenModal, {}), _jsx(DashboardHeader, {}), _jsx(TasksSection, {})] }));
+    return (_jsxs(DashContainer, { children: [displayRenewAccessTokenModal === true && _jsx(RenewTokenModal, {}), _jsx(Header, {}), _jsx(TasksSection, {})] }));
 };
