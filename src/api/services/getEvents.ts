@@ -1,6 +1,5 @@
 
 import { API } from "aws-amplify";
-import { errorsHandler } from "../../helpers/errorsHandler";
 
 
 export const getEvents = (event: { description?: string, dayOfWeek?: string, date?:string }) =>
