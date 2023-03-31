@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 import { messageHandler } from '../../../api/utils/cognitoErrorsHandler';
 
+
 export const ForgotPasswordModal = ({ toggleModal }: { toggleModal: (sended: boolean) => void }) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [state, setState] = useState({
