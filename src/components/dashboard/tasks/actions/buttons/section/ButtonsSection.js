@@ -15,8 +15,8 @@ import { ConfirmDeleteModal } from "../../../../../common/confirmation/ConfirmDe
 //context
 import { TasksContext, transformHour, } from "../../../../../../contexts/tasksContext";
 //api functions
-import { getEvents } from "./../../../../../../actions/events/getEvents";
-import { deleteEvents } from "../../../../../../actions/delete-events/deleteEvents";
+import { getEvents } from "../../../../../../api/services/getEvents";
+import { deleteEvents } from "../../../../../../api/services/deleteEvents";
 import { createEvents } from "../../../../../../actions/events/postEvents";
 export const ButtonsSection = () => {
     const [createIsLoading, setCreateIsLoading] = useState(false);

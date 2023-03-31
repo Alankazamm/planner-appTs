@@ -1,10 +1,11 @@
 //description: this file is used to login the user
 import { Auth } from 'aws-amplify';
-import { ActionType } from "../../reducers/formReducer";
+import { ActionType } from "../reducers/formReducer";
 import { Amplify } from "aws-amplify";
-import awsmobile from "../../aws-exports";
+import awsmobile from "../aws-exports";
 Amplify.configure(awsmobile);
-import { errorsHandler } from './../../helpers/errorsHandler';
+import { errorsHandler } from '../helpers/errorsHandler';
+//types
 export const login = ({ email, password, }) => (dispatch) => {
     dispatch({ type: ActionType.LOGIN_LOADING });
     try {

@@ -1,37 +1,14 @@
 //description: this file is used to register a new user, it uses the axios instance to send the data to the server
 // and then it dispatches the data to the reducer
-
-import { ActionType } from "../../reducers/formReducer";
+import { ActionType } from "../reducers/formReducer";
 import { Auth } from "aws-amplify";
 import { Amplify, API } from "aws-amplify";
-import awsmobile from "../../aws-exports";
-import { errorsHandler } from './../../helpers/errorsHandler';
+import awsmobile from "../aws-exports";
+import { errorsHandler } from '../helpers/errorsHandler';
 Amplify.configure(awsmobile);
-let response: any;
-
-
+let response;
 //types
-interface registerData {
-    firstName: string;
-    lastName: string;
-    birthDate: string;
-    country: string;
-    city: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-}
-
-export const register = ({
-    firstName,
-    lastName,
-    birthDate,
-    country,
-    city,
-    email,
-    password,
-    confirmPassword,
-}: registerData) => (dispatch: any) => {
+export const register = ({ firstName, lastName, birthDate, country, city, email, password, confirmPassword, }) => (dispatch) => {
     dispatch({ type: ActionType.REGISTER_LOADING });
     //check all data and push errors if it have
     let arrErrors = [];
@@ -73,7 +50,6 @@ export const register = ({
     try {
         //remove all non numeric characters from the birthDate
         birthDate = birthDate.replace(/\D/g, "");
-
         Auth.signUp({
             username: email,
             password: password,
@@ -86,56 +62,51 @@ export const register = ({
             }
         })
             .then((data) => {
-               //send data to  dynamoDB
-                // try {
-                //     API.post("plannerprojectapi", "/users", {
-                //         body: {
-                //             id: data.userSub,
-                //             firstName: firstName,
-                //             lastName: lastName,
-                //             birthDate: birthDate,
-                //             country: country,
-                //             city: city,
-                //             email: email,
-                //             password: password,
-                //         }
-                //     }).then((response) => {
-                //         console.log(response);
-                //     });
-                // } catch (error) {
-                //     console.log(error);
-                // }
-                //get data from dynamoDB
-                try {
-                    
-                    API.get("plannerprojectapi", `/users/${data.userSub}`, {}).then((response) => {
-                        console.log(response);
-                    });
-                } catch (error) {
-                    console.log(error);
-                }
-                //dispatch data to reducer
-                dispatch({ type: ActionType.REGISTER_SUCCESS, payload: data });
-            }).catch((err) => {    
-                let arrErrors = [];
-                const error = errorsHandler(err)
-                arrErrors.push(error);
-                dispatch({ type: ActionType.REGISTER_FAIL, payload: arrErrors });
-            })
-    }
-        catch (err) {
+            //send data to  dynamoDB
+            // try {
+            //     API.post("plannerprojectapi", "/users", {
+            //         body: {
+            //             id: data.userSub,
+            //             firstName: firstName,
+            //             lastName: lastName,
+            //             birthDate: birthDate,
+            //             country: country,
+            //             city: city,
+            //             email: email,
+            //             password: password,
+            //         }
+            //     }).then((response) => {
+            //         console.log(response);
+            //     });
+            // } catch (error) {
+            //     console.log(error);
+            // }
+            //get data from dynamoDB
+            try {
+                API.get("plannerprojectapi", `/users/${data.userSub}`, {}).then((response) => {
+                    console.log(response);
+                });
+            }
+            catch (error) {
+                console.log(error);
+            }
+            //dispatch data to reducer
+            dispatch({ type: ActionType.REGISTER_SUCCESS, payload: data });
+        }).catch((err) => {
             let arrErrors = [];
-            const error = errorsHandler(err)
+            const error = errorsHandler(err);
             arrErrors.push(error);
             dispatch({ type: ActionType.REGISTER_FAIL, payload: arrErrors });
-        }
+        });
     }
-
-
-
-
+    catch (err) {
+        let arrErrors = [];
+        const error = errorsHandler(err);
+        arrErrors.push(error);
+        dispatch({ type: ActionType.REGISTER_FAIL, payload: arrErrors });
+    }
+};
 // 
-
 //         try {
 //             Auth.signUp({
 //                 username: email,
@@ -150,7 +121,6 @@ export const register = ({
 //                 }
 //             })
 //                 .then((data) => {
-                    
 //                     dispatch({ type: ActionType.REGISTER_SUCCESS, payload: data });
 //                 }).catch((err) => {
 //                     console.log(err + "error");
@@ -165,19 +135,12 @@ export const register = ({
 //                     dispatch({ type: ActionType.REGISTER_FAIL, payload: arrErrors });
 //                 }).finally(() => {
 //                     setTimeout(() => {
-                     
 //                          dispatch({ type: ActionType.REGISTER_SUCCESS, payload: response });
-                        
 //                     }, 1000);
-                    
 //                 })
-                
 //         } catch (err) {
 //             console.log(err + "error");
 //             let arrErrors = [];
-           
 //                 arrErrors.push(err);
-            
 //             dispatch({ type: ActionType.REGISTER_FAIL, payload: arrErrors });
 //         }
-        

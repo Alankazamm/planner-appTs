@@ -11,7 +11,7 @@ import { ContentContainer } from "../components/form/containers/ContentContainer
 import { MainWrapper } from "../components/common/MainWrapper.styles";
 import { FormContainer } from "../components/form/containers/FormContainer.styles";
 //external funcs
-import { register } from "../actions/auth/register";
+import { register } from "../auth/register";
 //contexts
 import { UserContext } from './../contexts/userContext';
 //types

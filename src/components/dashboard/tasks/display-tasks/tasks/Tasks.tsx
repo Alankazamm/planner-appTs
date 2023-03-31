@@ -14,8 +14,8 @@ import spinner   from "/src/assets/svg/spinner-uol.svg"
 import LoadingModal from "../../../../common/loading/LoadingModal";
 import { useState } from 'react';
 import { TaskWarnigModal } from "../../../../common/modals/TaskWarnigModal";
-import { deleteEvents } from "../../../../../actions/delete-events/deleteEvents";
-import { getEvents } from "../../../../../actions/events/getEvents";
+import { deleteEvents } from "../../../../../api/services/deleteEvents";
+import { getEvents } from "../../../../../api/services/getEvents";
 import { TasksErrorModal } from "../../../../common/modals/TasksErrorModal";
 import { ConfirmDeleteModal } from "../../../../common/confirmation/ConfirmDeleteModal";
 import { createContextType, TasksContext } from "../../../../../contexts/tasksContext";

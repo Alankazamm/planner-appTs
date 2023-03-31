@@ -20,10 +20,10 @@ import {
 } from "../../../../../../contexts/tasksContext";
 
 //api functions
-import { getEvents } from "./../../../../../../actions/events/getEvents";
-import { deleteEvents } from "../../../../../../actions/delete-events/deleteEvents";
+import { getEvents } from "../../../../../../api/services/getEvents";
+import { deleteEvents } from "../../../../../../api/services/deleteEvents";
 import { createEvents } from "../../../../../../actions/events/postEvents";
-import { PostDeleteResponse } from "../../../../../../actions/types";
+import { PostDeleteResponse } from "../../../../../../api/services/types";
 
 export const ButtonsSection = () => {
 	const [createIsLoading, setCreateIsLoading] = useState(false);

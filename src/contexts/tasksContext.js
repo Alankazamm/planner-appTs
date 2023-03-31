@@ -3,7 +3,7 @@ import { jsx as _jsx } from "react/jsx-runtime";
 //it also contains the functions to update the tasks and the day
 //hooks
 import { createContext, useState, useEffect } from "react";
-import { getEvents } from "../actions/events/getEvents";
+import { getEvents } from "../api/services/getEvents";
 // export type getEventsType = GetResponse;
 let firstRender = true;
 export const transformHour = (hour) => {

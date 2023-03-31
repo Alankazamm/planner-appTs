@@ -1,6 +1,6 @@
 import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { ErrorModal } from './Modal.styles';
-import { ErrorMessages } from './../../../actions/types';
+import { ErrorMessages } from '../../../api/services/types';
 export const TasksErrorModal = (props) => {
     const { displayErrorModal, setDisplayErrorModal } = props;
     const closeModal = () => {

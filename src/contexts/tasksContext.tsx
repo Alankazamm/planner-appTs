@@ -3,8 +3,8 @@
 
 //hooks
 import { createContext, useState, useEffect } from "react";
-import { getEvents } from "../actions/events/getEvents";
-import { ErrorMessages, GetResponse } from "../actions/types";
+import { getEvents } from "../api/services/getEvents";
+import { ErrorMessages, GetResponse } from "../api/services/types";
 
 //types
 export type arrayOfTasks = taskState[];
