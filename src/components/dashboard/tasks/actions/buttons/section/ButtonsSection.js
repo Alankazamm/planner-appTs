@@ -17,7 +17,7 @@ import { TasksContext, transformHour, } from "../../../../../../contexts/tasksCo
 //api functions
 import { getEvents } from "../../../../../../api/services/getEvents";
 import { deleteEvents } from "../../../../../../api/services/deleteEvents";
-import { createEvents } from "../../../../../../actions/events/postEvents";
+import { createEvents } from "../../../../../../api/services/postEvents";
 export const ButtonsSection = () => {
     const [createIsLoading, setCreateIsLoading] = useState(false);
     const [createEventResponse, setCreateEventResponse] = useState({});

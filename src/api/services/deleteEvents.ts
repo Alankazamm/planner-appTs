@@ -1,6 +1,6 @@
 
 import { API } from "aws-amplify";
-import { errorsHandler } from "../../helpers/errorsHandler";
+import { errorsHandler } from "../utils/errorsHandler";
 
 
 

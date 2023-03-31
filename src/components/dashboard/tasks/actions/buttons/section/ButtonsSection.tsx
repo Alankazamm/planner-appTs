@@ -22,8 +22,8 @@ import {
 //api functions
 import { getEvents } from "../../../../../../api/services/getEvents";
 import { deleteEvents } from "../../../../../../api/services/deleteEvents";
-import { createEvents } from "../../../../../../actions/events/postEvents";
 import { PostDeleteResponse } from "../../../../../../api/services/types";
+import { createEvents } from "../../../../../../api/services/postEvents";
 
 export const ButtonsSection = () => {
 	const [createIsLoading, setCreateIsLoading] = useState(false);

@@ -2,7 +2,7 @@ import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 //styles
 import { useContext, useEffect } from "react";
 import { RenewTokenModal } from "../components/common/modals/RenewTokenModal";
-import { DashContainer } from "../components/dashboard/DashContainer.styles";
+import { DashContainer } from "../components/Dashboard/DashContainer.styles";
 //components
 import DashboardHeader from "../components/dashboard/header/DashboardHeader";
 import { TasksSection } from "../components/dashboard/tasks/TasksSection";

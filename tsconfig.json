@@ -20,7 +20,7 @@
 
   },
    //include tsx files
-  "include": ["src", "types", "src/custom.d.ts", "vite-env.d.ts",  "**/*", "src/**/*"],
+  "include": ["src/*", "types", "src/custom.d.ts", "vite-env.d.ts"],
   "exclude": [
     "node_modules",
     "**/*.spec.ts"
