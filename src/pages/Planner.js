@@ -5,7 +5,7 @@ import { RenewTokenModal } from "../components/common/modals/RenewTokenModal";
 import { DashBoardContainer } from "../components/Dashboard/styles";
 //components
 import { DashboardHeader } from "../components/Dashboard/components/Header/index";
-import { TasksSection } from "../components/Dashboard/components/Tasks/i";
+import { TasksSection } from "../components/Dashboard/components/Tasks/index";
 import { UserContext } from './../contexts/userContext';
 export const Planner = () => {
     const { displayRenewAccessTokenModal, setDisplayRenewAccessTokenModal } = useContext(UserContext);
