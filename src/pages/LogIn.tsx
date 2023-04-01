@@ -8,7 +8,6 @@ import { FormContainer } from "../components/form/containers/FormContainer.style
 //components
 import { HeaderText } from "../components/common/header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";
-import { BgSection } from "../components/aside/BgSection";
 import { LoginForm } from "../components/form/LoginForm";
 import { FormButton } from "../components/form/buttons/FormButton";
 //contexts
@@ -23,6 +22,7 @@ import { ConfirmEmailModal } from "../components/common/confirmation/ConfirmEmai
 import { ForgotPasswordModal } from './../components/common/modals/ForgotPasswordModal';
 import { ResetPasswordModal } from "../components/common/modals/ResetPasswordModal";
 import { MainWrapper } from "../styles/MainWrapper.styles";
+import { BgSection } from './../components/Aside/BgSection';
 
 
 
