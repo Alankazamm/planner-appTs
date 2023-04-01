@@ -3,9 +3,11 @@ import { useContext, useEffect } from "react";
 import { RenewTokenModal } from "../components/common/modals/RenewTokenModal";
 import { DashBoardContainer } from "../components/Dashboard/styles"
 //components
-import { DashboardHeader } from "../components/Dashboard/components/Header/index"
-import { TasksSection } from "../components/Dashboard/components/Tasks/index"
+
+
 import { UserContext } from './../contexts/userContext';
+import { DashboardHeader } from "../components/Dashboard/components/Header/Header";
+import { TasksSection } from "../components/Dashboard/components/Tasks/TasksSection";
 
 
 

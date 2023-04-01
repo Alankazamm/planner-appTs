@@ -15,13 +15,13 @@
     "isolatedModules": true,
 
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "types": ["vite/client"]
    
 
   },
    //include tsx files
-  "include": ["src/*", "types", "src/custom.d.ts", "vite-env.d.ts", "vite.config.ts", "src/**/*.ts"],
+  "include": ["src/*", "types", "src/custom.d.ts", "vite-env.d.ts", "vite.config.ts", "src/**/*.tsx"],
   "exclude": [
     "node_modules",
     "**/*.spec.ts"
