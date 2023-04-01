@@ -5,7 +5,6 @@ import { useContext, useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 //styles
-import { MainWrapper } from "../components/common/MainWrapper.styles";
 import { FormContainer } from "../components/form/containers/FormContainer.styles";
 //components
 import { HeaderText } from "../components/common/header/Header";
@@ -23,6 +22,7 @@ import { ConfirmEmailModal } from "../components/common/confirmation/ConfirmEmai
 // import { updateToken } from "../helpers/axios";
 import { ForgotPasswordModal } from './../components/common/modals/ForgotPasswordModal';
 import { ResetPasswordModal } from "../components/common/modals/ResetPasswordModal";
+import { MainWrapper } from "../styles/MainWrapper.styles";
 let firstRender = true;
 export const LogIn = () => {
     //hook's calls

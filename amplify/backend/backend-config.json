@@ -8,7 +8,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "plannereventsfunction"
+          "resourceName": "plannerprojectfunction"
         },
         {
           "attributes": [
@@ -16,7 +16,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "plannerprojectfunction"
+          "resourceName": "plannereventsfunction"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -49,6 +49,22 @@
       },
       "providerPlugin": "awscloudformation",
       "service": "Cognito"
+    },
+    "userPoolGroups": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "UserPoolId",
+            "AppClientIDWeb",
+            "AppClientID",
+            "IdentityPoolId"
+          ],
+          "category": "auth",
+          "resourceName": "plannerprojecte2fc34e8"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "Cognito-UserPool-Groups"
     }
   },
   "function": {

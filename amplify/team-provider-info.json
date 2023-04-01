@@ -24,7 +24,8 @@
         }
       },
       "auth": {
-        "plannerprojecte2fc34e8": {}
+        "plannerprojecte2fc34e8": {},
+        "userPoolGroups": {}
       },
       "storage": {
         "plannereventsdb": {},

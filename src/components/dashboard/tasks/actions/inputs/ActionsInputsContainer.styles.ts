@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ActionsContainerCommons } from '../ActionsContainer.styles';
+import { ActionsContainerCommons } from './../../../components/Tasks/components/Actions/styles';
 
 export const ActionsInputsContainer = styled(ActionsContainerCommons)`
 gap:3px;

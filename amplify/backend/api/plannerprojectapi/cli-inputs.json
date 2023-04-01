@@ -1,6 +1,13 @@
 {
   "version": 1,
   "paths": {
+    "/users": {
+      "name": "/users",
+      "lambdaFunction": "plannerprojectfunction",
+      "permissions": {
+        "setting": "open"
+      }
+    },
     "/events": {
       "name": "/events",
       "lambdaFunction": "plannereventsfunction",
@@ -12,13 +19,6 @@
           "update",
           "delete"
         ]
-      }
-    },
-    "/users": {
-      "name": "/users",
-      "lambdaFunction": "plannerprojectfunction",
-      "permissions": {
-        "setting": "open"
       }
     }
   }

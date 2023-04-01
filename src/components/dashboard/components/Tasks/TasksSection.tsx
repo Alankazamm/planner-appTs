@@ -2,12 +2,12 @@
 //It is responsible for rendering the tasks container and the actions section.
 
 //components
-import { ActionsSection } from "./actions/ActionsSection"
-import { TasksDisplayer } from "./display-tasks/TasksDisplayer"
+import { ActionsSection } from "./components/Actions/ActionsSection"
+import { TasksDisplayer } from "../../tasks/display-tasks/TasksDisplayer"
 //styles
-import { TasksContainer } from "./TasksContainer.styles"
 //context
-import {  TasksProvider } from "../../../contexts/tasksContext"
+import {  TasksProvider } from "../../../../contexts/tasksContext"
+import { TasksContainer } from './styles';
 
 export const TasksSection = () => {
    return (

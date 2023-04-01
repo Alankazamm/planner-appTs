@@ -8,7 +8,7 @@ import { FormButton } from "../components/form/buttons/FormButton";
 import { RegisterForm } from "../components/form/RegisterForm";
 import { HeaderText } from "../components/common/header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";
-import { MainWrapper } from "../components/common/MainWrapper.styles";
+
 import { FormContainer } from "../components/form/containers/FormContainer.styles";
 //external funcs
 import { register } from "../auth/register";
@@ -19,6 +19,7 @@ import { ActionType } from "../reducers/formReducer";
 //modals
 import { SignErrorModal } from './../components/common/modals/SignErrorModal';
 import { ConfirmEmailModal } from './../components/common/confirmation/ConfirmEmailModal';
+import { MainWrapper } from './../styles/MainWrapper.styles';
 
 
 

@@ -9,7 +9,7 @@ import { Logout } from './components/Logout';
 import { HeaderText } from "../../../common/header/Header";
 import { DashHeaderContainer } from "./styles";
 
-export const Header = () => {
+export const DashboardHeader = () => {
     
 	return (
 		<DashHeaderContainer>

@@ -1,11 +1,12 @@
 import { BrowserRouter } from "react-router-dom";
-import { GlobalStyle } from "./components/styles/globalStyles.styles";
-import { UserContext, UserContextProvider } from "./contexts/userContext";
+
+import { UserContextProvider } from "./contexts/userContext";
 
 import { AppRoutes } from "./routes/AppRoutes";
 import { useContext, useEffect } from "react";
 import { Amplify, API, Auth } from "aws-amplify";
 import awsmobile from "./aws-exports";
+import { GlobalStyles } from './components/styles/index';
 Amplify.configure(awsmobile);
 
 
@@ -23,7 +24,7 @@ function App() {
 	
 	return (
 		<BrowserRouter>
-			<GlobalStyle />
+			<GlobalStyles />
 			<UserContextProvider>
 				<AppRoutes />
 			</UserContextProvider>

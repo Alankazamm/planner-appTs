@@ -1,10 +1,10 @@
 //styles
 import { useContext, useEffect } from "react";
 import { RenewTokenModal } from "../components/common/modals/RenewTokenModal";
-import { DashContainer } from "../components/Dashboard/styles"
+import { DashBoardContainer } from "../components/Dashboard/styles"
 //components
-import { Header } from "../components/Dashboard/components/Header"
-import { TasksSection } from "../components/dashboard/tasks/TasksSection"
+import { DashboardHeader } from "../components/Dashboard/components/Header"
+import { TasksSection } from "../components/Dashboard/components/Tasks"
 import { UserContext } from './../contexts/userContext';
 
 
@@ -23,11 +23,11 @@ export const Planner = () => {
     }, [setDisplayRenewAccessTokenModal, displayRenewAccessTokenModal]);
 
     return (
-        <DashContainer>
+        <DashBoardContainer>
             {displayRenewAccessTokenModal === true && <RenewTokenModal />}
-            <Header />
+            <DashboardHeader />
           <TasksSection />
-        </DashContainer>
+        </DashBoardContainer>
             
     )
 }
