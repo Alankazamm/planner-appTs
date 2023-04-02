@@ -1,25 +1,22 @@
-//styles
+//hooks
 import { useContext, useEffect } from "react";
-import { RenewTokenModal } from "../components/common/modals/RenewTokenModal";
+//styles
 import { DashBoardContainer } from "../components/Dashboard/styles"
 //components
-
-
+import { DashboardHeader, TasksSection } from "../components/Dashboard";
+import { RenewTokenModal } from "../components/common/modals/RenewTokenModal";
+//context
 import { UserContext } from './../contexts/userContext';
-import { DashboardHeader } from "../components/Dashboard/components/Header";
-import { TasksSection } from "../components/Dashboard/components/Tasks/TasksSection";
-
-
 
 export const Planner = () => {
+
     const { displayRenewAccessTokenModal, setDisplayRenewAccessTokenModal } = useContext(UserContext);
     useEffect(() => {
         const time = localStorage.getItem('sessionExpires');
-        console.log(time);
-        setTimeout(() => {
+        const timer = setTimeout(() => {
             setDisplayRenewAccessTokenModal(true);
-        }, time ? parseInt(time) - 100000 : 0);
-       
+        }, time ? parseInt(time) - 100000 : 100000);
+        return () => clearTimeout(timer);
     }, [setDisplayRenewAccessTokenModal, displayRenewAccessTokenModal]);
 
     return (

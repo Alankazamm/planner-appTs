@@ -2,13 +2,11 @@
 //It contains the inputs and buttons sections.
 
 //components
-
+import { ActionsInputs } from './components/Inputs';
+import { ButtonsSection } from './../../../../tasks/actions/buttons/section/ButtonsSection';
 
 //styles
-import ActionsInputs from './../../../../tasks/actions/inputs/ActionsInputs';
 import { ActionsContainer } from './styles';
-import { ButtonsSection } from './../../../../tasks/actions/buttons/section/ButtonsSection';
-import React from 'react';
 
 export const ActionsSection = () => {
   return (

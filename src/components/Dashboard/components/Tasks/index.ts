@@ -1,1 +1,1 @@
-import {TasksSection } from './TasksSection';
+export { TasksSection } from './TasksSection';

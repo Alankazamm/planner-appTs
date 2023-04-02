@@ -1,17 +1,17 @@
 //styles
-import { ActionsInputsContainer } from "./ActionsInputsContainer.styles";
+import { ActionsInputsContainer } from "./styles";
 import { useContext } from "react";
 import {
 	TasksContext,
 	createContextType,
-} from "../../../../../contexts/tasksContext";
+} from "../../../../../../../../contexts/tasksContext";
 
 type eventTarget =
 	| React.ChangeEvent<HTMLInputElement>
 	| React.ChangeEvent<HTMLSelectElement>
 	| React.ChangeEvent<HTMLTextAreaElement>;
 
-const ActionsInputs = () => {
+export const ActionsInputs = () => {
 	const { setTask, task }: createContextType = useContext(TasksContext);
 	// { taskText: '', taskDay: 'Monday', taskHour: '', taskId: '1' }
 	const inputsHandler = (event: eventTarget) => {
@@ -120,4 +120,3 @@ const ActionsInputs = () => {
 	);
 };
 
-export default ActionsInputs;

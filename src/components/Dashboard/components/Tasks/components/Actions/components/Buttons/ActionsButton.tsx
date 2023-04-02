@@ -1,7 +1,8 @@
+//assets
 import plusIcon from "/src/assets/svg/btn-plus.svg"
 import minusIcon from "/src/assets/svg/btn-minus.svg"
-import { StyledActionButton } from "./StyledActionButton.styles";
-import React from "react";
+//styles
+import { StyledActionButton } from "./styles";
 
 export const ActionsButton = ({
 	onClick,

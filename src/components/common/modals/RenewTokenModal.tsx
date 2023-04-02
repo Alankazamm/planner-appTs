@@ -17,9 +17,10 @@ export const RenewTokenModal = () => {
                 localStorage.setItem("sessionRefreshToken", session.getRefreshToken().getToken());
                 localStorage.setItem("sessionAccessToken", session.getAccessToken().getJwtToken());
                 localStorage.setItem("sessionExpires", session.getIdToken().getExpiration().toString());
-                setDisplayRenewAccessTokenModal(false);
+                
 
             });
+            setDisplayRenewAccessTokenModal(false);
         } catch (error) {
             console.log(error);//criar modal aqui para usuario renovar o token
         }
