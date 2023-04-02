@@ -16,12 +16,10 @@ export const Planner = () => {
     useEffect(() => {
         const time = localStorage.getItem('sessionExpires');
         console.log(time);
-        const timer = setTimeout(() => {
+        setTimeout(() => {
             setDisplayRenewAccessTokenModal(true);
         }, time ? parseInt(time) - 100000 : 0);
-        return () => {
-            clearTimeout(timer);
-        }
+       
     }, [setDisplayRenewAccessTokenModal, displayRenewAccessTokenModal]);
 
     return (
