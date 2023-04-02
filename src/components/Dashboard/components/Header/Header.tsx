@@ -1,6 +1,6 @@
 //description: This is the header component for the dashboard page
 //it contains the header text, timer, weather and the logout button
-
+//test
 //components
 import { Timer } from './components/Timer';
 import { Weather } from './components/Weather';
