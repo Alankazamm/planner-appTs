@@ -1,38 +1,35 @@
 {
-  "dev": {
+  "aws": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-plannerproject-dev-22454-authRole",
-      "UnauthRoleArn": "arn:aws:iam::729418750644:role/amplify-plannerproject-dev-22454-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::729418750644:role/amplify-plannerproject-dev-22454-authRole",
+      "AuthRoleName": "amplify-plannerproject-aws-40401-authRole",
+      "UnauthRoleArn": "arn:aws:iam::729418750644:role/amplify-plannerproject-aws-40401-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::729418750644:role/amplify-plannerproject-aws-40401-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-plannerproject-dev-22454-deployment",
-      "UnauthRoleName": "amplify-plannerproject-dev-22454-unauthRole",
-      "StackName": "amplify-plannerproject-dev-22454",
-      "StackId": "arn:aws:cloudformation:us-east-1:729418750644:stack/amplify-plannerproject-dev-22454/8f9a5510-c228-11ed-86b0-0a11f26dba7f",
-      "AmplifyAppId": "d2eow2lpx6490l",
-      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-plannerproject-dev-22454-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
+      "DeploymentBucketName": "amplify-plannerproject-aws-40401-deployment",
+      "UnauthRoleName": "amplify-plannerproject-aws-40401-unauthRole",
+      "StackName": "amplify-plannerproject-aws-40401",
+      "StackId": "arn:aws:cloudformation:us-east-1:729418750644:stack/amplify-plannerproject-aws-40401/e76a85b0-ceaf-11ed-b988-12778cf7c963",
+      "AmplifyAppId": "d24w556cg3i1we",
+      "APIGatewayAuthURL": "https://s3.amazonaws.com/amplify-plannerproject-aws-40401-deployment/amplify-cfn-templates/api/APIGatewayAuthStack.json"
     },
     "categories": {
-      "function": {
-        "plannereventsfunction": {
-          "deploymentBucketName": "amplify-plannerproject-dev-22454-deployment",
-          "s3Key": "amplify-builds/plannereventsfunction-4a646366317265324667-build.zip"
-        },
-        "plannerprojectfunction": {
-          "deploymentBucketName": "amplify-plannerproject-dev-22454-deployment",
-          "s3Key": "amplify-builds/plannerprojectfunction-4e2f69675773526c6c42-build.zip"
-        }
-      },
       "auth": {
         "plannerprojecte2fc34e8": {},
         "userPoolGroups": {}
       },
+      "function": {
+        "plannereventsfunction": {
+          "deploymentBucketName": "amplify-plannerproject-aws-40401-deployment",
+          "s3Key": "amplify-builds/plannereventsfunction-4a646366317265324667-build.zip"
+        },
+        "plannerprojectfunction": {
+          "deploymentBucketName": "amplify-plannerproject-aws-40401-deployment",
+          "s3Key": "amplify-builds/plannerprojectfunction-4e2f69675773526c6c42-build.zip"
+        }
+      },
       "storage": {
         "plannereventsdb": {},
         "plannerprojectdb": {}
-      },
-      "api": {
-        "plannerprojectapi": {}
       }
     }
   }

@@ -3,7 +3,6 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 //styles
-import { BgSection } from "../components/Aside/BgSection";
 import { FormButton } from "../components/form/buttons/FormButton";
 import { RegisterForm } from "../components/form/RegisterForm";
 import { HeaderText } from "../components/common/header/Header";
@@ -16,10 +15,11 @@ import { register } from "../auth/register";
 import { UserContext } from './../contexts/userContext';
 //types
 import { ActionType } from "../reducers/formReducer";
-//modals
+//components
 import { SignErrorModal } from './../components/common/modals/SignErrorModal';
 import { ConfirmEmailModal } from './../components/common/confirmation/ConfirmEmailModal';
 import { MainWrapper } from './../styles/MainWrapper.styles';
+import { BgSection } from './../components/Aside';
 
 
 
