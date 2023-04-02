@@ -6,7 +6,7 @@ import { DashBoardContainer } from "../components/Dashboard/styles"
 
 
 import { UserContext } from './../contexts/userContext';
-import { DashboardHeader } from "../components/Dashboard/components/Header/Header";
+import { DashboardHeader } from "../components/Dashboard/components/Header";
 import { TasksSection } from "../components/Dashboard/components/Tasks/TasksSection";
 
 

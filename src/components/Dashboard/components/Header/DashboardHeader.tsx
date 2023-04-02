@@ -5,11 +5,9 @@
 import { Timer } from './components/Timer';
 import { Weather } from './components/Weather';
 import { Logout } from './components/Logout';
-import { DashHeaderContainer } from './styles';
-import { HeaderText } from './../../../common/header/Header';
-import React from 'react';
+import { HeaderText } from '../../../common/header/Header';
 //styles
-
+import { DashHeaderContainer } from './styles';
 
 export const DashboardHeader = () => {
     

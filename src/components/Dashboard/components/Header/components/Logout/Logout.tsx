@@ -10,7 +10,6 @@ import { LogoutContainer } from "./styles";
 //assets
 import logoIcon from "/src/assets/svg/icon-logo.svg";
 import logoutIcon from "/src/assets/svg/btn-logout.svg";
-import React from "react";
 
 export const Logout = () => {
 	const { signout } = useContext(UserContext);

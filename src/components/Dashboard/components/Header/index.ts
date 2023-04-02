@@ -1,1 +1,1 @@
-import { DashboardHeader } from './DashboardHeader';
+export { DashboardHeader } from './DashboardHeader';
