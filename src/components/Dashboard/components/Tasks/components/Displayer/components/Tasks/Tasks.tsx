@@ -5,20 +5,18 @@
 import { useContext, useEffect } from "react";
 
 //styles
-import { TaskBorder } from "./styles/TaskBorder.styles";
-import { TasksTimeCard } from "./styles/TasksTimeCard.styles";
-import TasksWrapper from "./TasksWrapper.styles";
+import { TasksWrapper, TaskBorder, TasksTimeCard } from "./styles";
 
 //context
 import spinner   from "/src/assets/svg/spinner-uol.svg"
-import LoadingModal from "../../../../common/loading/LoadingModal";
+import LoadingModal from "../../../../../../../common/loading/LoadingModal";
 import { useState } from 'react';
-import { TaskWarnigModal } from "../../../../common/modals/TaskWarnigModal";
-import { deleteEvents } from "../../../../../api/services/deleteEvents";
-import { getEvents } from "../../../../../api/services/getEvents";
-import { TasksErrorModal } from "../../../../common/modals/TasksErrorModal";
-import { ConfirmDeleteModal } from "../../../../common/confirmation/ConfirmDeleteModal";
-import { createContextType, TasksContext } from "../../../../../contexts/tasksContext";
+import { TaskWarnigModal } from "../../../../../../../common/modals/TaskWarnigModal";
+import { deleteEvents } from "../../../../../../../../api/services/deleteEvents";
+import { getEvents } from "../../../../../../../../api/services/getEvents";
+import { TasksErrorModal } from "../../../../../../../common/modals/TasksErrorModal";
+import { ConfirmDeleteModal } from "../../../../../../../common/confirmation/ConfirmDeleteModal";
+import { createContextType, TasksContext } from "../../../../../../../../contexts/tasksContext";
 
 export const Tasks = () => {
    

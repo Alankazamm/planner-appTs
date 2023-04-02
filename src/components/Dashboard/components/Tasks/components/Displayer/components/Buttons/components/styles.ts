@@ -1,6 +1,18 @@
 
 import styled from 'styled-components';
 
+//container
+export const TasksButtonsContainer = styled.div`
+  display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 3px;
+    position: sticky;
+`;
+
+//button
 export const TasksButton = styled.div<{actualDay:string}>`
 background-color: ${props => {
 
@@ -19,24 +31,6 @@ background-color: ${props => {
         else if (props.id === 'sunday') return 'rgba(255, 0, 36, 0.5)';
     }
     };
-
-/* opacity:${props => {
-
-        if (props.id === 'Monday') return '100%';
-
-        else if (props.id === 'Tuesday') return '100%';
-
-        else if (props.id === 'Wednesday') return '100%';
-
-        else if (props.id === 'Thursday') return '70%';
-
-        else if (props.id === 'Friday') return '70%';
-
-        else if (props.id === 'Saturday') return '70%';
-
-        else if (props.id === 'Sunday') return '50%';
-    }
-    }; */
 
 box-shadow: 0px 4px 24px rgba(168, 168, 168, 0.25);
 border-radius: 9px 9px 0px 0px;

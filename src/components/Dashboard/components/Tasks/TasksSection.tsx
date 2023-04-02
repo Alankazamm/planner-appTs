@@ -3,7 +3,7 @@
 
 //components
 import { ActionsSection } from "./components/Actions/ActionsSection"
-import { TasksDisplayer } from "../../tasks/display-tasks/TasksDisplayer"
+import { TasksDisplayer } from "./components/Displayer"
 //styles
 //context
 import {  TasksProvider } from "../../../../contexts/tasksContext"

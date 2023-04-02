@@ -3,16 +3,17 @@
 
 //components
 import { ActionsInputs } from './components/Inputs';
-import { ButtonsSection } from './../../../../tasks/actions/buttons/section/ButtonsSection';
+
 
 //styles
 import { ActionsContainer } from './styles';
+import { CreateTaskButtons } from './components/Buttons';
 
 export const ActionsSection = () => {
   return (
     <ActionsContainer>
           <ActionsInputs></ActionsInputs>
-          <ButtonsSection></ButtonsSection>
+          <CreateTaskButtons></CreateTaskButtons>
           
     </ActionsContainer>
   )

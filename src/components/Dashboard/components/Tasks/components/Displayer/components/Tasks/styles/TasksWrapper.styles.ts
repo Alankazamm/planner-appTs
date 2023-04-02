@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const TasksWrapper = styled.div`
+export const TasksWrapper = styled.div`
 
     display: flex;
     flex-direction: column;
@@ -143,5 +143,3 @@ const TasksWrapper = styled.div`
         background: rgba(0, 0, 0, 0.7);
     }
 `;
-
-export default TasksWrapper;

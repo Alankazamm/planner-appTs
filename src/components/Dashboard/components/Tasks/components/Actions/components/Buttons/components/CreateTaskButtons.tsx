@@ -4,30 +4,30 @@ import { useContext } from "react";
 import { useState, useEffect } from "react";
 //styles
 
-import Spinner from "../../../../../common/loading/Spinner.styles";
+import Spinner from "../../../../../../../../common/loading/Spinner.styles";
 //assets
 import spinner from "/src/assets/svg/spinner-uol.svg";
 //components
 
-import { TasksErrorModal } from "../../../../../common/modals/TasksErrorModal";
-import { ConfirmDeleteModal } from "../../../../../common/confirmation/ConfirmDeleteModal";
+import { TasksErrorModal } from "../../../../../../../../common/modals/TasksErrorModal";
+import { ConfirmDeleteModal } from "../../../../../../../../common/confirmation/ConfirmDeleteModal";
 //context
 import {
 	TasksContext,
 	createContextType,
 	events,
 	transformHour,
-} from "../../../../../../contexts/tasksContext";
+} from "../../../../../../../../../contexts/tasksContext";
 
 //api functions
-import { getEvents } from "../../../../../../api/services/getEvents";
-import { deleteEvents } from "../../../../../../api/services/deleteEvents";
-import { PostDeleteResponse } from "../../../../../../api/services/types";
-import { createEvents } from "../../../../../../api/services/postEvents";
-import { ActionsButton } from './../../../../components/Tasks/components/Actions/components/Buttons/ActionsButton';
-import { ActionsContainerCommons } from "../../../../components/Tasks/components/Actions/styles";
+import { getEvents } from "../../../../../../../../../api/services/getEvents";
+import { deleteEvents } from "../../../../../../../../../api/services/deleteEvents";
+import { PostDeleteResponse } from "../../../../../../../../../api/services/types";
+import { createEvents } from "../../../../../../../../../api/services/postEvents";
+import { ActionsButton } from './ActionsButton';
+import { ActionsContainerCommons } from "../../../styles";
 
-export const ButtonsSection = () => {
+export const CreateTaskButtons = () => {
 	const [createIsLoading, setCreateIsLoading] = useState(false);
 	const [createEventResponse, setCreateEventResponse] = useState<
 		PostDeleteResponse
