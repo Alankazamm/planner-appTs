@@ -4,9 +4,10 @@ import { UserContextProvider } from "./contexts/userContext";
 
 import { AppRoutes } from "./routes/AppRoutes";
 import { useContext, useEffect } from "react";
-import { Amplify, API, Auth } from "aws-amplify";
+
 import awsmobile from "./aws-exports";
 import { GlobalStyles } from './components/styles/index';
+import { Amplify } from 'aws-amplify';
 Amplify.configure(awsmobile);
 
 

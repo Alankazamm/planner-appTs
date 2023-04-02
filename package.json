@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "env-cmd -f src/.env  vite",
+    "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "predeploy": "npm run build",
@@ -19,7 +19,7 @@
     "@types/styled-components": "^5.1.26",
     "amplify": "^0.0.11",
     "amplify-cli": "^1.0.0",
-    "aws-amplify": "^5.0.19",
+    "aws-amplify": "^5.0.23",
     "dotenv": "^16.0.3",
     "env-cmd": "^10.1.0",
     "react": "^18.2.0",
