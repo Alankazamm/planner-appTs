@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 export interface Forecast {
-  current: {
+  current?: {
     temp_c: string;
   }
+  error?: {
+    //any
+  }
+  
 };
 
 
@@ -17,7 +21,7 @@ export const useFetchWeather = (city: string): any => {
         fetch(`https://api.weatherapi.com/v1/current.json?key=96292cdb0bbf468f931192735231102&q=${city}&lang=en`)
           .then((response) => response.status === 200 ? response.json() : console.log(response))
           .then(data => {
-
+            console.log(data);
             setForecast(data);
           });
       } catch (error) {
