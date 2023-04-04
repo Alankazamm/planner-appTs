@@ -10,12 +10,11 @@ import errorIcon  from "/src/assets/svg/weather-404.svg"
 //styles
 import { WeatherContainer } from "./styles";
 import Spinner from "../../../../../common/loading/Spinner.styles";
+import { getUser } from './../../../../../../helpers/getUser';
 
 export const Weather = () => {
 
-	const user = JSON.parse(localStorage.getItem('user') || '{}')
-	const city: string | undefined = user.city;
-    const country: string | undefined = user.country;
+	const { city, country} = getUser();
     const forecast:Forecast = useFetchWeather(city?city:'');
 	
 	let forecastOutput = (
