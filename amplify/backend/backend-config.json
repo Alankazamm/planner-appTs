@@ -113,40 +113,6 @@
       "service": "Lambda"
     }
   },
-  "parameters": {
-    "AMPLIFY_function_plannereventsfunction_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "plannereventsfunction"
-        }
-      ]
-    },
-    "AMPLIFY_function_plannereventsfunction_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "plannereventsfunction"
-        }
-      ]
-    },
-    "AMPLIFY_function_plannerprojectfunction_deploymentBucketName": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "plannerprojectfunction"
-        }
-      ]
-    },
-    "AMPLIFY_function_plannerprojectfunction_s3Key": {
-      "usedBy": [
-        {
-          "category": "function",
-          "resourceName": "plannerprojectfunction"
-        }
-      ]
-    }
-  },
   "storage": {
     "plannereventsdb": {
       "providerPlugin": "awscloudformation",
