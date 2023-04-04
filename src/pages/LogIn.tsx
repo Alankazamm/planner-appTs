@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 //styles
 import { FormContainer } from "../components/form/containers/FormContainer.styles";
 //components
-import { HeaderText } from "../components/common/header/Header";
+import { HeaderText } from "../components/Modals/header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";
 import { LoginForm } from "../components/form/LoginForm";
 import { FormButton } from "../components/form/buttons/FormButton";

@@ -5,7 +5,7 @@
 import { Timer } from './components/Timer';
 import { Weather } from './components/Weather';
 import { Logout } from './components/Logout';
-import { HeaderText } from '../../../common/header/Header';
+import { HeaderText } from '../../../Modals/header/Header';
 //styles
 import { DashHeaderContainer } from './styles';
 

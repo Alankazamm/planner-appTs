@@ -1,16 +1,15 @@
 
-import { ConfirmModal } from '../modals/Modal.styles';
+import { ConfirmModal } from '../styles';
 import warningIcon from '/src/assets/svg/icon-warning.svg'
 
 export const ConfirmDeleteModal = ({actionFunction, value, showModal}:{actionFunction:any, value:{show:boolean, id?:string, dayOfWeek?:string}, showModal:any}) => {
   const actionHandler = () => {
-   value.id ? actionFunction(value.id) : actionFunction(value.dayOfWeek);
-    value.id ? showModal({show: false, id: ''}) :  showModal({show: false, dayOfWeek: ''});
-
-  }
+    value.id ? actionFunction(value.id) : actionFunction(value.dayOfWeek);
+    value.id ? showModal({ show: false, id: '' }) : showModal({ show: false, dayOfWeek: '' });
+  };
   const cancelHandler = () => {
-    value.id ? showModal({show: false, id: ''}) :  showModal({show: false, dayOfWeek: ''});
-  }
+    value.id ? showModal({ show: false, id: '' }) : showModal({ show: false, dayOfWeek: '' });
+  };
   return (
     <ConfirmModal>
       <div className="confirmModalContent">

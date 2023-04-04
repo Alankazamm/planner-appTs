@@ -11,7 +11,7 @@ import { TasksWrapper, TaskBorder, TasksTimeCard } from "./styles";
 import spinner   from "/src/assets/svg/spinner-uol.svg"
 import LoadingModal from "../../../../../../../common/loading/LoadingModal";
 import { useState } from 'react';
-import { TaskWarnigModal } from "../../../../../../../common/modals/TaskWarnigModal";
+import { TaskWarnigModal } from "../../../../../../../Modals/components/TaskWarnigModal";
 import { deleteEvents } from "../../../../../../../../api/services/deleteEvents";
 import { getEvents } from "../../../../../../../../api/services/getEvents";
 import { TasksErrorModal } from "../../../../../../../common/modals/TasksErrorModal";

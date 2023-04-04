@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 //styles
 import { FormButton } from "../components/form/buttons/FormButton";
 import { RegisterForm } from "../components/form/RegisterForm";
-import { HeaderText } from "../components/common/header/Header";
+import { HeaderText } from "../components/Modals/header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";
 
 import { FormContainer } from "../components/form/containers/FormContainer.styles";
