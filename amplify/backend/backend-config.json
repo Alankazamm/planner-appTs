@@ -8,14 +8,6 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "plannerprojectfunction"
-        },
-        {
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "function",
           "resourceName": "plannereventsfunction"
         }
       ],
@@ -83,34 +75,24 @@
       ],
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
-    },
-    "plannerprojectfunction": {
-      "build": true,
-      "dependsOn": [
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_plannereventsfunction_deploymentBucketName": {
+      "usedBy": [
         {
-          "attributeEnvMap": {
-            "Arn": "TABLE_ARN",
-            "Name": "TABLE_NAME"
-          },
-          "attributes": [
-            "Name",
-            "Arn"
-          ],
-          "category": "storage",
-          "resourceName": "plannerprojectdb"
-        },
-        {
-          "attributes": [
-            "Name",
-            "Arn",
-            "StreamArn"
-          ],
-          "category": "storage",
-          "resourceName": "plannerprojectdb"
+          "category": "function",
+          "resourceName": "plannereventsfunction"
         }
-      ],
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
+      ]
+    },
+    "AMPLIFY_function_plannereventsfunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "plannereventsfunction"
+        }
+      ]
     }
   },
   "storage": {
