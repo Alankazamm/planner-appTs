@@ -9,8 +9,7 @@ import Spinner from "../../../../../../../../common/loading/Spinner.styles";
 import spinner from "/src/assets/svg/spinner-uol.svg";
 //components
 
-import { TasksErrorModal } from "../../../../../../../../common/modals/TasksErrorModal";
-import { ConfirmDeleteModal } from "../../../../../../../../common/confirmation/ConfirmDeleteModal";
+
 //context
 import {
 	TasksContext,
@@ -26,6 +25,8 @@ import { PostDeleteResponse } from "../../../../../../../../../api/services/type
 import { createEvents } from "../../../../../../../../../api/services/postEvents";
 import { ActionsButton } from './ActionsButton';
 import { ActionsContainerCommons } from "../../../styles";
+import { ConfirmDeleteModal } from "../../../../../../../../Modals/components/ConfirmDeleteModal";
+import { TasksErrorModal } from "../../../../../../../../Modals/components/TasksErrorModal";
 
 export const CreateTaskButtons = () => {
 	const [createIsLoading, setCreateIsLoading] = useState(false);

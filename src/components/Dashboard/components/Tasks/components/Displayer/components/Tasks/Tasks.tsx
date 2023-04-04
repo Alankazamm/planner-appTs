@@ -14,9 +14,10 @@ import { useState } from 'react';
 import { TaskWarnigModal } from "../../../../../../../Modals/components/TaskWarnigModal";
 import { deleteEvents } from "../../../../../../../../api/services/deleteEvents";
 import { getEvents } from "../../../../../../../../api/services/getEvents";
-import { TasksErrorModal } from "../../../../../../../common/modals/TasksErrorModal";
-import { ConfirmDeleteModal } from "../../../../../../../common/confirmation/ConfirmDeleteModal";
+
 import { createContextType, TasksContext } from "../../../../../../../../contexts/tasksContext";
+import { ConfirmDeleteModal } from "../../../../../../../Modals/components/ConfirmDeleteModal";
+import { TasksErrorModal } from "../../../../../../../Modals/components/TasksErrorModal";
 
 export const Tasks = () => {
    

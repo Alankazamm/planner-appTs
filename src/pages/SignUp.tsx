@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 //styles
 import { FormButton } from "../components/form/buttons/FormButton";
 import { RegisterForm } from "../components/form/RegisterForm";
-import { HeaderText } from "../components/Modals/header/Header";
+import { HeaderText } from "../components/common/Header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";
 
 import { FormContainer } from "../components/form/containers/FormContainer.styles";
@@ -16,8 +16,8 @@ import { UserContext } from './../contexts/userContext';
 //types
 import { ActionType } from "../reducers/formReducer";
 //components
-import { SignErrorModal } from './../components/common/modals/SignErrorModal';
-import { ConfirmEmailModal } from './../components/common/confirmation/ConfirmEmailModal';
+import { SignErrorModal } from '../components/Modals/components/SignErrorModal';
+import { ConfirmEmailModal } from '../components/Modals/components/ConfirmEmailModal';
 import { MainWrapper } from './../styles/MainWrapper.styles';
 import { BgSection } from './../components/Aside';
 

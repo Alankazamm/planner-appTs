@@ -1,5 +1,5 @@
 
-import { ErrorModal } from './Modal.styles';
+import { ErrorModal } from '../styles';
 import { ErrorMessages } from '../../../api/services/types';
 
 type props = {

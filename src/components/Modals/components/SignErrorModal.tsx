@@ -1,4 +1,4 @@
-import { WarningModal } from "./Modal.styles";
+import { WarningModal } from "../styles";
 import warningIcon from "/src/assets/svg/icon-warning.svg";
 type SignErrorModalProps = {
 	//toggleModal is an anonymous function that is passed as a prop from SignUp.tsx

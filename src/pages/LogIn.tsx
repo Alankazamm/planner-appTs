@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 //styles
 import { FormContainer } from "../components/form/containers/FormContainer.styles";
 //components
-import { HeaderText } from "../components/Modals/header/Header";
+import { HeaderText } from "../components/common/Header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";
 import { LoginForm } from "../components/form/LoginForm";
 import { FormButton } from "../components/form/buttons/FormButton";
@@ -17,10 +17,10 @@ import { UserContext } from './../contexts/userContext';
 import { ActionType } from "../reducers/formReducer";
 //external funcs
 import { login } from "../auth/login";
-import { ConfirmEmailModal } from "../components/common/confirmation/ConfirmEmailModal";
+import { ConfirmEmailModal } from "../components/Modals/components/ConfirmEmailModal";
 // import { updateToken } from "../helpers/axios";
-import { ForgotPasswordModal } from './../components/common/modals/ForgotPasswordModal';
-import { ResetPasswordModal } from "../components/common/modals/ResetPasswordModal";
+import { ForgotPasswordModal } from './../components/Modals/components/ForgotPasswordModal';
+import { ResetPasswordModal } from "../components/Modals/components/ResetPasswordModal";
 import { MainWrapper } from "../styles/MainWrapper.styles";
 import { BgSection } from '../components/Aside/BgSection';
 

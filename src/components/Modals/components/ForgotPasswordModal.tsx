@@ -1,5 +1,5 @@
 
-import { ForgotPasswordModal as Modal } from './Modal.styles';
+import { ForgotPasswordModal as Modal } from '../styles';
 import spinner from '/src/assets/svg/spinner-uol.svg'
 import { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';

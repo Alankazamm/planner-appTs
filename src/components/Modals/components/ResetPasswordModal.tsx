@@ -1,4 +1,4 @@
-import { ResetPasswordModal as Modal } from './Modal.styles';
+import { ResetPasswordModal as Modal } from '../styles';
 import { useState } from 'react';
 import { Auth } from 'aws-amplify';
 import spinner from '/src/assets/svg/spinner-uol.svg'

@@ -4,7 +4,7 @@ import { useContext, useEffect } from "react";
 import { DashBoardContainer } from "../components/Dashboard/styles"
 //components
 import { DashboardHeader, TasksSection } from "../components/Dashboard";
-import { RenewTokenModal } from "../components/common/modals/RenewTokenModal";
+import { RenewTokenModal } from "../components/Modals/components/RenewTokenModal";
 //context
 import { UserContext } from './../contexts/userContext';
 
