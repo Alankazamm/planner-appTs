@@ -1,7 +1,7 @@
 //description: this burron is used in login and register forms
 
 //components
-import { Redirect } from "../../Redirect/Redirect";
+import { Redirect } from "../../../Redirect/Redirect";
 //styles
 import { StyledFormBtn } from "./FormButton.styles";
 //assets

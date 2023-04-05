@@ -4,17 +4,17 @@
 import { useContext } from "react";
 
 //Styles
-import { Input } from "./inputs/styles/Input.styles";
-import { Label } from './inputs/styles/Label.styles';
-import { InputWrapper } from './inputs/styles/InputWrapper.styles';
-import { Form } from "./Form.styles";
+import { Input } from "../inputs/styles/Input.styles";
+import { Label } from '../inputs/styles/Label.styles';
+import { InputWrapper } from '../inputs/styles/InputWrapper.styles';
+import { Form } from "../styles";
 
 //external functions
-import { ActionType } from "../../reducers/formReducer";
+import { ActionType } from "../../../reducers/formReducer";
 
 //contexts
-import { UserContext } from './../../contexts/userContext';
-import { TooltipError } from '../../styles';
+import { UserContext } from '../../../contexts/userContext';
+import { TooltipError } from '../../../styles';
 
 
 

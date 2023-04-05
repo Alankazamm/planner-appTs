@@ -1,13 +1,13 @@
 // description: this is a form component that will be used to log in to dashboard
 //hooks
 import { useContext, useEffect, useState } from "react";
-import { TooltipError } from '../../styles';import { Form } from "./Form.styles";
-import { Icon } from "./icon/Icon";
+import { TooltipError } from '../../../styles';import { Form } from "../styles";
+import { Icon } from "../components/icon/Icon";
 
 //styles
-import { Input } from "./inputs/styles/Input.styles";
-import { LoginInputWrapper } from "./inputs/styles/InputWrapper.styles";
-import { UserContext } from '../../contexts/userContext';
+import { Input } from "../inputs/styles/Input.styles";
+import { LoginInputWrapper } from "../inputs/styles/InputWrapper.styles";
+import { UserContext } from '../../../contexts/userContext';
 
 
 
