@@ -7,7 +7,7 @@ import { AppRoutes } from "./routes/AppRoutes";
 import { useContext, useEffect } from "react";
 import { Amplify, API, Auth } from "aws-amplify";
 import awsmobile from "./aws-exports";
-import { GlobalStyles } from './components/styles/index';
+import { GlobalStyle } from './styles';
 Amplify.configure(awsmobile);
 
 
@@ -25,7 +25,7 @@ function App() {
 	
 	return (
 		<BrowserRouter>
-			<GlobalStyles />
+			<GlobalStyle />
 			<UserContextProvider>
 				<AppRoutes />
 			</UserContextProvider>
