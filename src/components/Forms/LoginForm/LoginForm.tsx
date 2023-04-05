@@ -2,11 +2,11 @@
 //hooks
 import { useContext, useEffect, useState } from "react";
 import { TooltipError } from '../../../styles';import { Form } from "../styles";
-import { Icon } from "../components/icon/Icon";
+import { Icon } from "../components/Icon/Icon";
 
 //styles
-import { Input } from "../inputs/styles/Input.styles";
-import { LoginInputWrapper } from "../inputs/styles/InputWrapper.styles";
+import { Input } from "../components/Input/Input.styles";
+import { LoginInputWrapper } from "../components/Input/InputWrapper.styles";
 import { UserContext } from '../../../contexts/userContext';
 
 

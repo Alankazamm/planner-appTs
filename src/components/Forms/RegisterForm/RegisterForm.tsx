@@ -4,9 +4,9 @@
 import { useContext } from "react";
 
 //Styles
-import { Input } from "../inputs/styles/Input.styles";
-import { Label } from '../inputs/styles/Label.styles';
-import { InputWrapper } from '../inputs/styles/InputWrapper.styles';
+import { Input } from "../components/Input/Input.styles";
+import { Label } from '../components/Input/Label.styles';
+import { InputWrapper } from '../components/Input/InputWrapper.styles';
 import { Form } from "../styles";
 
 //external functions
