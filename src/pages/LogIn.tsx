@@ -4,12 +4,12 @@ import { useContext, useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 //styles
-import { FormContainer } from "../components/form/containers/FormContainer.styles";
+import { FormContainer } from "../components/Forms/containers/FormContainer.styles";
 //components
 import { HeaderText } from "../components/common/Header/Header";
-import { ContentContainer } from "../components/form/containers/ContentContainer";
-import { LoginForm } from "../components/form/LoginForm";
-import { FormButton } from "../components/form/buttons/FormButton";
+import { ContentContainer } from "../components/Forms/containers/ContentContainer";
+import { LoginForm } from "../components/Forms/LoginForm";
+import { FormButton } from "../components/Forms/buttons/FormButton";
 //contexts
 import { UserContext } from './../contexts/userContext';
 

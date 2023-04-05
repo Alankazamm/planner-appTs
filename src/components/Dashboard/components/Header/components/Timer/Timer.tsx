@@ -2,7 +2,7 @@
 //format: 12:00 PM, 1st of January, 2021
 
 // hooks
-import { useTimer } from './../../../../../../custom-hooks/customTimerHook';
+import { useTimer } from '../../../../../../hooks/customTimerHook';
 // styles
 import { TimerContainer } from "./styles";
 

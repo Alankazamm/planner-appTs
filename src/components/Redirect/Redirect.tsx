@@ -1,5 +1,5 @@
 
-import {RedirectWrapper} from './RedirectWrapper'
+import {RedirectWrapper} from './styles'
 
 
 export const Redirect = ({page, text}:{page:string, text:string}) => {
