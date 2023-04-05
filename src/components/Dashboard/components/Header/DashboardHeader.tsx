@@ -8,7 +8,7 @@ import { Logout } from './components/Logout';
 
 //styles
 import { DashHeaderContainer } from './styles';
-import { HeaderText } from '../../../common/Header/Header';
+import { HeaderText } from '../../../common/Header';
 
 export const DashboardHeader = () => {
     

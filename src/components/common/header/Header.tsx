@@ -1,4 +1,4 @@
-import { HeaderTextStyle } from "./Header.styles";
+import { HeaderTextStyle } from "./styles";
 
 export interface pageIdentifier {
 	page: string;
