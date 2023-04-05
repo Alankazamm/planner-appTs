@@ -13,12 +13,8 @@ import { Form } from "./Form.styles";
 import { ActionType } from "../../reducers/formReducer";
 
 //contexts
-<<<<<<< HEAD:src/components/form/RegisterForm.tsx
 import { UserContext } from './../../contexts/userContext';
 import { TooltipError } from '../../styles';
-=======
-import { UserContext } from '../../contexts/userContext';
->>>>>>> cde7b0606d25549f8e9ed705a94cee9b1e3f36aa:src/components/Forms/RegisterForm.tsx
 
 
 

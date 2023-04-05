@@ -16,7 +16,7 @@ import { UserContext } from './../contexts/userContext';
 //types
 import { ActionType } from "../reducers/formReducer";
 //external funcs
-import { login } from "../auth/login";
+import { login } from "../api/auth/login";
 import { ConfirmEmailModal } from "../components/common/Modals/components/ConfirmEmailModal";
 // import { updateToken } from "../helpers/axios";
 import { ForgotPasswordModal } from '../components/common/Modals/components/ForgotPasswordModal';

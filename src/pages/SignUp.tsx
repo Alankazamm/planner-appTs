@@ -10,7 +10,7 @@ import { ContentContainer } from "../components/Forms/containers/ContentContaine
 
 import { FormContainer } from "../components/Forms/containers/FormContainer.styles";
 //external funcs
-import { register } from "../auth/register";
+import { register } from "../api/auth/register";
 //contexts
 import { UserContext } from './../contexts/userContext';
 //types
