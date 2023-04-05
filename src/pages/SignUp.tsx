@@ -18,7 +18,7 @@ import { ActionType } from "../reducers/formReducer";
 //components
 import { SignErrorModal } from '../components/common/Modals/components/SignErrorModal';
 import { ConfirmEmailModal } from '../components/common/Modals/components/ConfirmEmailModal';
-import { MainWrapper } from './../styles/MainWrapper.styles';
+import { MainWrapper } from '../styles/MainContainer/MainContainer';
 import { BgSection } from './../components/Aside';
 
 

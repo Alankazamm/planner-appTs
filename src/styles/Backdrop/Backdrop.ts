@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { rotate } from '../../components/styles/animationRotate.styles';
+import { rotate } from '../animations/animationRotate.styles';
 
 export const Backdrop = styled.div`
   position: absolute;

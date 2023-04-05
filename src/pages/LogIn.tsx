@@ -21,7 +21,7 @@ import { ConfirmEmailModal } from "../components/common/Modals/components/Confir
 // import { updateToken } from "../helpers/axios";
 import { ForgotPasswordModal } from '../components/common/Modals/components/ForgotPasswordModal';
 import { ResetPasswordModal } from "../components/common/Modals/components/ResetPasswordModal";
-import { MainWrapper } from "../styles/MainWrapper.styles";
+import { MainWrapper } from "../styles/MainContainer/MainContainer";
 import { BgSection } from '../components/Aside/BgSection';
 
 
