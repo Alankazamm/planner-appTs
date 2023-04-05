@@ -2,7 +2,7 @@
 //from the API(https://www.weatherapi.com/docs/) and displaying it on the dashboard
 
 //hooks
-import { Forecast, useFetchWeather } from '../../../../../../custom-hooks/customWeatherHook';
+import { Forecast, useFetchWeather } from '../../../../../../hooks/customWeatherHook';
 // assets
 import cloudyIcon from "/src/assets/svg/weather-200.svg"
 import spinner   from "/src/assets/svg/spinner-uol.svg"

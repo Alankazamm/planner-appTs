@@ -8,7 +8,7 @@ import { Icon } from "./icon/Icon";
 //styles
 import { Input } from "./inputs/styles/Input.styles";
 import { LoginInputWrapper } from "./inputs/styles/InputWrapper.styles";
-import { UserContext } from './../../contexts/userContext';
+import { UserContext } from '../../contexts/userContext';
 
 
 

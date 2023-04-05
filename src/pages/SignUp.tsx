@@ -3,12 +3,12 @@
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 //styles
-import { FormButton } from "../components/form/buttons/FormButton";
-import { RegisterForm } from "../components/form/RegisterForm";
+import { FormButton } from "../components/Forms/buttons/FormButton";
+import { RegisterForm } from "../components/Forms/RegisterForm";
 import { HeaderText } from "../components/common/Header/Header";
-import { ContentContainer } from "../components/form/containers/ContentContainer";
+import { ContentContainer } from "../components/Forms/containers/ContentContainer";
 
-import { FormContainer } from "../components/form/containers/FormContainer.styles";
+import { FormContainer } from "../components/Forms/containers/FormContainer.styles";
 //external funcs
 import { register } from "../auth/register";
 //contexts
