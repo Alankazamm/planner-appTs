@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { useState, useEffect } from "react";
 //styles
 
-import Spinner from "../../../../../../../../../styles/Spinner/Spinner";
+import { Spinner } from "../../../../../../../../../styles";
 //assets
 import spinner from "/src/assets/svg/spinner-uol.svg";
 //components
@@ -22,11 +22,11 @@ import {
 import { getEvents } from "../../../../../../../../../api/services/getEvents";
 import { deleteEvents } from "../../../../../../../../../api/services/deleteEvents";
 import { PostDeleteResponse } from "../../../../../../../../../api/services/types";
-import { createEvents } from "../../../../../../../../../api/services/postEvents";
 import { ActionsButton } from './ActionsButton';
 import { ActionsContainerCommons } from "../../../styles";
 import { ConfirmDeleteModal } from "../../../../../../../../common/Modals/components/ConfirmDeleteModal";
 import { TasksErrorModal } from "../../../../../../../../common/Modals/components/TasksErrorModal";
+import { createEvents } from './../../../../../../../../../api/services/postEvents';
 
 export const CreateTaskButtons = () => {
 	const [createIsLoading, setCreateIsLoading] = useState(false);

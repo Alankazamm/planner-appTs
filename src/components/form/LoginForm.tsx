@@ -1,8 +1,7 @@
 // description: this is a form component that will be used to log in to dashboard
 //hooks
 import { useContext, useEffect, useState } from "react";
-import ErrorTooltip from "../../styles/Tooltips/TooltipError/ErrorTooltip.styles";
-import { Form } from "./Form.styles";
+import { TooltipError } from '../../styles';import { Form } from "./Form.styles";
 import { Icon } from "./icon/Icon";
 
 //styles
@@ -57,7 +56,7 @@ export const LoginForm = () => {
 					placeholder="user name"
 					hasError={formState.user.hasError}
                 />
-                 {errorUser && <ErrorTooltip page="login">{formState.user.error}</ErrorTooltip>}
+                 {errorUser && <TooltipError page="login">{formState.user.error}</TooltipError>}
                 </div>
 				
 				<Icon icon="userIcon" hasError={errorUser} iconIsInside={iconIsInside.user} />
@@ -74,7 +73,7 @@ export const LoginForm = () => {
                         placeholder="password"
                         hasError={formState.loginPassword.hasError}
                     />
-                    {errorPassword && <ErrorTooltip page="login">{formState.loginPassword.error}</ErrorTooltip>}
+                    {errorPassword && <TooltipError page="login">{formState.loginPassword.error}</TooltipError>}
                 </div>
 				
 				<Icon icon="passwordIcon" hasError={errorPassword} iconIsInside={iconIsInside.password} />

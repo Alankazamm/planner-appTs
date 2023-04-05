@@ -9,7 +9,7 @@ import spinner   from "/src/assets/svg/spinner-uol.svg"
 import errorIcon  from "/src/assets/svg/weather-404.svg"
 //styles
 import { WeatherContainer } from "./styles";
-import Spinner from "../../../../../../styles/Spinner/Spinner";
+import { Spinner } from "../../../../../../styles/";
 import { getUser } from './../../../../../../helpers/getUser';
 
 export const Weather = () => {

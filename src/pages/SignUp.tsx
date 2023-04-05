@@ -18,7 +18,7 @@ import { ActionType } from "../reducers/formReducer";
 //components
 import { SignErrorModal } from '../components/common/Modals/components/SignErrorModal';
 import { ConfirmEmailModal } from '../components/common/Modals/components/ConfirmEmailModal';
-import { MainWrapper } from '../styles/MainContainer/MainContainer';
+import { MainContainer } from '../styles';
 import { BgSection } from './../components/Aside';
 
 
@@ -81,7 +81,7 @@ export const SignUp = () => {
 
 	
 	return (
-		<MainWrapper>
+		<MainContainer>
 			<ContentContainer>
 				<div id="wrapper">
 					<FormContainer page="signup">
@@ -95,6 +95,6 @@ export const SignUp = () => {
 			{formState.unknownError && <SignErrorModal toggleModal={toggleModalFunction} />}
 			{confirmEmail && <ConfirmEmailModal email={formState.email.value} toggleModal={toggleConfirmEmail} />}
 			<BgSection />
-		</MainWrapper>
+		</MainContainer>
 	);
 };

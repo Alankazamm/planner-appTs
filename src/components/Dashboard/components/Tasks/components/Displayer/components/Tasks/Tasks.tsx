@@ -9,7 +9,7 @@ import { TasksWrapper, TaskBorder, TasksTimeCard } from "./styles";
 
 //context
 import spinner   from "/src/assets/svg/spinner-uol.svg"
-import LoadingModal from "../../../../../../../../styles/Backdrop/Backdrop";
+import { Backdrop } from "../../../../../../../../styles";
 import { useState } from 'react';
 import { TaskWarnigModal } from "../../../../../../../common/Modals/components/TaskWarnigModal";
 import { deleteEvents } from "../../../../../../../../api/services/deleteEvents";
@@ -60,7 +60,7 @@ export const Tasks = () => {
             <div className="timeCard">
 				<p>Time</p>
 				</div>
-				{fetchingLoading && <LoadingModal ><img alt="loading" src={spinner}></img></LoadingModal>}
+				{fetchingLoading && <Backdrop ><img alt="loading" src={spinner}></img></Backdrop>}
 				{taskHours.map((hour, index) => (
 					<div className="tasksSameHour" id={Math.random().toString()} key={"tasksSameHour" + index}>
 						<TasksTimeCard id={"card" + index} actualDay={sameDayTasks.filter((task) => task.taskHour === hour).length > 1 ? 'conflict' : actualDay} key={"timeCard" + index}>

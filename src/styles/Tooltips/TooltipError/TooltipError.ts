@@ -6,7 +6,7 @@ const tooltipFade = keyframes`
  100% { display: block; opacity: 1; }
 `
 
-const ErrorTooltip = styled.span<{page?:string}>`
+export const TooltipError = styled.span<{page?:string}>`
 
     width: max-content;
     padding: 6px 10px;
@@ -36,4 +36,3 @@ const ErrorTooltip = styled.span<{page?:string}>`
 `;
 
 
-export default ErrorTooltip;

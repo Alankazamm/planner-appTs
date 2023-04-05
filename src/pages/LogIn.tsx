@@ -21,7 +21,7 @@ import { ConfirmEmailModal } from "../components/common/Modals/components/Confir
 // import { updateToken } from "../helpers/axios";
 import { ForgotPasswordModal } from '../components/common/Modals/components/ForgotPasswordModal';
 import { ResetPasswordModal } from "../components/common/Modals/components/ResetPasswordModal";
-import { MainWrapper } from "../styles/MainContainer/MainContainer";
+import { MainContainer } from "../styles";
 import { BgSection } from '../components/Aside/BgSection';
 
 
@@ -103,7 +103,7 @@ export const LogIn = () => {
 	}, [formState.user.error]);
 
 	return (
-		<MainWrapper>
+		<MainContainer>
 			<ContentContainer>
 				<div className="wrapper">
 					<FormContainer page="login">
@@ -145,6 +145,6 @@ export const LogIn = () => {
 				</div>
 			</ContentContainer>
 			<BgSection />
-		</MainWrapper>
+		</MainContainer>
 	);
 };
