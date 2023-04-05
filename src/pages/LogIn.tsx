@@ -17,10 +17,10 @@ import { UserContext } from './../contexts/userContext';
 import { ActionType } from "../reducers/formReducer";
 //external funcs
 import { login } from "../auth/login";
-import { ConfirmEmailModal } from "../components/Modals/components/ConfirmEmailModal";
+import { ConfirmEmailModal } from "../components/common/Modals/components/ConfirmEmailModal";
 // import { updateToken } from "../helpers/axios";
-import { ForgotPasswordModal } from './../components/Modals/components/ForgotPasswordModal';
-import { ResetPasswordModal } from "../components/Modals/components/ResetPasswordModal";
+import { ForgotPasswordModal } from '../components/common/Modals/components/ForgotPasswordModal';
+import { ResetPasswordModal } from "../components/common/Modals/components/ResetPasswordModal";
 import { MainWrapper } from "../styles/MainWrapper.styles";
 import { BgSection } from '../components/Aside/BgSection';
 

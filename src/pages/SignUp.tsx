@@ -16,8 +16,8 @@ import { UserContext } from './../contexts/userContext';
 //types
 import { ActionType } from "../reducers/formReducer";
 //components
-import { SignErrorModal } from '../components/Modals/components/SignErrorModal';
-import { ConfirmEmailModal } from '../components/Modals/components/ConfirmEmailModal';
+import { SignErrorModal } from '../components/common/Modals/components/SignErrorModal';
+import { ConfirmEmailModal } from '../components/common/Modals/components/ConfirmEmailModal';
 import { MainWrapper } from './../styles/MainWrapper.styles';
 import { BgSection } from './../components/Aside';
 

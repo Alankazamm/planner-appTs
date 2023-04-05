@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { rotate } from '../../styles/animationRotate.styles';
+import { rotate } from '../../components/styles/animationRotate.styles';
 
-const LoadingModal = styled.div`
+export const Backdrop = styled.div`
   position: absolute;
     top: 0;
     left: -110px;
@@ -28,5 +28,3 @@ const LoadingModal = styled.div`
     
     }
 `;
-
-export default LoadingModal;

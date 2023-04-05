@@ -1,6 +1,6 @@
 
 import { ErrorModal } from '../styles';
-import { ErrorMessages } from './../../../api/services/types';
+import { ErrorMessages } from '../../../../api/services/types';
 
 type props = {
     displayErrorModal: ErrorMessages|undefined,

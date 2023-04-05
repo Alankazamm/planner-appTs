@@ -11,7 +11,7 @@ import { Form } from "./Form.styles";
 
 //external functions
 import { ActionType } from "../../reducers/formReducer";
-import ErrorTooltip from '../common/error-handling/tooltip/ErrorTooltip.styles';
+import ErrorTooltip from '../../styles/Tooltips/TooltipError/ErrorTooltip.styles';
 //contexts
 import { UserContext } from './../../contexts/userContext';
 

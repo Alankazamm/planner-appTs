@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { rotate } from '../styles/animationRotate.styles';
+import { rotate } from '../../styles/animationRotate.styles';
 export const Modal = styled.div`
     position: fixed;
     z-index: 500;

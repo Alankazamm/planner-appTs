@@ -9,15 +9,15 @@ import { TasksWrapper, TaskBorder, TasksTimeCard } from "./styles";
 
 //context
 import spinner   from "/src/assets/svg/spinner-uol.svg"
-import LoadingModal from "../../../../../../../common/loading/LoadingModal";
+import LoadingModal from "../../../../../../../../styles/Backdrop/Backdrop";
 import { useState } from 'react';
-import { TaskWarnigModal } from "../../../../../../../Modals/components/TaskWarnigModal";
+import { TaskWarnigModal } from "../../../../../../../common/Modals/components/TaskWarnigModal";
 import { deleteEvents } from "../../../../../../../../api/services/deleteEvents";
 import { getEvents } from "../../../../../../../../api/services/getEvents";
 
 import { createContextType, TasksContext } from "../../../../../../../../contexts/tasksContext";
-import { ConfirmDeleteModal } from "../../../../../../../Modals/components/ConfirmDeleteModal";
-import { TasksErrorModal } from "../../../../../../../Modals/components/TasksErrorModal";
+import { ConfirmDeleteModal } from "../../../../../../../common/Modals/components/ConfirmDeleteModal";
+import { TasksErrorModal } from "../../../../../../../common/Modals/components/TasksErrorModal";
 
 export const Tasks = () => {
    

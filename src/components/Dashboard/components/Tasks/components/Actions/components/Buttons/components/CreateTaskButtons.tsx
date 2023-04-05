@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { useState, useEffect } from "react";
 //styles
 
-import Spinner from "../../../../../../../../common/loading/Spinner.styles";
+import Spinner from "../../../../../../../../../styles/Spinner/Spinner";
 //assets
 import spinner from "/src/assets/svg/spinner-uol.svg";
 //components
@@ -25,8 +25,8 @@ import { PostDeleteResponse } from "../../../../../../../../../api/services/type
 import { createEvents } from "../../../../../../../../../api/services/postEvents";
 import { ActionsButton } from './ActionsButton';
 import { ActionsContainerCommons } from "../../../styles";
-import { ConfirmDeleteModal } from "../../../../../../../../Modals/components/ConfirmDeleteModal";
-import { TasksErrorModal } from "../../../../../../../../Modals/components/TasksErrorModal";
+import { ConfirmDeleteModal } from "../../../../../../../../common/Modals/components/ConfirmDeleteModal";
+import { TasksErrorModal } from "../../../../../../../../common/Modals/components/TasksErrorModal";
 
 export const CreateTaskButtons = () => {
 	const [createIsLoading, setCreateIsLoading] = useState(false);

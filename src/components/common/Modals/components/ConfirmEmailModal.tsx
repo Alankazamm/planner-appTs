@@ -2,7 +2,7 @@ import { Auth } from 'aws-amplify';
 import { ConfirmEmailModal as Modal } from '../styles';
 import { useState } from 'react';
 import { Amplify } from "aws-amplify";
-import awsmobile from "../../../aws-exports";
+import awsmobile from "../../../../aws-exports";
 import { useNavigate } from 'react-router-dom';
 
 Amplify.configure(awsmobile);

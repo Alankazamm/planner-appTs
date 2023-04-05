@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { rotate } from '../../styles/animationRotate.styles';
+import { rotate } from '../../components/styles/animationRotate.styles';
 
-const Spinner = styled.span`
+export const Spinner = styled.span`
   display: flex;
     justify-content: center;
     align-items: center;
@@ -19,4 +19,3 @@ const Spinner = styled.span`
     }
 `;
 
-export default Spinner;
