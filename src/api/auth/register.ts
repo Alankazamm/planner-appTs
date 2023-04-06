@@ -1,4 +1,4 @@
-//description: this file is used to register a new user, it uses the axios instance to send the data to the server
+//description: this function is used to register a new user, it uses the axios instance to send the data to the server
 // and then it dispatches the data to the reducer
 
 import { ActionType } from "../../reducers/formReducer";
@@ -8,11 +8,6 @@ import awsmobile from "../../aws-exports";
 import { registerData } from "./types";
 import { errorsHandler } from "../utils/errorsHandler";
 Amplify.configure(awsmobile);
-let response: any;
-
-
-//types
-
 
 export const register = ({
     firstName,

@@ -1,12 +1,12 @@
-//description: this file is used to login the user
+//description: this function is used to login the user
 import { Auth } from 'aws-amplify';
 import { ActionType } from "../../reducers/formReducer";
 import { Amplify } from "aws-amplify";
 import awsmobile from "../../aws-exports";
-Amplify.configure(awsmobile);
 import { loginData } from './types';
 import { errorsHandler } from '../utils/errorsHandler';
-//types
+
+Amplify.configure(awsmobile);
 
 export const login = ({
     email,

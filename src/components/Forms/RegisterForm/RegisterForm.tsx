@@ -13,7 +13,7 @@ import { Form } from "../styles";
 import { ActionType } from "../../../reducers/formReducer";
 
 //contexts
-import { UserContext } from '../../../contexts/userContext';
+import { UserContext } from '../../../contexts/UserContext';
 import { TooltipError } from '../../../styles';
 
 

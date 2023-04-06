@@ -6,13 +6,13 @@ import { useNavigate } from "react-router-dom";
 import { FormButton } from "../components/Forms/components/Button/FormButton";
 import { RegisterForm } from "../components/Forms/RegisterForm/RegisterForm";
 import { HeaderText } from "../components/common/Header/Header";
-import { ContentContainer } from "../components/Forms/components/Container/ContentContainer";
+import { ContentContainer } from "../components/Forms/components/Containers/ContentContainer";
 
-import { FormContainer } from "../components/Forms/components/Container/FormContainer.styles";
+import { FormContainer } from "../components/Forms/components/Containers/styles";
 //external funcs
 import { register } from "../api/auth/register";
 //contexts
-import { UserContext } from './../contexts/userContext';
+import { UserContext } from '../contexts/UserContext';
 //types
 import { ActionType } from "../reducers/formReducer";
 //components

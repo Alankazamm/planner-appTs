@@ -1,10 +1,10 @@
 //description: this file is used to register a new user, it uses the axios instance to send the data to the server
 // and then it dispatches the data to the reducer
-import { ActionType } from "../reducers/formReducer";
+import { ActionType } from "../../reducers/formReducer";
 import { Auth } from "aws-amplify";
 import { Amplify, API } from "aws-amplify";
-import awsmobile from "../aws-exports";
-import { errorsHandler } from "../api/utils/errorsHandler";
+import awsmobile from "../../aws-exports";
+import { errorsHandler } from "../utils/errorsHandler";
 Amplify.configure(awsmobile);
 let response;
 //types

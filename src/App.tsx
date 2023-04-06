@@ -1,7 +1,7 @@
 
 import { BrowserRouter } from "react-router-dom";
 
-import { UserContextProvider } from "./contexts/userContext";
+import { UserContextProvider } from "./contexts/UserContext";
 
 import { AppRoutes } from "./routes/AppRoutes";
 import { useContext, useEffect } from "react";

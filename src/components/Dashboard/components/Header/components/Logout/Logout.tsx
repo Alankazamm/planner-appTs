@@ -4,7 +4,7 @@
 //hooks
 import { useContext } from "react";
 //contexts
-import { UserContext } from "../../../../../../contexts/userContext";
+import { UserContext } from "../../../../../../contexts/UserContext";
 //styles
 import { LogoutContainer } from "./styles";
 //assets

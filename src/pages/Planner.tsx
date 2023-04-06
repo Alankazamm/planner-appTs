@@ -6,7 +6,7 @@ import { DashBoardContainer } from "../components/Dashboard/styles"
 import { DashboardHeader, TasksSection } from "../components/Dashboard";
 import { RenewTokenModal } from "../components/common/Modals/components/RenewTokenModal";
 //context
-import { UserContext } from './../contexts/userContext';
+import { UserContext } from '../contexts/UserContext';
 
 export const Planner = () => {
 
