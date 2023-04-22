@@ -1,13 +1,13 @@
 //description: this function is used to login the user
 import { Auth } from 'aws-amplify';
 import { ActionType } from "../../reducers/formReducer";
-import { Amplify } from "aws-amplify";
-import awsmobile from "../../aws-exports";
+import  {Amplify}  from "aws-amplify";
 import { loginData } from './types';
 import { errorsHandler } from '../utils/errorsHandler';
+import awsmobile from '../../aws-exports.js';
 
+Auth.configure(awsmobile);
 Amplify.configure(awsmobile);
-
 export const login = ({
     email,
     password,

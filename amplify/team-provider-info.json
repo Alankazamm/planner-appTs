@@ -20,15 +20,11 @@
         }
       },
       "auth": {
-        "plannerprojecte2fc34e8": {},
-        "userPoolGroups": {}
+        "plannerproject": {}
       },
       "storage": {
         "plannereventsdb": {},
         "plannerprojectdb": {}
-      },
-      "api": {
-        "plannerprojectapi": {}
       }
     }
   }

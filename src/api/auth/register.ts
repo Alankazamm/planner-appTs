@@ -4,7 +4,7 @@
 import { ActionType } from "../../reducers/formReducer";
 import { Auth } from "aws-amplify";
 import { Amplify, API } from "aws-amplify";
-import awsmobile from "../../aws-exports";
+import awsmobile from '../../aws-exports.js';
 import { registerData } from "./types";
 import { errorsHandler } from "../utils/errorsHandler";
 Amplify.configure(awsmobile);

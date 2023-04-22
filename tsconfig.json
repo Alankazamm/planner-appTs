@@ -21,7 +21,7 @@
   
     },
      //include tsx files
-    "include": ["src/*", "types", "src/custom.d.ts", "vite-env.d.ts", "vite.config.ts", "src/**/*.tsx"],
+    "include": ["src/*", "types", "src/custom.d.ts", "vite-env.d.ts", "vite.config.ts", "src/**/*.tsx", "aws-exports.js", "src/aws-exports.d.ts"],
     "exclude": [
       "node_modules",
       "**/*.spec.ts"

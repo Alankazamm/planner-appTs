@@ -1,0 +1,21 @@
+{
+  "name": "my-amplify-plugin",
+  "type": "frontend",
+  "commands": [
+    "version",
+    "help"
+  ],
+  "eventHandlers": [
+    "PreInit",
+    "PostInit",
+    "PreExport",
+    "PrePush",
+    "PostPush",
+    "PrePull",
+    "PostPull",
+    "PostEnvAdd",
+    "PreCodegenModels",
+    "PostCodegenModels",
+    "InternalOnlyPostEnvRemove"
+  ]
+}

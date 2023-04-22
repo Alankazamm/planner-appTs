@@ -25,8 +25,8 @@ export const getEvents = (event: { description?: string, dayOfWeek?: string, dat
                         }, 1000);
                 }).catch((err) => {
                         setFetchingLoading(false);
-                        console.log(err.message, 'get err');
-                        setGetEventsResponse(err.message);
+                        console.log(err, 'get err');
+                        setGetEventsResponse(err);
             
             
                     })

@@ -9,15 +9,13 @@ import { Amplify, API, Auth } from "aws-amplify";
 import awsmobile from "./aws-exports";
 import { GlobalStyle } from './styles';
 Amplify.configure(awsmobile);
-
-
-
+Auth.configure(awsmobile);
 function App() {
   
   
-  useEffect(() => {
+//   useEffect(() => {
     
-  }, []);
+//   }, []);
 
 
         
