@@ -12,7 +12,7 @@ import { FormContainer } from "../components/Forms/components/Containers/styles"
 //external funcs
 import { register } from "../api/auth/register";
 //contexts
-import { UserContext } from '../contexts/UserContext';
+import { UserContext } from '../contexts/usersContext';
 //types
 import { ActionType } from "../reducers/formReducer";
 //components
