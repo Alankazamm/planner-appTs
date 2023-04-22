@@ -6,7 +6,7 @@ import { ActionsSection } from "./components/Actions/ActionsSection"
 import { TasksDisplayer } from "./components/Displayer"
 //styles
 //context
-import {  TasksProvider } from "../../../../contexts/tasksContext"
+import {  TasksProvider } from "../../../../contexts/taskContext"
 import { TasksContainer } from './styles';
 
 export const TasksSection = () => {

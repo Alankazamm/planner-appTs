@@ -16,7 +16,7 @@ import {
 	createContextType,
 	events,
 	transformHour,
-} from "../../../../../../../../../contexts/tasksContext";
+} from "../../../../../../../../../contexts/taskContext";
 
 //api functions
 import { getEvents } from "../../../../../../../../../api/services/getEvents";

@@ -4,7 +4,7 @@ import { useContext } from "react";
 import {
 	TasksContext,
 	createContextType,
-} from "../../../../../../../../contexts/tasksContext";
+} from "../../../../../../../../contexts/taskContext";
 
 type eventTarget =
 	| React.ChangeEvent<HTMLInputElement>

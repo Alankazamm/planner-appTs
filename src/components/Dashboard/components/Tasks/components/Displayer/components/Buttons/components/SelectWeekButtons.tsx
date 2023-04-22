@@ -6,7 +6,7 @@ import { useContext } from 'react';
 //styles
 import { TasksButtonsContainer, TasksButton } from './styles';
 //context
-import { createContextType, TasksContext } from '../../../../../../../../../contexts/tasksContext';
+import { createContextType, TasksContext } from '../../../../../../../../../contexts/taskContext';
 
 export const SelectWeekButtons = () => {
     const { actualDay, setDay }:createContextType = useContext(TasksContext);
