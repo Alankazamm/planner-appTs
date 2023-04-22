@@ -1,6 +1,6 @@
-import { jsx as _jsx } from "react/jsx-runtime";
 // This is the context that will be used to store the user data and the form data
 //hooks
+import React from "react";
 import { createContext, useState, useReducer, } from "react";
 import { useNavigate } from "react-router-dom";
 //reducers
@@ -51,6 +51,6 @@ export const UserContextProvider = ({ children }) => {
         dispatch({ type: ActionType.RESET_FORMSTATE });
         navigate('/login');
     };
-    return (_jsx(UserContext.Provider, { value: { formState, dispatch, signout, displayRenewAccessTokenModal,
-            setDisplayRenewAccessTokenModal }, children: children }));
+    return (React.createElement(UserContext.Provider, { value: { formState, dispatch, signout, displayRenewAccessTokenModal,
+            setDisplayRenewAccessTokenModal } }, children));
 };

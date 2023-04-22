@@ -1,9 +1,9 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { ForgotPasswordModal as Modal } from './Modal.styles';
 import spinner from '/src/assets/svg/spinner-uol.svg';
 import { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 import { messageHandler } from '../../../api/utils/cognitoErrorsHandler';
+import React from "react";
 export const ForgotPasswordModal = ({ toggleModal }) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [state, setState] = useState({
@@ -39,6 +39,16 @@ export const ForgotPasswordModal = ({ toggleModal }) => {
     const cancelHandler = () => {
         toggleModal(false);
     };
-    return (_jsx(Modal, { children: _jsxs("div", { className: "forgotPasswordModalContent", children: [_jsx("div", { className: "forgotPasswordModalTitle", children: "Forgot password" }), _jsx("div", { className: "forgotPasswordModalText", children: _jsx("p", { children: "Enter your email address and we will send you a link to reset your password." }) }), _jsx("input", { className: "forgotPasswordModalInput", onChange: (e) => setState({ ...state, email: e.target.value }), type: "text", placeholder: "Email address" }), state.success && _jsx("div", { className: "forgotPasswordModalSuccess", children: "Email sent!" }), state.error && _jsx("div", { className: "forgotPasswordModalError", children: errorMessage }), state.loading ? _jsx("img", { alt: "loading spinner", src: spinner }) :
-                    _jsxs("div", { className: "forgotPasswordModalButtons", children: [_jsx("button", { className: "forgotPasswordButton", onClick: handleForgotPassword, children: "Send" }), _jsx("button", { className: "closeButton", onClick: cancelHandler, children: "Cancel" })] })] }) }));
+    return (React.createElement(Modal, null,
+        React.createElement("div", { className: "forgotPasswordModalContent" },
+            React.createElement("div", { className: "forgotPasswordModalTitle" }, "Forgot password"),
+            React.createElement("div", { className: "forgotPasswordModalText" },
+                React.createElement("p", null, "Enter your email address and we will send you a link to reset your password.")),
+            React.createElement("input", { className: "forgotPasswordModalInput", onChange: (e) => setState({ ...state, email: e.target.value }), type: "text", placeholder: "Email address" }),
+            state.success && React.createElement("div", { className: "forgotPasswordModalSuccess" }, "Email sent!"),
+            state.error && React.createElement("div", { className: "forgotPasswordModalError" }, errorMessage),
+            state.loading ? React.createElement("img", { alt: "loading spinner", src: spinner }) :
+                React.createElement("div", { className: "forgotPasswordModalButtons" },
+                    React.createElement("button", { className: "forgotPasswordButton", onClick: handleForgotPassword }, "Send"),
+                    React.createElement("button", { className: "closeButton", onClick: cancelHandler }, "Cancel")))));
 };

@@ -1,6 +1,7 @@
 
 import { ErrorModal } from './Modal.styles';
 import { ErrorMessages } from '../../../api/services/types';
+import React from "react";
 
 type props = {
     displayErrorModal: ErrorMessages|undefined,

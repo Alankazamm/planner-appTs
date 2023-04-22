@@ -1,6 +1,6 @@
-import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
 //description: this component is responsible for displaying all tasks for a given day
 //it is rendered by the TasksSection component
+import React from "react";
 //hooks
 import { useContext, useEffect } from "react";
 //styles
@@ -39,10 +39,28 @@ export const Tasks = () => {
         setFetchingLoading(true);
         getEvents({ dayOfWeek: actualDay })({ setGetEventsResponse, setFetchingLoading, setDisplayErrorModal });
     }, [confirmDelete]);
-    return (_jsxs(TasksWrapper, { children: [confirmDelete.show && _jsx(ConfirmDeleteModal, { actionFunction: taskDeleteHandler, value: confirmDelete, showModal: setConfirmDelete }), displayErrorModal && _jsx(TasksErrorModal, { displayErrorModal: displayErrorModal, setDisplayErrorModal: setDisplayErrorModal }), showModal && _jsx(TaskWarnigModal, { toggleModal: setShowModal }), _jsxs("div", { className: "cardsList", children: [_jsx("div", { className: "timeCard", children: _jsx("p", { children: "Time" }) }), fetchingLoading && _jsx(LoadingModal, { children: _jsx("img", { alt: "loading", src: spinner }) }), taskHours.map((hour, index) => (_jsxs("div", { className: "tasksSameHour", id: Math.random().toString(), children: [_jsx(TasksTimeCard, { id: "card" + index, actualDay: sameDayTasks.filter((task) => task.taskHour === hour).length > 1 ? 'conflict' : actualDay, children: hour }, "timeCard" + index), _jsxs("div", { className: "tasksList", id: "taskList" + index, children: [sameDayTasks
-                                        .filter((task) => task.taskHour === hour)
-                                        .map((task) => {
-                                        return (_jsxs("div", { className: "taskCard", id: "card" + task.taskId, children: [_jsx(TaskBorder, { actualDay: sameDayTasks.filter((task) => task.taskHour === hour).length > 1 ? 'conflict' : actualDay, id: "border" + index }), _jsx("div", { className: "taskText", id: "text" + index, children: task.taskText }), _jsx("div", { className: "deleteButton", onClick: () => setConfirmDelete({ show: true, id: task.taskId }), id: task.taskId, children: "Delete" })] }));
-                                    }), sameDayTasks.filter((task) => task.taskHour === hour).length > 1
-                                        && _jsxs(_Fragment, { children: [_jsx("div", { className: "circle" }), _jsx("div", { className: "stroke" })] })] })] }, "tasksSameHour" + index)))] })] }));
+    return (React.createElement(TasksWrapper, null,
+        confirmDelete.show && React.createElement(ConfirmDeleteModal, { actionFunction: taskDeleteHandler, value: confirmDelete, showModal: setConfirmDelete }),
+        displayErrorModal && React.createElement(TasksErrorModal, { displayErrorModal: displayErrorModal, setDisplayErrorModal: setDisplayErrorModal }),
+        showModal && React.createElement(TaskWarnigModal, { toggleModal: setShowModal }),
+        React.createElement("div", { className: "cardsList" },
+            React.createElement("div", { className: "timeCard" },
+                React.createElement("p", null, "Time")),
+            fetchingLoading && React.createElement(LoadingModal, null,
+                React.createElement("img", { alt: "loading", src: spinner })),
+            taskHours.map((hour, index) => (React.createElement("div", { className: "tasksSameHour", id: Math.random().toString(), key: "tasksSameHour" + index },
+                React.createElement(TasksTimeCard, { id: "card" + index, actualDay: sameDayTasks.filter((task) => task.taskHour === hour).length > 1 ? 'conflict' : actualDay, key: "timeCard" + index }, hour),
+                React.createElement("div", { className: "tasksList", id: "taskList" + index },
+                    sameDayTasks
+                        .filter((task) => task.taskHour === hour)
+                        .map((task) => {
+                        return (React.createElement("div", { className: "taskCard", id: "card" + task.taskId },
+                            React.createElement(TaskBorder, { actualDay: sameDayTasks.filter((task) => task.taskHour === hour).length > 1 ? 'conflict' : actualDay, id: "border" + index }),
+                            React.createElement("div", { className: "taskText", id: "text" + index }, task.taskText),
+                            React.createElement("div", { className: "deleteButton", onClick: () => setConfirmDelete({ show: true, id: task.taskId }), id: task.taskId }, "Delete")));
+                    }),
+                    sameDayTasks.filter((task) => task.taskHour === hour).length > 1
+                        && React.createElement(React.Fragment, null,
+                            React.createElement("div", { className: "circle" }),
+                            React.createElement("div", { className: "stroke" })))))))));
 };

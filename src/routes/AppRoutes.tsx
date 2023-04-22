@@ -3,6 +3,7 @@ import { LogIn } from "../pages/LogIn"
 import { SignUp } from "../pages/SignUp"
 import { ProtectPlanner } from "./ProtectPlanner"
 import { Planner } from './../pages/Planner';
+import React from "react";
 
 
 

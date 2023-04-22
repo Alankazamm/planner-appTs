@@ -1,4 +1,6 @@
 //styles
+import React from "react";
+
 import { ActionsInputsContainer } from "./ActionsInputsContainer.styles";
 import { useContext } from "react";
 import {

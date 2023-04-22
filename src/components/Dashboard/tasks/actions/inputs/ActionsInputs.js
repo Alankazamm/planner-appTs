@@ -1,5 +1,5 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 //styles
+import React from "react";
 import { ActionsInputsContainer } from "./ActionsInputsContainer.styles";
 import { useContext } from "react";
 import { TasksContext, } from "../../../../../contexts/tasksContext";
@@ -54,6 +54,16 @@ const ActionsInputs = () => {
                 break;
         }
     };
-    return (_jsxs(ActionsInputsContainer, { children: [_jsx("input", { type: "text", name: "taskText", className: "taskText", placeholder: "Task or issue", onChange: inputsHandler, value: task.taskText, autoComplete: "off" }), _jsxs("select", { name: "taskDay", className: "taskWeekDay", onChange: inputsHandler, value: task.taskDay, children: [_jsx("option", { className: "taskWeekDayOpt", value: "monday", children: "Monday" }), _jsx("option", { className: "taskWeekDayOpt", value: "tuesday", children: "Tuesday" }), _jsx("option", { className: "taskWeekDayOpt", value: "wednesday", children: "Wednesday" }), _jsx("option", { className: "taskWeekDayOpt", value: "thursday", children: "Thursday" }), _jsx("option", { className: "taskWeekDayOpt", value: "friday", children: "Friday" }), _jsx("option", { className: "taskWeekDayOpt", value: "saturday", children: "Saturday" }), _jsx("option", { className: "taskWeekDayOpt", value: "sunday", children: "Sunday" })] }), _jsx("input", { type: "text", name: "taskHour", className: "taskTime", placeholder: "00h 00m", onChange: inputsHandler, value: task.taskHour, autoComplete: "off" })] }));
+    return (React.createElement(ActionsInputsContainer, null,
+        React.createElement("input", { type: "text", name: "taskText", className: "taskText", placeholder: "Task or issue", onChange: inputsHandler, value: task.taskText, autoComplete: "off" }),
+        React.createElement("select", { name: "taskDay", className: "taskWeekDay", onChange: inputsHandler, value: task.taskDay },
+            React.createElement("option", { className: "taskWeekDayOpt", value: "monday" }, "Monday"),
+            React.createElement("option", { className: "taskWeekDayOpt", value: "tuesday" }, "Tuesday"),
+            React.createElement("option", { className: "taskWeekDayOpt", value: "wednesday" }, "Wednesday"),
+            React.createElement("option", { className: "taskWeekDayOpt", value: "thursday" }, "Thursday"),
+            React.createElement("option", { className: "taskWeekDayOpt", value: "friday" }, "Friday"),
+            React.createElement("option", { className: "taskWeekDayOpt", value: "saturday" }, "Saturday"),
+            React.createElement("option", { className: "taskWeekDayOpt", value: "sunday" }, "Sunday")),
+        React.createElement("input", { type: "text", name: "taskHour", className: "taskTime", placeholder: "00h 00m", onChange: inputsHandler, value: task.taskHour, autoComplete: "off" })));
 };
 export default ActionsInputs;

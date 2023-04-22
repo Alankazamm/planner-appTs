@@ -1,5 +1,6 @@
 
 import {RedirectWrapper} from './RedirectWrapper'
+import React from "react";
 
 
 export const Redirect = ({page, text}:{page:string, text:string}) => {

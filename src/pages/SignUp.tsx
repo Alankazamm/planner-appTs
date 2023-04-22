@@ -1,9 +1,10 @@
 // description: this is the sign up page
+import React from "react";
 //hooks
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 //styles
-import { BgSection } from "../components/Aside/BgSection";
+import { BgSection } from "../components/Asides/BgSection";
 import { FormButton } from "../components/form/buttons/FormButton";
 import { RegisterForm } from "../components/form/RegisterForm";
 import { HeaderText } from "../components/common/header/Header";

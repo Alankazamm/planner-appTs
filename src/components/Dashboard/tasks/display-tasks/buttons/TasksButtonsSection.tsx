@@ -1,5 +1,6 @@
 //description: this component is responsible for displaying the buttons that allow the user to select the day of the week
 //it's takes the day's state from the TasksContext and changes it when the user clicks on a button
+import React from "react";
 
 //hooks
 import { useContext } from 'react';

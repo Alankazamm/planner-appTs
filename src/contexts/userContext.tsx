@@ -1,5 +1,7 @@
 // This is the context that will be used to store the user data and the form data
 //hooks
+import React from "react";
+
 import {
 	createContext,
 	useState,

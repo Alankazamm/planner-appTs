@@ -1,6 +1,6 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 // description: login page
 //hooks
+import React from "react";
 import { useContext, useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,6 @@ import { FormContainer } from "../components/form/containers/FormContainer.style
 //components
 import { HeaderText } from "../components/common/header/Header";
 import { ContentContainer } from "../components/form/containers/ContentContainer";
-import { BgSection } from "../components/aside/BgSection";
 import { LoginForm } from "../components/form/LoginForm";
 import { FormButton } from "../components/form/buttons/FormButton";
 //contexts
@@ -23,6 +22,7 @@ import { ConfirmEmailModal } from "../components/common/confirmation/ConfirmEmai
 import { ForgotPasswordModal } from './../components/common/modals/ForgotPasswordModal';
 import { ResetPasswordModal } from "../components/common/modals/ResetPasswordModal";
 import { MainWrapper } from "../styles/MainWrapper.styles";
+import { BgSection } from '../components/Asides/BgSection';
 let firstRender = true;
 export const LogIn = () => {
     //hook's calls
@@ -83,17 +83,30 @@ export const LogIn = () => {
             }
         }
     }, [formState.user.error]);
-    return (_jsxs(MainWrapper, { children: [_jsx(ContentContainer, { children: _jsx("div", { className: "wrapper", children: _jsxs(FormContainer, { page: "login", children: [_jsx(HeaderText, { page: "login", title: "Welcome,", description: "To continue browsing safely, log in to the network." }), _jsx(LoginForm, {}), _jsx(FormButton, { text: "Log in", page: "signup", redirectText: "Don't have an account?", isLoading: formState.loginAuth.loading, onClick: loginHandler }), _jsxs("span", { style: {
-                                    textAlign: "center",
-                                    width: "100%",
-                                    display: "flex",
-                                    justifyContent: "center",
-                                    alignItems: "center",
-                                    color: "rgb(255, 255, 255)",
-                                }, children: [" Forgot password? ", _jsx("span", { style: {
-                                            textDecoration: "underline",
-                                            color: "#ff0000",
-                                            cursor: "pointer",
-                                            marginLeft: "5px",
-                                        }, onClick: forgotLinkHandler, children: "Click here" })] }), showModal.forgotPasswordModal.sended && _jsx(ResetPasswordModal, { toggleModal: toggleResetModal }), showModal.forgotPasswordModal.show && _jsx(ForgotPasswordModal, { toggleModal: toggleForgotPassword }), showModal.confirmModal && _jsx(ConfirmEmailModal, { toggleModal: toggleConfirmEmail, email: formState.user.value })] }) }) }), _jsx(BgSection, {})] }));
+    return (React.createElement(MainWrapper, null,
+        React.createElement(ContentContainer, null,
+            React.createElement("div", { className: "wrapper" },
+                React.createElement(FormContainer, { page: "login" },
+                    React.createElement(HeaderText, { page: "login", title: "Welcome,", description: "To continue browsing safely, log in to the network." }),
+                    React.createElement(LoginForm, null),
+                    React.createElement(FormButton, { text: "Log in", page: "signup", redirectText: "Don't have an account?", isLoading: formState.loginAuth.loading, onClick: loginHandler }),
+                    React.createElement("span", { style: {
+                            textAlign: "center",
+                            width: "100%",
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            color: "rgb(255, 255, 255)",
+                        } },
+                        " Forgot password? ",
+                        React.createElement("span", { style: {
+                                textDecoration: "underline",
+                                color: "#ff0000",
+                                cursor: "pointer",
+                                marginLeft: "5px",
+                            }, onClick: forgotLinkHandler }, "Click here")),
+                    showModal.forgotPasswordModal.sended && React.createElement(ResetPasswordModal, { toggleModal: toggleResetModal }),
+                    showModal.forgotPasswordModal.show && React.createElement(ForgotPasswordModal, { toggleModal: toggleForgotPassword }),
+                    showModal.confirmModal && React.createElement(ConfirmEmailModal, { toggleModal: toggleConfirmEmail, email: formState.user.value })))),
+        React.createElement(BgSection, null)));
 };

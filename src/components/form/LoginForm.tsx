@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import ErrorTooltip from "../common/error-handling/tooltip/ErrorTooltip.styles";
 import { Form } from "./Form.styles";
 import { Icon } from "./icon/Icon";
+import React from "react";
 
 //styles
 import { Input } from "./inputs/styles/Input.styles";

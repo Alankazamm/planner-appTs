@@ -1,6 +1,6 @@
-import { jsx as _jsx } from "react/jsx-runtime";
 //description: this file contains the context for the tasks
 //it also contains the functions to update the tasks and the day
+import React from "react";
 //hooks
 import { createContext, useState, useEffect } from "react";
 import { getEvents } from "../api/services/getEvents";
@@ -65,7 +65,7 @@ export const TasksProvider = ({ children }) => {
     const updateErrorModal = (status) => {
         setDisplayErrorModal(status);
     };
-    return (_jsx(TasksContext.Provider, { value: {
+    return (React.createElement(TasksContext.Provider, { value: {
             task,
             setTask,
             allTasks,
@@ -81,5 +81,5 @@ export const TasksProvider = ({ children }) => {
             setFetchingLoading,
             setDeleteEventsResponse,
             deleteEventsResponse,
-        }, children: children }));
+        } }, children));
 };

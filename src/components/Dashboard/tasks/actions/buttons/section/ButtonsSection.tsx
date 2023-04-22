@@ -1,4 +1,6 @@
 import { useContext } from "react";
+import React from "react";
+
 //description: this section contains the buttons to add and delete tasks
 //hooks
 import { useState, useEffect } from "react";

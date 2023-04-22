@@ -1,10 +1,10 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 // description: this is the sign up page
+import React from "react";
 //hooks
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 //styles
-import { BgSection } from "../components/aside/BgSection";
+import { BgSection } from "../components/Asides/BgSection";
 import { FormButton } from "../components/form/buttons/FormButton";
 import { RegisterForm } from "../components/form/RegisterForm";
 import { HeaderText } from "../components/common/header/Header";
@@ -62,5 +62,14 @@ export const SignUp = () => {
             setConfirmEmail(true);
         }
     }, [formState.auth.data]);
-    return (_jsxs(MainWrapper, { children: [_jsx(ContentContainer, { children: _jsx("div", { id: "wrapper", children: _jsxs(FormContainer, { page: "signup", children: [_jsx(HeaderText, { page: "signup", title: "Welcome,", description: "Please, register to continue" }), _jsx(RegisterForm, {}), _jsx(FormButton, { text: "Register Now", page: "login", redirectText: "Already have an account?", isLoading: formState.auth.loading, onClick: signUpHandler })] }) }) }), formState.unknownError && _jsx(SignErrorModal, { toggleModal: toggleModalFunction }), confirmEmail && _jsx(ConfirmEmailModal, { email: formState.email.value, toggleModal: toggleConfirmEmail }), _jsx(BgSection, {})] }));
+    return (React.createElement(MainWrapper, null,
+        React.createElement(ContentContainer, null,
+            React.createElement("div", { id: "wrapper" },
+                React.createElement(FormContainer, { page: "signup" },
+                    React.createElement(HeaderText, { page: "signup", title: "Welcome,", description: "Please, register to continue" }),
+                    React.createElement(RegisterForm, null),
+                    React.createElement(FormButton, { text: "Register Now", page: "login", redirectText: "Already have an account?", isLoading: formState.auth.loading, onClick: signUpHandler })))),
+        formState.unknownError && React.createElement(SignErrorModal, { toggleModal: toggleModalFunction }),
+        confirmEmail && React.createElement(ConfirmEmailModal, { email: formState.email.value, toggleModal: toggleConfirmEmail }),
+        React.createElement(BgSection, null)));
 };

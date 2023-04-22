@@ -1,4 +1,5 @@
 //description: this burron is used in login and register forms
+import React from "react";
 
 //components
 import { Redirect } from "../../redirects/form/Redirect";
