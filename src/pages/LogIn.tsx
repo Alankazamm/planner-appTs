@@ -22,7 +22,7 @@ import { ConfirmEmailModal } from "../components/common/confirmation/ConfirmEmai
 import { ForgotPasswordModal } from './../components/common/modals/ForgotPasswordModal';
 import { ResetPasswordModal } from "../components/common/modals/ResetPasswordModal";
 import { MainWrapper } from "../styles/MainWrapper.styles";
-import { BgSection } from './../components/Aside/BgSection';
+import { BgSection } from '../components/Asides/BgSection';
 
 
 
