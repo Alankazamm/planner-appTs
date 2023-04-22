@@ -15,7 +15,7 @@ import { TaskWarnigModal } from "../../../../../../../common/Modals/components/T
 import { deleteEvents } from "../../../../../../../../api/services/deleteEvents";
 import { getEvents } from "../../../../../../../../api/services/getEvents";
 
-import { createContextType, TasksContext } from "../../../../../../../../contexts/TasksContext";
+import { createContextType, TasksContext } from "../../../../../../../../contexts/tasksContext";
 import { ConfirmDeleteModal } from "../../../../../../../common/Modals/components/ConfirmDeleteModal";
 import { TasksErrorModal } from "../../../../../../../common/Modals/components/TasksErrorModal";
 
