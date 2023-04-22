@@ -1,0 +1,1 @@
+export { BgSection } from './BgSection';
