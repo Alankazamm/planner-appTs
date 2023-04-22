@@ -1,3 +1,4 @@
+import * as React from "react";
 //styles
 import { ActionsInputsContainer } from "./styles";
 import { useContext } from "react";

@@ -2,7 +2,7 @@
 //It is used to collect user data and send it to the server.
 //hooks
 import { useContext } from "react";
-
+import * as React from "react";
 //Styles
 import { Input } from "../components/Input/Input.styles";
 import { Label } from '../components/Input/Label.styles';

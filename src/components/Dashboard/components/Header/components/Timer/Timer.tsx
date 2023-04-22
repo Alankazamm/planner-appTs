@@ -1,6 +1,6 @@
 //description: this component is a timer that shows the current date and time
 //format: 12:00 PM, 1st of January, 2021
-
+import * as React from "react";
 // hooks
 import { useTimer } from '../../../../../../hooks/customTimerHook';
 // styles

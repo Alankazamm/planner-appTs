@@ -1,4 +1,6 @@
 //hooks
+import * as React from "react"
+
 import { useContext, useEffect } from "react";
 //styles
 import { DashBoardContainer } from "../components/Dashboard/styles"

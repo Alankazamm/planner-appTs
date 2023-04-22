@@ -2,26 +2,26 @@
     "compilerOptions": {
       "target": "esnext",
       "useDefineForClassFields": true,
-      "lib": ["DOM", "DOM.Iterable", "ESNext"],
+      "lib": ["DOM", "DOM.Iterable", "ES2021"],
       "allowJs": false,
       "skipLibCheck": true,
-      "esModuleInterop": true,
-      "allowSyntheticDefaultImports": true,
+      "esModuleInterop": false,
+      "allowSyntheticDefaultImports": false,
       "strict": true,
       "forceConsistentCasingInFileNames": true,
       "module": "esnext",
-      "moduleResolution": "Node",
+      "moduleResolution": "node",
       "resolveJsonModule": true,
       "isolatedModules": true,
   
       "noEmit": false ,
-      "jsx": "preserve",
+      "jsx": "react",
       "types": ["vite/client"]
      
   
     },
      //include tsx files
-    "include": ["src/*", "types", "src/custom.d.ts", "vite-env.d.ts", "vite.config.ts", "src/**/*.tsx", "aws-exports.js", "src/aws-exports.d.ts"],
+    "include": ["*/**/*.ts","src/*", "types", "src/custom.d.ts", "vite-env.d.ts", "vite.config.ts", "src/**/*.tsx", "aws-exports.js", "src/aws-exports.d.ts"],
     "exclude": [
       "node_modules",
       "**/*.spec.ts"

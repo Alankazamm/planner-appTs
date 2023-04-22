@@ -2,7 +2,7 @@ import { RenewTokenModal as Modal} from '../styles';
 import { Auth } from 'aws-amplify';
 import { useContext } from 'react';
 import { UserContext } from '../../../../contexts/usersContext';
-
+import * as React from "react";
 export const RenewTokenModal = () => {
     const {setDisplayRenewAccessTokenModal, signout} = useContext(UserContext);
     const renewToken = () => {

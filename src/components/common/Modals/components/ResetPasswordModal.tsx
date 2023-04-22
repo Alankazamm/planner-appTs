@@ -4,7 +4,7 @@ import { Auth } from 'aws-amplify';
 import spinner from '/src/assets/svg/spinner-uol.svg'
 import { useEffect } from 'react';
 import { messageHandler } from '../../../../api/utils/cognitoErrorsHandler';
-
+import * as React from "react";
 export const ResetPasswordModal = ({ toggleModal }: { toggleModal: () => void }) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [state, setState] = useState({

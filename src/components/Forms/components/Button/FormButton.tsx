@@ -1,5 +1,5 @@
 //description: this button is used in login and register forms
-
+import * as React from "react";
 //components
 import { Redirect } from "../../../Redirect/Redirect";
 //styles

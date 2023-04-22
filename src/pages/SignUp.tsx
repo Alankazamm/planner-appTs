@@ -1,4 +1,6 @@
 // description: this is the sign up page
+import * as React from "react"
+
 //hooks
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";

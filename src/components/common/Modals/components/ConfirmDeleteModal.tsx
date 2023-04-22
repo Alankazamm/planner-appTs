@@ -1,7 +1,7 @@
 
 import { ConfirmModal } from '../styles';
 import warningIcon from '/src/assets/svg/icon-warning.svg'
-
+import * as React from "react";
 export const ConfirmDeleteModal = ({actionFunction, value, showModal}:{actionFunction:any, value:{show:boolean, id?:string, dayOfWeek?:string}, showModal:any}) => {
   const actionHandler = () => {
     value.id ? actionFunction(value.id) : actionFunction(value.dayOfWeek);

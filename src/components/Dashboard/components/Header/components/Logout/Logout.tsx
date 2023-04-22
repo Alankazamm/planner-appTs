@@ -1,6 +1,6 @@
 //description: logout component
 //when clicked, its removes the user token from the local storage and redirects the user to the login page
-
+import * as React from "react";
 //hooks
 import { useContext } from "react";
 //contexts

@@ -6,7 +6,7 @@ import { useContext, useEffect } from "react";
 
 //styles
 import { TasksWrapper, TaskBorder, TasksTimeCard } from "./styles";
-
+import * as React from "react";
 //context
 import spinner   from "/src/assets/svg/spinner-uol.svg"
 import { Backdrop } from "../../../../../../../../styles";

@@ -3,7 +3,7 @@ import passwordIcon from '/src/assets/svg/icon-password.svg'
 import userErrorIcon from '/src/assets/svg/icon-user-yellow.svg'
 import passworErrordIcon from '/src/assets/svg/icon-password-yellow.svg'
 import { IconWrapper } from './styles'
-
+import * as React from "react";
 export const Icon = (props:{icon: string, hasError:boolean, iconIsInside:boolean}) => {
   return (
     <IconWrapper iconIsInside={props.iconIsInside}>

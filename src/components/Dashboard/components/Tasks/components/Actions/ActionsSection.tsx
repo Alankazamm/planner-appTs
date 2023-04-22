@@ -3,7 +3,7 @@
 
 //components
 import { ActionsInputs } from './components/Inputs';
-
+import * as React from "react";
 
 //styles
 import { ActionsContainer } from './styles';

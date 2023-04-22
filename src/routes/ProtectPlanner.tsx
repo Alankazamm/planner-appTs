@@ -2,6 +2,7 @@
 //it redirects to login page if user is not logged in(there is no token in local storage)
 //hooks
 import { Navigate } from 'react-router-dom';
+import * as React from "react"
 
 //components
 import { Planner } from "../pages/Planner";

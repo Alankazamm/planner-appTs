@@ -1,7 +1,7 @@
 
 import {RedirectWrapper} from './styles'
 
-
+import * as React from "react";
 export const Redirect = ({page, text}:{page:string, text:string}) => {
   
   return (

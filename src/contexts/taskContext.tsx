@@ -5,7 +5,7 @@
 import { createContext, useState, useEffect } from "react";
 import { getEvents } from "../api/services/getEvents";
 import { ErrorMessages, GetResponse } from "../api/services/types";
-
+import * as React from "react";
 //types
 export type arrayOfTasks = taskState[];
 export type taskState = {

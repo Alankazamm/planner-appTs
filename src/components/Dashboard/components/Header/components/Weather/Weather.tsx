@@ -1,6 +1,6 @@
 // description: This component is responsible for fetching the weather data
 //from the API(https://www.weatherapi.com/docs/) and displaying it on the dashboard
-
+import * as React from "react";
 //hooks
 import { Forecast, useFetchWeather } from '../../../../../../hooks/customWeatherHook';
 // assets

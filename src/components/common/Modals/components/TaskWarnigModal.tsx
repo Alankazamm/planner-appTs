@@ -1,6 +1,6 @@
 import { WarningModal } from '../styles'
 import warningIcon from "/src/assets/svg/icon-warning.svg";
-
+import * as React from "react";
 export const TaskWarnigModal = ({toggleModal}:{toggleModal:React.Dispatch<React.SetStateAction<boolean>>}) => {
   return (
     <WarningModal>

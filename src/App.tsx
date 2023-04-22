@@ -8,18 +8,10 @@ import { useContext, useEffect } from "react";
 import { Amplify, API, Auth } from "aws-amplify";
 import awsmobile from "./aws-exports";
 import { GlobalStyle } from './styles';
-Amplify.configure(awsmobile);
+import * as React from "react";
 Auth.configure(awsmobile);
 function App() {
   
-  
-//   useEffect(() => {
-    
-//   }, []);
-
-
-        
-
 	
 	return (
 		<BrowserRouter>

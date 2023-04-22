@@ -1,5 +1,5 @@
 import { HeaderTextStyle } from "./styles";
-
+import * as React from "react";
 export interface pageIdentifier {
 	page: string;
 	title: string;
