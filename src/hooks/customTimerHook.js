@@ -54,3 +54,4 @@ export const useTimer = () => {
     }, [firstRender]);
     return time;
 };
+//# sourceMappingURL=customTimerHook.js.map

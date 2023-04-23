@@ -10,3 +10,4 @@ export const FormContainer = styled.div `
   width: ${({ page }) => page === 'login' ? '19.7vw' : '24.5vw'};
   `;
 /* 901px;685 */ 
+//# sourceMappingURL=styles.js.map

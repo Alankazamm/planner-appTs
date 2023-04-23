@@ -48,3 +48,4 @@ export const inputsHandler = (event) => {
             break;
     }
 };
+//# sourceMappingURL=inputsHandler.js.map

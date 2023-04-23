@@ -33,3 +33,4 @@ export const TasksTimeCard = styled.div `
    color: ${props => props.actualDay === 'conflict' ? 'rgba(255, 255, 255, 1)' : 'rgba(0,0,0,1) '};
 
 `;
+//# sourceMappingURL=TasksTimeCard.styles.js.map

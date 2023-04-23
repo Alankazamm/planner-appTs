@@ -22,3 +22,4 @@ export const Logout = () => {
             React.createElement("img", { src: logoutIcon, alt: "" }),
             React.createElement("span", { onClick: logoutHandler }, "Logout"))));
 };
+//# sourceMappingURL=Logout.js.map

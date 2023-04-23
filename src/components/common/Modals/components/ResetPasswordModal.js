@@ -57,3 +57,4 @@ export const ResetPasswordModal = ({ toggleModal }) => {
                     React.createElement("button", { className: "resetPasswordButton", onClick: handleResetPassword }, "Reset password"),
                     React.createElement("button", { className: "closeButton", onClick: toggleModal }, "Cancel")))));
 };
+//# sourceMappingURL=ResetPasswordModal.js.map

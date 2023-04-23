@@ -31,3 +31,4 @@ export const messageHandler = (error) => {
     }
     return "Unknown error, please try again";
 };
+//# sourceMappingURL=cognitoErrorsHandler.js.map

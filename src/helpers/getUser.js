@@ -4,3 +4,4 @@ export const getUser = () => {
     const country = user.country;
     return { city, country };
 };
+//# sourceMappingURL=getUser.js.map

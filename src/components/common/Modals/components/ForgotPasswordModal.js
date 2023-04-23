@@ -52,3 +52,4 @@ export const ForgotPasswordModal = ({ toggleModal }) => {
                     React.createElement("button", { className: "forgotPasswordButton", onClick: handleForgotPassword }, "Send"),
                     React.createElement("button", { className: "closeButton", onClick: cancelHandler }, "Cancel")))));
 };
+//# sourceMappingURL=ForgotPasswordModal.js.map

@@ -89,3 +89,4 @@ export const deleteEvents = (event) => ({ setDeleteEventsResponse, setFetchingLo
 //         })
 //     }
 // }
+//# sourceMappingURL=deleteEvents.js.map

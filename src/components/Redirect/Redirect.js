@@ -8,3 +8,4 @@ export const Redirect = ({ page, text }) => {
             React.createElement("a", { href: `/${page}` }, page))));
 };
 //Already have an account?
+//# sourceMappingURL=Redirect.js.map

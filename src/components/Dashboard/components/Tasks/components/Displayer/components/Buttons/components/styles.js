@@ -49,3 +49,4 @@ color: #000000;
 cursor: pointer;
 transition: 0.5s;
 `;
+//# sourceMappingURL=styles.js.map

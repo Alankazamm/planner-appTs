@@ -110,3 +110,4 @@ export const LogIn = () => {
                     showModal.confirmModal && React.createElement(ConfirmEmailModal, { toggleModal: toggleConfirmEmail, email: formState.user.value })))),
         React.createElement(BgSection, null)));
 };
+//# sourceMappingURL=LogIn.js.map

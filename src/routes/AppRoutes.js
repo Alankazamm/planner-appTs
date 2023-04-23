@@ -11,3 +11,4 @@ export const AppRoutes = () => {
         React.createElement(Route, { path: '/planner', element: React.createElement(ProtectPlanner, null) }),
         React.createElement(Route, { path: '*', element: React.createElement("h1", null, "404") })));
 };
+//# sourceMappingURL=AppRoutes.js.map

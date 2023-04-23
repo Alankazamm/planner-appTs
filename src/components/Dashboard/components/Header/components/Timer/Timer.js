@@ -19,3 +19,4 @@ export const Timer = () => {
                 " ",
                 time.year))));
 };
+//# sourceMappingURL=Timer.js.map

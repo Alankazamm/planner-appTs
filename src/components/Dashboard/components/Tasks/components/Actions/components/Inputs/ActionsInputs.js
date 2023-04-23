@@ -66,3 +66,4 @@ export const ActionsInputs = () => {
             React.createElement("option", { className: "taskWeekDayOpt", value: "sunday" }, "Sunday")),
         React.createElement("input", { type: "text", name: "taskHour", className: "taskTime", placeholder: "00h 00m", onChange: inputsHandler, value: task.taskHour, autoComplete: "off" })));
 };
+//# sourceMappingURL=ActionsInputs.js.map

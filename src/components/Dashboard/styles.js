@@ -11,3 +11,4 @@ export const DashBoardContainer = styled.div `
     background-position: right bottom;
     
 `;
+//# sourceMappingURL=styles.js.map

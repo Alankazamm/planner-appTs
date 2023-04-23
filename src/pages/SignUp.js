@@ -73,3 +73,4 @@ export const SignUp = () => {
         confirmEmail && React.createElement(ConfirmEmailModal, { email: formState.email.value, toggleModal: toggleConfirmEmail }),
         React.createElement(BgSection, null)));
 };
+//# sourceMappingURL=SignUp.js.map

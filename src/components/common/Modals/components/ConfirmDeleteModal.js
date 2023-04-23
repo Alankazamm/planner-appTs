@@ -24,3 +24,4 @@ export const ConfirmDeleteModal = ({ actionFunction, value, showModal }) => {
                 React.createElement("button", { className: "closeButton", onClick: cancelHandler }, "Cancel"),
                 React.createElement("button", { className: "confirmDeleteButton", onClick: actionHandler }, "Delete")))));
 };
+//# sourceMappingURL=ConfirmDeleteModal.js.map

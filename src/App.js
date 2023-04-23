@@ -13,3 +13,4 @@ function App() {
             React.createElement(AppRoutes, null))));
 }
 export default App;
+//# sourceMappingURL=App.js.map

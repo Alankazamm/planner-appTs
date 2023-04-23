@@ -25,3 +25,4 @@ export const SelectWeekButtons = () => {
         React.createElement(TasksButton, { id: "sunday", actualDay: actualDay, onClick: () => setDay("sunday") },
             React.createElement("span", null, "Sunday"))));
 };
+//# sourceMappingURL=SelectWeekButtons.js.map

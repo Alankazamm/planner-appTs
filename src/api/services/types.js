@@ -11,3 +11,4 @@ export var ErrorMessages;
     ErrorMessages["NOT_FOUND_WEEK"] = "Request failed with status code 404 in week request";
     ErrorMessages["TOKEN_EXPIRED"] = "The incoming token has expired";
 })(ErrorMessages || (ErrorMessages = {}));
+//# sourceMappingURL=types.js.map

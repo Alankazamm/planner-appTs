@@ -12,3 +12,4 @@ export const SignErrorModal = ({ toggleModal }) => {
             React.createElement("div", { className: "warningModalButtons" },
                 React.createElement("button", { className: "closeButton", onClick: (e) => toggleModal() }, "Ok")))));
 };
+//# sourceMappingURL=SignErrorModal.js.map

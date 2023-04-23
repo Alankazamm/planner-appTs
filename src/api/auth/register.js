@@ -142,3 +142,4 @@ export const register = ({ firstName, lastName, birthDate, country, city, email,
 //                 arrErrors.push(err);
 //             dispatch({ type: ActionType.REGISTER_FAIL, payload: arrErrors });
 //         }
+//# sourceMappingURL=register.js.map

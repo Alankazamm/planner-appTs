@@ -14,3 +14,4 @@ export const BgWrapper = styled.div `
         cursor: pointer;
     }
 `;
+//# sourceMappingURL=styles.js.map

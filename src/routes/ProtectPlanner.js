@@ -9,3 +9,4 @@ export const ProtectPlanner = () => {
     //navigate to login page if there is no token in local storage
     return (React.createElement(React.Fragment, null, localStorage.getItem('token') ? React.createElement(Planner, null) : React.createElement(Navigate, { to: "/login" })));
 };
+//# sourceMappingURL=ProtectPlanner.js.map

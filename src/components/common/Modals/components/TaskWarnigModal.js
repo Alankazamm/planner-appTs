@@ -12,3 +12,4 @@ export const TaskWarnigModal = ({ toggleModal }) => {
             React.createElement("div", { className: "warningModalButtons" },
                 React.createElement("button", { className: "closeButton", onClick: e => toggleModal(false) }, "Ok")))));
 };
+//# sourceMappingURL=TaskWarnigModal.js.map

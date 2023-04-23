@@ -46,3 +46,4 @@ export const login = ({ email, password, }) => (dispatch) => {
         dispatch({ type: ActionType.LOGIN_FAIL, payload: arrErrors });
     }
 };
+//# sourceMappingURL=login.js.map

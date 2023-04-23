@@ -62,3 +62,4 @@ export const Tasks = () => {
                             React.createElement("div", { className: "circle" }),
                             React.createElement("div", { className: "stroke" })))))))));
 };
+//# sourceMappingURL=Tasks.js.map

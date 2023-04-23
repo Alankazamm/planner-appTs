@@ -8,3 +8,4 @@ export const Icon = (props) => {
     return (React.createElement(IconWrapper, { iconIsInside: props.iconIsInside },
         React.createElement("img", { alt: "icon", src: props.icon === 'userIcon' ? (props.hasError === true ? userErrorIcon : userIcon) : (props.hasError === true ? passworErrordIcon : passwordIcon), className: 'icon' })));
 };
+//# sourceMappingURL=Icon.js.map

@@ -11,3 +11,4 @@ export const ActionsButton = ({ onClick, icon, text, }) => {
             React.createElement("span", null, text),
             " ")));
 };
+//# sourceMappingURL=ActionsButton.js.map

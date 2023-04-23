@@ -5,3 +5,4 @@ export const HeaderText = ({ page, title, description }) => {
         React.createElement("h1", null, title),
         React.createElement("p", null, description)));
 };
+//# sourceMappingURL=Header.js.map

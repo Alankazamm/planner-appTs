@@ -40,3 +40,4 @@ export const ConfirmEmailModal = ({ email, toggleModal }) => {
                 React.createElement("button", { className: "confirmEmailButton", onClick: handleConfirm }, "Confirm"),
                 modalTitle === 'Email confirmed' && React.createElement("button", { className: "closeButton", onClick: () => { toggleModal(); navigate('/login'); } }, "Close")))));
 };
+//# sourceMappingURL=ConfirmEmailModal.js.map

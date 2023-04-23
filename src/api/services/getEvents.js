@@ -29,3 +29,4 @@ export const getEvents = (event) => ({ setGetEventsResponse, setFetchingLoading,
         }, 1111);
     }
 };
+//# sourceMappingURL=getEvents.js.map

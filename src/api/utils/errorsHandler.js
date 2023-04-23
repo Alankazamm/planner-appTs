@@ -23,3 +23,4 @@ export const errorsHandler = (err) => {
     }
     return "Unknown error";
 };
+//# sourceMappingURL=errorsHandler.js.map

@@ -11,3 +11,4 @@ export const FormButton = (props) => {
         props.isLoading ? React.createElement("img", { alt: "loading spinner", src: spinner }) : React.createElement("button", { onClick: props.onClick }, props.text),
         React.createElement(Redirect, { page: props.page, text: props.redirectText })));
 };
+//# sourceMappingURL=FormButton.js.map

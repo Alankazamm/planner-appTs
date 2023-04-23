@@ -30,3 +30,4 @@ export const createEvents = ({ description, dayOfWeek, taskHour }) => ({ setCrea
         setCreateEventResponse(err.message);
     }
 };
+//# sourceMappingURL=postEvents.js.map

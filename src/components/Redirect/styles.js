@@ -11,3 +11,4 @@ export const RedirectWrapper = styled.div `
         font-weight: 700;
     }
 `;
+//# sourceMappingURL=styles.js.map

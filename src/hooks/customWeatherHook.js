@@ -40,3 +40,4 @@ export const useFetchWeather = (city) => {
     }, [forecast]);
     return forecast;
 };
+//# sourceMappingURL=customWeatherHook.js.map

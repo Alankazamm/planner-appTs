@@ -17,3 +17,4 @@ export const Spinner = styled.span `
         user-select: none;
     }
 `;
+//# sourceMappingURL=Spinner.js.map

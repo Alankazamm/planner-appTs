@@ -53,3 +53,4 @@ export const RegisterForm = () => {
             React.createElement(Input, { type: "password", name: "confirmPassword", onChange: inputHandler, value: formState.confirmPassword.value, placeholder: "Comfirm your password", hasError: formState.confirmPassword.hasError || formState.password.hasError }),
             (formState.confirmPassword.hasError) && React.createElement(TooltipError, null, formState.confirmPassword.error))));
 };
+//# sourceMappingURL=RegisterForm.js.map

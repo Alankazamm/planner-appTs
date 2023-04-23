@@ -35,3 +35,4 @@ export const RenewTokenModal = () => {
                 React.createElement("button", { className: "renewTokenModalButton", onClick: renewToken }, "Renew"),
                 React.createElement("button", { className: "closeButton", onClick: logout }, "Logout")))));
 };
+//# sourceMappingURL=RenewTokenModal.js.map

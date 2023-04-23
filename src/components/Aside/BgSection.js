@@ -7,3 +7,4 @@ export const BgSection = () => {
             React.createElement("img", { alt: "logo", src: logo }),
             " ")));
 };
+//# sourceMappingURL=BgSection.js.map
