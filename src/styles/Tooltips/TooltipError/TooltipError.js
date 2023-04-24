@@ -1,10 +1,20 @@
-import styled, { keyframes } from 'styled-components';
-const tooltipFade = keyframes `
+System.register(["styled-components"], function (exports_1, context_1) {
+    "use strict";
+    var styled_components_1, tooltipFade, TooltipError;
+    var __moduleName = context_1 && context_1.id;
+    return {
+        setters: [
+            function (styled_components_1_1) {
+                styled_components_1 = styled_components_1_1;
+            }
+        ],
+        execute: function () {
+            tooltipFade = styled_components_1.keyframes `
  0% {display: none; opacity: 0;}
  
  100% { display: block; opacity: 1; }
 `;
-export const TooltipError = styled.span `
+            exports_1("TooltipError", TooltipError = styled_components_1.default.span `
 
     width: max-content;
     padding: 6px 10px;
@@ -31,5 +41,8 @@ export const TooltipError = styled.span `
       animation: ${tooltipFade} 0.8s;
     }
    
-`;
+`);
+        }
+    };
+});
 //# sourceMappingURL=TooltipError.js.map

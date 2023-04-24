@@ -1,6 +1,18 @@
-import styled from 'styled-components';
-import { rotate } from '../animations/animationRotate';
-export const Backdrop = styled.div `
+System.register(["styled-components", "../animations/animationRotate"], function (exports_1, context_1) {
+    "use strict";
+    var styled_components_1, animationRotate_1, Backdrop;
+    var __moduleName = context_1 && context_1.id;
+    return {
+        setters: [
+            function (styled_components_1_1) {
+                styled_components_1 = styled_components_1_1;
+            },
+            function (animationRotate_1_1) {
+                animationRotate_1 = animationRotate_1_1;
+            }
+        ],
+        execute: function () {
+            exports_1("Backdrop", Backdrop = styled_components_1.default.div `
   position: absolute;
     top: 0;
     left: -110px;
@@ -15,7 +27,7 @@ export const Backdrop = styled.div `
         position: absolute;
         top: 25%;
         left: 25%;
-        animation: ${rotate} 1s linear infinite;
+        animation: ${animationRotate_1.rotate} 1s linear infinite;
         height: 140px;
         width: 140px;
         pointer-events: none;
@@ -26,5 +38,8 @@ export const Backdrop = styled.div `
         user-select: none;
     
     }
-`;
+`);
+        }
+    };
+});
 //# sourceMappingURL=Backdrop.js.map

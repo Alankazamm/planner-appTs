@@ -1,6 +1,18 @@
-import styled from 'styled-components';
-import { rotate } from '../../../../styles/animations/animationRotate';
-export const StyledFormBtn = styled.div `
+System.register(["styled-components", "../../../../styles/animations/animationRotate"], function (exports_1, context_1) {
+    "use strict";
+    var styled_components_1, animationRotate_1, StyledFormBtn;
+    var __moduleName = context_1 && context_1.id;
+    return {
+        setters: [
+            function (styled_components_1_1) {
+                styled_components_1 = styled_components_1_1;
+            },
+            function (animationRotate_1_1) {
+                animationRotate_1 = animationRotate_1_1;
+            }
+        ],
+        execute: function () {
+            exports_1("StyledFormBtn", StyledFormBtn = styled_components_1.default.div `
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -41,7 +53,7 @@ export const StyledFormBtn = styled.div `
     }
 
     img{
-        animation: ${rotate} 1s linear infinite;
+        animation: ${animationRotate_1.rotate} 1s linear infinite;
         height: 67px;
         width: 67px;
         pointer-events: none;
@@ -53,5 +65,8 @@ export const StyledFormBtn = styled.div `
     }
     
 
-`;
+`);
+        }
+    };
+});
 //# sourceMappingURL=styles.js.map

@@ -1,6 +1,18 @@
-import styled from 'styled-components';
-import { rotate } from '../../../styles/animations/animationRotate';
-export const Modal = styled.div `
+System.register(["styled-components", "../../../styles/animations/animationRotate"], function (exports_1, context_1) {
+    "use strict";
+    var styled_components_1, animationRotate_1, Modal, ErrorModal, WarningModal, ConfirmModal, ConfirmEmailModal, ForgotPasswordModal, ResetPasswordModal, RenewTokenModal;
+    var __moduleName = context_1 && context_1.id;
+    return {
+        setters: [
+            function (styled_components_1_1) {
+                styled_components_1 = styled_components_1_1;
+            },
+            function (animationRotate_1_1) {
+                animationRotate_1 = animationRotate_1_1;
+            }
+        ],
+        execute: function () {
+            exports_1("Modal", Modal = styled_components_1.default.div `
     position: fixed;
     z-index: 500;
     background-color: rgba(0, 0, 0, 0.55);
@@ -29,8 +41,8 @@ export const Modal = styled.div `
         cursor: pointer;
     }
    
-`;
-export const ErrorModal = styled(Modal) `
+`);
+            exports_1("ErrorModal", ErrorModal = styled_components_1.default(Modal) `
  .errorModalContent{
         background-color: white;
         width: 46vw;
@@ -71,8 +83,8 @@ export const ErrorModal = styled(Modal) `
         border-radius: 5px;
         cursor: pointer;
     }
-`;
-export const WarningModal = styled(Modal) `
+`);
+            exports_1("WarningModal", WarningModal = styled_components_1.default(Modal) `
     .warningModalContent{
         background-color: white;
         width: 46vw;
@@ -127,8 +139,8 @@ export const WarningModal = styled(Modal) `
         cursor: pointer;
     }
   
-`;
-export const ConfirmModal = styled(Modal) `
+`);
+            exports_1("ConfirmModal", ConfirmModal = styled_components_1.default(Modal) `
     .confirmModalContent{
         background-color: white;
         width: 46vw;
@@ -201,8 +213,8 @@ export const ConfirmModal = styled(Modal) `
         color: white;
     }
 
-`;
-export const ConfirmEmailModal = styled(Modal) `
+`);
+            exports_1("ConfirmEmailModal", ConfirmEmailModal = styled_components_1.default(Modal) `
     .confirmEmailModalContent{
         background-color: white;
         width: 46vw;
@@ -284,8 +296,8 @@ export const ConfirmEmailModal = styled(Modal) `
         background-color: #FF8000;
         color: white;
     }
-`;
-export const ForgotPasswordModal = styled(Modal) `
+`);
+            exports_1("ForgotPasswordModal", ForgotPasswordModal = styled_components_1.default(Modal) `
     .forgotPasswordModalContent{
         background-color: white;
         width: 46vw;
@@ -344,7 +356,7 @@ export const ForgotPasswordModal = styled(Modal) `
         color: white;
     }
     img{
-        animation: ${rotate} 1s linear infinite;
+        animation: ${animationRotate_1.rotate} 1s linear infinite;
     }
     .forgotPasswordButton{
         //greeny color
@@ -385,8 +397,8 @@ export const ForgotPasswordModal = styled(Modal) `
         margin-bottom: 1rem;
     }
     
-`;
-export const ResetPasswordModal = styled(Modal) `
+`);
+            exports_1("ResetPasswordModal", ResetPasswordModal = styled_components_1.default(Modal) `
     .resetPasswordModalContent{
         background-color: white;
         width: 46vw;
@@ -433,7 +445,7 @@ export const ResetPasswordModal = styled(Modal) `
         color: white;
     }
     img{
-        animation: ${rotate} 1s linear infinite;
+        animation: ${animationRotate_1.rotate} 1s linear infinite;
     }
     .resetPasswordButton{
 
@@ -462,8 +474,8 @@ export const ResetPasswordModal = styled(Modal) `
         text-align: center;
         margin-bottom: 1rem;
     }
-`;
-export const RenewTokenModal = styled(Modal) `
+`);
+            exports_1("RenewTokenModal", RenewTokenModal = styled_components_1.default(Modal) `
     .renewTokenModalContent{
         background-color: white;
         width: 46vw;
@@ -509,7 +521,7 @@ export const RenewTokenModal = styled(Modal) `
         color: white;
     }
     img{
-        animation: ${rotate} 1s linear infinite;
+        animation: ${animationRotate_1.rotate} 1s linear infinite;
     }
     .renewTokenButton{
         background-color: #43f738;
@@ -549,5 +561,8 @@ export const RenewTokenModal = styled(Modal) `
         text-align: center;
         margin-bottom: 1rem;
     }
-`;
+`);
+        }
+    };
+});
 //# sourceMappingURL=styles.js.map

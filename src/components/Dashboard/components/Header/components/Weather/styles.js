@@ -1,5 +1,15 @@
-import styled from 'styled-components';
-export const WeatherContainer = styled.div `
+System.register(["styled-components"], function (exports_1, context_1) {
+    "use strict";
+    var styled_components_1, WeatherContainer;
+    var __moduleName = context_1 && context_1.id;
+    return {
+        setters: [
+            function (styled_components_1_1) {
+                styled_components_1 = styled_components_1_1;
+            }
+        ],
+        execute: function () {
+            exports_1("WeatherContainer", WeatherContainer = styled_components_1.default.div `
 display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,5 +35,8 @@ display: flex;
     }
 
     
-`;
+`);
+        }
+    };
+});
 //# sourceMappingURL=styles.js.map

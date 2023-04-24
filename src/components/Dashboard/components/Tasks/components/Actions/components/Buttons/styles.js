@@ -1,5 +1,15 @@
-import styled from "styled-components";
-export const StyledActionButton = styled.div `
+System.register(["styled-components"], function (exports_1, context_1) {
+    "use strict";
+    var styled_components_1, StyledActionButton;
+    var __moduleName = context_1 && context_1.id;
+    return {
+        setters: [
+            function (styled_components_1_1) {
+                styled_components_1 = styled_components_1_1;
+            }
+        ],
+        execute: function () {
+            exports_1("StyledActionButton", StyledActionButton = styled_components_1.default.div `
     width: 200px;
     color: #FFFFFF;
     font-weight: 700;
@@ -38,5 +48,8 @@ export const StyledActionButton = styled.div `
         display: inline-block;
         white-space: nowrap;
     }
-`;
+`);
+        }
+    };
+});
 //# sourceMappingURL=styles.js.map

@@ -1,5 +1,15 @@
-import styled from "styled-components";
-export const Form = styled.form `
+System.register(["styled-components"], function (exports_1, context_1) {
+    "use strict";
+    var styled_components_1, Form;
+    var __moduleName = context_1 && context_1.id;
+    return {
+        setters: [
+            function (styled_components_1_1) {
+                styled_components_1 = styled_components_1_1;
+            }
+        ],
+        execute: function () {
+            exports_1("Form", Form = styled_components_1.default.form `
   width: 473px; 
   display: flex;
   flex-direction: column;
@@ -49,5 +59,8 @@ export const Form = styled.form `
     margin-bottom: 7px;
     text-align: center;
   }
-`;
+`);
+        }
+    };
+});
 //# sourceMappingURL=styles.js.map
