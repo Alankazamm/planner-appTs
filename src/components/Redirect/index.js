@@ -1,16 +1,6 @@
-System.register(["./Redirect"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (Redirect_1_1) {
-                exports_1({
-                    "Redirect": Redirect_1_1["Redirect"]
-                });
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Redirect = void 0;
+var Redirect_1 = require("./Redirect");
+Object.defineProperty(exports, "Redirect", { enumerable: true, get: function () { return Redirect_1.Redirect; } });
 //# sourceMappingURL=index.js.map

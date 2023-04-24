@@ -1,16 +1,6 @@
-System.register(["./Weather"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (Weather_1_1) {
-                exports_1({
-                    "Weather": Weather_1_1["Weather"]
-                });
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Weather = void 0;
+var Weather_1 = require("./Weather");
+Object.defineProperty(exports, "Weather", { enumerable: true, get: function () { return Weather_1.Weather; } });
 //# sourceMappingURL=index.js.map

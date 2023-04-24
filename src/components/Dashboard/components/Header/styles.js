@@ -1,15 +1,11 @@
-System.register(["styled-components"], function (exports_1, context_1) {
-    "use strict";
-    var styled_components_1, DashHeaderContainer;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (styled_components_1_1) {
-                styled_components_1 = styled_components_1_1;
-            }
-        ],
-        execute: function () {
-            exports_1("DashHeaderContainer", DashHeaderContainer = styled_components_1.default.div ` 
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DashHeaderContainer = void 0;
+const styled_components_1 = __importDefault(require("styled-components"));
+exports.DashHeaderContainer = styled_components_1.default.div ` 
 background: #FFFFFF;
 max-width: 100vw;
 height: 130px;
@@ -18,8 +14,5 @@ display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: space-between;
-`);
-        }
-    };
-});
+`;
 //# sourceMappingURL=styles.js.map

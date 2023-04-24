@@ -1,18 +1,12 @@
-System.register(["styled-components", "../animations/animationRotate"], function (exports_1, context_1) {
-    "use strict";
-    var styled_components_1, animationRotate_1, Backdrop;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (styled_components_1_1) {
-                styled_components_1 = styled_components_1_1;
-            },
-            function (animationRotate_1_1) {
-                animationRotate_1 = animationRotate_1_1;
-            }
-        ],
-        execute: function () {
-            exports_1("Backdrop", Backdrop = styled_components_1.default.div `
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Backdrop = void 0;
+const styled_components_1 = __importDefault(require("styled-components"));
+const animationRotate_1 = require("../animations/animationRotate");
+exports.Backdrop = styled_components_1.default.div `
   position: absolute;
     top: 0;
     left: -110px;
@@ -38,8 +32,5 @@ System.register(["styled-components", "../animations/animationRotate"], function
         user-select: none;
     
     }
-`);
-        }
-    };
-});
+`;
 //# sourceMappingURL=Backdrop.js.map

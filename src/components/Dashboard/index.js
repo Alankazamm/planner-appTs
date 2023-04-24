@@ -1,21 +1,8 @@
-System.register(["./components/Tasks", "./components/Header"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (Tasks_1_1) {
-                exports_1({
-                    "TasksSection": Tasks_1_1["TasksSection"]
-                });
-            },
-            function (Header_1_1) {
-                exports_1({
-                    "DashboardHeader": Header_1_1["DashboardHeader"]
-                });
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DashboardHeader = exports.TasksSection = void 0;
+var Tasks_1 = require("./components/Tasks");
+Object.defineProperty(exports, "TasksSection", { enumerable: true, get: function () { return Tasks_1.TasksSection; } });
+var Header_1 = require("./components/Header");
+Object.defineProperty(exports, "DashboardHeader", { enumerable: true, get: function () { return Header_1.DashboardHeader; } });
 //# sourceMappingURL=index.js.map

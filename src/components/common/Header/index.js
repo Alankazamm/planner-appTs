@@ -1,16 +1,6 @@
-System.register(["./Header"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (Header_1_1) {
-                exports_1({
-                    "HeaderText": Header_1_1["HeaderText"]
-                });
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.HeaderText = void 0;
+var Header_1 = require("./Header");
+Object.defineProperty(exports, "HeaderText", { enumerable: true, get: function () { return Header_1.HeaderText; } });
 //# sourceMappingURL=index.js.map

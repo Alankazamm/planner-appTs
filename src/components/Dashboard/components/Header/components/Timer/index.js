@@ -1,16 +1,6 @@
-System.register(["./Timer"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (Timer_1_1) {
-                exports_1({
-                    "Timer": Timer_1_1["Timer"]
-                });
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Timer = void 0;
+var Timer_1 = require("./Timer");
+Object.defineProperty(exports, "Timer", { enumerable: true, get: function () { return Timer_1.Timer; } });
 //# sourceMappingURL=index.js.map

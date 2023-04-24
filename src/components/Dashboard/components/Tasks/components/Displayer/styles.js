@@ -1,15 +1,11 @@
-System.register(["styled-components"], function (exports_1, context_1) {
-    "use strict";
-    var styled_components_1, DisplayerContainer;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (styled_components_1_1) {
-                styled_components_1 = styled_components_1_1;
-            }
-        ],
-        execute: function () {
-            exports_1("DisplayerContainer", DisplayerContainer = styled_components_1.default.div `
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.DisplayerContainer = void 0;
+const styled_components_1 = __importDefault(require("styled-components"));
+exports.DisplayerContainer = styled_components_1.default.div `
 display: flex;
     flex-direction: column;
     justify-content: center;
@@ -125,8 +121,5 @@ display: flex;
         max-width:80%;
         overflow:auto;
     }
-`);
-        }
-    };
-});
+`;
 //# sourceMappingURL=styles.js.map

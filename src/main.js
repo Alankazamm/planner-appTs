@@ -1,22 +1,33 @@
-System.register(["react-dom/client", "./App", "react"], function (exports_1, context_1) {
-    "use strict";
-    var ReactDOM, App_1, React;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (ReactDOM_1) {
-                ReactDOM = ReactDOM_1;
-            },
-            function (App_1_1) {
-                App_1 = App_1_1;
-            },
-            function (React_1) {
-                React = React_1;
-            }
-        ],
-        execute: function () {
-            ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App_1.default, null));
-        }
-    };
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
 });
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const ReactDOM = __importStar(require("react-dom/client"));
+const App_1 = __importDefault(require("./App"));
+const React = __importStar(require("react"));
+ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App_1.default, null));
 //# sourceMappingURL=main.js.map

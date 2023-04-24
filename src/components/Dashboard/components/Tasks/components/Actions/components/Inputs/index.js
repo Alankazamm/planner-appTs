@@ -1,16 +1,6 @@
-System.register(["./ActionsInputs"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (ActionsInputs_1_1) {
-                exports_1({
-                    "ActionsInputs": ActionsInputs_1_1["ActionsInputs"]
-                });
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ActionsInputs = void 0;
+var ActionsInputs_1 = require("./ActionsInputs");
+Object.defineProperty(exports, "ActionsInputs", { enumerable: true, get: function () { return ActionsInputs_1.ActionsInputs; } });
 //# sourceMappingURL=index.js.map

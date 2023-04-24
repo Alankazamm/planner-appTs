@@ -1,16 +1,6 @@
-System.register(["./ActionsSection"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (ActionsSection_1_1) {
-                exports_1({
-                    "ActionsSection": ActionsSection_1_1["ActionsSection"]
-                });
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ActionsSection = void 0;
+var ActionsSection_1 = require("./ActionsSection");
+Object.defineProperty(exports, "ActionsSection", { enumerable: true, get: function () { return ActionsSection_1.ActionsSection; } });
 //# sourceMappingURL=index.js.map

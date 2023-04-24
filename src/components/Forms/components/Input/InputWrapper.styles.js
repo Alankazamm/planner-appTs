@@ -1,26 +1,19 @@
-System.register(["styled-components"], function (exports_1, context_1) {
-    "use strict";
-    var styled_components_1, InputWrapper, LoginInputWrapper;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (styled_components_1_1) {
-                styled_components_1 = styled_components_1_1;
-            }
-        ],
-        execute: function () {
-            exports_1("InputWrapper", InputWrapper = styled_components_1.default.div `
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.LoginInputWrapper = exports.InputWrapper = void 0;
+const styled_components_1 = __importDefault(require("styled-components"));
+exports.InputWrapper = styled_components_1.default.div `
     display: flex;
     align-items: center;
     justify-content: space-between;
     width:  24.5vw;
     position: relative;
-`);
-            exports_1("LoginInputWrapper", LoginInputWrapper = styled_components_1.default(InputWrapper) `
+`;
+exports.LoginInputWrapper = (0, styled_components_1.default)(exports.InputWrapper) `
 position: relative;
 
-`);
-        }
-    };
-});
+`;
 //# sourceMappingURL=InputWrapper.styles.js.map

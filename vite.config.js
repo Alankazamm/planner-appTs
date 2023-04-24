@@ -1,34 +1,25 @@
-System.register(["vite", "@vitejs/plugin-react"], function (exports_1, context_1) {
-    "use strict";
-    var vite_1, plugin_react_1;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (vite_1_1) {
-                vite_1 = vite_1_1;
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const vite_1 = require("vite");
+const plugin_react_1 = __importDefault(require("@vitejs/plugin-react"));
+// https://vitejs.dev/config/
+exports.default = (0, vite_1.defineConfig)({
+    plugins: [(0, plugin_react_1.default)()],
+    optimizeDeps: {
+        esbuildOptions: {
+            define: {
+                global: 'globalThis',
             },
-            function (plugin_react_1_1) {
-                plugin_react_1 = plugin_react_1_1;
-            }
-        ],
-        execute: function () {
-            exports_1("default", vite_1.defineConfig({
-                plugins: [plugin_react_1.default()],
-                optimizeDeps: {
-                    esbuildOptions: {
-                        define: {
-                            global: 'globalThis',
-                        },
-                    },
-                },
-                resolve: {
-                    alias: {
-                        './runtimeConfig': './runtimeConfig.browser',
-                        'react-dom/client': 'react-dom/client',
-                    },
-                },
-            }));
-        }
-    };
+        },
+    },
+    resolve: {
+        alias: {
+            './runtimeConfig': './runtimeConfig.browser',
+            'react-dom/client': 'react-dom/client',
+        },
+    },
 });
 //# sourceMappingURL=vite.config.js.map

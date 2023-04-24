@@ -1,27 +1,40 @@
-System.register(["/src/assets/svg/icon-link.svg", "./styles", "react"], function (exports_1, context_1) {
-    "use strict";
-    var icon_link_svg_1, styles_1, React, BgSection;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (icon_link_svg_1_1) {
-                icon_link_svg_1 = icon_link_svg_1_1;
-            },
-            function (styles_1_1) {
-                styles_1 = styles_1_1;
-            },
-            function (React_1) {
-                React = React_1;
-            }
-        ],
-        execute: function () {
-            exports_1("BgSection", BgSection = () => {
-                return (React.createElement(styles_1.BgWrapper, null,
-                    React.createElement("a", { href: "https://compass.uol/en/home/", target: "_blank" },
-                        React.createElement("img", { alt: "logo", src: icon_link_svg_1.default }),
-                        " ")));
-            });
-        }
-    };
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
 });
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BgSection = void 0;
+const icon_link_svg_1 = __importDefault(require("/src/assets/svg/icon-link.svg"));
+const styles_1 = require("./styles");
+const React = __importStar(require("react"));
+const BgSection = () => {
+    return (React.createElement(styles_1.BgWrapper, null,
+        React.createElement("a", { href: "https://compass.uol/en/home/", target: "_blank" },
+            React.createElement("img", { alt: "logo", src: icon_link_svg_1.default }),
+            " ")));
+};
+exports.BgSection = BgSection;
 //# sourceMappingURL=BgSection.js.map

@@ -1,16 +1,6 @@
-System.register(["./Logout"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (Logout_1_1) {
-                exports_1({
-                    "Logout": Logout_1_1["Logout"]
-                });
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Logout = void 0;
+var Logout_1 = require("./Logout");
+Object.defineProperty(exports, "Logout", { enumerable: true, get: function () { return Logout_1.Logout; } });
 //# sourceMappingURL=index.js.map

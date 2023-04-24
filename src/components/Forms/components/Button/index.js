@@ -1,16 +1,6 @@
-System.register(["./FormButton"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (FormButton_1_1) {
-                exports_1({
-                    "FormButton": FormButton_1_1["FormButton"]
-                });
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FormButton = void 0;
+var FormButton_1 = require("./FormButton");
+Object.defineProperty(exports, "FormButton", { enumerable: true, get: function () { return FormButton_1.FormButton; } });
 //# sourceMappingURL=index.js.map

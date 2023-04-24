@@ -1,18 +1,12 @@
-System.register(["styled-components", "../animations/animationRotate"], function (exports_1, context_1) {
-    "use strict";
-    var styled_components_1, animationRotate_1, Spinner;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (styled_components_1_1) {
-                styled_components_1 = styled_components_1_1;
-            },
-            function (animationRotate_1_1) {
-                animationRotate_1 = animationRotate_1_1;
-            }
-        ],
-        execute: function () {
-            exports_1("Spinner", Spinner = styled_components_1.default.span `
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Spinner = void 0;
+const styled_components_1 = __importDefault(require("styled-components"));
+const animationRotate_1 = require("../animations/animationRotate");
+exports.Spinner = styled_components_1.default.span `
   display: flex;
     justify-content: center;
     align-items: center;
@@ -28,8 +22,5 @@ System.register(["styled-components", "../animations/animationRotate"], function
         -o-user-select: none;
         user-select: none;
     }
-`);
-        }
-    };
-});
+`;
 //# sourceMappingURL=Spinner.js.map

@@ -1,15 +1,11 @@
-System.register(["styled-components"], function (exports_1, context_1) {
-    "use strict";
-    var styled_components_1, TasksWrapper;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (styled_components_1_1) {
-                styled_components_1 = styled_components_1_1;
-            }
-        ],
-        execute: function () {
-            exports_1("TasksWrapper", TasksWrapper = styled_components_1.default.div `
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TasksWrapper = void 0;
+const styled_components_1 = __importDefault(require("styled-components"));
+exports.TasksWrapper = styled_components_1.default.div `
 
     display: flex;
     flex-direction: column;
@@ -151,8 +147,5 @@ System.register(["styled-components"], function (exports_1, context_1) {
         height:2px;
         background: rgba(0, 0, 0, 0.7);
     }
-`);
-        }
-    };
-});
+`;
 //# sourceMappingURL=TasksWrapper.styles.js.map

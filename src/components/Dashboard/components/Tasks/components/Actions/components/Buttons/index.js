@@ -1,16 +1,6 @@
-System.register(["./components/CreateTaskButtons"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (CreateTaskButtons_1_1) {
-                exports_1({
-                    "CreateTaskButtons": CreateTaskButtons_1_1["CreateTaskButtons"]
-                });
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CreateTaskButtons = void 0;
+var CreateTaskButtons_1 = require("./components/CreateTaskButtons");
+Object.defineProperty(exports, "CreateTaskButtons", { enumerable: true, get: function () { return CreateTaskButtons_1.CreateTaskButtons; } });
 //# sourceMappingURL=index.js.map

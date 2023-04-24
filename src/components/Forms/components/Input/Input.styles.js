@@ -1,22 +1,18 @@
-System.register(["styled-components"], function (exports_1, context_1) {
-    "use strict";
-    var styled_components_1, Input;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (styled_components_1_1) {
-                styled_components_1 = styled_components_1_1;
-            }
-        ],
-        execute: function () {
-            exports_1("Input", Input = styled_components_1.default.input.attrs((props) => ({
-                type: props.type || 'text',
-                name: props.name,
-                value: props.value,
-                onChange: props.onChange,
-                placeholder: props.placeholder,
-                hasError: props.hasError,
-            })) `
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Input = void 0;
+const styled_components_1 = __importDefault(require("styled-components"));
+exports.Input = styled_components_1.default.input.attrs((props) => ({
+    type: props.type || 'text',
+    name: props.name,
+    value: props.value,
+    onChange: props.onChange,
+    placeholder: props.placeholder,
+    hasError: props.hasError,
+})) `
     width: 19vw;
     height: 5.5vh;
     padding-left: 25px;
@@ -41,8 +37,5 @@ System.register(["styled-components"], function (exports_1, context_1) {
         font-size: 12px;
     }
 
-`);
-        }
-    };
-});
+`;
 //# sourceMappingURL=Input.styles.js.map

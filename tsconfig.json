@@ -9,7 +9,7 @@
       "allowSyntheticDefaultImports": false,
       "strict": true,
       "forceConsistentCasingInFileNames": true,
-      "module": "System",
+      "module": "Node16",
       "moduleResolution": "node",
       "resolveJsonModule": false,
       "isolatedModules": true,

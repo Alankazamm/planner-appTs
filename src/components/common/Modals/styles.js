@@ -1,18 +1,12 @@
-System.register(["styled-components", "../../../styles/animations/animationRotate"], function (exports_1, context_1) {
-    "use strict";
-    var styled_components_1, animationRotate_1, Modal, ErrorModal, WarningModal, ConfirmModal, ConfirmEmailModal, ForgotPasswordModal, ResetPasswordModal, RenewTokenModal;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (styled_components_1_1) {
-                styled_components_1 = styled_components_1_1;
-            },
-            function (animationRotate_1_1) {
-                animationRotate_1 = animationRotate_1_1;
-            }
-        ],
-        execute: function () {
-            exports_1("Modal", Modal = styled_components_1.default.div `
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.RenewTokenModal = exports.ResetPasswordModal = exports.ForgotPasswordModal = exports.ConfirmEmailModal = exports.ConfirmModal = exports.WarningModal = exports.ErrorModal = exports.Modal = void 0;
+const styled_components_1 = __importDefault(require("styled-components"));
+const animationRotate_1 = require("../../../styles/animations/animationRotate");
+exports.Modal = styled_components_1.default.div `
     position: fixed;
     z-index: 500;
     background-color: rgba(0, 0, 0, 0.55);
@@ -41,8 +35,8 @@ System.register(["styled-components", "../../../styles/animations/animationRotat
         cursor: pointer;
     }
    
-`);
-            exports_1("ErrorModal", ErrorModal = styled_components_1.default(Modal) `
+`;
+exports.ErrorModal = (0, styled_components_1.default)(exports.Modal) `
  .errorModalContent{
         background-color: white;
         width: 46vw;
@@ -83,8 +77,8 @@ System.register(["styled-components", "../../../styles/animations/animationRotat
         border-radius: 5px;
         cursor: pointer;
     }
-`);
-            exports_1("WarningModal", WarningModal = styled_components_1.default(Modal) `
+`;
+exports.WarningModal = (0, styled_components_1.default)(exports.Modal) `
     .warningModalContent{
         background-color: white;
         width: 46vw;
@@ -139,8 +133,8 @@ System.register(["styled-components", "../../../styles/animations/animationRotat
         cursor: pointer;
     }
   
-`);
-            exports_1("ConfirmModal", ConfirmModal = styled_components_1.default(Modal) `
+`;
+exports.ConfirmModal = (0, styled_components_1.default)(exports.Modal) `
     .confirmModalContent{
         background-color: white;
         width: 46vw;
@@ -213,8 +207,8 @@ System.register(["styled-components", "../../../styles/animations/animationRotat
         color: white;
     }
 
-`);
-            exports_1("ConfirmEmailModal", ConfirmEmailModal = styled_components_1.default(Modal) `
+`;
+exports.ConfirmEmailModal = (0, styled_components_1.default)(exports.Modal) `
     .confirmEmailModalContent{
         background-color: white;
         width: 46vw;
@@ -296,8 +290,8 @@ System.register(["styled-components", "../../../styles/animations/animationRotat
         background-color: #FF8000;
         color: white;
     }
-`);
-            exports_1("ForgotPasswordModal", ForgotPasswordModal = styled_components_1.default(Modal) `
+`;
+exports.ForgotPasswordModal = (0, styled_components_1.default)(exports.Modal) `
     .forgotPasswordModalContent{
         background-color: white;
         width: 46vw;
@@ -397,8 +391,8 @@ System.register(["styled-components", "../../../styles/animations/animationRotat
         margin-bottom: 1rem;
     }
     
-`);
-            exports_1("ResetPasswordModal", ResetPasswordModal = styled_components_1.default(Modal) `
+`;
+exports.ResetPasswordModal = (0, styled_components_1.default)(exports.Modal) `
     .resetPasswordModalContent{
         background-color: white;
         width: 46vw;
@@ -474,8 +468,8 @@ System.register(["styled-components", "../../../styles/animations/animationRotat
         text-align: center;
         margin-bottom: 1rem;
     }
-`);
-            exports_1("RenewTokenModal", RenewTokenModal = styled_components_1.default(Modal) `
+`;
+exports.RenewTokenModal = (0, styled_components_1.default)(exports.Modal) `
     .renewTokenModalContent{
         background-color: white;
         width: 46vw;
@@ -561,8 +555,5 @@ System.register(["styled-components", "../../../styles/animations/animationRotat
         text-align: center;
         margin-bottom: 1rem;
     }
-`);
-        }
-    };
-});
+`;
 //# sourceMappingURL=styles.js.map

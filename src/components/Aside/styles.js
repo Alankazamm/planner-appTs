@@ -1,18 +1,12 @@
-System.register(["styled-components", "/src/assets/images/bgImg.png"], function (exports_1, context_1) {
-    "use strict";
-    var styled_components_1, bgImg_png_1, BgWrapper;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (styled_components_1_1) {
-                styled_components_1 = styled_components_1_1;
-            },
-            function (bgImg_png_1_1) {
-                bgImg_png_1 = bgImg_png_1_1;
-            }
-        ],
-        execute: function () {
-            exports_1("BgWrapper", BgWrapper = styled_components_1.default.div `
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BgWrapper = void 0;
+const styled_components_1 = __importDefault(require("styled-components"));
+const bgImg_png_1 = __importDefault(require("/src/assets/images/bgImg.png"));
+exports.BgWrapper = styled_components_1.default.div `
     width: 50%;
     height: 100vh;
     background-image: url(${bgImg_png_1.default}) ;
@@ -25,8 +19,5 @@ System.register(["styled-components", "/src/assets/images/bgImg.png"], function 
         max-width: 26vw;
         cursor: pointer;
     }
-`);
-        }
-    };
-});
+`;
 //# sourceMappingURL=styles.js.map

@@ -1,18 +1,12 @@
-System.register(["styled-components", "../../styles"], function (exports_1, context_1) {
-    "use strict";
-    var styled_components_1, styles_1, ActionsInputsContainer;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (styled_components_1_1) {
-                styled_components_1 = styled_components_1_1;
-            },
-            function (styles_1_1) {
-                styles_1 = styles_1_1;
-            }
-        ],
-        execute: function () {
-            exports_1("ActionsInputsContainer", ActionsInputsContainer = styled_components_1.default(styles_1.ActionsContainerCommons) `
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ActionsInputsContainer = void 0;
+const styled_components_1 = __importDefault(require("styled-components"));
+const styles_1 = require("../../styles");
+exports.ActionsInputsContainer = (0, styled_components_1.default)(styles_1.ActionsContainerCommons) `
 gap:3px;
     &*:placeholder{
         font-size: 14px;
@@ -50,8 +44,5 @@ gap:3px;
        
     }
     
-`);
-        }
-    };
-});
+`;
 //# sourceMappingURL=styles.js.map

@@ -1,16 +1,6 @@
-System.register(["./Tasks"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (Tasks_1_1) {
-                exports_1({
-                    "Tasks": Tasks_1_1["Tasks"]
-                });
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Tasks = void 0;
+var Tasks_1 = require("./Tasks");
+Object.defineProperty(exports, "Tasks", { enumerable: true, get: function () { return Tasks_1.Tasks; } });
 //# sourceMappingURL=index.js.map

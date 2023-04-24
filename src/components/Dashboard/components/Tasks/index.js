@@ -1,16 +1,6 @@
-System.register(["./TasksSection"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (TasksSection_1_1) {
-                exports_1({
-                    "TasksSection": TasksSection_1_1["TasksSection"]
-                });
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.TasksSection = void 0;
+var TasksSection_1 = require("./TasksSection");
+Object.defineProperty(exports, "TasksSection", { enumerable: true, get: function () { return TasksSection_1.TasksSection; } });
 //# sourceMappingURL=index.js.map

@@ -1,15 +1,11 @@
-System.register(["styled-components"], function (exports_1, context_1) {
-    "use strict";
-    var styled_components_1, FormContainer;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (styled_components_1_1) {
-                styled_components_1 = styled_components_1_1;
-            }
-        ],
-        execute: function () {
-            exports_1("FormContainer", FormContainer = styled_components_1.default.div `
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.FormContainer = void 0;
+const styled_components_1 = __importDefault(require("styled-components"));
+exports.FormContainer = styled_components_1.default.div `
 
 
   display: flex;
@@ -18,8 +14,6 @@ System.register(["styled-components"], function (exports_1, context_1) {
   justify-content: space-between;
   min-height: ${({ page }) => page === 'login' ? '63vh' : '83vh'};
   width: ${({ page }) => page === 'login' ? '19.7vw' : '24.5vw'};
-  `);
-        }
-    };
-});
+  `;
+/* 901px;685 */ 
 //# sourceMappingURL=styles.js.map

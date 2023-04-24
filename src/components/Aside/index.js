@@ -1,16 +1,6 @@
-System.register(["./BgSection"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (BgSection_1_1) {
-                exports_1({
-                    "BgSection": BgSection_1_1["BgSection"]
-                });
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.BgSection = void 0;
+var BgSection_1 = require("./BgSection");
+Object.defineProperty(exports, "BgSection", { enumerable: true, get: function () { return BgSection_1.BgSection; } });
 //# sourceMappingURL=index.js.map

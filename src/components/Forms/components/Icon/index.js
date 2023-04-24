@@ -1,16 +1,6 @@
-System.register(["./Icon"], function (exports_1, context_1) {
-    "use strict";
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (Icon_1_1) {
-                exports_1({
-                    "Icon": Icon_1_1["Icon"]
-                });
-            }
-        ],
-        execute: function () {
-        }
-    };
-});
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Icon = void 0;
+var Icon_1 = require("./Icon");
+Object.defineProperty(exports, "Icon", { enumerable: true, get: function () { return Icon_1.Icon; } });
 //# sourceMappingURL=index.js.map
