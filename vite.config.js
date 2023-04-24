@@ -13,6 +13,7 @@ export default defineConfig({
     resolve: {
         alias: {
             './runtimeConfig': './runtimeConfig.browser',
+            'react-dom/client': 'react-dom/cjs/react-dom.client.production.min.js',
         },
     },
 });

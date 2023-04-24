@@ -13,18 +13,24 @@
       "moduleResolution": "node",
       "resolveJsonModule": true,
       "isolatedModules": true,
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["src/*"],
+        "react-dom": ["react-dom-client"]
+      },
       "sourceMap": true,
       "noEmit": false ,
       "jsx": "react",
-      "types": ["vite/client"]
+      "types": ["vite/client"],
+     
      
   
     },
      //include tsx files
-    "include": ["*/**/*.ts","src/*", "types", "src/custom.d.ts", "vite-env.d.ts", "vite.config.ts", "src/**/*.tsx", "aws-exports.js", "src/aws-exports.d.ts", "react-dom.d.ts"],
+    "include": ["*/**/*.ts","src/*", "types", "src/custom.d.ts", "vite-env.d.ts", "vite.config.ts", "src/**/*.tsx", "aws-exports.js", "src/aws-exports.d.ts", "react-dom-client.d.ts"],
     "exclude": [
-      "node_modules",
-      "**/*.spec.ts"
+      
+      "**/*.spec.ts",
   ],
     "references": [{ "path": "./tsconfig.node.json" }]
   }
