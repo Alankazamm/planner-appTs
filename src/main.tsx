@@ -6,6 +6,4 @@ import * as React from "react";
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 		
 			<App />
-	
-
 );
