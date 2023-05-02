@@ -1,13 +1,19 @@
 
-import { axiosInstance, updateToken } from './../../helpers/axios';
-
+import axios from 'axios';
 
 export const getEvents = (event: { description?: string, dayOfWeek?: string }) =>
     ({ setGetEventsResponse, setFetchingLoading, setDisplayErrorModal }:
         { setGetEventsResponse: any, setFetchingLoading: any, setDisplayErrorModal: any }) => {
-        console.log(event);
-        updateToken(localStorage.getItem('token')!);
-        console.log('token', localStorage.getItem('token'));
+        const BaseUrl = import.meta.env.VITE_REACT_API_URL;
+        let headers = {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        
+        }
+             const axiosInstance = axios.create({
+                baseURL: BaseUrl,
+                headers,
+            });
+            
 
         setFetchingLoading(true);
         if (event.dayOfWeek) {

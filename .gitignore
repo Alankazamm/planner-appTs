@@ -22,7 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
+amplify
+aws-exports.js
 # Secrets
 .env
 planner-app/.env

@@ -27,15 +27,26 @@ import {
 //api functions
 import { getEvents } from "./../../../../../../actions/events/getEvents";
 import { deleteEvents } from "../../../../../../actions/delete-events/deleteEvents";
-import {axiosInstance} from "../../../../../../helpers/axios";
+import axios from "axios";
 
 export const ButtonsSection = () => {
-	
-	const token = localStorage.getItem('token');
+	const BaseUrl = import.meta.env.VITE_REACT_API_URL;
+	let headers = {
+		Authorization: `Bearer ${localStorage.getItem("token")}`,
+	};
+	const axiosInstance = axios.create({
+		baseURL: BaseUrl,
+		headers,
+	});
 
 	const [createIsLoading, setCreateIsLoading] = useState(false);
-	const [createEventResponse, setCreateEventResponse] = useState<createEvent>({});
-	const [confirmDelete, setConfirmDelete] = useState({show: false,dayOfWeek: ""});	
+	const [createEventResponse, setCreateEventResponse] = useState<createEvent>(
+		{},
+	);
+	const [confirmDelete, setConfirmDelete] = useState({
+		show: false,
+		dayOfWeek: "",
+	});
 	const {
 		task,
 		actualDay,
@@ -46,7 +57,7 @@ export const ButtonsSection = () => {
 		setDisplayErrorModal,
 		setFetchingLoading,
 		setDeleteEventsResponse,
-		deleteEventsResponse
+		deleteEventsResponse,
 	}: createContextType = useContext(TasksContext);
 
 	//rerenders on createEventResponse change
@@ -69,7 +80,6 @@ export const ButtonsSection = () => {
 		if (deleteEventsResponse.hasOwnProperty("status")) {
 			console.log(deleteEventsResponse);
 			if (deleteEventsResponse.status === eventStatus["OK"]) {
-				
 				getEvents({ dayOfWeek: actualDay })({
 					setGetEventsResponse,
 					setFetchingLoading,
@@ -77,11 +87,10 @@ export const ButtonsSection = () => {
 				});
 			} else {
 				setDisplayErrorModal(deleteEventsResponse.status);
-	
 			}
 		}
 	}, [deleteEventsResponse]);
-	
+
 	//rerenders on getEventsResponse change
 	useEffect(() => {
 		if (getEventsResponse.hasOwnProperty("status")) {
@@ -124,23 +133,31 @@ export const ButtonsSection = () => {
 		}
 	}, [getEventsResponse]);
 	//request API to create events
-	const createEvents = ({description, dayOfWeek}: { description: string, dayOfWeek: string }) => {
+	const createEvents = ({
+		description,
+		dayOfWeek,
+	}: {
+		description: string;
+		dayOfWeek: string;
+	}) => {
 		setCreateIsLoading(true);
-		axiosInstance.post(`/events`, { description, dayOfWeek }).then((response) => {
-			setCreateEventResponse(response);
-			setCreateIsLoading(false);
-		}).catch(error => {
-		console.log(error);
-		setCreateIsLoading(false);
-		setDisplayErrorModal(error.response.data.status);
-		setCreateEventResponse(error.response.data);
-
-	})
-}
+		axiosInstance
+			.post(`/events`, { description, dayOfWeek })
+			.then((response) => {
+				setCreateEventResponse(response);
+				setCreateIsLoading(false);
+			})
+			.catch((error) => {
+				console.log(error);
+				setCreateIsLoading(false);
+				setDisplayErrorModal(error.response.data.status);
+				setCreateEventResponse(error.response.data);
+			});
+	};
 	//handles the click on the add button
 	function clickHandler() {
 		if (task.taskText.length > 0) {
-			 createEvents({ description: task!.taskText, dayOfWeek: task!.taskDay })
+			createEvents({ description: task!.taskText, dayOfWeek: task!.taskDay });
 			getEvents({ dayOfWeek: actualDay })({
 				setGetEventsResponse,
 				setFetchingLoading,
