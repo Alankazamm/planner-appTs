@@ -8,13 +8,30 @@ Second and third projects from Compasso Uol PB
 
 ## Table of contents
 * [General info](#general-info)
+* [Demo](#demo)
+* [Technologies](#technologies)
 * [Features](#features)
 * [Run](#run)
-* [Technologies](#technologies)
 
 
 ## General info
-This project it's a weeokly planner in which the user can sign-up and log-in to see his tasks, delete, create news or delete all from a selected day of the week.
+This project it's a weekly planner in which the user can sign-up and log-in to see his tasks, delete, create news or delete all from a selected day of the week.
+
+## Demo
+[![asciicast](Demo Video)
+](https://user-images.githubusercontent.com/61434161/235721826-e87ec600-38a2-4f53-b992-a5784dcb9493.mp4)
+
+## Technologies
+Project was developed with:
+* AWS Cognito for register, verification code, renew password, login and auth (aws branch)
+* AWS Api Gateway for Rest Api's endpoints (aws branch)
+* AWS Lambda for serverless backend (aws branch)
+* AWS DynamoDB for NoSQL database (aws branch)
+* React
+* React-router
+* Rest Api's
+* Styled components
+* Typescript
 
 ## Features
 ### Login
@@ -55,12 +72,6 @@ There's some modals too:
 In the project directory, you can run:
 ### `npm start`
 
-## Technologies
-Project was developed with:
-* React
-* Styled components
-* React-router
-* Rest Api's
-* Typescript (feature2)
+
 	
 
