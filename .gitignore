@@ -24,6 +24,7 @@ dist-ssr
 *.sw?
 amplify
 aws-exports.js
+tsconfig.json
 # Secrets
 .env
 planner-app/.env
