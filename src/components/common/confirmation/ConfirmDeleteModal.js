@@ -1,4 +1,4 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import React from "react";
 import { ConfirmModal } from '../modals/Modal.styles';
 import warningIcon from '/src/assets/svg/icon-warning.svg';
 export const ConfirmDeleteModal = ({ actionFunction, value, showModal }) => {
@@ -9,5 +9,18 @@ export const ConfirmDeleteModal = ({ actionFunction, value, showModal }) => {
     const cancelHandler = () => {
         value.id ? showModal({ show: false, id: '' }) : showModal({ show: false, dayOfWeek: '' });
     };
-    return (_jsx(ConfirmModal, { children: _jsxs("div", { className: "confirmModalContent", children: [_jsxs("div", { className: "confirmModalTitle", children: [_jsx("img", { src: warningIcon, alt: "warning icon" }), value.id && _jsx("h2", { children: "Are you sure you want to delete this task?" }), value.dayOfWeek && _jsxs("h3", { children: ["Are you sure you want to delete all tasks for ", value.dayOfWeek, "?"] })] }), _jsx("div", { className: "confirmModalText", children: _jsx("p", { children: "This action cannot be undone." }) }), _jsxs("div", { className: "confirmModalButtons", children: [_jsx("button", { className: "closeButton", onClick: cancelHandler, children: "Cancel" }), _jsx("button", { className: "confirmDeleteButton", onClick: actionHandler, children: "Delete" })] })] }) }));
+    return (React.createElement(ConfirmModal, null,
+        React.createElement("div", { className: "confirmModalContent" },
+            React.createElement("div", { className: "confirmModalTitle" },
+                React.createElement("img", { src: warningIcon, alt: "warning icon" }),
+                value.id && React.createElement("h2", null, "Are you sure you want to delete this task?"),
+                value.dayOfWeek && React.createElement("h3", null,
+                    "Are you sure you want to delete all tasks for ",
+                    value.dayOfWeek,
+                    "?")),
+            React.createElement("div", { className: "confirmModalText" },
+                React.createElement("p", null, "This action cannot be undone.")),
+            React.createElement("div", { className: "confirmModalButtons" },
+                React.createElement("button", { className: "closeButton", onClick: cancelHandler }, "Cancel"),
+                React.createElement("button", { className: "confirmDeleteButton", onClick: actionHandler }, "Delete")))));
 };

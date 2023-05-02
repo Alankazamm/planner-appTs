@@ -4,6 +4,7 @@ import spinner from '/src/assets/svg/spinner-uol.svg'
 import { useState, useEffect } from 'react';
 import { Auth } from 'aws-amplify';
 import { messageHandler } from '../../../api/utils/cognitoErrorsHandler';
+import React from "react";
 
 
 export const ForgotPasswordModal = ({ toggleModal }: { toggleModal: (sended: boolean) => void }) => {

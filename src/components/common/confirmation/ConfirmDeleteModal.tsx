@@ -1,3 +1,4 @@
+import React from "react";
 
 import { ConfirmModal } from '../modals/Modal.styles';
 import warningIcon from '/src/assets/svg/icon-warning.svg'

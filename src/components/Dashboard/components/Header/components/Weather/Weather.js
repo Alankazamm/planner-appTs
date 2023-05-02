@@ -1,4 +1,6 @@
-import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-runtime";
+// description: This component is responsible for fetching the weather data
+//from the API(https://www.weatherapi.com/docs/) and displaying it on the dashboard
+import React from "react";
 //hooks
 import { useFetchWeather } from '../../../../../../custom-hooks/customWeatherHook';
 // assets
@@ -13,12 +15,31 @@ export const Weather = () => {
     const city = user.city;
     const country = user.country;
     const forecast = useFetchWeather(city ? city : '');
-    let forecastOutput = (_jsx(WeatherContainer, { children: _jsxs(Spinner, { children: [" ", _jsx("img", { alt: "loading", src: spinner })] }) }));
+    let forecastOutput = (React.createElement(WeatherContainer, null,
+        React.createElement(Spinner, null,
+            " ",
+            React.createElement("img", { alt: "loading", src: spinner }))));
     if (forecast?.current?.temp_c) {
-        forecastOutput = (_jsxs(WeatherContainer, { children: [_jsxs("span", { children: [city, " - ", country, " "] }), " ", _jsxs("div", { children: [_jsx("img", { src: cloudyIcon, alt: "" }), parseInt(forecast.current.temp_c), "\u00B0"] }), " "] }));
+        forecastOutput = (React.createElement(WeatherContainer, null,
+            React.createElement("span", null,
+                city,
+                " - ",
+                country,
+                " "),
+            " ",
+            React.createElement("div", null,
+                React.createElement("img", { src: cloudyIcon, alt: "" }),
+                parseInt(forecast.current.temp_c),
+                "\u00B0"),
+            " "));
     }
     else if (forecast?.error) {
-        forecastOutput = (_jsxs(WeatherContainer, { children: [" ", _jsx("span", { children: "Weather not avaliabe" }), " ", _jsx("div", { children: _jsx("img", { src: errorIcon, alt: "" }) })] }));
+        forecastOutput = (React.createElement(WeatherContainer, null,
+            " ",
+            React.createElement("span", null, "Weather not avaliabe"),
+            " ",
+            React.createElement("div", null,
+                React.createElement("img", { src: errorIcon, alt: "" }))));
     }
-    return _jsx(_Fragment, { children: forecastOutput });
+    return React.createElement(React.Fragment, null, forecastOutput);
 };

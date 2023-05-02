@@ -1,6 +1,6 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 // Description: This component is the main component for the tasks section.
 //It is responsible for rendering the tasks container and the actions section.
+import React from "react";
 //components
 import { ActionsSection } from "./components/Actions/ActionsSection";
 import { TasksDisplayer } from "../../tasks/display-tasks/TasksDisplayer";
@@ -9,5 +9,8 @@ import { TasksDisplayer } from "../../tasks/display-tasks/TasksDisplayer";
 import { TasksProvider } from "../../../../contexts/tasksContext";
 import { TasksContainer } from './styles';
 export const TasksSection = () => {
-    return (_jsx(TasksProvider, { children: _jsxs(TasksContainer, { children: [_jsx(ActionsSection, {}), _jsx(TasksDisplayer, {})] }) }));
+    return (React.createElement(TasksProvider, null,
+        React.createElement(TasksContainer, null,
+            React.createElement(ActionsSection, null),
+            React.createElement(TasksDisplayer, null))));
 };

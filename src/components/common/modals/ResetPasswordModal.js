@@ -1,10 +1,10 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { ResetPasswordModal as Modal } from './Modal.styles';
 import { useState } from 'react';
 import { Auth } from 'aws-amplify';
 import spinner from '/src/assets/svg/spinner-uol.svg';
 import { useEffect } from 'react';
 import { messageHandler } from '../../../api/utils/cognitoErrorsHandler';
+import React from "react";
 export const ResetPasswordModal = ({ toggleModal }) => {
     const [errorMessage, setErrorMessage] = useState('');
     const [state, setState] = useState({
@@ -42,6 +42,18 @@ export const ResetPasswordModal = ({ toggleModal }) => {
             }, 2000);
         }
     }, [state.success]);
-    return (_jsx(Modal, { children: _jsxs("div", { className: "resetPasswordModalContent", children: [_jsx("div", { className: "resetPasswordModalTitle", children: "Set new password" }), _jsx("div", { className: "resetPasswordModalText", children: _jsx("p", { children: "Enter your new password below." }) }), _jsx("input", { className: "resetPasswordModalInput", name: "email", type: "text", placeholder: "Email", onChange: e => inputChange(e) }), _jsx("input", { className: "resetPasswordModalInput", name: "verificationcode", type: "text", placeholder: "Verification code", onChange: e => inputChange(e) }), _jsx("input", { className: "resetPasswordModalInput", name: "newpassword", type: "password", placeholder: "New password", onChange: e => inputChange(e) }), state.success && _jsx("div", { className: "resetPasswordModalSuccess", children: "Password changed! Please, login" }), state.error && _jsx("div", { className: "resetPasswordModalError", children: errorMessage }), state.loading ? _jsx("img", { alt: "loading spinner", src: spinner }) :
-                    _jsxs("div", { className: "resetPasswordModalButtons", children: [_jsx("button", { className: "resetPasswordButton", onClick: handleResetPassword, children: "Reset password" }), _jsx("button", { className: "closeButton", onClick: toggleModal, children: "Cancel" })] })] }) }));
+    return (React.createElement(Modal, null,
+        React.createElement("div", { className: "resetPasswordModalContent" },
+            React.createElement("div", { className: "resetPasswordModalTitle" }, "Set new password"),
+            React.createElement("div", { className: "resetPasswordModalText" },
+                React.createElement("p", null, "Enter your new password below.")),
+            React.createElement("input", { className: "resetPasswordModalInput", name: "email", type: "text", placeholder: "Email", onChange: e => inputChange(e) }),
+            React.createElement("input", { className: "resetPasswordModalInput", name: "verificationcode", type: "text", placeholder: "Verification code", onChange: e => inputChange(e) }),
+            React.createElement("input", { className: "resetPasswordModalInput", name: "newpassword", type: "password", placeholder: "New password", onChange: e => inputChange(e) }),
+            state.success && React.createElement("div", { className: "resetPasswordModalSuccess" }, "Password changed! Please, login"),
+            state.error && React.createElement("div", { className: "resetPasswordModalError" }, errorMessage),
+            state.loading ? React.createElement("img", { alt: "loading spinner", src: spinner }) :
+                React.createElement("div", { className: "resetPasswordModalButtons" },
+                    React.createElement("button", { className: "resetPasswordButton", onClick: handleResetPassword }, "Reset password"),
+                    React.createElement("button", { className: "closeButton", onClick: toggleModal }, "Cancel")))));
 };

@@ -4,6 +4,7 @@ type SignErrorModalProps = {
 	//toggleModal is an anonymous function that is passed as a prop from SignUp.tsx
     toggleModal: () => void;
 };
+import React from "react";
 
 export const SignErrorModal = ({ toggleModal }: SignErrorModalProps) => {
 	return (

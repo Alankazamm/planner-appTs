@@ -4,6 +4,7 @@ import { RenewTokenModal } from "../components/common/modals/RenewTokenModal";
 import { DashBoardContainer } from "../components/Dashboard/styles"
 //components
 
+import React from "react";
 
 import { UserContext } from './../contexts/userContext';
 import { DashboardHeader } from "../components/Dashboard/components/Header/Header";

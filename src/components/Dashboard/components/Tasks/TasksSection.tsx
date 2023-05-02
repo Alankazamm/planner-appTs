@@ -1,5 +1,6 @@
 // Description: This component is the main component for the tasks section.
 //It is responsible for rendering the tasks container and the actions section.
+import React from "react";
 
 //components
 import { ActionsSection } from "./components/Actions/ActionsSection"

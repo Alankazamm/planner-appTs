@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Amplify } from "aws-amplify";
 import awsmobile from "../../../aws-exports";
 import { useNavigate } from 'react-router-dom';
+import React from "react";
 
 Amplify.configure(awsmobile);
 export const ConfirmEmailModal = ({ email, toggleModal }: { email: string, toggleModal: () => void }) => {

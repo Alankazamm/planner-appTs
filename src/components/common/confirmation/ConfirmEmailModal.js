@@ -1,10 +1,10 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { Auth } from 'aws-amplify';
 import { ConfirmEmailModal as Modal } from '../modals/Modal.styles';
 import { useState } from 'react';
 import { Amplify } from "aws-amplify";
 import awsmobile from "../../../aws-exports";
 import { useNavigate } from 'react-router-dom';
+import React from "react";
 Amplify.configure(awsmobile);
 export const ConfirmEmailModal = ({ email, toggleModal }) => {
     const navigate = useNavigate();
@@ -30,5 +30,13 @@ export const ConfirmEmailModal = ({ email, toggleModal }) => {
             }
         }
     };
-    return (_jsx(Modal, { children: _jsxs("div", { className: "confirmEmailModalContent", children: [_jsx("div", { className: "confirmEmailModalTitle", children: modalTitle }), _jsx("div", { className: "confirmEmailModalText", children: _jsx("p", { children: "We have sent you a confirmation code to your email address. Please enter it below to confirm your email address." }) }), _jsx("input", { className: "confirmEmailModalInput", type: "text", placeholder: "Confirmation code", value: code, onChange: (e) => setCode(e.target.value) }), _jsxs("div", { className: "confirmEmailModalButtons", children: [_jsx("button", { className: "confirmEmailButton", onClick: handleConfirm, children: "Confirm" }), modalTitle === 'Email confirmed' && _jsx("button", { className: "closeButton", onClick: () => { toggleModal(); navigate('/login'); }, children: "Close" })] })] }) }));
+    return (React.createElement(Modal, null,
+        React.createElement("div", { className: "confirmEmailModalContent" },
+            React.createElement("div", { className: "confirmEmailModalTitle" }, modalTitle),
+            React.createElement("div", { className: "confirmEmailModalText" },
+                React.createElement("p", null, "We have sent you a confirmation code to your email address. Please enter it below to confirm your email address.")),
+            React.createElement("input", { className: "confirmEmailModalInput", type: "text", placeholder: "Confirmation code", value: code, onChange: (e) => setCode(e.target.value) }),
+            React.createElement("div", { className: "confirmEmailModalButtons" },
+                React.createElement("button", { className: "confirmEmailButton", onClick: handleConfirm }, "Confirm"),
+                modalTitle === 'Email confirmed' && React.createElement("button", { className: "closeButton", onClick: () => { toggleModal(); navigate('/login'); } }, "Close")))));
 };

@@ -5,6 +5,7 @@ import { Navigate } from 'react-router-dom';
 
 //components
 import { Planner } from "../pages/Planner";
+import React from 'react';
 
 export const ProtectPlanner = () => {
     //navigate to login page if there is no token in local storage

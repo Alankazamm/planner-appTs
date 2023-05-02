@@ -1,5 +1,6 @@
 //description: this file contains the context for the tasks
 //it also contains the functions to update the tasks and the day
+import React from "react";
 
 //hooks
 import { createContext, useState, useEffect } from "react";

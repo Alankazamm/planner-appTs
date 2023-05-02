@@ -1,8 +1,8 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 import { RenewTokenModal as Modal } from './Modal.styles';
 import { Auth } from 'aws-amplify';
 import { useContext } from 'react';
 import { UserContext } from '../../../contexts/userContext';
+import React from "react";
 export const RenewTokenModal = () => {
     const { setDisplayRenewAccessTokenModal, signout } = useContext(UserContext);
     const renewToken = () => {
@@ -27,5 +27,11 @@ export const RenewTokenModal = () => {
         setDisplayRenewAccessTokenModal(false);
         signout();
     };
-    return (_jsx(Modal, { children: _jsxs("div", { className: "renewTokenModalContent", children: [_jsx("div", { className: "renewTokenModalTitle", children: "Your session has expired" }), _jsx("div", { className: "renewTokenModalText", children: "Your session has expired, please renew your session or logout." }), _jsxs("div", { className: "renewTokenModalButtons", children: [_jsx("button", { className: "renewTokenModalButton", onClick: renewToken, children: "Renew" }), _jsx("button", { className: "closeButton", onClick: logout, children: "Logout" })] })] }) }));
+    return (React.createElement(Modal, null,
+        React.createElement("div", { className: "renewTokenModalContent" },
+            React.createElement("div", { className: "renewTokenModalTitle" }, "Your session has expired"),
+            React.createElement("div", { className: "renewTokenModalText" }, "Your session has expired, please renew your session or logout."),
+            React.createElement("div", { className: "renewTokenModalButtons" },
+                React.createElement("button", { className: "renewTokenModalButton", onClick: renewToken }, "Renew"),
+                React.createElement("button", { className: "closeButton", onClick: logout }, "Logout")))));
 };

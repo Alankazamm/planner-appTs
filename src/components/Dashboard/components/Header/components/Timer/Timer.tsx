@@ -6,6 +6,7 @@ import { useTimer } from './../../../../../../custom-hooks/customTimerHook';
 // styles
 import { TimerContainer } from "./styles";
 
+import React from "react";
 
 export const Timer = () => {
 	const time = useTimer();

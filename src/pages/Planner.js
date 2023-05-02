@@ -1,12 +1,12 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
 //styles
 import { useContext, useEffect } from "react";
 import { RenewTokenModal } from "../components/common/modals/RenewTokenModal";
 import { DashBoardContainer } from "../components/Dashboard/styles";
 //components
-import { DashboardHeader } from "../components/Dashboard/components/Header/index";
-import { TasksSection } from "../components/Dashboard/components/Tasks/index";
+import React from "react";
 import { UserContext } from './../contexts/userContext';
+import { DashboardHeader } from "../components/Dashboard/components/Header/Header";
+import { TasksSection } from "../components/Dashboard/components/Tasks/TasksSection";
 export const Planner = () => {
     const { displayRenewAccessTokenModal, setDisplayRenewAccessTokenModal } = useContext(UserContext);
     useEffect(() => {
@@ -19,5 +19,8 @@ export const Planner = () => {
             clearTimeout(timer);
         };
     }, [setDisplayRenewAccessTokenModal, displayRenewAccessTokenModal]);
-    return (_jsxs(DashBoardContainer, { children: [displayRenewAccessTokenModal === true && _jsx(RenewTokenModal, {}), _jsx(DashboardHeader, {}), _jsx(TasksSection, {})] }));
+    return (React.createElement(DashBoardContainer, null,
+        displayRenewAccessTokenModal === true && React.createElement(RenewTokenModal, null),
+        React.createElement(DashboardHeader, null),
+        React.createElement(TasksSection, null)));
 };

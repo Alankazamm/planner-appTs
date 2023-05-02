@@ -1,5 +1,6 @@
 //description: this component is responsible for displaying all tasks for a given day
 //it is rendered by the TasksSection component
+import React from "react";
 
 //hooks
 import { useContext, useEffect } from "react";
