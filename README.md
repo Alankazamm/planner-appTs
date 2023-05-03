@@ -17,7 +17,7 @@
 
 
 ## General info
-This project it's a weekly planner in which the user can sign-up and log-in to see his tasks, delete, create news or delete all from a selected day of the week.
+This project is a weekly planner where users can sign up and log in to view their tasks, create new ones, delete them, or delete all tasks for a selected day of the week. The planner also includes real-time weather forecast and time/day clock. The repository has a custom branch named "AWS," in which all the backend has been third-partied with Lambda for serverless backend, which receives requests from a RESTful API in API Gateway, and retrieves data from a NoSQL DynamoDB database. User login, registration, confirmation code, password renewal, authorization, and session tokens are managed through Cognito. Unfortunately, I no longer have access to the AWS service, so for <strong>now</strong>, only the basic version is hosted.
 
 ## Deploy
 ### Page hosted in here, in [Vercel](https://planner-app-ts.vercel.app/).
