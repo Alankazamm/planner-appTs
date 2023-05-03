@@ -16,7 +16,7 @@ export const AppRoutes = () => {
             <Route path='/signup' element={<SignUp />} />
             <Route path='/planner' element={<ProtectPlanner />} />
          
-            <Route path='*' element={<h1>404</h1>} />
+           
 
         </Routes>
     )
