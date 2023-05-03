@@ -8,6 +8,7 @@ Second and third projects from Compasso Uol PB
 
 ## Table of contents
 * [General info](#general-info)
+* [Deploy](#deploy)
 * [Demo](#demo)
 * [Technologies](#technologies)
 * [Features](#features)
@@ -16,6 +17,9 @@ Second and third projects from Compasso Uol PB
 
 ## General info
 This project it's a weekly planner in which the user can sign-up and log-in to see his tasks, delete, create news or delete all from a selected day of the week.
+
+## Deploy
+### Page hosted in here, in [Vercel](https://planner-app-ts.vercel.app/).
 
 ## Demo
 [![asciicast](Demo Video)
